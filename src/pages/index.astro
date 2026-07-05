@@ -592,7 +592,7 @@ import Base from '../layouts/Base.astro';
       min-height: 100svh;
       display: flex;
       align-items: center;
-      padding: 44px 0;
+      padding: 44px 0 96px;
     }
     .lp-hero .eyebrow {
       font-size: 15.5px;
@@ -721,8 +721,8 @@ import Base from '../layouts/Base.astro';
     .cred-item strong {
       display: block;
       font-family: var(--font-min);
-      font-weight: 600;
-      font-size: 25px;
+      font-weight: 700;
+      font-size: 31px;
       color: #fff;
       line-height: 1.15;
       letter-spacing: 0.02em;
@@ -735,7 +735,7 @@ import Base from '../layouts/Base.astro';
       margin-top: 5px;
     }
     .cred-meta { padding-left: 14px; border-left: 3px solid var(--gold); }
-    .cred-meta strong { color: var(--gold); font-size: 27px; }
+    .cred-meta strong { color: var(--gold); font-size: 35px; text-shadow: 0 0 22px rgba(255, 215, 94, 0.35); }
     .c-num .cnt { font-size: 46px; }
     .c-num i { font-style: normal; font-size: 15px; color: rgba(255, 255, 255, 0.85); margin-left: 3px; }
     .n-blue .cnt { color: var(--blue); text-shadow: 0 0 18px rgba(47, 157, 216, 0.45); }
@@ -949,9 +949,8 @@ import Base from '../layouts/Base.astro';
     /* ---------- スクロール誘導（FV下部） ---------- */
     .scroll-cue {
       position: absolute;
-      left: 50%;
-      bottom: 16px;
-      transform: translateX(-50%);
+      right: 28px;
+      bottom: 18px;
       z-index: 3;
       display: flex;
       flex-direction: column;
@@ -1101,7 +1100,9 @@ import Base from '../layouts/Base.astro';
     @media (max-width: 1100px) {
       .lp-hero h1 { font-size: 38px; }
       .c-num .cnt { font-size: 40px; }
-      .cred { gap: 28px; }
+      .cred { gap: 26px; }
+      .cred-item strong { font-size: 26px; }
+      .cred-meta strong { font-size: 29px; }
     }
 
     /* ---------- モバイル ---------- */
@@ -1111,7 +1112,7 @@ import Base from '../layouts/Base.astro';
       .lp-sec { padding: 64px 0; }
       .lp-sec h2 { font-size: 24px; margin-bottom: 32px; }
       .h2-sub { display: block; margin: 8px 0 0; }
-      .lp-hero { min-height: 100svh; padding: 32px 0 44px; }
+      .lp-hero { min-height: 100svh; padding: 32px 0 112px; }
       .lp-hero::before { width: 460px; height: 460px; top: -160px; right: -200px; }
       .lp-hero .eyebrow { font-size: 13px; letter-spacing: 0.1em; }
       .lp-hero-inner { display: block; }
@@ -1153,7 +1154,7 @@ import Base from '../layouts/Base.astro';
       .lp-sec h2 { font-size: 27px; line-height: 1.5; }
       .bridge-lead { font-size: 23px; }
       .c-num .cnt { font-size: 46px; }
-      .cred-meta strong { font-size: 23px; }
+      .cred-meta strong { font-size: 36px; }
       .metric-lp { font-size: 20px; }
       .reason h3 { font-size: 21px; }
       .x-list b { font-size: 1.12em; }
@@ -1170,7 +1171,7 @@ import Base from '../layouts/Base.astro';
       .eyebrow { font-size: 11px; }
       .lp-hero .eyebrow { font-size: 13px; }
       .h2-sub { font-size: 12px; }
-      .cred-item strong { font-size: 18px; }
+      .cred-item strong { font-size: 30px; }
       .cred-item span { font-size: 10.5px; }
       .lead { font-size: 14.5px; }
       .bridge-body { font-size: 14px; }
@@ -1185,8 +1186,8 @@ import Base from '../layouts/Base.astro';
       .note { font-size: 12px; }
       .form-card label { font-size: 12.5px; }
       .seminar-fig figcaption { font-size: 11px; }
-      .sc-line { height: 34px; }
-      .scroll-cue { bottom: 10px; }
+      .sc-line { height: 32px; }
+      .scroll-cue { right: 16px; bottom: 14px; }
     }
   </style>
 </Base>
