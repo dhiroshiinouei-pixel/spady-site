@@ -198,12 +198,19 @@ import Base from '../layouts/Base.astro';
           </svg>
         </div>
       </div>
+
+      <!-- スクロール誘導 -->
+      <a class="scroll-cue rise d5" href="#problem" aria-label="下へスクロール">
+        <span class="sc-text">SCROLL</span>
+        <span class="sc-line"><i></i></span>
+        <svg class="sc-chev" viewBox="0 0 12 7" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
     </section>
   </div>
 
   <!-- 2. 悩み -->
   <div class="band dark alt">
-    <section class="lp-sec">
+    <section class="lp-sec" id="problem">
       <div class="wrap narrow">
         <p class="eyebrow fade"><span class="e-dot"></span>PROBLEM</p>
         <h2 class="fade">こんな状態のまま、<br class="sp" />止まっていませんか。</h2>
@@ -939,6 +946,64 @@ import Base from '../layouts/Base.astro';
     }
     .mid-cta { text-align: center; margin-top: 40px; }
 
+    /* ---------- スクロール誘導（FV下部） ---------- */
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color 0.2s ease;
+    }
+    .scroll-cue:hover { color: var(--gold); }
+    .sc-text {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      padding-left: 0.42em;
+    }
+    .sc-line {
+      position: relative;
+      width: 1px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.22);
+      overflow: hidden;
+    }
+    .sc-line i {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(255, 215, 94, 0.9);
+      animation: scDrop 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes scDrop {
+      0% { top: -8px; opacity: 0; }
+      15% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 46px; opacity: 0; }
+    }
+    .sc-chev {
+      width: 12px;
+      height: 7px;
+      animation: scBob 2.2s ease-in-out infinite;
+    }
+    @keyframes scBob {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50% { transform: translateY(3px); opacity: 1; }
+    }
+
+
     /* ---------- フォーム ---------- */
     .form-grid {
       display: grid;
@@ -1028,7 +1093,7 @@ import Base from '../layouts/Base.astro';
 
     /* ---------- reduced motion ---------- */
     @media (prefers-reduced-motion: reduce) {
-      .rise, .lp-hero::before, .route-flow, .spin-land, .spin-clouds, .spady-sat, .btn-shine, .btn-shine::after { animation: none !important; }
+      .rise, .lp-hero::before, .route-flow, .spin-land, .spin-clouds, .spady-sat, .btn-shine, .btn-shine::after, .sc-line i, .sc-chev { animation: none !important; }
       .rise { opacity: 1; transform: none; }
       .card, .card:hover { transform: none; }
     }
@@ -1120,6 +1185,8 @@ import Base from '../layouts/Base.astro';
       .note { font-size: 12px; }
       .form-card label { font-size: 12.5px; }
       .seminar-fig figcaption { font-size: 11px; }
+      .sc-line { height: 34px; }
+      .scroll-cue { bottom: 10px; }
     }
   </style>
 </Base>
