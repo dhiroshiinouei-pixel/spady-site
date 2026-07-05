@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="プライバシーポリシー｜Spady" description="Spadyのプライバシーポリシーです。">
+  <div class="band dark">
+    <section class="pp">
+      <div class="wrap narrow">
+        <h1>プライバシーポリシー</h1>
+        <p class="pp-lead">
+          Spady（代表：井上博史、以下「当方」）は、お問い合わせ等を通じて取得する個人情報を、以下の方針にもとづいて取り扱います。
+        </p>
+
+        <h2>1. 取得する情報</h2>
+        <p>お問い合わせフォームおよびLINEを通じて、お名前、事業・会社名、メールアドレス、ご相談内容などの情報を取得します。</p>
+
+        <h2>2. 利用目的</h2>
+        <p>取得した情報は、お問い合わせへの回答、ご相談・お打ち合わせの調整、およびご依頼いただいた業務の遂行のためにのみ利用します。ご本人の同意なく、これ以外の目的で利用することはありません。</p>
+
+        <h2>3. 第三者への提供</h2>
+        <p>法令にもとづく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。</p>
+
+        <h2>4. アクセス解析・広告ツール</h2>
+        <p>当サイトでは、サイトの改善および広告配信の効果測定のため、Google アナリティクスおよびMetaピクセル等のツールを利用する場合があります。これらのツールはCookie等を利用してデータを収集しますが、個人を特定する情報は含まれません。</p>
+
+        <h2>5. 安全管理</h2>
+        <p>取得した個人情報は、漏えい・滅失・毀損の防止のため、適切に管理します。</p>
+
+        <h2>6. 開示・訂正・削除</h2>
+        <p>ご本人からご自身の個人情報の開示・訂正・削除のお申し出があった場合、本人確認のうえ、すみやかに対応します。</p>
+
+        <h2>7. お問い合わせ窓口</h2>
+        <p>本ポリシーに関するお問い合わせは、当サイトのお問い合わせフォームまたはLINEよりご連絡ください。</p>
+
+        <h2>8. 改定</h2>
+        <p>本ポリシーの内容は、必要に応じて改定することがあります。改定した場合は、当ページにて公表します。</p>
+
+        <p class="pp-date">制定日：2026年7月<span class="kari">仮</span></p>
+        <p><a class="more on-dark" href="/">トップページへ戻る</a></p>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .pp { padding: 96px 0 104px; }
+    .narrow { max-width: 720px; margin: 0 auto; }
+    .pp h1 { font-size: 30px; color: #fff; margin-bottom: 28px; }
+    .pp-lead { color: var(--white-soft); margin-bottom: 40px; }
+    .pp h2 {
+      font-size: 17px;
+      color: #fff;
+      margin: 36px 0 10px;
+      padding-left: 14px;
+      border-left: 2px solid var(--accent);
+    }
+    .pp p { font-size: 14.5px; color: var(--white-soft); }
+    .pp-date { margin-top: 48px; font-size: 13px; color: rgba(255, 255, 255, 0.5); }
+    .more.on-dark { color: #fff; }
+    .more.on-dark:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    @media (max-width: 760px) {
+      .pp { padding: 56px 0 64px; }
+      .pp h1 { font-size: 24px; }
+    }
+  </style>
+</Base>
