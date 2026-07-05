@@ -3,6 +3,8 @@
 Astro製の1ページLP。Cloudflare Pagesでホスティングし、
 フォーム送信はPages Functions（/api/contact）経由でLarkに通知します。
 
+公開URL: https://spady-site.pages.dev
+
 ## 構成
 - `src/pages/index.astro` … LP本体
 - `src/pages/privacy.astro` … プライバシーポリシー
