@@ -36,7 +36,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--snow);
+  background: var(--dark);
   color: var(--ink);
   font-family: var(--font-goth);
   font-size: 16px;
@@ -62,9 +62,9 @@ p { margin: 0 0 1em; }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-/* 帯：背景色を全幅に敷く */
+/* 帯：ダーク面は透過し、body背景＋夜空レイヤーを通す */
 .band { background: var(--snow); }
-.band.dark { background: var(--dark); color: #fff; }
+.band.dark { background: transparent; color: #fff; }
 
 /* セクション：左レール＋本文。レールの線が全帯で連続する */
 .section {
@@ -240,3 +240,24 @@ p { margin: 0 0 1em; }
   .section > .body { padding: 64px 0 64px 20px; }
   .section h2 { font-size: 22px; margin-bottom: 28px; }
 }
+
+/* ---------- 言語切替チップ（FV右上） ---------- */
+.lang-switch {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: rgba(13, 19, 22, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.lang-switch:hover { color: var(--gold); border-color: var(--gold); }
