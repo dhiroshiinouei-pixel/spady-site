@@ -1,11 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
+const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 ---
 <Base lang="en" title="Spady | Marketing for Study-Abroad, Language Schools & Global Businesses" description="I design customer-acquisition funnels for study-abroad agencies, language schools, online English services and other global businesses — with Meta ads, LINE and social media. Based in Otaru, Hokkaido, Japan.">
   <!-- 1. ファーストビュー：1画面で権威性・信頼性・専門性を完結 -->
   <div class="band dark">
     <section class="lp-hero">
-      <a class="lang-switch rise d1" href="/">日本語</a>
+      <a class="lang-switch rise d1" href={`${basePath}/`}>日本語</a>
       <div class="wrap lp-hero-inner">
         <div class="lp-hero-text">
           <p class="eyebrow rise d1"><span class="e-dot"></span>Marketing for Study-Abroad, Language Schools & Global Businesses｜Spady</p>
@@ -468,7 +469,7 @@ import Base from '../../layouts/Base.astro';
             </label>
             <button type="submit" class="btn primary btn-big btn-shine form-submit">Book a Free Consultation</button>
             <p class="form-privacy">
-              Your information is used only to respond to your inquiry. <a href="/en/privacy/">Privacy Policy</a>
+              Your information is used only to respond to your inquiry. <a href={`${basePath}/en/privacy/`}>Privacy Policy</a>
             </p>
           </form>
         </div>

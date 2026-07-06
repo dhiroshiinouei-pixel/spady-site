@@ -5,9 +5,10 @@ import '../styles/global.css';
 const GTM_ID = 'GTM-NV5VRH3G';
 
 const { title = 'Spady｜留学・語学学校・海外事業のマーケティング支援', description = '留学・語学学校・オンライン英会話・海外関連事業の集客導線を、Meta広告・LINE公式アカウント・SNSで設計します。北海道・小樽/銭函を拠点に、地域事業者の支援も行っています。', lang = 'ja' } = Astro.props;
+const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 
 // 言語別ラベルとリンク
-const home = lang === 'en' ? '/en/' : '/';
+const home = lang === 'en' ? `${basePath}/en/` : `${basePath}/`;
 const t = lang === 'en'
   ? {
       nav: ['Services', 'Work', 'Local & Seminars', 'Profile'],
@@ -16,9 +17,9 @@ const t = lang === 'en'
       footNote: 'Otaru, Hokkaido, Japan｜Hiroshi Inoue',
       footContact: 'Free consultation / Contact',
       footPrivacy: 'Privacy Policy',
-      privacyHref: '/en/privacy/',
+      privacyHref: `${basePath}/en/privacy/`,
       langLabel: '日本語',
-      langHref: '/',
+      langHref: `${basePath}/`,
     }
   : {
       nav: ['サービス', '実績', '地域・勉強会', 'プロフィール'],
@@ -27,14 +28,15 @@ const t = lang === 'en'
       footNote: '北海道小樽市銭函｜井上博史',
       footContact: '無料相談・お問い合わせ',
       footPrivacy: 'プライバシーポリシー',
-      privacyHref: '/privacy/',
+      privacyHref: `${basePath}/privacy/`,
       langLabel: 'EN',
-      langHref: '/en/',
+      langHref: `${basePath}/en/`,
     };
 
 // hreflang用の対応URL
-const jaPath = lang === 'en' ? (Astro.url.pathname.replace(/^\/en/, '') || '/') : Astro.url.pathname;
-const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname).replace(/\/$/, '/') ;
+const currentPath = Astro.url.pathname;
+const jaPath = lang === 'en' ? (currentPath.replace(`${basePath}/en`, basePath) || `${basePath}/`) : currentPath;
+const enPath = lang === 'en' ? currentPath : `${basePath}/en${currentPath.slice(basePath.length)}`;
 ---
 <!doctype html>
 <html lang={lang}>
