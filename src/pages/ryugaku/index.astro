@@ -1,4 +1,1194 @@
 ---
-import Page from '../index.astro';
+import Base from '../../layouts/RyugakuBase.astro';
+const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 ---
-<Page />
+<Base title="Spady｜留学・語学学校・海外事業のマーケティング支援" description="留学・語学学校・オンライン英会話・海外関連事業の集客導線を、Meta広告・LINE公式アカウント・SNSで設計します。北海道・小樽/銭函を拠点に、地域事業者の支援も行っています。">
+  <!-- 1. ファーストビュー：1画面で権威性・信頼性・専門性を完結 -->
+  <div class="band dark">
+    <section class="lp-hero">
+      <a class="lang-switch rise d1" href={`${basePath}/en/`}>EN</a>
+      <div class="wrap lp-hero-inner">
+        <div class="lp-hero-text">
+          <p class="eyebrow rise d1"><span class="e-dot"></span>留学・語学学校・海外事業のマーケティング支援｜Spady</p>
+          <h1 class="rise d2">
+            広告・LINE・SNSを、<br />
+            <em>一本の導線</em>に。
+          </h1>
+          <p class="lp-sub rise d3">
+            留学・語学学校・オンライン英会話・海外関連事業の集客を、<br class="pc" />
+            現場を知る立場から設計します。<br class="pc" />
+            北海道・小樽/銭函を拠点に、地域事業者の支援も行っています。
+          </p>
+          <div class="lp-btns rise d4">
+            <a class="btn primary btn-big btn-shine" href="#contact">無料相談を申し込む</a>
+            <a class="btn ghost on-dark btn-line" href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry" target="_blank" rel="noopener">LINEで相談する</a>
+          </div>
+          <p class="hero-assure rise d4">相談は無料｜オンライン完結・時差対応｜無理な営業はしません</p>
+
+          <!-- 権威性・数字（ファーストビュー内で完結） -->
+          <div class="cred rise d5">
+            <div class="cred-item cred-meta">
+              <strong>元Meta</strong>
+              <span>マーケティングプロとして勤務</span>
+            </div>
+            <div class="cred-item">
+              <strong class="c-num n-blue"><span class="cnt" data-target="80">80</span><i>社+</i></strong>
+              <span>Metaで支援した広告代理店</span>
+            </div>
+            <div class="cred-item">
+              <strong class="c-num n-green"><span class="cnt" data-target="100">100</span><i>+</i></strong>
+              <span>構築したLINE公式アカウント</span>
+            </div>
+            <div class="cred-item">
+              <strong>認定代理店</strong>
+              <span>L Message（PR TIMES掲載）</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 宇宙から見た地球：自転＋飛行機の周回＋世界中の人 -->
+        <div class="hero-visual rise d3" aria-hidden="true">
+          <svg viewBox="0 0 520 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="globeClip"><circle cx="260" cy="300" r="215" /></clipPath>
+              <clipPath id="satClip"><circle cx="384" cy="142" r="32" /></clipPath>
+              <radialGradient id="ocean" cx="34%" cy="28%" r="85%">
+                <stop offset="0%" stop-color="#1e6ea0" />
+                <stop offset="45%" stop-color="#11466e" />
+                <stop offset="80%" stop-color="#082741" />
+                <stop offset="100%" stop-color="#04121f" />
+              </radialGradient>
+              <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5f9c6a" />
+                <stop offset="100%" stop-color="#2e5f45" />
+              </linearGradient>
+              <radialGradient id="terminator" cx="32%" cy="26%" r="95%">
+                <stop offset="0%" stop-color="rgba(0,0,0,0)" />
+                <stop offset="55%" stop-color="rgba(0,0,0,0)" />
+                <stop offset="82%" stop-color="rgba(2,8,14,0.45)" />
+                <stop offset="100%" stop-color="rgba(1,4,8,0.85)" />
+              </radialGradient>
+              <radialGradient id="flash" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(255,235,170,0.95)" />
+                <stop offset="45%" stop-color="rgba(255,215,94,0.5)" />
+                <stop offset="100%" stop-color="rgba(255,215,94,0)" />
+              </radialGradient>
+              <radialGradient id="specular" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.22)" />
+                <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+              </radialGradient>
+              <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="4" />
+              </filter>
+              <filter id="atmo" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="7" />
+              </filter>
+            </defs>
+
+            <!-- 飛行機の軌道 -->
+            <path id="orbitPath" d="M 260,44 a 256,256 0 1,1 -0.01,0" fill="none" class="orbit-ring" />
+
+            <!-- 大気の光 -->
+            <circle cx="260" cy="300" r="221" class="atmo-glow" filter="url(#atmo)" />
+            <circle cx="260" cy="300" r="216" class="atmo-line" />
+
+            <!-- 海 -->
+            <circle cx="260" cy="300" r="215" fill="url(#ocean)" />
+
+            <!-- 回転する大陸と雲 -->
+            <g clip-path="url(#globeClip)">
+              <g class="spin-land">
+                <g id="landTile" class="land">
+                  <path d="M150,196 C158,168 190,150 214,152 C232,138 262,132 288,140 C318,128 352,132 372,146 C402,142 428,156 436,176 C448,196 434,214 414,214 C398,226 376,222 362,232 C344,242 328,234 316,244 C300,256 282,246 268,252 C246,262 224,250 212,238 C192,236 172,228 162,214 C152,208 146,202 150,196 Z" />
+                  <path d="M298,250 C312,262 312,286 300,298 C288,286 286,262 298,250 Z" />
+                  <ellipse cx="352" cy="284" rx="6" ry="4" />
+                  <ellipse cx="369" cy="297" rx="5" ry="3.5" />
+                  <ellipse cx="385" cy="287" rx="4" ry="3" />
+                  <ellipse cx="347" cy="305" rx="3.5" ry="2.5" />
+                  <ellipse cx="421" cy="205" rx="3.5" ry="5" transform="rotate(28 421 205)" />
+                  <ellipse cx="427" cy="218" rx="3" ry="4.5" transform="rotate(24 427 218)" />
+                  <ellipse cx="423" cy="230" rx="2.5" ry="3.5" transform="rotate(18 423 230)" />
+                  <path d="M180,262 C202,248 232,254 240,276 C250,300 244,336 228,368 C218,392 200,404 188,398 C176,384 168,352 166,322 C160,296 164,274 180,262 Z" />
+                  <ellipse cx="252" cy="354" rx="4" ry="8" transform="rotate(16 252 354)" />
+                  <path d="M96,132 C112,122 132,128 134,144 C132,158 116,164 102,158 C92,150 88,140 96,132 Z" />
+                  <path d="M18,150 C44,124 92,120 116,142 C132,158 122,180 104,190 C92,206 74,216 60,232 C46,242 30,234 24,214 C10,192 6,168 18,150 Z" />
+                  <path d="M74,238 C84,246 82,258 74,264 C66,256 66,244 74,238 Z" />
+                  <path d="M84,268 C108,258 124,276 120,304 C116,342 100,378 84,394 C72,380 66,342 68,308 C66,286 72,274 84,268 Z" />
+                  <path d="M352,392 C372,378 404,384 414,402 C418,420 396,434 372,430 C354,426 344,406 352,392 Z" />
+                  <ellipse cx="434" cy="430" rx="2.5" ry="4" transform="rotate(24 434 430)" />
+                </g>
+                <use href="#landTile" x="464" />
+                <use href="#landTile" x="-464" />
+              </g>
+              <g class="spin-clouds" filter="url(#soft)">
+                <g id="cloudTile" class="clouds">
+                  <ellipse cx="80" cy="182" rx="48" ry="11" />
+                  <ellipse cx="212" cy="152" rx="60" ry="13" />
+                  <ellipse cx="332" cy="222" rx="52" ry="11" />
+                  <ellipse cx="142" cy="332" rx="58" ry="12" />
+                  <ellipse cx="302" cy="362" rx="64" ry="13" />
+                  <ellipse cx="404" cy="300" rx="40" ry="9" />
+                  <ellipse cx="42" cy="286" rx="34" ry="9" />
+                  <ellipse cx="238" cy="452" rx="56" ry="12" />
+                </g>
+                <use href="#cloudTile" x="464" />
+                <use href="#cloudTile" x="-464" />
+              </g>
+            </g>
+
+            <!-- 昼夜の陰影・ハイライト -->
+            <circle cx="260" cy="300" r="215" fill="url(#terminator)" />
+            <ellipse cx="185" cy="205" rx="120" ry="90" fill="url(#specular)" />
+
+            <!-- 展開先を示す点（青・緑のパルス） -->
+            <g>
+              <circle cx="332" cy="392" r="3.5" class="dot-blue" />
+              <circle cx="332" cy="392" r="3.5" class="halo halo-blue">
+                <animate attributeName="r" values="3.5;16" dur="3s" begin="0.6s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.5;0" dur="3s" begin="0.6s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="196" cy="186" r="3.5" class="dot-green" />
+              <circle cx="196" cy="186" r="3.5" class="halo halo-green">
+                <animate attributeName="r" values="3.5;16" dur="3s" begin="1.6s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.5;0" dur="3s" begin="1.6s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="168" cy="328" r="3" class="dot-blue" />
+              <circle cx="168" cy="328" r="3" class="halo halo-blue">
+                <animate attributeName="r" values="3;13" dur="3s" begin="2.4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.45;0" dur="3s" begin="2.4s" repeatCount="indefinite" />
+              </circle>
+            </g>
+
+            <!-- 導線 -->
+            <path id="route" class="route-base"
+              d="M 132 452 C 196 418, 214 372, 250 316 S 326 196, 384 142" />
+            <use href="#route" class="route-flow" />
+            <circle class="traveler" r="4">
+              <animateMotion dur="6s" repeatCount="indefinite" rotate="0">
+                <mpath href="#route" />
+              </animateMotion>
+            </circle>
+
+            <!-- Spadyロゴ：導線の先でふわふわ漂い、点が届くとピカッと光る -->
+            <g class="spady-sat">
+              <circle cx="384" cy="142" r="56" fill="url(#flash)">
+                <animate attributeName="opacity" values="0;0;0;1;0" keyTimes="0;0.88;0.93;0.96;1" dur="6s" repeatCount="indefinite" />
+                <animate attributeName="r" values="34;34;34;62;70" keyTimes="0;0.88;0.93;0.96;1" dur="6s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="384" cy="142" r="33" class="sat-halo">
+                <animate attributeName="r" values="33;48" dur="2.6s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.5;0" dur="2.6s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="384" cy="142" r="33" class="sat-ring" />
+              <image href="/logo.png" x="352" y="110" width="64" height="64" clip-path="url(#satClip)" />
+            </g>
+
+            <!-- 世界を飛び回る飛行機（金・青の2機） -->
+            <g class="orbit-plane op-gold">
+              <path d="M0,-5.5 L17,0 L0,5.5 L4.5,0 Z" />
+              <animateMotion dur="15s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#orbitPath" />
+              </animateMotion>
+            </g>
+            <g class="orbit-plane op-blue">
+              <path d="M0,-5 L15,0 L0,5 L4,0 Z" />
+              <animateMotion dur="15s" begin="-7.5s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#orbitPath" />
+              </animateMotion>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- スクロール誘導 -->
+      <a class="scroll-cue rise d5" href="#problem" aria-label="下へスクロール">
+        <span class="sc-text">SCROLL</span>
+        <span class="sc-line"><i></i></span>
+        <svg class="sc-chev" viewBox="0 0 12 7" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+    </section>
+  </div>
+
+  <!-- 2. 悩み -->
+  <div class="band dark alt">
+    <section class="lp-sec" id="problem">
+      <div class="wrap narrow">
+        <p class="eyebrow fade"><span class="e-dot"></span>PROBLEM</p>
+        <h2 class="fade">こんな状態のまま、<br class="sp" />止まっていませんか。</h2>
+        <ul class="x-list">
+          <li class="fade">広告からの資料請求はあるが、<b>カウンセリングや申込みにつながらない</b></li>
+          <li class="fade">LINEの友だちは増えたが、<b>一斉配信しかできていない</b></li>
+          <li class="fade">現地と日本で発信がバラバラで、<b>どの媒体が効いているのか分からない</b></li>
+          <li class="fade">Meta広告を試したいが、<b>何から始めればいいか分からない</b></li>
+        </ul>
+        <div class="bridge fade">
+          <p class="bridge-lead">その悩みの多くは、センスや努力ではなく、<em>「導線」</em>の問題です。</p>
+          <p class="bridge-body">
+            留学や語学教育のように、検討期間が長く、比較され、申込みまでの距離が遠い商材ほど、入口（広告・SNS）と受け皿（LINE・相談）がつながっていないと、成果は途中で漏れていきます。逆に言えば、導線を整えるだけで変わることが、たくさんあります。
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 3. 強み -->
+  <div class="band dark">
+    <section class="lp-sec">
+      <div class="wrap narrow">
+        <p class="eyebrow fade"><span class="e-dot e-blue"></span>REASON</p>
+        <h2 class="fade">私に相談する理由が<br class="sp" />あるとすれば</h2>
+        <div class="reason fade">
+          <span class="num">01</span>
+          <div>
+            <h3>広告プラットフォームの<em>内側</em>を知っています</h3>
+            <p>Meta（旧Facebook）でマーケティングプロとして、国内80社以上の広告代理店の運用を支援していました。広告の「中の人」の視点で、無駄のない運用を設計します。</p>
+          </div>
+        </div>
+        <div class="reason fade">
+          <span class="num">02</span>
+          <div>
+            <h3>留学・語学教育の<em>現場</em>を知っています</h3>
+            <p>セブ島最大級の語学学校 QQEnglish 様のLINE公式アカウント構築を担当。留学事業に続き、オンライン英会話事業の構築もご依頼いただきました。この領域特有の「検討の長さ」を前提に導線を設計します。</p>
+          </div>
+        </div>
+        <div class="reason fade">
+          <span class="num">03</span>
+          <div>
+            <h3>広告・LINE・SNSを、<em>まとめて設計</em>できます</h3>
+            <p>それぞれを別の業者に頼むと、導線が切れます。入口から資料請求・相談・申込みまでを一本で考えます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 4. サービス -->
+  <div class="band dark alt">
+    <section class="lp-sec" id="lp-services">
+      <div class="wrap">
+        <p class="eyebrow fade"><span class="e-dot e-green"></span>SERVICE</p>
+        <h2 class="fade">支援できること</h2>
+        <div class="card featured fade">
+          <h3>留学・語学学校・海外事業の支援</h3>
+          <p>留学エージェント、語学学校、オンライン英会話、海外で日本人のお客様を増やしたい事業者の方へ。広告・LINE・SNSを、資料請求から成約までの一本の導線として設計します。</p>
+        </div>
+        <div class="grid2">
+          <div class="card c-blue fade">
+            <h3>Meta広告運用支援</h3>
+            <p>Instagram・Facebook広告の設計と運用。少額からのテストにも対応します。</p>
+          </div>
+          <div class="card c-blue fade">
+            <h3>Meta広告内製化支援</h3>
+            <p>代行ではなく、社内で回せるようになるための伴走。</p>
+          </div>
+          <div class="card c-green fade">
+            <h3>LINE公式アカウント・L Message構築</h3>
+            <p>友だち追加のあと、何を届けるかまで設計します。構築 30万円（税別）〜。</p>
+          </div>
+          <div class="card c-red fade">
+            <h3>SNS活用支援（Instagram / Threads）</h3>
+            <p>続けられる運用の形を、事業に合わせて作ります。</p>
+          </div>
+        </div>
+        <p class="note fade" style="margin-top: 24px;">Webサイト制作や動画制作の専業ではありません。必要な場合は信頼できる方をご紹介します。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 5. 実績（ロゴ入り） -->
+  <div class="band dark">
+    <section class="lp-sec" id="lp-works">
+      <div class="wrap">
+        <p class="eyebrow fade"><span class="e-dot e-blue"></span>WORKS</p>
+        <h2 class="fade">実績・活動事例</h2>
+        <div class="grid2">
+          <div class="card work-card fade">
+            <div class="logo-slot"><img src="/logo-qqenglish.png" alt="QQEnglish" loading="lazy" /></div>
+            <h3>QQEnglish 様（フィリピン・セブ島）</h3>
+            <p class="metric-lp">留学事業に続き、オンライン英会話事業も</p>
+            <p>セブ島最大級の語学学校のLINE構築を担当。2事業続けてご依頼いただきました。</p>
+          </div>
+          <div class="card work-card fade">
+            <div class="logo-slot"><img src="/logo-telenet.png" alt="tele-net International" loading="lazy" /></div>
+            <h3>テレネットインターナショナル 様</h3>
+            <p class="metric-lp">海外市場向け日系企業のLINE構築</p>
+            <p>名刺代わりになるLINE公式アカウントを構築。LINE上の問い合わせフォームと利用者情報の自動紐付けを設計しました。</p>
+          </div>
+        </div>
+        <div class="mid-cta fade">
+          <a class="btn primary btn-big" href="#contact">無料相談を申し込む</a>
+          <p class="note" style="margin-top: 12px;">現状の導線を見て、何から手をつけるべきかお伝えします。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 6. 地域事業者の支援（第2の柱） -->
+  <div class="band dark alt">
+    <section class="lp-sec" id="local">
+      <div class="wrap">
+        <p class="eyebrow fade"><span class="e-dot e-green"></span>LOCAL</p>
+        <h2 class="fade">地域事業者の支援<span class="h2-sub">北海道・小樽/銭函</span></h2>
+        <div class="seminar-grid">
+          <div class="fade">
+            <p class="lead">
+              拠点である小樽・銭函・札幌圏では、店舗や中小企業のMeta広告・LINE・SNS活用を支援しています。商圏が地域でも海外でも、やることは同じです。バラバラの施策を、一本の導線として整えること。
+            </p>
+            <p class="note" style="margin-bottom: 4px;">
+              また、小樽を中心にSNSやマーケティングの勉強会を自主開催しています。開催情報はThreadsでお知らせしています。
+            </p>
+          </div>
+          <figure class="seminar-fig fade">
+            <img src="/seminar.jpg" alt="小樽での勉強会の様子" loading="lazy" width="1080" height="1080" />
+            <figcaption>小樽での勉強会の様子</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 8. プロフィール -->
+  <div class="band dark alt">
+    <section class="lp-sec" id="profile">
+      <div class="wrap">
+        <p class="eyebrow fade"><span class="e-dot"></span>PROFILE</p>
+        <div class="lp-profile fade">
+          <div class="lp-profile-mark"><img src="/profile.jpg" alt="井上博史" width="320" height="320" /></div>
+          <div>
+            <h2 style="margin-bottom: 6px;">井上博史</h2>
+            <p class="note" style="margin-bottom: 20px;">Spady 代表／北海道小樽市銭函</p>
+            <p>
+              Meta（旧Facebook）でマーケティングプロとして、国内80社以上の広告代理店の運用を支援。独立後は、セブ島最大級の語学学校 QQEnglish 様のLINE構築を担当するなど、留学・語学教育・海外関連事業のマーケティングを支援しています。拠点の小樽・銭函では、地域事業者の支援と勉強会の自主開催も行っています。
+            </p>
+            <a class="threads-chip" href="https://www.threads.com/hiroshiinoue.spady" target="_blank" rel="noopener" aria-label="Threadsで井上博史をフォロー">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 16.4c-2.4 0-4.4-2-4.4-4.4S9.6 7.6 12 7.6s4.4 2 4.4 4.4v1.3c0 1 .7 1.7 1.6 1.7 1.5 0 2.4-1.4 2.4-3 0-4.6-3.8-8.4-8.4-8.4S3.6 7.4 3.6 12s3.8 8.4 8.4 8.4c1.7 0 3.3-.5 4.6-1.4"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/></svg>
+              <span>@hiroshiinoue.spady</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 9. 相談の流れ -->
+  <div class="band dark">
+    <section class="lp-sec">
+      <div class="wrap narrow">
+        <p class="eyebrow fade"><span class="e-dot e-blue"></span>FLOW</p>
+        <h2 class="fade">ご相談の流れ</h2>
+        <ol class="flow">
+          <li class="fade">
+            <span class="num n-red">1</span>
+            <div><h3>フォームまたはLINEでご連絡</h3><p>2営業日以内に返信します。</p></div>
+          </li>
+          <li class="fade">
+            <span class="num n-blue">2</span>
+            <div><h3>無料相談（60分程度）</h3><p>現状と目的を整理します。オンラインで完結できます。時差のあるお打ち合わせにも対応します。</p></div>
+          </li>
+          <li class="fade">
+            <span class="num n-green">3</span>
+            <div><h3>必要な場合のみ、ご提案</h3><p>話の整理だけで解決しそうなら、その場でそうお伝えします。</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </div>
+
+  <!-- 10. FAQ -->
+  <div class="band dark alt">
+    <section class="lp-sec">
+      <div class="wrap narrow">
+        <p class="eyebrow fade"><span class="e-dot e-green"></span>FAQ</p>
+        <h2 class="fade">よくあるご質問</h2>
+        <details class="faq fade">
+          <summary>料金はいくらですか？</summary>
+          <p>LINE公式アカウント構築は30万円（税別）〜です。その他のサービスは、配信量・構築範囲・関与の深さによって変わるため、初回相談で全体像とお見積もりをご説明します。</p>
+        </details>
+        <details class="faq fade">
+          <summary>相談したら、契約しないといけませんか？</summary>
+          <p>いいえ。無理な営業はしません。話を整理するだけで解決しそうな場合は、その場でそうお伝えしますし、合わないと感じたら断っていただいて大丈夫です。</p>
+        </details>
+        <details class="faq fade">
+          <summary>海外（現地）からでも依頼できますか？</summary>
+          <p>できます。オンラインで完結でき、時差のあるお打ち合わせにも対応しています。セブ島の語学学校の構築も、この形で進めました。</p>
+        </details>
+        <details class="faq fade">
+          <summary>小さな店舗や個人事業でも依頼できますか？</summary>
+          <p>はい。拠点の小樽・銭函・札幌圏では、店舗や個人事業主の方の支援も行っています。予算に合わせて、できるところから始める設計をします。</p>
+        </details>
+      </div>
+    </section>
+  </div>
+
+  <!-- 11. 無料相談フォーム -->
+  <div class="band dark" id="contact">
+    <section class="lp-sec form-sec">
+      <div class="wrap">
+        <p class="eyebrow fade"><span class="e-dot"></span>CONTACT</p>
+        <h2 class="fade">まずは、状況を聞かせてください。</h2>
+        <div class="form-grid">
+          <div class="form-side fade">
+            <p class="lead">
+              ご相談は無料です。話を整理するだけで解決しそうな場合は、その場でそうお伝えします。無理な営業はしません。合わないと感じたら、断っていただいて大丈夫です。
+            </p>
+            <ul class="assure-list">
+              <li>相談は無料（60分程度）</li>
+              <li>オンライン完結・時差のある打ち合わせにも対応</li>
+              <li>2営業日以内に返信します</li>
+            </ul>
+            <div class="line-alt">
+              <p class="note" style="margin-bottom: 12px;">LINEのほうが気軽な方は、こちらからどうぞ。</p>
+              <a class="btn ghost on-dark btn-line" href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry" target="_blank" rel="noopener">LINEで相談する</a>
+            </div>
+          </div>
+
+          <form class="form-card fade" action="/api/contact" method="POST">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true" />
+            <label>
+              お名前 <i>必須</i>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label>
+              事業・会社名
+              <input type="text" name="company" autocomplete="organization" />
+            </label>
+            <label>
+              メールアドレス <i>必須</i>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+            <label>
+              ご相談内容 <i>必須</i>
+              <select name="topic" required>
+                <option value="">選択してください</option>
+                <option>留学・語学学校・海外事業の集客</option>
+                <option>Meta広告（運用・内製化）</option>
+                <option>LINE公式アカウント・L Message構築</option>
+                <option>SNS活用（Instagram / Threads）</option>
+                <option>地域の店舗・事業の支援</option>
+                <option>その他</option>
+              </select>
+            </label>
+            <label>
+              詳しい状況（任意）
+              <textarea name="message" rows="4" placeholder="例：広告からの資料請求はあるが、申込みにつながらない"></textarea>
+            </label>
+            <button type="submit" class="btn primary btn-big btn-shine form-submit">無料相談を申し込む</button>
+            <p class="form-privacy">
+              送信いただいた情報は、お問い合わせへの対応以外には使用しません。<a href={`${basePath}/privacy/`}>プライバシーポリシー</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // フォーム送信（Cloudflare Pages Functions → Lark連携）
+    const form = document.querySelector('.form-card');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.form-submit');
+        btn.disabled = true;
+        btn.textContent = '送信中…';
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          });
+          if (!res.ok) throw new Error('failed');
+          // GTM計測：フォーム送信成功イベント
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'form_submit_success', form_name: 'free_consult' });
+          form.innerHTML =
+            '<p class="form-done">送信しました。2営業日以内にご連絡します。<br>ありがとうございました。</p>';
+        } catch {
+          btn.disabled = false;
+          btn.textContent = '無料相談を申し込む';
+          alert('送信に失敗しました。お手数ですが、LINEからご連絡ください。');
+        }
+      });
+    }
+
+    // GTM計測：LINEボタンのクリック
+    document.querySelectorAll('.btn-line').forEach((el) => {
+      el.addEventListener('click', () => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'line_click' });
+      });
+    });
+
+    // 数字カウントアップ（80社・100アカウント）
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.cnt').forEach((el) => {
+      const target = parseInt(el.dataset.target, 10);
+      const io = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        if (reduce) { el.textContent = String(target); return; }
+        const start = performance.now();
+        const dur = 1400;
+        const tick = (now) => {
+          const p = Math.min((now - start) / dur, 1);
+          el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        el.textContent = '0';
+        requestAnimationFrame(tick);
+      });
+      io.observe(el);
+    });
+  </script>
+
+  <style>
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 24px;
+    }
+    .e-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+    .lp-sec { padding: 104px 0; }
+    .band.dark.alt { background: rgba(2, 9, 13, 0.55); }
+    .lp-sec h2 { font-size: 30px; margin-bottom: 44px; color: #fff; }
+    .h2-sub {
+      display: inline-block;
+      font-family: var(--font-goth);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.55);
+      margin-left: 16px;
+      vertical-align: 2px;
+    }
+    .narrow { max-width: 760px; }
+    em { font-style: normal; color: var(--gold); }
+    .sp { display: none; }
+
+    /* ---------- 入場アニメーション（ヒーロー） ---------- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .rise { animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .d1 { animation-delay: 0.05s; }
+    .d2 { animation-delay: 0.15s; }
+    .d3 { animation-delay: 0.3s; }
+    .d4 { animation-delay: 0.45s; }
+    .d5 { animation-delay: 0.65s; }
+
+    /* スクロール時のカード段差（Baseの.fade/.inを利用） */
+    .grid2 > .fade:nth-child(2), .x-list > .fade:nth-child(2), .grid3 > .fade:nth-child(2) { transition-delay: 0.08s; }
+    .grid2 > .fade:nth-child(3), .x-list > .fade:nth-child(3), .grid3 > .fade:nth-child(3) { transition-delay: 0.16s; }
+    .grid2 > .fade:nth-child(4), .x-list > .fade:nth-child(4) { transition-delay: 0.24s; }
+
+    /* ---------- ヒーロー ---------- */
+    .lp-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 44px 0 96px;
+    }
+    .lp-hero .eyebrow {
+      font-size: 15.5px;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .lp-hero::before {
+      content: '';
+      position: absolute;
+      width: 860px;
+      height: 860px;
+      border-radius: 50%;
+      border: 1px solid var(--accent-dim);
+      top: -220px;
+      right: -280px;
+      pointer-events: none;
+      animation: drift 22s ease-in-out infinite;
+    }
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-18px, 26px); }
+    }
+    .lp-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(220px 140px at 12% 92%, rgba(255, 196, 130, 0.07), transparent 70%),
+        radial-gradient(180px 120px at 34% 100%, rgba(255, 180, 110, 0.05), transparent 70%),
+        radial-gradient(260px 160px at 78% 96%, rgba(255, 200, 140, 0.06), transparent 70%);
+    }
+    .lp-hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .lp-hero h1 { font-size: 44px; line-height: 1.6; color: #fff; margin-bottom: 24px; }
+    .lp-sub { font-size: 16px; color: var(--white-soft); margin-bottom: 32px; }
+    .lp-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* ---------- 宇宙から見た地球 ---------- */
+    .hero-visual { max-width: 440px; margin: 0 auto; }
+    .hero-visual svg { width: 100%; height: auto; display: block; }
+    .atmo-glow { fill: none; stroke: rgba(96, 180, 255, 0.35); stroke-width: 10; }
+    .atmo-line { fill: none; stroke: rgba(150, 210, 255, 0.35); stroke-width: 1.4; }
+    .spin-land { animation: spinGlobe 11s linear infinite; }
+    .spin-clouds { animation: spinGlobe 18s linear infinite; }
+    @keyframes spinGlobe { to { transform: translateX(-464px); } }
+    .land path, .land ellipse {
+      fill: url(#landGrad);
+      stroke: rgba(200, 240, 210, 0.18);
+      stroke-width: 0.7;
+    }
+    .clouds ellipse { fill: rgba(255, 255, 255, 0.16); }
+    .route-base { fill: none; stroke: rgba(255, 215, 94, 0.28); stroke-width: 1.5; }
+    .route-flow {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.6;
+      stroke-dasharray: 5 9;
+      stroke-linecap: round;
+      animation: dashflow 2.8s linear infinite;
+      opacity: 0.95;
+    }
+    @keyframes dashflow { to { stroke-dashoffset: -140; } }
+    .traveler { fill: var(--gold); filter: drop-shadow(0 0 5px rgba(255, 215, 94, 0.9)); }
+    .node { fill: var(--accent); }
+    .dot-blue { fill: var(--blue); }
+    .dot-green { fill: var(--green); }
+    .halo { fill: none; stroke-width: 1.5; }
+    .halo-red { stroke: var(--accent); }
+    .halo-blue { stroke: var(--blue); }
+    .halo-green { stroke: var(--green); }
+    .node-label {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      fill: rgba(255, 255, 255, 0.9);
+    }
+    .spady-sat {
+      animation: satFloat 4.2s ease-in-out infinite;
+      transform-origin: 384px 142px;
+    }
+    @keyframes satFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-9px) rotate(7deg); }
+    }
+    .sat-halo { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+    .sat-ring { fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 2; }
+    .orbit-ring { stroke: rgba(255, 255, 255, 0.12); stroke-width: 1; stroke-dasharray: 2 7; }
+    .orbit-plane path { opacity: 0.9; }
+    .orbit-plane.op-gold path {
+      fill: var(--gold);
+      filter: drop-shadow(0 0 5px rgba(255, 215, 94, 0.9));
+    }
+    .orbit-plane.op-blue path {
+      fill: var(--blue);
+      filter: drop-shadow(0 0 5px rgba(47, 157, 216, 0.9));
+    }
+    .spady-sat image { filter: drop-shadow(0 0 10px rgba(237, 28, 36, 0.55)); }
+
+    /* ---------- 3色アクセント ---------- */
+    .e-dot.e-blue { background: var(--blue); }
+    .e-dot.e-green { background: var(--green); }
+    .card.c-blue { border-top: 3px solid var(--blue); }
+    .card.c-green { border-top: 3px solid var(--green); }
+    .card.c-red { border-top: 3px solid var(--accent); }
+    .flow .num.n-red { border-color: var(--accent); color: var(--accent); }
+    .flow .num.n-blue { border-color: var(--blue); color: var(--blue); }
+    .flow .num.n-green { border-color: var(--green); color: var(--green); }
+
+    /* ---------- FV内の権威性・数字 ---------- */
+    .cred {
+      display: flex;
+      align-items: flex-end;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line-dark);
+    }
+    .cred-item strong {
+      display: block;
+      font-family: var(--font-min);
+      font-weight: 700;
+      font-size: 31px;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+    }
+    .cred-item span {
+      display: block;
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.58);
+      letter-spacing: 0.05em;
+      margin-top: 5px;
+    }
+    .cred-meta { padding-left: 14px; border-left: 3px solid var(--gold); }
+    .cred-meta strong { color: var(--gold); font-size: 35px; text-shadow: 0 0 22px rgba(255, 215, 94, 0.35); }
+    .c-num .cnt { font-size: 46px; }
+    .c-num i { font-style: normal; font-size: 15px; color: rgba(255, 255, 255, 0.85); margin-left: 3px; }
+    .n-blue .cnt { color: var(--blue); text-shadow: 0 0 18px rgba(47, 157, 216, 0.45); }
+    .n-green .cnt { color: var(--green); text-shadow: 0 0 18px rgba(6, 199, 85, 0.45); }
+
+    /* ---------- 悩み ---------- */
+    .x-list { list-style: none; padding: 0; margin: 0 0 56px; display: grid; gap: 14px; }
+    .x-list li {
+      background: var(--dark-2);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      padding: 18px 22px 18px 52px;
+      position: relative;
+      font-size: 15px;
+      color: var(--white-soft);
+    }
+    .x-list li::before { content: '✕'; position: absolute; left: 22px; color: var(--accent); font-weight: 700; }
+    .x-list b { color: var(--gold); font-weight: 700; }
+    .bridge { border-left: 2px solid var(--accent); padding-left: 24px; }
+    .bridge-lead {
+      font-family: var(--font-min);
+      font-size: 22px;
+      color: #fff;
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+    .bridge-body { color: var(--white-soft); font-size: 15px; margin: 0; }
+
+    /* ---------- 強み ---------- */
+    .reason {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .reason:first-of-type { border-top: 1px solid var(--line-dark); }
+    .reason .num { font-family: var(--font-min); font-size: 34px; color: var(--accent); line-height: 1; padding-top: 6px; }
+    .reason h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .reason p { font-size: 15px; color: var(--white-soft); margin: 0; }
+
+    /* ---------- グリッド・カード ---------- */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { transition: transform 0.3s ease, border-color 0.3s ease, opacity 0.7s ease; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.3); }
+    .card.featured { margin-bottom: 20px; border-color: rgba(237, 28, 36, 0.45); }
+    .card.featured:hover { border-color: rgba(237, 28, 36, 0.8); }
+    .metric-lp { font-family: var(--font-min); font-size: 18px; color: #fff !important; margin-bottom: 8px; }
+    .more.on-dark { color: #fff; }
+    .more.on-dark:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .work-card .logo-slot {
+      height: 140px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-slot img {
+      max-height: 104px; /* 枠140px − 上下余白 */
+      max-width: calc(100% - 48px);
+      object-fit: contain;
+    }
+
+    /* ---------- 地域・発信・プロフィール ---------- */
+    .seminar-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+    .seminar-fig { margin: 0; }
+    .seminar-fig img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--line-dark);
+      display: block;
+    }
+    .seminar-fig figcaption {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.08em;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .embed-ph { min-height: 180px; text-align: center; display: grid; place-content: center; gap: 10px; }
+    .embed-ph p { margin: 0; font-size: 13px; }
+    .sns-links { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 36px; align-items: center; }
+    .lp-profile { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; }
+    .lp-profile-mark {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      overflow: hidden;
+    }
+    .lp-profile-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .lp-profile p { color: var(--white-soft); }
+    .threads-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 6px;
+      padding: 8px 18px 8px 14px;
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13.5px;
+      letter-spacing: 0.04em;
+      color: var(--white-soft);
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .threads-chip svg { width: 19px; height: 19px; }
+    .threads-chip:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- 流れ ---------- */
+    .flow { list-style: none; padding: 0; margin: 0; display: grid; }
+    .flow li {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .flow li:first-child { border-top: 1px solid var(--line-dark); }
+    .flow .num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-min);
+      font-size: 18px;
+    }
+    .flow h3 { font-size: 17px; color: #fff; margin-bottom: 4px; }
+    .flow p { font-size: 14px; color: var(--white-soft); margin: 0; }
+
+    /* ---------- FAQ ---------- */
+    .faq { border-bottom: 1px solid var(--line-dark); padding: 4px 0; }
+    .faq:first-of-type { border-top: 1px solid var(--line-dark); }
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: 16px;
+      color: #fff;
+      padding: 20px 36px 20px 0;
+      position: relative;
+      font-weight: 500;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: '+';
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 400;
+      transition: transform 0.25s ease;
+    }
+    .faq[open] summary::after { content: '−'; }
+    .faq p { font-size: 14.5px; color: var(--white-soft); margin: 0; padding: 0 0 22px; max-width: 640px; }
+
+    /* ---------- FV補助・中間CTA ---------- */
+    .btn-big { padding: 16px 36px; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; }
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+      animation: ctaGlow 5s ease-in-out infinite;
+    }
+    .btn-shine::after {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -70%;
+      width: 45%;
+      height: 120%;
+      background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transform: skewX(-20deg);
+      animation: shine 5s ease-in-out infinite;
+    }
+    @keyframes shine {
+      0%, 58% { left: -70%; }
+      76%, 100% { left: 150%; }
+    }
+    @keyframes ctaGlow {
+      0%, 55%, 100% { box-shadow: 0 0 0 rgba(237, 28, 36, 0); }
+      70% { box-shadow: 0 0 30px rgba(237, 28, 36, 0.6); }
+    }
+    .hero-assure {
+      font-size: 12.5px;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 18px;
+    }
+    .mid-cta { text-align: center; margin-top: 40px; }
+
+    /* ---------- スクロール誘導（FV下部） ---------- */
+    .scroll-cue {
+      position: absolute;
+      right: 28px;
+      bottom: 18px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color 0.2s ease;
+    }
+    .scroll-cue:hover { color: var(--gold); }
+    .sc-text {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      padding-left: 0.42em;
+    }
+    .sc-line {
+      position: relative;
+      width: 1px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.22);
+      overflow: hidden;
+    }
+    .sc-line i {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(255, 215, 94, 0.9);
+      animation: scDrop 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes scDrop {
+      0% { top: -8px; opacity: 0; }
+      15% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 46px; opacity: 0; }
+    }
+    .sc-chev {
+      width: 12px;
+      height: 7px;
+      animation: scBob 2.2s ease-in-out infinite;
+    }
+    @keyframes scBob {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50% { transform: translateY(3px); opacity: 1; }
+    }
+
+
+    /* ---------- フォーム ---------- */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .assure-list {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 36px;
+      display: grid;
+      gap: 10px;
+    }
+    .assure-list li {
+      font-size: 14.5px;
+      color: var(--white-soft);
+      padding-left: 24px;
+      position: relative;
+    }
+    .assure-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+    .form-card {
+      background: var(--dark-2);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      padding: 36px;
+      display: grid;
+      gap: 20px;
+    }
+    .form-card label {
+      display: grid;
+      gap: 8px;
+      font-size: 13.5px;
+      letter-spacing: 0.06em;
+      color: var(--white-soft);
+    }
+    .form-card label i {
+      font-style: normal;
+      color: var(--accent);
+      font-size: 11px;
+      margin-left: 6px;
+    }
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      background: #10181c;
+      border: 1px solid var(--line-dark);
+      border-radius: 6px;
+      color: #fff;
+      font-family: var(--font-goth);
+      font-size: 15px;
+      padding: 12px 14px;
+      transition: border-color 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-card input:focus,
+    .form-card select:focus,
+    .form-card textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .form-card select { appearance: none; }
+    .form-card textarea { resize: vertical; }
+    .form-submit { width: 100%; border: none; cursor: pointer; }
+    .form-privacy { font-size: 12px; color: rgba(255, 255, 255, 0.5); margin: 0; }
+    .form-done {
+      font-family: var(--font-min);
+      font-size: 18px;
+      color: #fff;
+      text-align: center;
+      line-height: 2.2;
+      padding: 40px 0;
+      margin: 0;
+    }
+    .form-privacy a { color: rgba(255, 255, 255, 0.7); }
+    .form-privacy a:hover { color: var(--gold); }
+
+    /* ---------- reduced motion ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      .rise, .lp-hero::before, .route-flow, .spin-land, .spin-clouds, .spady-sat, .btn-shine, .btn-shine::after, .sc-line i, .sc-chev { animation: none !important; }
+      .rise { opacity: 1; transform: none; }
+      .card, .card:hover { transform: none; }
+    }
+
+    @media (max-width: 1100px) {
+      .lp-hero h1 { font-size: 38px; }
+      .c-num .cnt { font-size: 40px; }
+      .cred { gap: 26px; }
+      .cred-item strong { font-size: 26px; }
+      .cred-meta strong { font-size: 29px; }
+    }
+
+    /* ---------- モバイル ---------- */
+    @media (max-width: 760px) {
+      .sp { display: inline; }
+      .pc { display: none; }
+      .lp-sec { padding: 64px 0; }
+      .lp-sec h2 { font-size: 24px; margin-bottom: 32px; }
+      .h2-sub { display: block; margin: 8px 0 0; }
+      .lp-hero { min-height: 100svh; padding: 32px 0 112px; }
+      .lp-hero::before { width: 460px; height: 460px; top: -160px; right: -200px; }
+      .lp-hero .eyebrow { font-size: 13px; letter-spacing: 0.1em; }
+      .lp-hero-inner { display: block; }
+      .lp-hero h1 { font-size: 31px; }
+      .lp-hero-text { position: relative; z-index: 1; }
+      .hero-visual {
+        position: absolute;
+        top: -36px;
+        right: -130px;
+        max-width: 340px;
+        opacity: 0.65;
+        z-index: 0;
+      }
+      .cred {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 16px;
+        margin-top: 30px;
+        padding-top: 22px;
+      }
+      .cred-item strong { font-size: 19px; }
+      .cred-meta strong { font-size: 21px; }
+      .c-num .cnt { font-size: 36px; }
+      .grid2, .grid3 { grid-template-columns: 1fr; }
+      .grid2 > .fade, .grid3 > .fade, .x-list > .fade { transition-delay: 0s !important; }
+      .reason { grid-template-columns: 56px 1fr; gap: 16px; padding: 24px 0; }
+      .reason .num { font-size: 26px; }
+      .bridge-lead { font-size: 19px; }
+      .seminar-grid { grid-template-columns: 1fr; gap: 24px; }
+      .lp-profile { grid-template-columns: 1fr; gap: 24px; }
+      .form-grid { grid-template-columns: 1fr; gap: 36px; }
+      .form-card { padding: 24px 20px; }
+    }
+
+    /* ---------- モバイル：LPとしての強弱（主役を大きく、脇役を小さく） ---------- */
+    @media (max-width: 760px) {
+      /* 主役級：さらに大きく */
+      .lp-hero h1 { font-size: 34px; line-height: 1.5; }
+      .lp-sec h2 { font-size: 27px; line-height: 1.5; }
+      .bridge-lead { font-size: 23px; }
+      .c-num .cnt { font-size: 46px; }
+      .cred-meta strong { font-size: 36px; }
+      .metric-lp { font-size: 20px; }
+      .reason h3 { font-size: 21px; }
+      .x-list b { font-size: 1.12em; }
+
+      /* CTA：親指で押しやすく・目立たせる */
+      .lp-btns { flex-direction: column; align-items: stretch; }
+      .lp-btns .btn { text-align: center; }
+      .lp-btns .btn-big { font-size: 17px; padding: 18px 20px; }
+      .mid-cta .btn-big { display: block; font-size: 17px; padding: 18px 20px; }
+
+      /* 脇役級：一段小さく引き締める */
+      .lp-sub { font-size: 14.5px; line-height: 1.9; }
+      .hero-assure { font-size: 11px; letter-spacing: 0.04em; }
+      .eyebrow { font-size: 11px; }
+      .lp-hero .eyebrow { font-size: 13px; }
+      .h2-sub { font-size: 12px; }
+      .cred-item strong { font-size: 30px; }
+      .cred-item span { font-size: 10.5px; }
+      .lead { font-size: 14.5px; }
+      .bridge-body { font-size: 14px; }
+      .x-list li { font-size: 14px; }
+      .reason p { font-size: 14px; }
+      .card h3 { font-size: 17.5px; }
+      .card p { font-size: 13.5px; }
+      .flow h3 { font-size: 16px; }
+      .flow p { font-size: 13.5px; }
+      .faq summary { font-size: 15.5px; }
+      .faq p { font-size: 13.5px; }
+      .note { font-size: 12px; }
+      .form-card label { font-size: 12.5px; }
+      .seminar-fig figcaption { font-size: 11px; }
+      .sc-line { height: 32px; }
+      .scroll-cue { right: 16px; bottom: 14px; }
+    }
+  </style>
+</Base>

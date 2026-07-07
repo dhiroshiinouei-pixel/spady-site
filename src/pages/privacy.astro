@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 ---
 <Base title="プライバシーポリシー｜Spady" description="Spadyのプライバシーポリシーです。">
   <div class="band dark">
@@ -36,7 +35,7 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
         <p>本ポリシーの内容は、必要に応じて改定することがあります。改定した場合は、当ページにて公表します。</p>
 
         <p class="pp-date">制定日：2026年7月6日</p>
-        <p><a class="more on-dark" href={`${basePath}/`}>トップページへ戻る</a></p>
+        <p><a class="more on-dark" href="/">トップページへ戻る</a></p>
       </div>
     </section>
   </div>

@@ -19,8 +19,11 @@ export async function onRequestPost({ request, env }) {
     const email = (data.get('email') || '').toString().slice(0, 200);
     const topic = (data.get('topic') || '').toString().slice(0, 100);
     const message = (data.get('message') || '').toString().slice(0, 2000);
+    const pref1 = (data.get('pref1') || '').toString().slice(0, 200);
+    const pref2 = (data.get('pref2') || '').toString().slice(0, 200);
+    const pref3 = (data.get('pref3') || '').toString().slice(0, 200);
 
-    if (!name || !email || !topic) {
+    if (!name || !email || !topic || !pref1) {
       return new Response(JSON.stringify({ ok: false, error: 'missing fields' }), {
         status: 400,
         headers: { 'content-type': 'application/json' },
@@ -33,6 +36,9 @@ export async function onRequestPost({ request, env }) {
       `事業・会社名：${company || '（未記入）'}`,
       `メール：${email}`,
       `ご相談内容：${topic}`,
+      `第1希望：${pref1}`,
+      `第2希望：${pref2 || '（未記入）'}`,
+      `第3希望：${pref3 || '（未記入）'}`,
       '--- 詳しい状況 ---',
       message || '（未記入）',
     ].join('\n');

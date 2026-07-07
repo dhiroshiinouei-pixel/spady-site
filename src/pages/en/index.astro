@@ -1,31 +1,26 @@
 ---
 import Base from '../../layouts/Base.astro';
-const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 ---
-<Base lang="en" title="Spady | Marketing for Study-Abroad, Language Schools & Global Businesses" description="I design customer-acquisition funnels for study-abroad agencies, language schools, online English services and other global businesses — with Meta ads, LINE and social media. Based in Otaru, Hokkaido, Japan.">
+<Base lang="en" title="Spady | Funnel Design for Marketing & Recruiting" description="I design funnels for customer acquisition and recruiting — across Meta ads, LINE and social. From local shops and SMEs to study-abroad and global businesses. Ex-Meta Marketing Pro, based in Otaru, Hokkaido, Japan.">
   <!-- 1. ファーストビュー：1画面で権威性・信頼性・専門性を完結 -->
   <div class="band dark">
     <section class="lp-hero">
-      <a class="lang-switch rise d1" href={`${basePath}/`}>日本語</a>
+      <img class="fv-logo rise d1" src="/logo.png" alt="Spady" width="84" height="84" />
+      <a class="lang-switch rise d1" href="/">日本語</a>
       <div class="wrap lp-hero-inner">
         <div class="lp-hero-text">
-          <p class="eyebrow rise d1"><span class="e-dot"></span>Marketing for Study-Abroad, Language Schools & Global Businesses｜Spady</p>
+          <p class="eyebrow rise d1">Funnel Design for Marketing & Recruiting</p>
           <h1 class="rise d2">
             Ads, LINE and social,<br />
             connected into <em>one funnel</em>.
           </h1>
           <p class="lp-sub rise d3">
-            I design customer acquisition for study-abroad agencies, language schools,<br class="pc" />
-            online English services and other global businesses — from real field experience.<br class="pc" />
-            Based in Otaru/Zenibako, Hokkaido, also supporting local businesses.
+            From local shops and SMEs to study-abroad and global businesses,<br class="pc" />
+            I design funnels for customer acquisition and recruiting — from real field experience.<br class="pc" />
+            Based in Otaru, Hokkaido. Working online, nationwide and worldwide.
           </p>
-          <div class="lp-btns rise d4">
-            <a class="btn primary btn-big btn-shine" href="#contact">Book a Free Consultation</a>
-          </div>
-          <p class="hero-assure rise d4">Free consultation｜Fully online, timezone-friendly｜No pushy sales</p>
-
           <!-- 権威性・数字（ファーストビュー内で完結） -->
-          <div class="cred rise d5">
+          <div class="cred rise d4">
             <div class="cred-item cred-meta">
               <strong>Ex-Meta</strong>
               <span>Worked as a Marketing Pro at Meta</span>
@@ -43,6 +38,11 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
               <span>L Message partner (on PR TIMES)</span>
             </div>
           </div>
+
+          <div class="lp-btns rise d5">
+            <a class="btn primary btn-big btn-shine" href="#contact">Book a Free Consultation</a>
+          </div>
+          <p class="hero-assure rise d5">Free consultation｜Fully online, timezone-friendly｜No pushy sales</p>
         </div>
 
         <!-- 宇宙から見た地球：自転＋飛行機の周回＋世界中の人 -->
@@ -51,15 +51,15 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
             <defs>
               <clipPath id="globeClip"><circle cx="260" cy="300" r="215" /></clipPath>
               <clipPath id="satClip"><circle cx="384" cy="142" r="32" /></clipPath>
-              <radialGradient id="ocean" cx="34%" cy="28%" r="85%">
-                <stop offset="0%" stop-color="#1e6ea0" />
-                <stop offset="45%" stop-color="#11466e" />
-                <stop offset="80%" stop-color="#082741" />
-                <stop offset="100%" stop-color="#04121f" />
+              <radialGradient id="ocean" cx="34%" cy="28%" r="88%">
+                <stop offset="0%" stop-color="#2f89c5" />
+                <stop offset="35%" stop-color="#175a8d" />
+                <stop offset="70%" stop-color="#0a3457" />
+                <stop offset="100%" stop-color="#041627" />
               </radialGradient>
               <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#5f9c6a" />
-                <stop offset="100%" stop-color="#2e5f45" />
+                <stop offset="0%" stop-color="#6fae76" />
+                <stop offset="100%" stop-color="#2f6349" />
               </linearGradient>
               <radialGradient id="terminator" cx="32%" cy="26%" r="95%">
                 <stop offset="0%" stop-color="rgba(0,0,0,0)" />
@@ -73,7 +73,7 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
                 <stop offset="100%" stop-color="rgba(255,215,94,0)" />
               </radialGradient>
               <radialGradient id="specular" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="rgba(255,255,255,0.22)" />
+                <stop offset="0%" stop-color="rgba(255,255,255,0.3)" />
                 <stop offset="100%" stop-color="rgba(255,255,255,0)" />
               </radialGradient>
               <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
@@ -129,6 +129,9 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
                   <ellipse cx="404" cy="300" rx="40" ry="9" />
                   <ellipse cx="42" cy="286" rx="34" ry="9" />
                   <ellipse cx="238" cy="452" rx="56" ry="12" />
+                  <ellipse cx="118" cy="252" rx="44" ry="10" />
+                  <ellipse cx="356" cy="152" rx="42" ry="9" />
+                  <ellipse cx="196" cy="408" rx="48" ry="10" />
                 </g>
                 <use href="#cloudTile" x="464" />
                 <use href="#cloudTile" x="-464" />
@@ -182,16 +185,28 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
               <image href="/logo.png" x="352" y="110" width="64" height="64" clip-path="url(#satClip)" />
             </g>
 
-            <!-- 世界を飛び回る飛行機（金・青の2機） -->
-            <g class="orbit-plane op-gold">
-              <path d="M0,-5.5 L17,0 L0,5.5 L4.5,0 Z" />
-              <animateMotion dur="15s" repeatCount="indefinite" rotate="auto">
+            <!-- 地球を周回する人工衛星（金・青の2機） -->
+            <g class="orbit-sat os-gold">
+              <g>
+                <rect x="-4.5" y="-3.5" width="9" height="7" rx="1.2" class="sat-body" />
+                <rect x="-14" y="-2.5" width="8" height="5" rx="0.8" class="sat-panel" />
+                <rect x="6" y="-2.5" width="8" height="5" rx="0.8" class="sat-panel" />
+                <line x1="0" y1="-3.5" x2="0" y2="-8" class="sat-ant" />
+                <circle cx="0" cy="-8.5" r="1.2" class="sat-ant-tip" />
+              </g>
+              <animateMotion dur="17s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#orbitPath" />
               </animateMotion>
             </g>
-            <g class="orbit-plane op-blue">
-              <path d="M0,-5 L15,0 L0,5 L4,0 Z" />
-              <animateMotion dur="15s" begin="-7.5s" repeatCount="indefinite" rotate="auto">
+            <g class="orbit-sat os-blue">
+              <g transform="scale(0.85)">
+                <rect x="-4.5" y="-3.5" width="9" height="7" rx="1.2" class="sat-body" />
+                <rect x="-14" y="-2.5" width="8" height="5" rx="0.8" class="sat-panel" />
+                <rect x="6" y="-2.5" width="8" height="5" rx="0.8" class="sat-panel" />
+                <line x1="0" y1="-3.5" x2="0" y2="-8" class="sat-ant" />
+                <circle cx="0" cy="-8.5" r="1.2" class="sat-ant-tip" />
+              </g>
+              <animateMotion dur="17s" begin="-8.5s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#orbitPath" />
               </animateMotion>
             </g>
@@ -202,8 +217,9 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       <!-- Scroll cue -->
       <a class="scroll-cue rise d5" href="#problem" aria-label="Scroll down">
         <span class="sc-text">SCROLL</span>
-        <span class="sc-line"><i></i></span>
-        <svg class="sc-chev" viewBox="0 0 12 7" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <span class="sc-circle">
+          <svg class="sc-chev" viewBox="0 0 12 7" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </span>
       </a>
     </section>
   </div>
@@ -215,15 +231,15 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
         <p class="eyebrow fade"><span class="e-dot"></span>PROBLEM</p>
         <h2 class="fade">Stuck in any of<br class="sp" /> these situations?</h2>
         <ul class="x-list">
-          <li class="fade">Ads bring inquiries, but they <b>never turn into consultations or sign-ups</b></li>
+          <li class="fade">You run ads, but they <b>never turn into inquiries, visits or sign-ups</b></li>
           <li class="fade">LINE friends keep growing, yet <b>all you send is mass broadcasts</b></li>
-          <li class="fade">Posting is scattered across teams and <b>nobody knows which channel works</b></li>
+          <li class="fade">Ads, social and LINE are scattered and <b>nobody knows which one works</b></li>
           <li class="fade">You want to try Meta ads but <b>have no idea where to start</b></li>
         </ul>
         <div class="bridge fade">
           <p class="bridge-lead">Most of these problems aren't about talent or effort — they're about the <em>funnel</em>.</p>
           <p class="bridge-body">
-            For services with long consideration cycles — like study abroad and language education — results leak away mid-journey unless the entry points (ads, social) are connected to the receiving end (LINE, consultations). Put the other way around: simply fixing the funnel changes a great deal.
+            Daily walk-in business or long-consideration services — it makes no difference. Unless the entry points (ads, social) are connected to the receiving end (LINE, inquiries), results leak away mid-journey. Put the other way around: simply fixing the funnel changes a great deal.
           </p>
         </div>
       </div>
@@ -246,8 +262,8 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
         <div class="reason fade">
           <span class="num">02</span>
           <div>
-            <h3>I know the study-abroad <em>field</em> first-hand</h3>
-            <p>I built the official LINE accounts for QQEnglish, one of Cebu's largest language schools — first for its study-abroad business, then for its online English service. I design funnels around this industry's long consideration cycles.</p>
+            <h3><em>100+ funnels</em> built in the field</h3>
+            <p>From local shops to e-commerce, I have built 100+ LINE official accounts. For QQEnglish, one of Cebu's largest language schools, the study-abroad build was followed by its online English service. Every industry has its own distance to sign-up — I design for it.</p>
           </div>
         </div>
         <div class="reason fade">
@@ -264,13 +280,24 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
   <!-- 4. サービス -->
   <div class="band dark alt">
     <section class="lp-sec" id="lp-services">
+      <!-- 浮遊する宇宙飛行士 -->
+      <div class="astro-float" aria-hidden="true">
+        <svg viewBox="0 0 80 104">
+          <rect x="22" y="34" width="36" height="34" rx="10" class="as-pack" />
+          <rect x="26" y="30" width="28" height="42" rx="12" class="as-body" />
+          <circle cx="40" cy="20" r="15" class="as-helmet" />
+          <ellipse cx="40" cy="21" rx="10" ry="8.5" class="as-visor" />
+          <ellipse cx="36" cy="18" rx="3" ry="2" class="as-glint" />
+          <path d="M27 40 C16 44 12 52 14 60" class="as-limb" />
+          <path d="M53 40 C64 42 70 38 72 30" class="as-limb" />
+          <path d="M32 71 C30 80 26 88 22 92" class="as-limb" />
+          <path d="M48 71 C52 80 56 86 62 88" class="as-limb" />
+          <circle cx="40" cy="46" r="4" class="as-badge" />
+        </svg>
+      </div>
       <div class="wrap">
         <p class="eyebrow fade"><span class="e-dot e-green"></span>SERVICE</p>
         <h2 class="fade">What I can help with</h2>
-        <div class="card featured fade">
-          <h3>Study-abroad, language schools & global businesses</h3>
-          <p>For study-abroad agencies, language schools, online English services, and overseas businesses growing their Japanese customer base. I design ads, LINE and social as one funnel — from inquiry to enrollment.</p>
-        </div>
         <div class="grid2">
           <div class="card c-blue fade">
             <h3>Meta Ads Management</h3>
@@ -289,7 +316,10 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
             <p>A posting system your team can actually sustain, tailored to your business.</p>
           </div>
         </div>
-        <p class="note fade" style="margin-top: 24px;">Website production and video are not my core services — I'll refer trusted partners when needed.</p>
+        <div class="industries fade">
+          <span>Retail & F&amp;B</span><span>Beauty & Salons</span><span>Fitness</span><span>E-commerce</span><span>Education</span><span>Study-abroad</span><span>Global business</span><span>B2B</span>
+        </div>
+        <p class="note fade" style="margin-top: 20px;">Any industry is welcome.</p>
       </div>
     </section>
   </div>
@@ -357,14 +387,63 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
             <h2 style="margin-bottom: 6px;">Hiroshi Inoue</h2>
             <p class="note" style="margin-bottom: 20px;">Founder, Spady｜Otaru, Hokkaido, Japan</p>
             <p>
-              As a Marketing Pro at Meta (formerly Facebook), I supported ad operations for 80+ agencies in Japan. Since going independent, I have built the LINE accounts for QQEnglish — one of Cebu's largest language schools — and support marketing for study-abroad, language-education and global businesses. Around my home base in Otaru/Zenibako, I also support local businesses and host study sessions.
+              As a Marketing Pro at Meta (formerly Facebook), I supported ad operations for 80+ agencies in Japan. Since going independent, I have built 100+ LINE official accounts — from local shops to global businesses, including QQEnglish, one of Cebu's largest language schools. Around my home base in Otaru, I also support local businesses and host study sessions.
             </p>
+            <div class="profile-links">
             <a class="threads-chip" href="https://www.threads.com/hiroshiinoue.spady" target="_blank" rel="noopener" aria-label="Follow Hiroshi Inoue on Threads">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 16.4c-2.4 0-4.4-2-4.4-4.4S9.6 7.6 12 7.6s4.4 2 4.4 4.4v1.3c0 1 .7 1.7 1.6 1.7 1.5 0 2.4-1.4 2.4-3 0-4.6-3.8-8.4-8.4-8.4S3.6 7.4 3.6 12s3.8 8.4 8.4 8.4c1.7 0 3.3-.5 4.6-1.4"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
               <span>@hiroshiinoue.spady</span>
             </a>
+              <span class="pro-moon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <defs>
+                    <radialGradient id="proMoon" cx="36%" cy="32%" r="80%">
+                      <stop offset="0%" stop-color="#fffbe9" />
+                      <stop offset="55%" stop-color="#f4e9c3" />
+                      <stop offset="100%" stop-color="#cfc194" />
+                    </radialGradient>
+                    <radialGradient id="moonRim" cx="36%" cy="32%" r="85%">
+                      <stop offset="0%" stop-color="rgba(0,0,0,0)" />
+                      <stop offset="78%" stop-color="rgba(0,0,0,0)" />
+                      <stop offset="100%" stop-color="rgba(96,84,48,0.45)" />
+                    </radialGradient>
+                    <clipPath id="moonClip"><circle cx="24" cy="24" r="22" /></clipPath>
+                  </defs>
+                  <circle cx="24" cy="24" r="22" fill="url(#proMoon)" />
+                  <g clip-path="url(#moonClip)">
+                    <g class="moon-drift">
+                      <g id="mTile" class="moon-marks">
+                        <ellipse cx="10" cy="17" rx="7" ry="5" />
+                        <ellipse cx="30" cy="11" rx="6" ry="4" />
+                        <ellipse cx="22" cy="30" rx="8" ry="5.5" />
+                        <ellipse cx="40" cy="25" rx="5" ry="4" />
+                        <ellipse cx="13" cy="38" rx="6" ry="4" />
+                        <ellipse cx="36" cy="40" rx="4.5" ry="3" />
+                      </g>
+                      <use href="#mTile" x="48" />
+                      <use href="#mTile" x="-48" />
+                    </g>
+                  </g>
+                  <circle cx="24" cy="24" r="22" fill="url(#moonRim)" />
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
+
+        <!-- Why I do this work (accordion) -->
+        <details class="why fade">
+          <summary>
+            <span class="why-title">Why I do this work</span>
+          </summary>
+          <div class="why-body">
+            <p>Local shops and businesses have so much appeal that has yet to reach people. Even with great products and services, when the funnel across Instagram, ads, LINE and the website is not in place, inquiries and bookings slip away — and opportunities are lost.</p>
+            <p>In my previous role I was seconded to Meta, supporting marketing for advertisers and ad agencies. What struck me there was the sheer gap in digital know-how: new tools and insights reach big-city companies and agencies quickly, while local shops and SMEs rarely even hear about the options they could be using.</p>
+            <p>An ad is not finished when it runs. It only works once you design where viewers go next — and how that leads to inquiries, bookings and visits. Today, based in Otaru/Zenibako, I combine Meta ads, Instagram, LINE official accounts and AI to build funnels that carry a business's appeal to the people who need it.</p>
+            <p>As populations shrink, the power to be chosen within a limited market will only matter more. I want local businesses to deliver their appeal naturally — by putting marketing and technology into a form they can actually use.</p>
+            <div class="why-sign" aria-hidden="true"><img src="/logo.png" alt="" width="46" height="46" loading="lazy" /></div>
+          </div>
+        </details>
       </div>
     </section>
   </div>
@@ -464,12 +543,24 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
               </select>
             </label>
             <label>
+              Preferred date &amp; time — 1st choice <i>required</i>
+              <input type="text" name="pref1" required placeholder="e.g. Jul 15 (Wed), 2–4pm JST" />
+            </label>
+            <label>
+              2nd choice (optional)
+              <input type="text" name="pref2" placeholder="e.g. Jul 16 (Thu) morning" />
+            </label>
+            <label>
+              3rd choice (optional)
+              <input type="text" name="pref3" />
+            </label>
+            <label>
               Details (optional)
               <textarea name="message" rows="4" placeholder="e.g. Ads bring inquiries, but they never turn into sign-ups"></textarea>
             </label>
             <button type="submit" class="btn primary btn-big btn-shine form-submit">Book a Free Consultation</button>
             <p class="form-privacy">
-              Your information is used only to respond to your inquiry. <a href={`${basePath}/en/privacy/`}>Privacy Policy</a>
+              Your information is used only to respond to your inquiry. <a href="/en/privacy/">Privacy Policy</a>
             </p>
           </form>
         </div>
@@ -496,6 +587,8 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
           // GTM計測：フォーム送信成功イベント
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({ event: 'form_submit_success', form_name: 'free_consult' });
+          // 送信完了：ロケット発射
+          window.__rocket?.('launch');
           form.innerHTML =
             '<p class="form-done">Sent. I will get back to you within 2 business days.<br>Thank you!</p>';
         } catch {
@@ -588,12 +681,29 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       min-height: 100svh;
       display: flex;
       align-items: center;
-      padding: 44px 0 96px;
+      padding: 100px 0 96px;
     }
     .lp-hero .eyebrow {
       font-size: 15.5px;
       letter-spacing: 0.14em;
       color: rgba(255, 255, 255, 0.88);
+    }
+    .fv-logo {
+      position: absolute;
+      top: 18px;
+      left: 22px;
+      z-index: 6;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 0 26px rgba(237, 28, 36, 0.55);
+      animation: eyeSway 7s ease-in-out infinite;
+    }
+    @keyframes eyeSway {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      30% { transform: rotate(10deg) scale(1.05); }
+      60% { transform: rotate(-6deg) scale(1); }
     }
     .lp-hero::before {
       content: '';
@@ -631,22 +741,22 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
     }
     .lp-hero h1 { font-size: 44px; line-height: 1.6; color: #fff; margin-bottom: 24px; }
     .lp-sub { font-size: 16px; color: var(--white-soft); margin-bottom: 32px; }
-    .lp-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .lp-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 34px; }
 
     /* ---------- 宇宙から見た地球 ---------- */
     .hero-visual { max-width: 440px; margin: 0 auto; }
     .hero-visual svg { width: 100%; height: auto; display: block; }
-    .atmo-glow { fill: none; stroke: rgba(96, 180, 255, 0.35); stroke-width: 10; }
-    .atmo-line { fill: none; stroke: rgba(150, 210, 255, 0.35); stroke-width: 1.4; }
+    .atmo-glow { fill: none; stroke: rgba(110, 190, 255, 0.5); stroke-width: 12; }
+    .atmo-line { fill: none; stroke: rgba(165, 218, 255, 0.5); stroke-width: 1.4; }
     .spin-land { animation: spinGlobe 11s linear infinite; }
     .spin-clouds { animation: spinGlobe 18s linear infinite; }
     @keyframes spinGlobe { to { transform: translateX(-464px); } }
     .land path, .land ellipse {
       fill: url(#landGrad);
-      stroke: rgba(200, 240, 210, 0.18);
+      stroke: rgba(210, 245, 220, 0.2);
       stroke-width: 0.7;
     }
-    .clouds ellipse { fill: rgba(255, 255, 255, 0.16); }
+    .clouds ellipse { fill: rgba(255, 255, 255, 0.2); }
     .route-base { fill: none; stroke: rgba(255, 215, 94, 0.28); stroke-width: 1.5; }
     .route-flow {
       fill: none;
@@ -683,16 +793,45 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
     .sat-halo { fill: none; stroke: var(--accent); stroke-width: 1.5; }
     .sat-ring { fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 2; }
     .orbit-ring { stroke: rgba(255, 255, 255, 0.12); stroke-width: 1; stroke-dasharray: 2 7; }
-    .orbit-plane path { opacity: 0.9; }
-    .orbit-plane.op-gold path {
-      fill: var(--gold);
-      filter: drop-shadow(0 0 5px rgba(255, 215, 94, 0.9));
-    }
-    .orbit-plane.op-blue path {
-      fill: var(--blue);
-      filter: drop-shadow(0 0 5px rgba(47, 157, 216, 0.9));
-    }
+    .orbit-sat { opacity: 0.95; }
+    .sat-body { fill: #e6edf3; stroke: rgba(255, 255, 255, 0.5); stroke-width: 0.6; }
+    .sat-ant { stroke: rgba(255, 255, 255, 0.8); stroke-width: 1; }
+    .sat-ant-tip { fill: #fff; }
+    .orbit-sat .sat-panel { stroke: rgba(0, 0, 0, 0.3); stroke-width: 0.5; }
+    .os-gold .sat-panel { fill: var(--gold); }
+    .os-blue .sat-panel { fill: var(--blue); }
+    .os-gold { filter: drop-shadow(0 0 5px rgba(255, 215, 94, 0.55)); }
+    .os-blue { filter: drop-shadow(0 0 5px rgba(47, 157, 216, 0.55)); }
     .spady-sat image { filter: drop-shadow(0 0 10px rgba(237, 28, 36, 0.55)); }
+
+    /* ---------- 浮遊する宇宙飛行士 ---------- */
+    #lp-services { position: relative; overflow: hidden; }
+    .astro-float {
+      position: absolute;
+      top: 64px;
+      right: 7%;
+      width: 96px;
+      pointer-events: none;
+      animation: astroDrift 8s ease-in-out infinite;
+      opacity: 0.95;
+    }
+    .astro-float svg { display: block; width: 100%; height: auto; }
+    @keyframes astroDrift {
+      0%, 100% { transform: translate(0, 0) rotate(-6deg); }
+      50% { transform: translate(-14px, 16px) rotate(7deg); }
+    }
+    .as-pack { fill: #aab7c2; }
+    .as-body { fill: #eef3f7; stroke: rgba(0, 0, 0, 0.12); stroke-width: 1; }
+    .as-helmet { fill: #f4f8fb; stroke: rgba(0, 0, 0, 0.12); stroke-width: 1; }
+    .as-visor { fill: #17334a; }
+    .as-glint { fill: rgba(150, 210, 255, 0.75); }
+    .as-limb {
+      fill: none;
+      stroke: #eef3f7;
+      stroke-width: 7;
+      stroke-linecap: round;
+    }
+    .as-badge { fill: var(--accent); }
 
     /* ---------- 3色アクセント ---------- */
     .e-dot.e-blue { background: var(--blue); }
@@ -778,6 +917,20 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
     .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .card { transition: transform 0.3s ease, border-color 0.3s ease, opacity 0.7s ease; }
     .card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.3); }
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .industries span {
+      font-size: 12.5px;
+      letter-spacing: 0.05em;
+      color: var(--white-soft);
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
     .card.featured { margin-bottom: 20px; border-color: rgba(237, 28, 36, 0.45); }
     .card.featured:hover { border-color: rgba(237, 28, 36, 0.8); }
     .metric-lp { font-family: var(--font-min); font-size: 18px; color: #fff !important; margin-bottom: 8px; }
@@ -836,6 +989,26 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       display: block;
     }
     .lp-profile p { color: var(--white-soft); }
+    .profile-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .pro-moon {
+      width: 54px;
+      height: 54px;
+      margin-top: 6px;
+      animation: moonFloat 5.5s ease-in-out infinite;
+    }
+    .pro-moon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 12px rgba(255, 244, 200, 0.45));
+    }
+    .moon-marks ellipse { fill: rgba(158, 144, 100, 0.32); }
+    .moon-drift { animation: moonDrift 11s linear infinite; }
+    @keyframes moonDrift { to { transform: translateX(-48px); } }
+    @keyframes moonFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(4deg); }
+    }
     .threads-chip {
       display: inline-flex;
       align-items: center;
@@ -856,6 +1029,71 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       border-color: var(--gold);
       transform: translateY(-2px);
     }
+
+    /* ---------- なぜ、この活動をしているのか ---------- */
+    .why {
+      margin-top: 44px;
+      background: var(--dark-2);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      transition: border-color 0.25s ease;
+    }
+    .why[open], .why:hover { border-color: rgba(255, 215, 94, 0.45); }
+    .why summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 26px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .why summary::-webkit-details-marker { display: none; }
+    .why-title {
+      flex: 1;
+      font-family: var(--font-min);
+      font-size: 17.5px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    .why summary::after {
+      content: '+';
+      flex: none;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 20px;
+      font-weight: 400;
+      transition: transform 0.3s ease;
+    }
+    .why[open] summary::after { content: '−'; transform: rotate(180deg); }
+    .why-body { padding: 2px 26px 24px; }
+    .why[open] .why-body { animation: whyReveal 0.5s ease both; }
+    @keyframes whyReveal {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: none; }
+    }
+    .why-body p {
+      font-size: 14.5px;
+      line-height: 2.1;
+      color: var(--white-soft);
+      margin: 0 0 16px;
+      max-width: 720px;
+    }
+    .why-body p:last-of-type { margin-bottom: 0; }
+    .why-sign { display: flex; justify-content: flex-end; margin-top: 14px; }
+    .why-sign img {
+      display: block;
+      width: 46px;
+      height: 46px;
+      animation: signSpin 7s linear infinite;
+    }
+    @keyframes signSpin { to { transform: rotate(360deg); } }
 
     /* ---------- 流れ ---------- */
     .flow { list-style: none; padding: 0; margin: 0; display: grid; }
@@ -953,7 +1191,7 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       align-items: center;
       gap: 8px;
       text-decoration: none;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.75);
       transition: color 0.2s ease;
     }
     .scroll-cue:hover { color: var(--gold); }
@@ -963,34 +1201,23 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       letter-spacing: 0.42em;
       padding-left: 0.42em;
     }
-    .sc-line {
-      position: relative;
-      width: 1px;
-      height: 44px;
-      background: rgba(255, 255, 255, 0.22);
-      overflow: hidden;
-    }
-    .sc-line i {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: -8px;
-      width: 5px;
-      height: 5px;
+    .sc-circle {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 8px rgba(255, 215, 94, 0.9);
-      animation: scDrop 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(13, 19, 22, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: grid;
+      place-items: center;
+      transition: border-color 0.2s ease;
     }
-    @keyframes scDrop {
-      0% { top: -8px; opacity: 0; }
-      15% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { top: 46px; opacity: 0; }
-    }
+    .scroll-cue:hover .sc-circle { border-color: var(--gold); }
     .sc-chev {
-      width: 12px;
-      height: 7px;
+      width: 13px;
+      height: 8px;
+      color: var(--gold);
       animation: scBob 2.2s ease-in-out infinite;
     }
     @keyframes scBob {
@@ -1088,7 +1315,7 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 
     /* ---------- reduced motion ---------- */
     @media (prefers-reduced-motion: reduce) {
-      .rise, .lp-hero::before, .route-flow, .spin-land, .spin-clouds, .spady-sat, .btn-shine, .btn-shine::after, .sc-line i, .sc-chev { animation: none !important; }
+      .rise, .lp-hero::before, .route-flow, .spin-land, .spin-clouds, .spady-sat, .btn-shine, .btn-shine::after, .sc-chev, .pro-moon, .moon-drift, .why-sign img, .why-body, .fv-logo, .astro-float { animation: none !important; }
       .rise { opacity: 1; transform: none; }
       .card, .card:hover { transform: none; }
     }
@@ -1108,7 +1335,7 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       .lp-sec { padding: 64px 0; }
       .lp-sec h2 { font-size: 24px; margin-bottom: 32px; }
       .h2-sub { display: block; margin: 8px 0 0; }
-      .lp-hero { min-height: 100svh; padding: 32px 0 112px; }
+      .lp-hero { min-height: 100svh; padding: 96px 0 112px; }
       .lp-hero::before { width: 460px; height: 460px; top: -160px; right: -200px; }
       .lp-hero .eyebrow { font-size: 13px; letter-spacing: 0.1em; }
       .lp-hero-inner { display: block; }
@@ -1182,7 +1409,17 @@ const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
       .note { font-size: 12px; }
       .form-card label { font-size: 12.5px; }
       .seminar-fig figcaption { font-size: 11px; }
-      .sc-line { height: 32px; }
+      .sc-circle { width: 36px; height: 36px; }
+      .why { margin-top: 36px; }
+      .why summary { padding: 18px 16px; gap: 12px; }
+      .why-title { font-size: 16px; }
+      .why summary::after { width: 36px; height: 36px; }
+      .why-body { padding: 2px 16px 22px; }
+      .why-body p { font-size: 14px; line-height: 2.05; }
+      .why-sign img { width: 40px; height: 40px; }
+      .pro-moon { width: 46px; height: 46px; }
+      .fv-logo { width: 58px; height: 58px; top: 14px; left: 14px; border-width: 2.5px; }
+      .astro-float { width: 62px; top: 30px; right: 5%; }
       .scroll-cue { right: 16px; bottom: 14px; }
     }
   </style>

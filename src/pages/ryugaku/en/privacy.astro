@@ -1,4 +1,55 @@
 ---
-import Page from '../../en/privacy.astro';
+import Base from '../../../layouts/RyugakuBase.astro';
+const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 ---
-<Page />
+<Base lang="en" title="Privacy Policy | Spady" description="Privacy policy of Spady.">
+  <div class="band dark">
+    <section class="pp">
+      <div class="wrap narrow">
+        <h1>Privacy Policy</h1>
+        <p class="pp-lead">
+          Spady (Hiroshi Inoue, "we") handles personal information obtained through inquiries as follows.
+        </p>
+        <h2>1. Information we collect</h2>
+        <p>Through the contact form and LINE, we collect your name, business/company name, email address, and inquiry details.</p>
+        <h2>2. Purpose of use</h2>
+        <p>Collected information is used only to respond to inquiries, arrange consultations, and carry out requested work. It is never used for other purposes without your consent.</p>
+        <h2>3. Third-party disclosure</h2>
+        <p>We do not provide personal information to third parties without your consent, except as required by law.</p>
+        <h2>4. Analytics and advertising tools</h2>
+        <p>This site may use tools such as Google Analytics and the Meta Pixel to improve the site and measure advertising. These tools collect data via cookies and do not contain personally identifiable information.</p>
+        <h2>5. Security</h2>
+        <p>We manage collected personal information appropriately to prevent leakage, loss, or damage.</p>
+        <h2>6. Disclosure, correction, deletion</h2>
+        <p>Upon request and identity verification, we will promptly disclose, correct, or delete your personal information.</p>
+        <h2>7. Contact</h2>
+        <p>For questions about this policy, please contact us via the form or LINE on this site.</p>
+        <h2>8. Revisions</h2>
+        <p>This policy may be revised as necessary. Revisions will be announced on this page.</p>
+        <p class="pp-date">Effective date: July 6, 2026</p>
+        <p><a class="more on-dark" href={`${basePath}/en/`}>Back to top</a></p>
+      </div>
+    </section>
+  </div>
+  <style>
+    .pp { padding: 96px 0 104px; }
+    .narrow { max-width: 720px; margin: 0 auto; }
+    .pp h1 { font-size: 30px; color: #fff; margin-bottom: 28px; }
+    .pp-lead { color: var(--white-soft); margin-bottom: 40px; }
+    .pp h2 {
+      font-size: 17px;
+      color: #fff;
+      margin: 36px 0 10px;
+      padding-left: 14px;
+      border-left: 2px solid var(--accent);
+    }
+    .pp p { font-size: 14.5px; color: var(--white-soft); }
+    .pp-date { margin-top: 48px; font-size: 13px; color: rgba(255, 255, 255, 0.5); }
+    .more.on-dark { color: #fff; }
+    .more.on-dark:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    @media (max-width: 760px) {
+      .pp { padding: 56px 0 64px; }
+      .pp h1 { font-size: 24px; }
+    }
+  </style>
+</Base>

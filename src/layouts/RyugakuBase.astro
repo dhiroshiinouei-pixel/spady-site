@@ -1,13 +1,14 @@
 ---
-import '../styles/global.css';
+import '../styles/ryugaku-global.css';
 
 // ▼ Googleタグマネージャー：コンテナIDを入れると計測が有効になります（例: 'GTM-ABC1234'）
 const GTM_ID = 'GTM-NV5VRH3G';
 
-const { title = 'Spady｜集客と採用の導線設計', description = 'Meta広告・LINE公式アカウント・SNSで、集客と採用の導線を設計します。店舗・中小企業から留学・海外事業まで。元Metaマーケティングプロ。北海道・小樽/銭函拠点。', lang = 'ja' } = Astro.props;
+const { title = 'Spady｜留学・語学学校・海外事業のマーケティング支援', description = '留学・語学学校・オンライン英会話・海外関連事業の集客導線を、Meta広告・LINE公式アカウント・SNSで設計します。北海道・小樽/銭函を拠点に、地域事業者の支援も行っています。', lang = 'ja' } = Astro.props;
+const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 
 // 言語別ラベルとリンク
-const home = lang === 'en' ? '/en/' : '/';
+const home = lang === 'en' ? `${basePath}/en/` : `${basePath}/`;
 const t = lang === 'en'
   ? {
       nav: ['Services', 'Work', 'Local & Seminars', 'Profile'],
@@ -16,12 +17,9 @@ const t = lang === 'en'
       footNote: 'Otaru, Hokkaido, Japan｜Hiroshi Inoue',
       footContact: 'Free consultation / Contact',
       footPrivacy: 'Privacy Policy',
-      privacyHref: '/en/privacy/',
+      privacyHref: `${basePath}/en/privacy/`,
       langLabel: '日本語',
-      langHref: '/',
-      cookieText: 'We use cookies to improve this site and measure advertising.',
-      cookieAccept: 'Accept',
-      cookieDecline: 'Decline',
+      langHref: `${basePath}/`,
     }
   : {
       nav: ['サービス', '実績', '地域・勉強会', 'プロフィール'],
@@ -30,17 +28,15 @@ const t = lang === 'en'
       footNote: '北海道小樽市銭函｜井上博史',
       footContact: '無料相談・お問い合わせ',
       footPrivacy: 'プライバシーポリシー',
-      privacyHref: '/privacy/',
+      privacyHref: `${basePath}/privacy/`,
       langLabel: 'EN',
-      langHref: '/en/',
-      cookieText: '当サイトでは、サービス改善と広告の計測のためにCookieを使用します。',
-      cookieAccept: '同意する',
-      cookieDecline: '同意しない',
+      langHref: `${basePath}/en/`,
     };
 
 // hreflang用の対応URL
-const jaPath = lang === 'en' ? (Astro.url.pathname.replace(/^\/en/, '') || '/') : Astro.url.pathname;
-const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname).replace(/\/$/, '/') ;
+const currentPath = Astro.url.pathname;
+const jaPath = lang === 'en' ? (currentPath.replace(`${basePath}/en`, basePath) || `${basePath}/`) : currentPath;
+const enPath = lang === 'en' ? currentPath : `${basePath}/en${currentPath.slice(basePath.length)}`;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -71,28 +67,25 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     {GTM_ID && (
       <script is:inline define:vars={{ GTM_ID }}>
         window.dataLayer = window.dataLayer || [];
-        window.__loadGTM = function () {
-          if (window.__gtmLoaded) return;
-          window.__gtmLoaded = true;
-          (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-            var f = d.getElementsByTagName(s)[0],
-              j = d.createElement(s),
-              dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-          })(window, document, 'script', 'dataLayer', GTM_ID);
-        };
-        try {
-          if (localStorage.getItem('spady_cookie_consent') === 'granted') window.__loadGTM();
-        } catch (e) {}
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', GTM_ID);
       </script>
     )}
   </head>
   <body>
- )}
+    {GTM_ID && (
+      <noscript>
+        <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    )}
 
     <!-- サイト全体の夜空（星・流れ星・色とりどりの飛行機） -->
     <div class="sky" aria-hidden="true">
@@ -120,6 +113,9 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       <i style="left:63%;top:71%;animation-delay:0.3s"></i>
       <i style="left:79%;top:38%;animation-delay:3.8s"></i>
       <i style="left:33%;top:63%;animation-delay:1.7s"></i>
+      <span class="glint" style="left:15%;top:30%;animation-delay:1s"></span>
+      <span class="glint" style="left:82%;top:64%;animation-delay:3.5s"></span>
+      <span class="glint" style="left:48%;top:92%;animation-delay:6s"></span>
       <span class="shoot sh1"></span>
       <span class="shoot sh2"></span>
       <svg class="fly fly1" viewBox="0 0 40 20"><path d="M2,10 L34,4 L26,10 L34,16 Z" /></svg>
@@ -149,51 +145,6 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     <slot />
 
     <footer class="site-footer">
-      <!-- フッターの地平線：宇宙人の基地・散歩する宇宙人・UFO -->
-      <div class="footer-scene" aria-hidden="true">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="xMidYMax slice">
-          <!-- 基地（ドーム） -->
-          <g class="alien-base" transform="translate(150, 120)">
-            <path d="M-40 0 A40 40 0 0 1 40 0 Z" class="dome" />
-            <path d="M-12 0 A12 12 0 0 1 12 0 Z" class="dome-door" />
-            <circle cx="-22" cy="-14" r="3" class="dome-win" />
-            <circle cx="22" cy="-14" r="3" class="dome-win" />
-            <line x1="0" y1="-40" x2="0" y2="-54" class="dome-ant" />
-            <circle cx="0" cy="-57" r="3" class="dome-light" />
-          </g>
-          <!-- 基地のそばに立つ小さな宇宙人 -->
-          <g transform="translate(208, 120)">
-            <g class="alien-figure">
-              <path d="M-5 0 C-5 -12 5 -12 5 0 Z" class="alien-body" />
-              <ellipse cx="-2" cy="-8" rx="1.7" ry="2.2" class="alien-eye" />
-              <ellipse cx="2" cy="-8" rx="1.7" ry="2.2" class="alien-eye" />
-              <line x1="0" y1="-12" x2="0" y2="-16" class="alien-ant" />
-              <circle cx="0" cy="-17" r="1.4" class="alien-ant-tip" />
-            </g>
-          </g>
-          <!-- 散歩する宇宙人 -->
-          <g class="alien-walker">
-            <g class="walk-bob" transform="translate(0, 120)">
-              <path d="M-6 0 C-6 -14 6 -14 6 0 Z" class="alien-body" />
-              <ellipse cx="-2.4" cy="-9" rx="2" ry="2.6" class="alien-eye" />
-              <ellipse cx="2.4" cy="-9" rx="2" ry="2.6" class="alien-eye" />
-              <line x1="0" y1="-14" x2="0" y2="-19" class="alien-ant" />
-              <circle cx="0" cy="-20" r="1.6" class="alien-ant-tip" />
-            </g>
-          </g>
-          <!-- UFO -->
-          <g class="ufo">
-            <g class="ufo-bob">
-              <polygon points="-14,8 14,8 26,52 -26,52" class="ufo-beam" />
-              <ellipse cx="0" cy="0" rx="26" ry="8" class="ufo-disc" />
-              <path d="M-13 -2 A13 10 0 0 1 13 -2 Z" class="ufo-dome" />
-              <circle cx="-14" cy="4" r="2" class="ufo-light l1" />
-              <circle cx="0" cy="6" r="2" class="ufo-light l2" />
-              <circle cx="14" cy="4" r="2" class="ufo-light l3" />
-            </g>
-          </g>
-        </svg>
-      </div>
       <div class="wrap footer-inner">
         <div>
           <img class="footer-logo" id="footerLogo" src="/logo.png" alt="Spady" width="52" height="52" />
@@ -206,33 +157,13 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         </nav>
         <div class="footer-sns">
           <a class="footer-threads" href="https://www.threads.com/hiroshiinoue.spady" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 16.4c-2.4 0-4.4-2-4.4-4.4S9.6 7.6 12 7.6s4.4 2 4.4 4.4v1.3c0 1 .7 1.7 1.6 1.7 1.5 0 2.4-1.4 2.4-3 0-4.6-3.8-8.4-8.4-8.4S3.6 7.4 3.6 12s3.8 8.4 8.4 8.4c1.7 0 3.3-.5 4.6-1.4"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/></svg>
             <span>Threads</span>
           </a>
         </div>
       </div>
       <p class="copyright">© Spady</p>
     </footer>
-
-    <!-- ロケット演出（CTAクリックで降下／送信完了で発射） -->
-    <div class="rocket-fx" id="rocketFx" aria-hidden="true">
-      <svg viewBox="0 0 40 84">
-        <path class="rk-body" d="M20 2 C28 14 30 28 30 44 L10 44 C10 28 12 14 20 2 Z" />
-        <circle class="rk-win" cx="20" cy="26" r="5" />
-        <path class="rk-fin" d="M10 44 L2 60 L10 54 Z" />
-        <path class="rk-fin" d="M30 44 L38 60 L30 54 Z" />
-        <rect class="rk-base" x="12" y="44" width="16" height="6" rx="2" />
-        <path class="rk-flame" d="M20 52 C25 59 25 68 20 78 C15 68 15 59 20 52 Z" />
-      </svg>
-    </div>
-
-    <div class="cookie-bar" id="cookieBar" hidden>
-      <p>{t.cookieText} <a href={t.privacyHref}>{t.footPrivacy}</a></p>
-      <div class="cookie-actions">
-        <button id="cookieAccept" class="btn primary cookie-accept">{t.cookieAccept}</button>
-        <button id="cookieDecline" class="cookie-decline">{t.cookieDecline}</button>
-      </div>
-    </div>
 
     <script>
       // 上にスクロールで表示し、止めても表示を維持。下スクロールでのみ隠す
@@ -275,40 +206,6 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         setTimeout(() => fl.classList.remove('ping'), 750);
       });
 
-      // ロケット演出
-      const rocket = document.getElementById('rocketFx');
-      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.__rocket = (mode) => {
-        if (!rocket || reduceMotion) return;
-        rocket.classList.remove('go', 'launch');
-        void rocket.offsetWidth;
-        rocket.classList.add(mode === 'launch' ? 'launch' : 'go');
-      };
-      document.querySelectorAll('a.btn-big[href="#contact"]').forEach((a) => {
-        a.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.__rocket('go');
-          document.getElementById('contact')?.scrollIntoView({
-            behavior: reduceMotion ? 'auto' : 'smooth',
-          });
-        });
-      });
-
-      // Cookie同意バー
-      const cookieBar = document.getElementById('cookieBar');
-      let consent = null;
-      try { consent = localStorage.getItem('spady_cookie_consent'); } catch (e) {}
-      if (!consent && cookieBar) cookieBar.hidden = false;
-      document.getElementById('cookieAccept')?.addEventListener('click', () => {
-        try { localStorage.setItem('spady_cookie_consent', 'granted'); } catch (e) {}
-        window.__loadGTM?.();
-        cookieBar.hidden = true;
-      });
-      document.getElementById('cookieDecline')?.addEventListener('click', () => {
-        try { localStorage.setItem('spady_cookie_consent', 'denied'); } catch (e) {}
-        cookieBar.hidden = true;
-      });
-
       // 控えめなフェードイン
       const io = new IntersectionObserver(
         (entries) =>
@@ -334,12 +231,28 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         border-radius: 50%;
         background: #fff;
         opacity: 0.15;
-        box-shadow: 0 0 3px rgba(190, 225, 255, 0.45);
-        animation: skyTwinkle 5.2s ease-in-out infinite;
+        box-shadow: 0 0 6px rgba(190, 225, 255, 0.8);
+        animation: skyTwinkle 4.6s ease-in-out infinite;
       }
       @keyframes skyTwinkle {
-        0%, 100% { opacity: 0.08; }
-        50% { opacity: 0.32; }
+        0%, 100% { opacity: 0.1; }
+        50% { opacity: 0.55; }
+      }
+      /* 十字のきらめき */
+      .glint {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        opacity: 0;
+        background:
+          linear-gradient(#fff, #fff) center/1.4px 100% no-repeat,
+          linear-gradient(#fff, #fff) center/100% 1.4px no-repeat;
+        filter: drop-shadow(0 0 4px rgba(200, 230, 255, 0.9));
+        animation: glintPop 5.5s ease-in-out infinite;
+      }
+      @keyframes glintPop {
+        0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+        50% { opacity: 0.8; transform: scale(1) rotate(45deg); }
       }
       /* 流れ星 */
       .shoot {
@@ -347,7 +260,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         width: 100px;
         height: 1.6px;
         border-radius: 2px;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
         opacity: 0;
         transform: rotate(148deg);
       }
@@ -362,11 +275,11 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       /* 色とりどりの飛行機 */
       .fly { position: absolute; width: 36px; opacity: 0; }
       .fly1 { top: 22%; animation: flyby 32s linear infinite; }
-      .fly1 path { fill: rgba(196, 178, 235, 0.7); } /* 薄い紫 */
+      .fly1 path { fill: rgba(255, 215, 94, 0.75); }
       .fly2 { top: 64%; width: 30px; animation: flybyRev 41s linear infinite 12s; }
-      .fly2 path { fill: rgba(197, 232, 165, 0.7); } /* 薄い黄緑 */
+      .fly2 path { fill: rgba(47, 157, 216, 0.75); }
       .fly3 { top: 40%; width: 26px; animation: flyby 52s linear infinite 24s; }
-      .fly3 path { fill: rgba(172, 221, 240, 0.7); } /* 薄い水色 */
+      .fly3 path { fill: rgba(6, 199, 85, 0.7); }
       @keyframes flyby {
         0% { transform: translate(-8vw, 0) rotate(-6deg); opacity: 0; }
         2% { opacity: 0.6; }
@@ -460,61 +373,11 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
 
       /* ---------- フッター ---------- */
       .site-footer {
-        position: relative;
         background: rgba(3, 7, 9, 0.5);
         color: #fff;
         border-top: 1px solid var(--line-dark);
         padding: 56px 0 24px;
       }
-      /* ---- フッター上の地平線シーン ---- */
-      .footer-scene {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: -1px;
-        transform: translateY(-100%);
-        height: 120px;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      .footer-scene svg { width: 100%; height: 100%; display: block; }
-      .dome { fill: rgba(255, 255, 255, 0.05); stroke: rgba(255, 255, 255, 0.3); stroke-width: 1.2; }
-      .dome-door { fill: rgba(13, 19, 22, 0.8); stroke: rgba(255, 255, 255, 0.25); stroke-width: 1; }
-      .dome-win { fill: rgba(47, 157, 216, 0.7); }
-      .dome-ant { stroke: rgba(255, 255, 255, 0.4); stroke-width: 1.2; }
-      .dome-light { fill: var(--gold); animation: domeBlink 2.4s ease-in-out infinite; }
-      @keyframes domeBlink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
-      .alien-body { fill: #8ee6a8; }
-      .alien-eye { fill: #101619; }
-      .alien-ant { stroke: #8ee6a8; stroke-width: 1.2; }
-      .alien-ant-tip { fill: var(--gold); }
-      .alien-figure { animation: alienWave 3.6s ease-in-out infinite; transform-origin: 0 0; }
-      @keyframes alienWave { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-6deg); } }
-      .alien-walker { animation: alienWalk 30s linear infinite; }
-      @keyframes alienWalk {
-        from { transform: translateX(-40px); }
-        to { transform: translateX(1240px); }
-      }
-      .walk-bob { animation: walkBob 0.45s ease-in-out infinite alternate; transform-origin: 50% 100%; }
-      @keyframes walkBob {
-        from { transform: translate(0, 120px) rotate(-4deg); }
-        to { transform: translate(0, 117px) rotate(4deg); }
-      }
-      .ufo { animation: ufoFly 40s linear infinite; }
-      @keyframes ufoFly {
-        from { transform: translate(1260px, 34px); }
-        to { transform: translate(-80px, 34px); }
-      }
-      .ufo-bob { animation: ufoBob 2.6s ease-in-out infinite; }
-      @keyframes ufoBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
-      .ufo-disc { fill: #cdd8e1; stroke: rgba(255, 255, 255, 0.5); stroke-width: 0.8; }
-      .ufo-dome { fill: rgba(140, 200, 255, 0.55); }
-      .ufo-beam { fill: rgba(255, 215, 94, 0.08); animation: beamPulse 3.2s ease-in-out infinite; }
-      @keyframes beamPulse { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
-      .ufo-light { fill: var(--gold); }
-      .ufo-light.l1 { animation: domeBlink 0.9s ease-in-out infinite; }
-      .ufo-light.l2 { animation: domeBlink 0.9s ease-in-out 0.3s infinite; }
-      .ufo-light.l3 { animation: domeBlink 0.9s ease-in-out 0.6s infinite; }
       .footer-logo {
         border-radius: 50%;
         margin-bottom: 14px;
@@ -553,7 +416,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         color: rgba(255, 255, 255, 0.65);
         transition: color 0.2s ease;
       }
-      .footer-threads svg { width: 17px; height: 17px; }
+      .footer-threads svg { width: 18px; height: 18px; }
       .footer-threads:hover { color: var(--gold); }
       .site-footer .note { color: rgba(255, 255, 255, 0.55); }
       .copyright {
@@ -563,114 +426,9 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         margin: 48px 0 0;
       }
 
-      /* ---------- ロケット演出 ---------- */
-      .rocket-fx {
-        position: fixed;
-        left: 50%;
-        top: -110px;
-        width: 46px;
-        margin-left: -23px;
-        z-index: 70;
-        pointer-events: none;
-        opacity: 0;
-      }
-      .rocket-fx svg { display: block; width: 100%; height: auto; }
-      .rk-body { fill: #e8eef4; stroke: rgba(0, 0, 0, 0.15); stroke-width: 0.6; }
-      .rk-win { fill: var(--blue); stroke: #fff; stroke-width: 1.2; }
-      .rk-fin { fill: var(--accent); }
-      .rk-base { fill: #c6d0d8; }
-      .rk-flame {
-        fill: var(--gold);
-        transform-origin: 20px 52px;
-        animation: rkFlick 0.13s ease-in-out infinite alternate;
-      }
-      @keyframes rkFlick {
-        from { transform: scaleY(0.75) scaleX(0.9); }
-        to { transform: scaleY(1.15) scaleX(1.05); }
-      }
-      /* CTAクリック：ノーズを下に向けてフォームへ降下 */
-      .rocket-fx.go {
-        transform: rotate(180deg);
-        animation: rocketRide 1.15s cubic-bezier(0.45, 0, 0.7, 1) forwards;
-      }
-      @keyframes rocketRide {
-        0% { top: -110px; opacity: 0; }
-        10% { opacity: 1; }
-        88% { opacity: 1; }
-        100% { top: 112vh; opacity: 0; }
-      }
-      /* 送信完了：下から上へ発射 */
-      .rocket-fx.launch {
-        top: auto;
-        bottom: -120px;
-        animation: rocketLaunch 1.5s cubic-bezier(0.5, 0, 0.75, 0.4) forwards;
-      }
-      @keyframes rocketLaunch {
-        0% { bottom: -120px; opacity: 0; }
-        10% { opacity: 1; }
-        88% { opacity: 1; }
-        100% { bottom: 114vh; opacity: 0; }
-      }
-      .rocket-fx.go svg, .rocket-fx.launch svg {
-        animation: rkWiggle 0.16s ease-in-out infinite alternate;
-      }
-      @keyframes rkWiggle {
-        from { transform: translateX(-1.5px); }
-        to { transform: translateX(1.5px); }
-      }
-
-      /* ---------- Cookie同意バー ---------- */
-      .cookie-bar {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        left: auto;
-        width: min(92vw, 460px);
-        z-index: 60;
-        background: rgba(13, 19, 22, 0.94);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid var(--line-dark);
-        border-radius: 14px;
-        padding: 18px 20px;
-        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
-      }
-      .cookie-bar p {
-        margin: 0 0 14px;
-        font-size: 13px;
-        line-height: 1.8;
-        color: var(--white-soft);
-      }
-      .cookie-bar p a { color: rgba(255, 255, 255, 0.8); }
-      .cookie-bar p a:hover { color: var(--gold); }
-      .cookie-actions { display: flex; align-items: center; gap: 18px; }
-      .cookie-accept {
-        border: none;
-        cursor: pointer;
-        padding: 10px 24px;
-        font-size: 13.5px;
-        font-weight: 700;
-      }
-      .cookie-decline {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-family: var(--font-goth);
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.55);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        padding: 4px;
-        transition: color 0.2s ease;
-      }
-      .cookie-decline:hover { color: var(--gold); }
-      @media (max-width: 760px) {
-        .cookie-bar { right: 12px; left: 12px; bottom: 12px; width: auto; }
-      }
-
       @media (prefers-reduced-motion: reduce) {
-        .sky i, .sky .fly, .sky .shoot, .brand-logo, .footer-logo, .rocket-fx, .rk-flame, .alien-walker, .walk-bob, .ufo, .ufo-bob, .ufo-beam, .ufo-light, .dome-light, .alien-figure { animation: none !important; }
-        .sky .fly, .sky .shoot { opacity: 0; }
+        .sky i, .sky .fly, .sky .glint, .sky .shoot, .brand-logo, .footer-logo { animation: none !important; }
+        .sky .fly, .sky .shoot, .sky .glint { opacity: 0; }
       }
 
       /* ---------- モバイル：スケルトンバー＋浮遊ロゴ/ハンバーガー ---------- */
