@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
   <!-- 1. ファーストビュー：1画面で権威性・信頼性・専門性を完結 -->
   <div class="band dark">
     <section class="lp-hero">
-      <img class="fv-logo rise d1" src="/logo.png?v=20260707-1519" alt="Spady" width="84" height="84" />
+      <img class="fv-logo rise d1" src="/logo.png?v=20260707-1816" alt="Spady" width="84" height="84" />
       <a class="lang-switch rise d1" href="/en/">EN</a>
       <div class="wrap lp-hero-inner">
         <div class="lp-hero-text">
@@ -183,7 +183,7 @@ import Base from '../layouts/Base.astro';
                 <animate attributeName="opacity" values="0.5;0" dur="2.6s" repeatCount="indefinite" />
               </circle>
               <circle cx="384" cy="142" r="33" class="sat-ring" />
-              <image href="/logo.png?v=20260707-1519" x="352" y="110" width="64" height="64" clip-path="url(#satClip)" />
+              <image href="/logo.png?v=20260707-1816" x="352" y="110" width="64" height="64" clip-path="url(#satClip)" />
             </g>
 
             <!-- 地球を周回する人工衛星（金・青の2機） -->
@@ -281,19 +281,74 @@ import Base from '../layouts/Base.astro';
   <!-- 4. サービス -->
   <div class="band dark alt">
     <section class="lp-sec" id="lp-services">
-      <!-- 浮遊する宇宙飛行士 -->
+      <!-- 浮遊する宇宙飛行士（EMU風） -->
       <div class="astro-float" aria-hidden="true">
-        <svg viewBox="0 0 80 104">
-          <rect x="22" y="34" width="36" height="34" rx="10" class="as-pack" />
-          <rect x="26" y="30" width="28" height="42" rx="12" class="as-body" />
-          <circle cx="40" cy="20" r="15" class="as-helmet" />
-          <ellipse cx="40" cy="21" rx="10" ry="8.5" class="as-visor" />
-          <ellipse cx="36" cy="18" rx="3" ry="2" class="as-glint" />
-          <path d="M27 40 C16 44 12 52 14 60" class="as-limb" />
-          <path d="M53 40 C64 42 70 38 72 30" class="as-limb" />
-          <path d="M32 71 C30 80 26 88 22 92" class="as-limb" />
-          <path d="M48 71 C52 80 56 86 62 88" class="as-limb" />
-          <circle cx="40" cy="46" r="4" class="as-badge" />
+        <svg viewBox="0 0 120 160">
+          <defs>
+            <linearGradient id="asSuit" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#c9d5de" />
+            </linearGradient>
+            <radialGradient id="asHelm" cx="35%" cy="28%" r="80%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#cfdae2" />
+            </radialGradient>
+            <radialGradient id="asVis" cx="38%" cy="30%" r="85%">
+              <stop offset="0%" stop-color="#3d6a8e" />
+              <stop offset="55%" stop-color="#16324a" />
+              <stop offset="100%" stop-color="#081420" />
+            </radialGradient>
+            <linearGradient id="asPack" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c3ced7" />
+              <stop offset="100%" stop-color="#8e9ba6" />
+            </linearGradient>
+          </defs>
+
+          <!-- 生命維持装置（背中） -->
+          <rect x="30" y="36" width="60" height="58" rx="10" fill="url(#asPack)" class="as-line" />
+          <line x1="86" y1="38" x2="95" y2="17" class="as-ant" />
+          <circle cx="96" cy="15" r="2.4" class="as-ant-tip" />
+
+          <!-- 腕（左は曲げ、右は伸ばし） -->
+          <path d="M40 52 C23 56 15 68 20 83" class="as-limb" />
+          <path d="M80 52 C97 50 106 60 104 75" class="as-limb" />
+          <path d="M22 70 l10 4" class="as-stripe" />
+          <circle cx="21" cy="87" r="6.5" class="as-glove" />
+          <circle cx="104" cy="79" r="6.5" class="as-glove" />
+
+          <!-- 脚 -->
+          <path d="M50 92 C46 113 41 128 35 141" class="as-limb" />
+          <path d="M70 92 C77 112 85 124 93 134" class="as-limb" />
+          <path d="M42 121 l11 3" class="as-stripe" />
+          <ellipse cx="33" cy="146" rx="7.5" ry="5.5" class="as-boot" transform="rotate(-18 33 146)" />
+          <ellipse cx="96" cy="138" rx="7.5" ry="5.5" class="as-boot" transform="rotate(28 96 138)" />
+
+          <!-- 胴体（ハードアッパートルソー） -->
+          <rect x="38" y="42" width="44" height="52" rx="14" fill="url(#asSuit)" class="as-line" />
+          <path d="M42 60 h36 M42 84 h36" class="as-seam" />
+
+          <!-- ホース（胸⇄背面） -->
+          <path d="M48 76 C37 82 33 89 38 95" class="as-hose" />
+          <path d="M72 76 C83 82 87 89 82 95" class="as-hose" />
+          <circle cx="48" cy="76" r="2.8" class="as-plug-b" />
+          <circle cx="72" cy="76" r="2.8" class="as-plug-r" />
+
+          <!-- 胸のコントロールモジュール -->
+          <rect x="47" y="60" width="26" height="17" rx="3" class="as-dcm" />
+          <circle cx="53" cy="66" r="2.4" class="as-knob-g" />
+          <circle cx="60" cy="66" r="2.4" class="as-knob-b" />
+          <rect x="51" y="71" width="18" height="2" rx="1" class="as-slit" />
+          <circle cx="68" cy="66" r="1.6" class="as-slit" />
+
+          <!-- ネックリングとヘルメット -->
+          <rect x="50" y="39" width="20" height="6" rx="3" class="as-ring" />
+          <circle cx="60" cy="25" r="19" fill="url(#asHelm)" class="as-line" />
+          <circle cx="60" cy="26" r="13.5" fill="url(#asVis)" />
+          <path d="M50 20 C53 15 61 13 67 16" class="as-glare" />
+          <ellipse cx="55" cy="31" rx="4" ry="2.4" class="as-earth-ref" />
+
+          <!-- Spadyワッペン -->
+          <circle cx="60" cy="52" r="4" class="as-badge" />
         </svg>
       </div>
       <div class="wrap">
@@ -333,13 +388,13 @@ import Base from '../layouts/Base.astro';
         <h2 class="fade">実績・活動事例</h2>
         <div class="grid2">
           <div class="card work-card fade">
-            <div class="logo-slot"><img src="/logo-qqenglish.png?v=20260707-1519" alt="QQEnglish" loading="lazy" /></div>
+            <div class="logo-slot"><img src="/logo-qqenglish.png?v=20260707-1816" alt="QQEnglish" loading="lazy" /></div>
             <h3>QQEnglish 様（フィリピン・セブ島）</h3>
             <p class="metric-lp">留学事業に続き、オンライン英会話事業も</p>
             <p>セブ島最大級の語学学校のLINE構築を担当。2事業続けてご依頼いただきました。</p>
           </div>
           <div class="card work-card fade">
-            <div class="logo-slot"><img src="/logo-telenet.png?v=20260707-1519" alt="tele-net International" loading="lazy" /></div>
+            <div class="logo-slot"><img src="/logo-telenet.png?v=20260707-1816" alt="tele-net International" loading="lazy" /></div>
             <h3>テレネットインターナショナル 様</h3>
             <p class="metric-lp">海外市場向け日系企業のLINE構築</p>
             <p>名刺代わりになるLINE公式アカウントを構築。LINE上の問い合わせフォームと利用者情報の自動紐付けを設計しました。</p>
@@ -369,7 +424,7 @@ import Base from '../layouts/Base.astro';
             </p>
           </div>
           <figure class="seminar-fig fade">
-            <img src="/seminar.jpg?v=20260707-1519" alt="小樽での勉強会の様子" loading="lazy" width="1080" height="1080" />
+            <img src="/seminar.jpg?v=20260707-1816" alt="小樽での勉強会の様子" loading="lazy" width="1080" height="1080" />
             <figcaption>小樽での勉強会の様子</figcaption>
           </figure>
         </div>
@@ -383,7 +438,7 @@ import Base from '../layouts/Base.astro';
       <div class="wrap">
         <p class="eyebrow fade"><span class="e-dot"></span>PROFILE</p>
         <div class="lp-profile fade">
-          <div class="lp-profile-mark"><img src="/profile.jpg?v=20260707-1519" alt="井上博史" width="320" height="320" /></div>
+          <div class="lp-profile-mark"><img src="/profile.jpg?v=20260707-1816" alt="井上博史" width="320" height="320" /></div>
           <div>
             <h2 style="margin-bottom: 6px;">井上博史</h2>
             <p class="note" style="margin-bottom: 20px;">Spady 代表／北海道小樽市銭函</p>
@@ -442,7 +497,7 @@ import Base from '../layouts/Base.astro';
             <p>前職ではMeta社に出向し、広告主様や広告代理店様のマーケティング支援に携わりました。そこで痛感したのは、デジタル活用の情報には大きな「格差」があるということです。都市部の企業や代理店には新しいノウハウが届きやすい一方で、地域のお店や中小企業には、本来使えるはずの選択肢が十分に届いていないのです。</p>
             <p>広告は、出せば終わりではありません。見た人がその後どこへ進み、どう問い合わせ・予約・来店につながるか——そこまで整えてはじめて意味を持ちます。現在は小樽・銭函を拠点に、Meta広告・Instagram・LINE公式アカウント・AIを組み合わせ、事業者の魅力が「必要な人に届く」導線づくりを行っています。</p>
             <p>人口減少が進むこれからの地域では、限られた商圏の中で「選ばれる力」がますます重要になります。地域の事業者が、自分たちの魅力をもっと自然に届けられる状態をつくること。そのために、マーケティングとテクノロジーを、現場で使える形にして届けていきます。</p>
-            <div class="why-sign" aria-hidden="true"><img src="/logo.png?v=20260707-1519" alt="" width="46" height="46" loading="lazy" /></div>
+            <div class="why-sign" aria-hidden="true"><img src="/logo.png?v=20260707-1816" alt="" width="46" height="46" loading="lazy" /></div>
           </div>
         </details>
       </div>
@@ -809,34 +864,51 @@ import Base from '../layouts/Base.astro';
     .os-blue { filter: drop-shadow(0 0 5px rgba(47, 157, 216, 0.55)); }
     .spady-sat image { filter: drop-shadow(0 0 10px rgba(237, 28, 36, 0.55)); }
 
-    /* ---------- 浮遊する宇宙飛行士 ---------- */
+    /* ---------- 浮遊する宇宙飛行士（EMU風） ---------- */
     #lp-services { position: relative; overflow: hidden; }
     .astro-float {
       position: absolute;
-      top: 64px;
-      right: 7%;
-      width: 96px;
+      top: 56px;
+      right: 6.5%;
+      width: 112px;
       pointer-events: none;
       animation: astroDrift 8s ease-in-out infinite;
-      opacity: 0.95;
+      opacity: 0.96;
+      filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
     }
     .astro-float svg { display: block; width: 100%; height: auto; }
     @keyframes astroDrift {
-      0%, 100% { transform: translate(0, 0) rotate(-6deg); }
-      50% { transform: translate(-14px, 16px) rotate(7deg); }
+      0%, 100% { transform: translate(0, 0) rotate(-7deg); }
+      50% { transform: translate(-15px, 18px) rotate(8deg); }
     }
-    .as-pack { fill: #aab7c2; }
-    .as-body { fill: #eef3f7; stroke: rgba(0, 0, 0, 0.12); stroke-width: 1; }
-    .as-helmet { fill: #f4f8fb; stroke: rgba(0, 0, 0, 0.12); stroke-width: 1; }
-    .as-visor { fill: #17334a; }
-    .as-glint { fill: rgba(150, 210, 255, 0.75); }
+    .as-line { stroke: rgba(20, 32, 40, 0.25); stroke-width: 1; }
     .as-limb {
       fill: none;
-      stroke: #eef3f7;
-      stroke-width: 7;
+      stroke: #e6edf3;
+      stroke-width: 11;
       stroke-linecap: round;
     }
-    .as-badge { fill: var(--accent); }
+    .as-stripe { stroke: var(--accent); stroke-width: 4.5; stroke-linecap: round; }
+    .as-glove, .as-boot { fill: #8f9ca6; stroke: rgba(20, 32, 40, 0.3); stroke-width: 0.8; }
+    .as-seam { stroke: rgba(20, 32, 40, 0.14); stroke-width: 1; fill: none; }
+    .as-hose { fill: none; stroke: #9fb2c1; stroke-width: 3.5; stroke-linecap: round; }
+    .as-plug-b { fill: var(--blue); }
+    .as-plug-r { fill: var(--accent); }
+    .as-dcm { fill: #8b98a3; stroke: rgba(20, 32, 40, 0.35); stroke-width: 0.8; }
+    .as-knob-g { fill: var(--gold); }
+    .as-knob-b { fill: var(--blue); }
+    .as-slit { fill: rgba(16, 22, 25, 0.55); }
+    .as-ring { fill: #9aa7b1; stroke: rgba(20, 32, 40, 0.3); stroke-width: 0.8; }
+    .as-glare {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.6);
+      stroke-width: 2.4;
+      stroke-linecap: round;
+    }
+    .as-earth-ref { fill: rgba(80, 190, 200, 0.4); }
+    .as-ant { stroke: rgba(230, 237, 243, 0.9); stroke-width: 1.6; }
+    .as-ant-tip { fill: var(--gold); }
+    .as-badge { fill: var(--accent); stroke: rgba(255, 255, 255, 0.85); stroke-width: 1.2; }
 
     /* ---------- 3色アクセント ---------- */
     .e-dot.e-blue { background: var(--blue); }
@@ -1187,19 +1259,20 @@ import Base from '../layouts/Base.astro';
 
     /* ---------- スクロール誘導（FV下部） ---------- */
     .scroll-cue {
-      position: absolute;
-      right: 28px;
-      bottom: 18px;
-      z-index: 3;
+      position: fixed;
+      right: 24px;
+      bottom: 22px;
+      z-index: 25;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
       text-decoration: none;
       color: rgba(255, 255, 255, 0.75);
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, opacity 0.35s ease, visibility 0.35s ease;
     }
     .scroll-cue:hover { color: var(--gold); }
+    .scroll-cue.off { opacity: 0; visibility: hidden; }
     .sc-text {
       font-size: 10px;
       font-weight: 700;
@@ -1424,7 +1497,7 @@ import Base from '../layouts/Base.astro';
       .why-sign img { width: 40px; height: 40px; }
       .pro-moon { width: 46px; height: 46px; }
       .fv-logo { width: 58px; height: 58px; top: 14px; left: 14px; border-width: 2.5px; }
-      .astro-float { width: 62px; top: 30px; right: 5%; }
+      .astro-float { width: 72px; top: 26px; right: 4%; }
       .scroll-cue { right: 16px; bottom: 14px; }
     }
   </style>

@@ -54,15 +54,15 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={new URL(Astro.url.pathname, 'https://spady.net').href} />
-    <meta property="og:image" content="https://spady.net/og-20260707-1532.png" />
-    <meta name="twitter:image" content="https://spady.net/og-20260707-1532.png" />
+    <meta property="og:image" content="https://spady.net/og-20260707-1816.png" />
     <meta property="og:site_name" content="Spady" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://spady.net/og-20260707-1816.png" />
     <link rel="alternate" hreflang="ja" href={new URL(jaPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="en" href={new URL(enPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="x-default" href={new URL(jaPath, 'https://spady.net').href} />
-    <link rel="icon" type="image/png" href="/favicon.png?v=20260707-1519" />
-    <link rel="apple-touch-icon" href="/favicon.png?v=20260707-1519" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=20260707-1816" />
+    <link rel="apple-touch-icon" href="/favicon.png?v=20260707-1816" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -123,15 +123,19 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       <i style="left:33%;top:63%;animation-delay:1.7s"></i>
       <span class="shoot sh1"></span>
       <span class="shoot sh2"></span>
-      <svg class="fly fly1" viewBox="0 0 40 20"><path d="M2,10 L34,4 L26,10 L34,16 Z" /></svg>
-      <svg class="fly fly2" viewBox="0 0 40 20"><path d="M2,10 L34,4 L26,10 L34,16 Z" /></svg>
-      <svg class="fly fly3" viewBox="0 0 40 20"><path d="M2,10 L34,4 L26,10 L34,16 Z" /></svg>
+    </div>
+
+    <!-- 前景の空：クリックできる飛行機たち -->
+    <div class="sky-front" aria-hidden="true">
+      <svg class="fly fly1" viewBox="0 0 40 20"><g class="fly-in"><path d="M2,10 L34,4 L26,10 L34,16 Z" /></g></svg>
+      <svg class="fly fly2" viewBox="0 0 40 20"><g class="fly-in"><path d="M2,10 L34,4 L26,10 L34,16 Z" /></g></svg>
+      <svg class="fly fly3" viewBox="0 0 40 20"><g class="fly-in"><path d="M2,10 L34,4 L26,10 L34,16 Z" /></g></svg>
     </div>
 
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
         <a class="brand" href={home}>
-          <img class="brand-logo" src="/logo.png?v=20260707-1519" alt="Spady" width="56" height="56" />
+          <img class="brand-logo" src="/logo.png?v=20260707-1816" alt="Spady" width="56" height="56" />
         </a>
         <nav class="nav" id="nav">
           <a href={`${home}#lp-services`}>{t.nav[0]}</a>
@@ -163,7 +167,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
             <circle cx="0" cy="-57" r="3" class="dome-light" />
           </g>
           <!-- 基地のそばに立つ小さな宇宙人 -->
-          <g transform="translate(208, 120)">
+          <g class="alien-buddy" transform="translate(208, 120)">
             <g class="alien-figure">
               <path d="M-5 0 C-5 -12 5 -12 5 0 Z" class="alien-body" />
               <ellipse cx="-2" cy="-8" rx="1.7" ry="2.2" class="alien-eye" />
@@ -197,13 +201,13 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       </div>
       <div class="wrap footer-inner">
         <div>
-          <img class="footer-logo" id="footerLogo" src="/logo.png?v=20260707-1519" alt="Spady" width="52" height="52" />
+          <img class="footer-logo" id="footerLogo" src="/logo.png?v=20260707-1816" alt="Spady" width="52" height="52" />
           <p class="note">{t.footNote}</p>
         </div>
         <nav class="footer-nav">
           <a href={`${home}#contact`}>{t.footContact}</a>
           <a href={t.privacyHref}>{t.footPrivacy}</a>
-          <a href={t.langHref}>{t.langLabel}</a>
+          <a class="lang-link" href={t.langHref}>{t.langLabel}</a>
         </nav>
         <div class="footer-sns">
           <a class="footer-threads" href="https://www.threads.com/hiroshiinoue.spady" target="_blank" rel="noopener">
@@ -214,6 +218,11 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       </div>
       <p class="copyright">© Spady</p>
     </footer>
+
+    <!-- 言語切替の演出（小さな地球がくるくる回る） -->
+    <div class="lang-fx" id="langFx" aria-hidden="true">
+      <span class="lang-globe"></span>
+    </div>
 
     <!-- ロケット演出（CTAクリックで降下／送信完了で発射） -->
     <div class="rocket-fx" id="rocketFx" aria-hidden="true">
@@ -238,9 +247,11 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     <script>
       // 上にスクロールで表示し、止めても表示を維持。下スクロールでのみ隠す
       const header = document.getElementById('siteHeader');
+      const cue = document.querySelector('.scroll-cue');
       let lastY = window.scrollY;
       const onScroll = () => {
         const y = window.scrollY;
+        cue?.classList.toggle('off', y > 100);
         if (y <= 120) {
           header.classList.remove('scrolled');
           document.getElementById('nav')?.classList.remove('open');
@@ -295,19 +306,84 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         });
       });
 
-      // Cookie同意バー
+      // Cookie同意バー（表示中はモバイルのSCROLLを持ち上げて重なりを防ぐ）
       const cookieBar = document.getElementById('cookieBar');
+      const adjustCue = () => {
+        if (!cue) return;
+        cue.style.bottom =
+          cookieBar && !cookieBar.hidden && window.innerWidth <= 760 ? '175px' : '';
+      };
       let consent = null;
       try { consent = localStorage.getItem('spady_cookie_consent'); } catch (e) {}
       if (!consent && cookieBar) cookieBar.hidden = false;
+      adjustCue();
       document.getElementById('cookieAccept')?.addEventListener('click', () => {
         try { localStorage.setItem('spady_cookie_consent', 'granted'); } catch (e) {}
         window.__loadGTM?.();
         cookieBar.hidden = true;
+        adjustCue();
       });
       document.getElementById('cookieDecline')?.addEventListener('click', () => {
         try { localStorage.setItem('spady_cookie_consent', 'denied'); } catch (e) {}
         cookieBar.hidden = true;
+        adjustCue();
+      });
+
+      // クリック演出：要素ごとに異なる遊び
+      const reduceFx = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const popFx = (el, cls, ms) => {
+        if (!el || reduceFx) return;
+        el.classList.remove(cls);
+        void el.offsetWidth;
+        el.classList.add(cls);
+        setTimeout(() => el.classList.remove(cls), ms);
+      };
+      const bindFx = (target, fxEl, cls, ms) => {
+        if (!target) return;
+        target.style.pointerEvents = 'auto';
+        target.style.cursor = 'pointer';
+        target.addEventListener('click', () => popFx(fxEl || target, cls, ms));
+      };
+      bindFx(document.querySelector('.fv-logo'), null, 'fx-beat', 800);
+      bindFx(document.querySelector('.astro-float'), null, 'fx-flip', 1050);
+      bindFx(document.querySelector('.pro-moon'), null, 'fx-super', 800);
+      const ufoEl = document.querySelector('.ufo');
+      bindFx(ufoEl, ufoEl?.querySelector('.ufo-bob'), 'fx-zip', 800);
+      bindFx(document.querySelector('.alien-base'), null, 'fx-party', 1000);
+      const walkerEl = document.querySelector('.alien-walker');
+      bindFx(walkerEl, walkerEl?.querySelector('.walk-bob'), 'fx-jump', 700);
+      const buddyEl = document.querySelector('.alien-buddy');
+      bindFx(buddyEl, buddyEl?.querySelector('.alien-figure'), 'fx-hi', 800);
+      document.querySelectorAll('.flow .num').forEach((n) => bindFx(n, null, 'fx-num', 650));
+      document.querySelectorAll('.reason .num').forEach((n) => bindFx(n, null, 'fx-stamp', 700));
+      const flyFx = [['fly1', 'fx-roll', 800], ['fly2', 'fx-boost', 650], ['fly3', 'fx-barrel', 800]];
+      flyFx.forEach(([cls, fx, ms]) => {
+        const el = document.querySelector('.' + cls);
+        bindFx(el, el?.querySelector('.fly-in'), fx, ms);
+      });
+
+      // 言語切替：地球がくるくる回る演出をはさんで遷移
+      const langFx = document.getElementById('langFx');
+      document.querySelectorAll('.lang-switch, .nav-lang, .lang-link').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          if (reduceMotion || !langFx) return;
+          e.preventDefault();
+          langFx.classList.add('on');
+          setTimeout(() => { location.href = a.getAttribute('href'); }, 520);
+        });
+      });
+
+      // ナビ・フッターの同一ページ内移動はロケットで
+      document.querySelectorAll('.nav a[href*="#"], .footer-nav a[href*="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const hash = (a.getAttribute('href') || '').split('#')[1];
+          const target = hash && document.getElementById(hash);
+          if (!target) return; // 別ページ（プライバシー等）からは通常遷移
+          e.preventDefault();
+          window.__rocket('go');
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+          document.getElementById('nav')?.classList.remove('open');
+        });
       });
 
       // 控えめなフェードイン
@@ -382,6 +458,50 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         38% { transform: translate(-10vw, -10vh) rotate(186deg); opacity: 0; }
         100% { transform: translate(-10vw, -10vh); opacity: 0; }
       }
+
+      /* ---------- 前景の空（クリックできる飛行機） ---------- */
+      .sky-front {
+        position: fixed;
+        inset: 0;
+        z-index: 15;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .sky-front .fly { pointer-events: auto; cursor: pointer; }
+
+      /* ---------- 言語切替オーバーレイ ---------- */
+      .lang-fx {
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        background: var(--dark);
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .lang-fx.on { opacity: 1; pointer-events: auto; }
+      .lang-globe {
+        position: relative;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #2f89c5, #0a3457 70%, #041627);
+        box-shadow: 0 0 46px rgba(110, 190, 255, 0.5);
+        animation: langSpin 0.55s linear infinite;
+      }
+      .lang-globe::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background:
+          radial-gradient(16px 10px at 30% 38%, rgba(111, 174, 118, 0.95), transparent 65%),
+          radial-gradient(13px 9px at 66% 64%, rgba(111, 174, 118, 0.9), transparent 65%),
+          radial-gradient(9px 6px at 58% 26%, rgba(111, 174, 118, 0.8), transparent 65%);
+      }
+      @keyframes langSpin { to { transform: rotate(360deg); } }
 
       /* ---------- ヘッダー：FVでは非表示、スクロールで浮き出る ---------- */
       .site-header {
@@ -623,9 +743,9 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       /* ---------- Cookie同意バー ---------- */
       .cookie-bar {
         position: fixed;
-        right: 20px;
+        left: 20px;
         bottom: 20px;
-        left: auto;
+        right: auto;
         width: min(92vw, 460px);
         z-index: 60;
         background: rgba(13, 19, 22, 0.94);
@@ -670,8 +790,8 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .sky i, .sky .fly, .sky .shoot, .brand-logo, .footer-logo, .rocket-fx, .rk-flame, .alien-walker, .walk-bob, .ufo, .ufo-bob, .ufo-beam, .ufo-light, .dome-light, .alien-figure { animation: none !important; }
-        .sky .fly, .sky .shoot { opacity: 0; }
+        .sky i, .fly, .sky .shoot, .brand-logo, .footer-logo, .rocket-fx, .rk-flame, .lang-globe, .alien-walker, .walk-bob, .ufo, .ufo-bob, .ufo-beam, .ufo-light, .dome-light, .alien-figure { animation: none !important; }
+        .fly, .sky .shoot { opacity: 0; }
       }
 
       /* ---------- モバイル：スケルトンバー＋浮遊ロゴ/ハンバーガー ---------- */
