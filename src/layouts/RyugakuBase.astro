@@ -50,14 +50,14 @@ const enPath = lang === 'en' ? currentPath : `${basePath}/en${currentPath.slice(
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={new URL(Astro.url.pathname, 'https://spady.net').href} />
-    <meta property="og:image" content="https://spady.net/og.png" />
+    <meta property="og:image" content="https://spady.net/og.png?v=20260707-1519" />
     <meta property="og:site_name" content="Spady" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="alternate" hreflang="ja" href={new URL(jaPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="en" href={new URL(enPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="x-default" href={new URL(jaPath, 'https://spady.net').href} />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=20260707-1519" />
+    <link rel="apple-touch-icon" href="/favicon.png?v=20260707-1519" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -126,7 +126,7 @@ const enPath = lang === 'en' ? currentPath : `${basePath}/en${currentPath.slice(
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
         <a class="brand" href={home}>
-          <img class="brand-logo" src="/logo.png" alt="Spady" width="56" height="56" />
+          <img class="brand-logo" src="/logo.png?v=20260707-1519" alt="Spady" width="56" height="56" />
         </a>
         <nav class="nav" id="nav">
           <a href={`${home}#lp-services`}>{t.nav[0]}</a>
@@ -147,7 +147,7 @@ const enPath = lang === 'en' ? currentPath : `${basePath}/en${currentPath.slice(
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <div>
-          <img class="footer-logo" id="footerLogo" src="/logo.png" alt="Spady" width="52" height="52" />
+          <img class="footer-logo" id="footerLogo" src="/logo.png?v=20260707-1519" alt="Spady" width="52" height="52" />
           <p class="note">{t.footNote}</p>
         </div>
         <nav class="footer-nav">
