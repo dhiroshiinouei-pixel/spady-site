@@ -54,15 +54,15 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={new URL(Astro.url.pathname, 'https://spady.net').href} />
-    <meta property="og:image" content="https://spady.net/og-20260707-1816.png" />
+    <meta property="og:image" content="https://spady.net/og-20260707-1833.png" />
     <meta property="og:site_name" content="Spady" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://spady.net/og-20260707-1816.png" />
+    <meta name="twitter:image" content="https://spady.net/og-20260707-1833.png" />
     <link rel="alternate" hreflang="ja" href={new URL(jaPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="en" href={new URL(enPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="x-default" href={new URL(jaPath, 'https://spady.net').href} />
-    <link rel="icon" type="image/png" href="/favicon.png?v=20260707-1816" />
-    <link rel="apple-touch-icon" href="/favicon.png?v=20260707-1816" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=20260707-1833" />
+    <link rel="apple-touch-icon" href="/favicon.png?v=20260707-1833" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -135,7 +135,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
         <a class="brand" href={home}>
-          <img class="brand-logo" src="/logo.png?v=20260707-1816" alt="Spady" width="56" height="56" />
+          <img class="brand-logo" src="/logo.png?v=20260707-1833" alt="Spady" width="56" height="56" />
         </a>
         <nav class="nav" id="nav">
           <a href={`${home}#lp-services`}>{t.nav[0]}</a>
@@ -201,7 +201,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       </div>
       <div class="wrap footer-inner">
         <div>
-          <img class="footer-logo" id="footerLogo" src="/logo.png?v=20260707-1816" alt="Spady" width="52" height="52" />
+          <img class="footer-logo" id="footerLogo" src="/logo.png?v=20260707-1833" alt="Spady" width="52" height="52" />
           <p class="note">{t.footNote}</p>
         </div>
         <nav class="footer-nav">
@@ -296,13 +296,17 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         void rocket.offsetWidth;
         rocket.classList.add(mode === 'launch' ? 'launch' : 'go');
       };
+      // 目的地が下なら降下ロケット、上なら上昇ロケット
+      const rocketToward = (target) => {
+        window.__rocket(target.getBoundingClientRect().top >= 0 ? 'go' : 'launch');
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      };
       document.querySelectorAll('a.btn-big[href="#contact"]').forEach((a) => {
         a.addEventListener('click', (e) => {
+          const target = document.getElementById('contact');
+          if (!target) return;
           e.preventDefault();
-          window.__rocket('go');
-          document.getElementById('contact')?.scrollIntoView({
-            behavior: reduceMotion ? 'auto' : 'smooth',
-          });
+          rocketToward(target);
         });
       });
 
@@ -380,8 +384,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
           const target = hash && document.getElementById(hash);
           if (!target) return; // 別ページ（プライバシー等）からは通常遷移
           e.preventDefault();
-          window.__rocket('go');
-          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+          rocketToward(target);
           document.getElementById('nav')?.classList.remove('open');
         });
       });
@@ -484,24 +487,41 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       .lang-fx.on { opacity: 1; pointer-events: auto; }
       .lang-globe {
         position: relative;
-        width: 78px;
-        height: 78px;
+        width: 96px;
+        height: 96px;
         border-radius: 50%;
-        background: radial-gradient(circle at 35% 30%, #2f89c5, #0a3457 70%, #041627);
-        box-shadow: 0 0 46px rgba(110, 190, 255, 0.5);
-        animation: langSpin 0.55s linear infinite;
+        overflow: hidden;
+        background: radial-gradient(circle at 34% 30%, #2f89c5, #175a8d 42%, #0a3457 72%, #041627);
+        box-shadow:
+          0 0 48px rgba(70, 150, 220, 0.5),
+          inset -18px -14px 30px rgba(1, 6, 12, 0.65),
+          inset 6px 6px 18px rgba(90, 170, 230, 0.25);
       }
+      /* 大陸レイヤー：横に流れ続けて自転に見せる */
       .lang-globe::before {
         content: '';
         position: absolute;
         inset: 0;
-        border-radius: 50%;
-        background:
-          radial-gradient(16px 10px at 30% 38%, rgba(111, 174, 118, 0.95), transparent 65%),
-          radial-gradient(13px 9px at 66% 64%, rgba(111, 174, 118, 0.9), transparent 65%),
-          radial-gradient(9px 6px at 58% 26%, rgba(111, 174, 118, 0.8), transparent 65%);
+        background-image:
+          radial-gradient(26px 15px at 22% 30%, rgba(74, 138, 84, 0.95), transparent 62%),
+          radial-gradient(13px 17px at 40% 56%, rgba(64, 126, 76, 0.95), transparent 62%),
+          radial-gradient(17px 10px at 66% 24%, rgba(80, 146, 90, 0.9), transparent 62%),
+          radial-gradient(21px 12px at 84% 60%, rgba(70, 132, 80, 0.92), transparent 62%),
+          radial-gradient(11px 7px at 55% 78%, rgba(64, 126, 76, 0.85), transparent 62%),
+          radial-gradient(8px 5px at 8% 66%, rgba(74, 138, 84, 0.8), transparent 62%);
+        background-repeat: repeat-x;
+        background-size: 96px 100%;
+        animation: langDrift 1s linear infinite;
       }
-      @keyframes langSpin { to { transform: rotate(360deg); } }
+      /* 昼夜の陰影（前面固定） */
+      .lang-globe::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: radial-gradient(circle at 32% 28%, rgba(0, 0, 0, 0) 45%, rgba(1, 5, 10, 0.55) 82%, rgba(0, 2, 5, 0.85) 100%);
+      }
+      @keyframes langDrift { to { background-position-x: -96px; } }
 
       /* ---------- ヘッダー：FVでは非表示、スクロールで浮き出る ---------- */
       .site-header {
@@ -790,7 +810,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .sky i, .fly, .sky .shoot, .brand-logo, .footer-logo, .rocket-fx, .rk-flame, .lang-globe, .alien-walker, .walk-bob, .ufo, .ufo-bob, .ufo-beam, .ufo-light, .dome-light, .alien-figure { animation: none !important; }
+        .sky i, .fly, .sky .shoot, .brand-logo, .footer-logo, .rocket-fx, .rk-flame, .lang-globe::before, .alien-walker, .walk-bob, .ufo, .ufo-bob, .ufo-beam, .ufo-light, .dome-light, .alien-figure { animation: none !important; }
         .fly, .sky .shoot { opacity: 0; }
       }
 
