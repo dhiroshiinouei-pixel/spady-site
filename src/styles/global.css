@@ -358,3 +358,35 @@ p { margin: 0 0 1em; }
 @media (prefers-reduced-motion: reduce) {
   .fx-stamp, .fx-roll, .fx-boost, .fx-barrel { animation: none !important; }
 }
+
+/* 丼アイコン：ひょこっとお辞儀＋湯気が強まる */
+.fx-yum { animation: fxYum 0.75s ease !important; }
+.fx-yum .cs-steam { animation-duration: 0.7s !important; opacity: 1; }
+@keyframes fxYum {
+  0% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-6px) rotate(-6deg); }
+  60% { transform: translateY(0) rotate(4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-yum, .cs-steam { animation: none !important; }
+}
+
+/* プロフィール写真：ぺこりとお辞儀 */
+.fx-bow { transform-origin: 50% 85%; animation: fxBow 0.75s ease !important; }
+@keyframes fxBow {
+  0% { transform: rotate(0deg); }
+  35% { transform: rotate(-8deg) translateY(4px); }
+  70% { transform: rotate(2.5deg); }
+  100% { transform: rotate(0deg); }
+}
+/* 名前：金色にふわっと浮かぶ */
+.fx-name { display: inline-block; animation: fxName 0.75s ease !important; }
+@keyframes fxName {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(-3px); color: #ffd75e; text-shadow: 0 0 18px rgba(255, 215, 94, 0.6); }
+  100% { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-bow, .fx-name { animation: none !important; }
+}

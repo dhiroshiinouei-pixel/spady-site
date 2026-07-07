@@ -54,15 +54,15 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={new URL(Astro.url.pathname, 'https://spady.net').href} />
-    <meta property="og:image" content="https://spady.net/og-20260707-1833.png" />
+    <meta property="og:image" content="https://spady.net/og-20260708-0021.png" />
     <meta property="og:site_name" content="Spady" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://spady.net/og-20260707-1833.png" />
+    <meta name="twitter:image" content="https://spady.net/og-20260708-0021.png" />
     <link rel="alternate" hreflang="ja" href={new URL(jaPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="en" href={new URL(enPath, 'https://spady.net').href} />
     <link rel="alternate" hreflang="x-default" href={new URL(jaPath, 'https://spady.net').href} />
-    <link rel="icon" type="image/png" href="/favicon.png?v=20260707-1833" />
-    <link rel="apple-touch-icon" href="/favicon.png?v=20260707-1833" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=20260708-0021" />
+    <link rel="apple-touch-icon" href="/favicon.png?v=20260708-0021" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -135,7 +135,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
         <a class="brand" href={home}>
-          <img class="brand-logo" src="/logo.png?v=20260707-1833" alt="Spady" width="56" height="56" />
+          <img class="brand-logo" src="/logo.png?v=20260708-0021" alt="Spady" width="56" height="56" />
         </a>
         <nav class="nav" id="nav">
           <a href={`${home}#lp-services`}>{t.nav[0]}</a>
@@ -201,7 +201,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       </div>
       <div class="wrap footer-inner">
         <div>
-          <img class="footer-logo" id="footerLogo" src="/logo.png?v=20260707-1833" alt="Spady" width="52" height="52" />
+          <img class="footer-logo" id="footerLogo" src="/logo.png?v=20260708-0021" alt="Spady" width="52" height="52" />
           <p class="note">{t.footNote}</p>
         </div>
         <nav class="footer-nav">
@@ -278,13 +278,22 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         a.addEventListener('click', () => nav.classList.remove('open'))
       );
 
-      // フッターロゴ：クリックでピカッ
+      // フッターロゴ：ピカッと光ってトップページへ
       const fl = document.getElementById('footerLogo');
       fl?.addEventListener('click', () => {
         fl.classList.remove('ping');
         void fl.offsetWidth; // 再アニメーションのためのリフロー
         fl.classList.add('ping');
-        setTimeout(() => fl.classList.remove('ping'), 750);
+        const homeHref = document.documentElement.lang === 'en' ? '/en/' : '/';
+        const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        setTimeout(() => {
+          if (location.pathname === homeHref) {
+            window.__rocket?.('launch');
+            window.scrollTo({ top: 0, behavior: rm ? 'auto' : 'smooth' });
+          } else {
+            location.href = homeHref;
+          }
+        }, 450);
       });
 
       // ロケット演出
@@ -360,6 +369,9 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
       bindFx(buddyEl, buddyEl?.querySelector('.alien-figure'), 'fx-hi', 800);
       document.querySelectorAll('.flow .num').forEach((n) => bindFx(n, null, 'fx-num', 650));
       document.querySelectorAll('.reason .num').forEach((n) => bindFx(n, null, 'fx-stamp', 700));
+      bindFx(document.querySelector('.case-ic'), null, 'fx-yum', 800);
+      bindFx(document.querySelector('.lp-profile-mark'), null, 'fx-bow', 800);
+      bindFx(document.querySelector('.profile-name'), null, 'fx-name', 800);
       const flyFx = [['fly1', 'fx-roll', 800], ['fly2', 'fx-boost', 650], ['fly3', 'fx-barrel', 800]];
       flyFx.forEach(([cls, fx, ms]) => {
         const el = document.querySelector('.' + cls);
@@ -388,6 +400,83 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
           document.getElementById('nav')?.classList.remove('open');
         });
       });
+
+      // 地球：クリックで自転停止、ドラッグで回し、ドロップの勢い・方向のまま自転
+      const globeSvg = document.querySelector('.hero-visual svg');
+      const landG = document.querySelector('.spin-land');
+      const cloudG = document.querySelector('.spin-clouds');
+      if (globeSvg && landG && cloudG && !reduceMotion) {
+        landG.style.animation = 'none';
+        cloudG.style.animation = 'none';
+        const TILE = 464;
+        const CRUISE = TILE / 11; // 基準速度 px/s
+        const CF = 11 / 18; // 雲は陸の約0.61倍で視差
+        let off = 0, offC = 0, v = -CRUISE, dir = -1;
+        let phase = 'auto'; // auto | drag | hold | glide
+        let dragging = false, px = 0, moved = 0, vDrag = 0, lastMove = 0, holdUntil = 0;
+        let lastT = performance.now();
+        const wrap = (o) => ((o % TILE) + TILE) % TILE - TILE;
+        globeSvg.style.touchAction = 'none';
+        globeSvg.style.cursor = 'grab';
+        globeSvg.addEventListener('pointerdown', (e) => {
+          dragging = true;
+          phase = 'drag';
+          v = 0;
+          vDrag = 0;
+          moved = 0;
+          px = e.clientX;
+          lastMove = performance.now();
+          globeSvg.setPointerCapture(e.pointerId);
+          globeSvg.style.cursor = 'grabbing';
+        });
+        globeSvg.addEventListener('pointermove', (e) => {
+          if (!dragging) return;
+          const now = performance.now();
+          const dx = e.clientX - px;
+          px = e.clientX;
+          moved += Math.abs(dx);
+          off += dx;
+          offC += dx * CF;
+          const dtm = Math.max(now - lastMove, 1) / 1000;
+          lastMove = now;
+          vDrag = 0.75 * vDrag + 0.25 * (dx / dtm);
+        });
+        const release = () => {
+          if (!dragging) return;
+          dragging = false;
+          globeSvg.style.cursor = 'grab';
+          if (moved < 5) {
+            // クリック：ピタッと停止し、少し置いてそっと再開
+            phase = 'hold';
+            v = 0;
+            holdUntil = performance.now() + 3500;
+          } else {
+            // ドロップ：その勢いで回り続け、数秒かけて基準速度へ（向きはそのまま）
+            v = Math.max(-700, Math.min(700, vDrag));
+            if (Math.abs(v) > 20) dir = v > 0 ? 1 : -1;
+            phase = 'glide';
+          }
+        };
+        globeSvg.addEventListener('pointerup', release);
+        globeSvg.addEventListener('pointercancel', release);
+        const tick = (t) => {
+          const dt = Math.min((t - lastT) / 1000, 0.05);
+          lastT = t;
+          if (phase === 'hold' && t >= holdUntil) phase = 'glide';
+          if (phase === 'glide') {
+            const target = CRUISE * dir;
+            v += (target - v) * (1 - Math.exp(-dt / 1.1));
+            if (Math.abs(v - target) < 0.8) { v = target; phase = 'auto'; }
+          } else if (phase === 'auto') {
+            v = CRUISE * dir;
+          }
+          if (!dragging) { off += v * dt; offC += v * CF * dt; }
+          landG.style.transform = 'translateX(' + wrap(off) + 'px)';
+          cloudG.style.transform = 'translateX(' + wrap(offC) + 'px)';
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
 
       // 控えめなフェードイン
       const io = new IntersectionObserver(

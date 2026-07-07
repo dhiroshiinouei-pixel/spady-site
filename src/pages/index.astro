@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
   <!-- 1. ファーストビュー：1画面で権威性・信頼性・専門性を完結 -->
   <div class="band dark">
     <section class="lp-hero">
-      <img class="fv-logo rise d1" src="/logo.png?v=20260707-1833" alt="Spady" width="84" height="84" />
+      <img class="fv-logo rise d1" src="/logo.png?v=20260708-0021" alt="Spady" width="84" height="84" />
       <a class="lang-switch rise d1" href="/en/">EN</a>
       <div class="wrap lp-hero-inner">
         <div class="lp-hero-text">
@@ -77,6 +77,9 @@ import Base from '../layouts/Base.astro';
                 <stop offset="0%" stop-color="rgba(255,255,255,0.3)" />
                 <stop offset="100%" stop-color="rgba(255,255,255,0)" />
               </radialGradient>
+              <filter id="landRelief" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="1.2" stdDeviation="0.7" flood-color="rgba(0,0,0,0.55)" />
+              </filter>
               <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
                 <feGaussianBlur stdDeviation="4" />
               </filter>
@@ -98,7 +101,7 @@ import Base from '../layouts/Base.astro';
             <!-- 回転する大陸と雲 -->
             <g clip-path="url(#globeClip)">
               <g class="spin-land">
-                <g id="landTile" class="land">
+                <g id="landTile" class="land" filter="url(#landRelief)">
                   <path d="M150,196 C158,168 190,150 214,152 C232,138 262,132 288,140 C318,128 352,132 372,146 C402,142 428,156 436,176 C448,196 434,214 414,214 C398,226 376,222 362,232 C344,242 328,234 316,244 C300,256 282,246 268,252 C246,262 224,250 212,238 C192,236 172,228 162,214 C152,208 146,202 150,196 Z" />
                   <path d="M298,250 C312,262 312,286 300,298 C288,286 286,262 298,250 Z" />
                   <ellipse cx="352" cy="284" rx="6" ry="4" />
@@ -183,7 +186,7 @@ import Base from '../layouts/Base.astro';
                 <animate attributeName="opacity" values="0.5;0" dur="2.6s" repeatCount="indefinite" />
               </circle>
               <circle cx="384" cy="142" r="33" class="sat-ring" />
-              <image href="/logo.png?v=20260707-1833" x="352" y="110" width="64" height="64" clip-path="url(#satClip)" />
+              <image href="/logo.png?v=20260708-0021" x="352" y="110" width="64" height="64" clip-path="url(#satClip)" />
             </g>
 
             <!-- 地球を周回する人工衛星（金・青の2機） -->
@@ -388,16 +391,32 @@ import Base from '../layouts/Base.astro';
         <h2 class="fade">実績・活動事例</h2>
         <div class="grid2">
           <div class="card work-card fade">
-            <div class="logo-slot"><img src="/logo-qqenglish.png?v=20260707-1833" alt="QQEnglish" loading="lazy" /></div>
+            <div class="logo-slot"><img src="/logo-qqenglish.png?v=20260708-0021" alt="QQEnglish" loading="lazy" /></div>
             <h3>QQEnglish 様（フィリピン・セブ島）</h3>
             <p class="metric-lp">留学事業に続き、オンライン英会話事業も</p>
             <p>セブ島最大級の語学学校のLINE構築を担当。2事業続けてご依頼いただきました。</p>
           </div>
           <div class="card work-card fade">
-            <div class="logo-slot"><img src="/logo-telenet.png?v=20260707-1833" alt="tele-net International" loading="lazy" /></div>
+            <div class="logo-slot"><img src="/logo-telenet.png?v=20260708-0021" alt="tele-net International" loading="lazy" /></div>
             <h3>テレネットインターナショナル 様</h3>
             <p class="metric-lp">海外市場向け日系企業のLINE構築</p>
             <p>名刺代わりになるLINE公式アカウントを構築。LINE上の問い合わせフォームと利用者情報の自動紐付けを設計しました。</p>
+          </div>
+          <div class="card work-card case-wide fade">
+            <div class="case-head">
+            <span class="case-ic" aria-hidden="true">
+              <svg viewBox="0 0 40 40">
+                <path class="cs-steam st1" d="M15 15 C13 12 17 10 15 6" />
+                <path class="cs-steam st2" d="M21 15 C19 12 23 10 21 6" />
+                <path class="cs-steam st3" d="M27 15 C25 12 29 10 27 7" />
+                <path class="cs-bowl" d="M9 19 h24 c0 9 -6 14 -12 14 s-12 -5 -12 -14 Z" />
+                <path class="cs-plate" d="M12 35 h18" />
+              </svg>
+            </span>
+              <h3>飲食店様<span class="case-tag">熊本県・匿名事例</span></h3>
+            </div>
+            <p class="metric-lp">「2ヶ月先まで、予約が埋まる状態になりました」</p>
+            <p>Instagramのプロフィール誘導広告を活用し、広告を見た方が迷わず予約までたどり着けるよう導線を整理。配信後は予約が着実に増えたと、店主様からご報告をいただきました。※ご意向により店舗名は伏せています。</p>
           </div>
         </div>
         <div class="mid-cta fade">
@@ -424,7 +443,7 @@ import Base from '../layouts/Base.astro';
             </p>
           </div>
           <figure class="seminar-fig fade">
-            <img src="/seminar.jpg?v=20260707-1833" alt="小樽での勉強会の様子" loading="lazy" width="1080" height="1080" />
+            <img src="/seminar.jpg?v=20260708-0021" alt="小樽での勉強会の様子" loading="lazy" width="1080" height="1080" />
             <figcaption>小樽での勉強会の様子</figcaption>
           </figure>
         </div>
@@ -438,9 +457,9 @@ import Base from '../layouts/Base.astro';
       <div class="wrap">
         <p class="eyebrow fade"><span class="e-dot"></span>PROFILE</p>
         <div class="lp-profile fade">
-          <div class="lp-profile-mark"><img src="/profile.jpg?v=20260707-1833" alt="井上博史" width="320" height="320" /></div>
+          <div class="lp-profile-mark"><img src="/profile.jpg?v=20260708-0021" alt="井上博史" width="320" height="320" /></div>
           <div>
-            <h2 style="margin-bottom: 6px;">井上博史</h2>
+            <h2 class="profile-name" style="margin-bottom: 6px;">井上博史</h2>
             <p class="note" style="margin-bottom: 20px;">Spady 代表／北海道小樽市銭函</p>
             <p>
               Meta（旧Facebook）でマーケティングプロとして、国内80社以上の広告代理店の運用を支援。独立後は、店舗から海外事業まで100以上のLINE公式アカウントを構築し、セブ島最大級の語学学校 QQEnglish 様の構築も担当しました。拠点の小樽・銭函では、地域事業者の支援と勉強会の自主開催も行っています。
@@ -490,14 +509,14 @@ import Base from '../layouts/Base.astro';
         <!-- なぜ、この活動をしているのか（開閉式） -->
         <details class="why fade">
           <summary>
-            <span class="why-title">なぜ、この活動をしているのか</span>
+            <span class="why-title">なぜ、この活動をしているのか？</span>
           </summary>
           <div class="why-body">
             <p>地域のお店や企業には、まだ十分に伝わっていない魅力がたくさんあります。良い商品やサービスがあっても、Instagram・広告・LINE・ホームページの導線が整っていないために、問い合わせや予約につながらず、機会を失っているケースは少なくありません。</p>
             <p>前職ではMeta社に出向し、広告主様や広告代理店様のマーケティング支援に携わりました。そこで痛感したのは、デジタル活用の情報には大きな「格差」があるということです。都市部の企業や代理店には新しいノウハウが届きやすい一方で、地域のお店や中小企業には、本来使えるはずの選択肢が十分に届いていないのです。</p>
             <p>広告は、出せば終わりではありません。見た人がその後どこへ進み、どう問い合わせ・予約・来店につながるか——そこまで整えてはじめて意味を持ちます。現在は小樽・銭函を拠点に、Meta広告・Instagram・LINE公式アカウント・AIを組み合わせ、事業者の魅力が「必要な人に届く」導線づくりを行っています。</p>
             <p>人口減少が進むこれからの地域では、限られた商圏の中で「選ばれる力」がますます重要になります。地域の事業者が、自分たちの魅力をもっと自然に届けられる状態をつくること。そのために、マーケティングとテクノロジーを、現場で使える形にして届けていきます。</p>
-            <div class="why-sign" aria-hidden="true"><img src="/logo.png?v=20260707-1833" alt="" width="46" height="46" loading="lazy" /></div>
+            <div class="why-sign" aria-hidden="true"><img src="/logo.png?v=20260708-0021" alt="" width="46" height="46" loading="lazy" /></div>
           </div>
         </details>
       </div>
@@ -517,7 +536,7 @@ import Base from '../layouts/Base.astro';
           </li>
           <li class="fade">
             <span class="num n-blue">2</span>
-            <div><h3>無料相談（60分程度）</h3><p>現状と目的を整理します。オンラインで完結できます。時差のあるお打ち合わせにも対応します。</p></div>
+            <div><h3>無料相談（30〜60分程度）</h3><p>現状と目的を整理します。オンラインで完結できます。時差のあるお打ち合わせにも対応します。</p></div>
           </li>
           <li class="fade">
             <span class="num n-green">3</span>
@@ -539,8 +558,20 @@ import Base from '../layouts/Base.astro';
           <p>LINE公式アカウント構築は30万円（税別）〜です。その他のサービスは、配信量・構築範囲・関与の深さによって変わるため、初回相談で全体像とお見積もりをご説明します。</p>
         </details>
         <details class="faq fade">
+          <summary>少額の広告でも効果はありますか？</summary>
+          <p>商圏や商品・サービスの内容によりますが、少額から反応を見ることは可能です。実際に、地域店舗様がInstagramのプロフィール誘導広告を少額で継続運用し、問い合わせや来店導線への反応が増え、想定以上の反響があったとご報告いただいたケースもあります。最初から大きな広告費をかけるのではなく、まずは小さくテストし、反応を見ながら改善していく形をおすすめしています。</p>
+        </details>
+        <details class="faq fade">
+          <summary>見積もりだけお願いできますか？</summary>
+          <p>内容によっては可能です。ただ、広告・SNS・LINEの支援は単純な作業代行ではなく、目的や導線の設計によって必要な工数が大きく変わるため、価格の比較だけを目的とした相見積もりにはお応えしにくいのが正直なところです。まずは現状をお聞かせいただいたうえで、必要な支援内容と費用をあわせてご提案しています。</p>
+        </details>
+        <details class="faq fade">
           <summary>相談したら、契約しないといけませんか？</summary>
           <p>いいえ。無理な営業はしません。話を整理するだけで解決しそうな場合は、その場でそうお伝えしますし、合わないと感じたら断っていただいて大丈夫です。</p>
+        </details>
+        <details class="faq fade">
+          <summary>広告費が決まっていなくても、InstagramやLINEが未整備でも相談できますか？</summary>
+          <p>はい、大丈夫です。むしろ「何から整えればいいか分からない」という段階でのご相談がいちばん多いです。依頼するかどうか決めていなくても、現状の整理だけでもお気軽にどうぞ。</p>
         </details>
         <details class="faq fade">
           <summary>海外（現地）からでも依頼できますか？</summary>
@@ -566,7 +597,7 @@ import Base from '../layouts/Base.astro';
               ご相談は無料です。話を整理するだけで解決しそうな場合は、その場でそうお伝えします。無理な営業はしません。合わないと感じたら、断っていただいて大丈夫です。
             </p>
             <ul class="assure-list">
-              <li>相談は無料（60分程度）</li>
+              <li>相談は無料（30〜60分程度）</li>
               <li>オンライン完結・時差のある打ち合わせにも対応</li>
               <li>2営業日以内に返信します</li>
             </ul>
@@ -594,11 +625,12 @@ import Base from '../layouts/Base.astro';
               ご相談内容 <i>必須</i>
               <select name="topic" required>
                 <option value="">選択してください</option>
-                <option>留学・語学学校・海外事業の集客</option>
-                <option>Meta広告（運用・内製化）</option>
-                <option>LINE公式アカウント・L Message構築</option>
-                <option>SNS活用（Instagram / Threads）</option>
-                <option>地域の店舗・事業の支援</option>
+                <option>広告を出したいが、何から始めればいいか分からない</option>
+                <option>広告は出しているが、成果につながっていない</option>
+                <option>InstagramやSNSを、集客につなげたい</option>
+                <option>LINE公式アカウントを作りたい・活用したい</option>
+                <option>採用の応募を増やしたい</option>
+                <option>何を相談すべきかから、一緒に整理したい</option>
                 <option>その他</option>
               </select>
             </label>
@@ -813,8 +845,8 @@ import Base from '../layouts/Base.astro';
     @keyframes spinGlobe { to { transform: translateX(-464px); } }
     .land path, .land ellipse {
       fill: url(#landGrad);
-      stroke: rgba(210, 245, 220, 0.2);
-      stroke-width: 0.7;
+      stroke: rgba(225, 250, 232, 0.32);
+      stroke-width: 0.8;
     }
     .clouds ellipse { fill: rgba(255, 255, 255, 0.2); }
     .route-base { fill: none; stroke: rgba(255, 215, 94, 0.28); stroke-width: 1.5; }
@@ -1028,6 +1060,66 @@ import Base from '../layouts/Base.astro';
       max-width: calc(100% - 48px);
       object-fit: contain;
     }
+
+    /* ---------- 地域店舗の支援事例 ---------- */
+    .case-sec { padding: 84px 0; }
+    .case-sec h2 { margin-bottom: 32px; }
+    .case-card {
+      background: var(--dark-2);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      padding: 30px 32px;
+    }
+    .case-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .case-ic { flex: none; width: 40px; height: 40px; }
+    .case-ic svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .cs-bowl { fill: #1c262b; stroke: rgba(255, 255, 255, 0.55); stroke-width: 1.6; }
+    .cs-plate { stroke: rgba(255, 255, 255, 0.35); stroke-width: 1.6; stroke-linecap: round; }
+    .cs-steam {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.45);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      animation: steamRise 2.6s ease-in-out infinite;
+    }
+    .cs-steam.st2 { animation-delay: 0.8s; }
+    .cs-steam.st3 { animation-delay: 1.6s; }
+    @keyframes steamRise {
+      0%, 100% { opacity: 0.2; transform: translateY(0); }
+      50% { opacity: 0.75; transform: translateY(-2.5px); }
+    }
+    .case-head h3 { font-size: 18px; color: #fff; margin: 0; }
+    .case-tag {
+      display: inline-block;
+      font-family: var(--font-goth);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      padding: 3px 10px;
+      margin-left: 12px;
+      vertical-align: 2px;
+    }
+    .case-card > p { font-size: 14.5px; color: var(--white-soft); margin: 0 0 12px; }
+    .case-quote {
+      font-family: var(--font-min);
+      font-size: 18px !important;
+      color: #fff !important;
+      line-height: 1.9;
+      border-left: 2px solid var(--green);
+      padding-left: 16px;
+      margin: 18px 0 14px !important;
+    }
+    .case-note { font-size: 12px !important; color: rgba(255, 255, 255, 0.45) !important; margin: 0 !important; }
+    .card.case-wide { grid-column: 1 / -1; }
+    .case-wide .metric-lp { border-left: 2px solid var(--green); padding-left: 14px; }
 
     /* ---------- 地域・発信・プロフィール ---------- */
     .seminar-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
@@ -1496,6 +1588,10 @@ import Base from '../layouts/Base.astro';
       .why-body p { font-size: 14px; line-height: 2.05; }
       .why-sign img { width: 40px; height: 40px; }
       .pro-moon { width: 46px; height: 46px; }
+      .case-sec { padding: 60px 0; }
+      .case-card { padding: 24px 20px; }
+      .case-quote { font-size: 16.5px !important; }
+      .case-tag { display: block; width: fit-content; margin: 8px 0 0; }
       .fv-logo { width: 58px; height: 58px; top: 14px; left: 14px; border-width: 2.5px; }
       .astro-float { width: 72px; top: 26px; right: 4%; }
       .scroll-cue { right: 16px; bottom: 14px; }
