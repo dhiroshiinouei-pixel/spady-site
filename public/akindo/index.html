@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NV5VRH3G');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AKINDO Lab by Spady｜小樽発地域事業者のためのデジタル集客勉強会</title>
+<meta name="description" content="AKINDO Lab by Spadyは、小樽発地域事業者のためのデジタル集客勉強会です。Instagram、LINE、Googleビジネスプロフィール、Meta広告、AI活用などをテーマに、地域のお店や中小企業が無理なくデジタルを活用するための学びの場を不定期で開催しています。開催回によってテーマや内容は変わります。">
+<link rel="canonical" href="https://spady.net/akindo/">
+<meta property="og:title" content="AKINDO Lab by Spady｜小樽発地域事業者のためのデジタル集客勉強会">
+<meta property="og:description" content="Instagram、LINE、Google、広告、AI活用などをテーマに、地域のお店や中小企業が無理なくデジタルを活用するための勉強会を不定期で開催しています。次回開催のお知らせはLINEで。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spady.net/akindo/">
+<meta property="og:image" content="https://spady.net/akindo/og-20260711-0616.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spady.net/akindo/og-20260711-0616.jpg">
+<link rel="icon" href="assets/spady-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b2540;            /* 見出し・本文の濃紺 */
+  --text:#3a465e;           /* 本文 */
+  --sub:#7a8699;            /* 補助 */
+  --bg:#ffffff;
+  --bg-alt:#f6f8fb;
+  --border:#e6eaf1;
+  --accent:#d98a1f;         /* 灯りをひとしずくだけ */
+  --line-green:#06c755;
+  --sans:"Noto Sans JP",sans-serif;
+  --en:"Outfit",sans-serif;
+  --maxw:1040px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--text);
+  line-height:2.05;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  font-size:15.5px;
+}
+::selection{background:rgba(217,138,31,.18)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+strong{font-weight:700;color:var(--ink)}
+section{scroll-margin-top:92px}
+
+/* ---------- 共通 ---------- */
+.container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+section{position:relative;padding:104px 0}
+.en-label{
+  font-family:var(--en);font-size:12.5px;font-weight:600;letter-spacing:.26em;
+  color:var(--sub);margin-bottom:16px;display:flex;align-items:center;gap:12px;
+}
+.en-label::before{content:"";width:26px;height:1px;background:var(--accent)}
+h2{
+  font-weight:900;color:var(--ink);
+  font-size:clamp(24px,3.6vw,34px);line-height:1.65;letter-spacing:.02em;
+  margin-bottom:28px;
+}
+p{color:var(--text)}
+p + p{margin-top:1.2em}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.alt{background:var(--bg-alt)}
+.uline{
+  background-image:linear-gradient(rgba(0,0,0,0) 70%,rgba(217,138,31,.35) 70%);
+  background-repeat:no-repeat;background-size:0% 100%;
+  transition:background-size .9s cubic-bezier(.6,0,.2,1) .25s;padding:0 1px;
+}
+.uline.draw{background-size:100% 100%}
+
+/* ---------- ボタン ---------- */
+.btn-line{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:900;letter-spacing:.03em;padding:18px 40px;border-radius:999px;
+  font-size:15.5px;line-height:1.5;text-align:center;cursor:pointer;
+  background:var(--line-green);color:#fff;
+  box-shadow:0 6px 20px rgba(6,199,85,.25);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.btn-line:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(6,199,85,.4)}
+.btn-line::after{
+  content:"";position:absolute;top:-10%;left:-60%;width:36%;height:120%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-22deg);pointer-events:none;
+  animation:btnShine 8s ease-in-out infinite;
+  animation-delay:var(--shine-delay,0s);
+}
+@keyframes btnShine{
+  0%,86%{left:-60%;opacity:0}
+  88%{opacity:1}
+  96%{left:130%;opacity:1}
+  97%,100%{left:130%;opacity:0}
+}
+.btn-line svg{width:19px;height:19px;fill:#fff;flex:none}
+.cta-note{font-size:12.5px;color:var(--sub);margin-top:14px;letter-spacing:.02em}
+.cta-block{text-align:center;margin-top:48px}
+
+/* ---------- ヘッダー ---------- */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;height:72px;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s ease;
+}
+.site-header.scrolled{box-shadow:0 4px 20px rgba(27,37,64,.06)}
+.header-logo{display:flex;align-items:center;gap:11px}
+.header-logo img{height:38px;width:38px;transition:transform .3s ease}
+.header-logo:hover img{transform:scale(1.08)}
+.header-tagline{font-size:14px;font-weight:900;color:var(--ink);letter-spacing:.02em;line-height:1.35}
+.header-tagline small{display:block;font-size:9.5px;color:var(--sub);font-weight:500;letter-spacing:.06em}
+.header-nav{display:flex;align-items:center;gap:26px}
+.header-nav a{font-size:13.5px;font-weight:500;color:var(--text);position:relative;padding:4px 0}
+.header-nav a:not(.nav-cta)::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1.5px;
+  background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .3s ease;
+}
+.header-nav a:not(.nav-cta):hover::after{transform:scaleX(1);transform-origin:left}
+.header-nav .nav-cta{
+  font-weight:900;color:#fff;background:var(--line-green);
+  padding:10px 24px;border-radius:999px;font-size:13px;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.header-nav .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(6,199,85,.35)}
+.hamburger{
+  display:none;width:44px;height:44px;border-radius:10px;background:none;border:1px solid var(--border);
+  align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:5px;
+}
+.hamburger span{display:block;width:18px;height:2px;background:var(--ink);transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{
+  position:fixed;inset:0;z-index:99;background:rgba(255,255,255,.98);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  opacity:0;pointer-events:none;transition:opacity .35s ease;
+}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-size:18px;font-weight:700;color:var(--ink)}
+.mobile-menu .nav-cta{
+  font-weight:900;font-size:15px;color:#fff;background:var(--line-green);
+  padding:15px 38px;border-radius:999px;
+}
+
+/* ---------- ファーストビュー ---------- */
+.hero{
+  padding:190px 0 96px;position:relative;overflow:hidden;background:#fff;
+}
+.hero::before{ /* 勉強会の様子を、ごく薄く */
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.86) 42%,rgba(255,255,255,.68) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.35) 40%,rgba(255,255,255,.9) 100%),
+    url('assets/seminar.jpg') center 28%/cover no-repeat;
+  filter:saturate(.8);
+}
+.hero-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.hero-label{
+  font-family:var(--en);font-size:12.5px;font-weight:600;letter-spacing:.3em;color:var(--accent);
+  margin-bottom:22px;display:flex;align-items:center;gap:12px;
+  opacity:0;animation:fadeUp .8s .1s ease forwards;
+}
+.hero-label::before{content:"";width:34px;height:1px;background:var(--accent)}
+.hero h1{
+  font-family:var(--en);font-weight:700;color:var(--ink);
+  font-size:clamp(44px,8.4vw,88px);line-height:1.08;letter-spacing:.005em;
+  margin-bottom:8px;opacity:0;animation:fadeUp .8s .2s ease forwards;
+}
+.hero h1 .by{
+  display:block;font-size:clamp(15px,2vw,20px);font-weight:600;letter-spacing:.14em;
+  color:var(--sub);margin-top:12px;
+}
+.hero-sub{
+  font-size:clamp(17px,2.4vw,23px);font-weight:900;color:var(--ink);letter-spacing:.04em;
+  margin:26px 0 22px;opacity:0;animation:fadeUp .8s .34s ease forwards;
+}
+.hero-sub .dot{color:var(--accent)}
+.hero-body{
+  max-width:600px;font-size:clamp(13.5px,1.5vw,15px);
+  margin-bottom:36px;opacity:0;animation:fadeUp .8s .46s ease forwards;
+}
+.hero-cta{opacity:0;animation:fadeUp .8s .6s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* 背景の大きな英字（ごく薄く） */
+.hero-bgtext{
+  position:absolute;right:-1.5vw;bottom:-2vw;z-index:0;pointer-events:none;
+  font-family:var(--en);font-weight:700;font-size:clamp(90px,17vw,240px);line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(27,37,64,.06);letter-spacing:.02em;
+  user-select:none;white-space:nowrap;
+}
+
+/* ---------- 流れる英字の帯（区切り） ---------- */
+.text-marquee{
+  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:18px 0;background:#fff;
+}
+.text-marquee .tm-track{
+  display:flex;gap:56px;width:max-content;animation:tmove 30s linear infinite;
+  font-family:var(--en);font-weight:600;font-size:15px;letter-spacing:.3em;color:var(--sub);
+  white-space:nowrap;
+}
+.text-marquee .tm-track span b{color:var(--accent);font-weight:600;margin:0 20px 0 56px}
+@keyframes tmove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- テーマ（番号付きグリッド） ---------- */
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);margin-top:36px}
+.theme-item{
+  display:flex;gap:20px;align-items:baseline;
+  padding:26px 8px;border-bottom:1px solid var(--border);
+  transition:background .3s ease;
+}
+.theme-item:nth-child(odd){border-right:1px solid var(--border);padding-right:34px}
+.theme-item:nth-child(even){padding-left:34px}
+.theme-item:hover{background:var(--bg-alt)}
+.theme-item .t-num{
+  font-family:var(--en);font-size:13px;font-weight:600;color:var(--accent);
+  letter-spacing:.08em;flex:none;
+}
+.theme-item .t-name{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.8}
+.note-text{font-size:12.5px;color:var(--sub);margin-top:24px;line-height:1.9}
+
+/* ---------- おすすめ（チェックリスト） ---------- */
+.check-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 32px;margin-top:36px}
+.check-list li{
+  position:relative;padding-left:30px;font-size:14.5px;color:var(--ink);
+  font-weight:500;line-height:1.9;
+}
+.check-list li::before{
+  content:"";position:absolute;left:0;top:9px;width:17px;height:17px;border-radius:5px;
+  background:#fff;border:1.5px solid var(--accent);
+}
+.check-list li::after{
+  content:"";position:absolute;left:4px;top:13px;width:8px;height:5px;
+  border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:rotate(-45deg);
+}
+
+/* ---------- 勉強会の様子（横流れギャラリー） ---------- */
+.gallery-marquee{
+  margin-top:44px;overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+}
+.marquee-track{
+  display:flex;gap:20px;width:max-content;
+  animation:marquee 38s linear infinite;
+}
+.gallery-marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-track figure{margin:0;position:relative;flex:none}
+.marquee-track img{
+  height:260px;width:auto;border-radius:12px;
+  box-shadow:0 8px 28px rgba(27,37,64,.1);
+  transition:transform .4s ease,box-shadow .4s ease;
+}
+.marquee-track figure:hover img{transform:translateY(-6px);box-shadow:0 18px 40px rgba(27,37,64,.16)}
+.marquee-track figcaption{
+  position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);
+  font-size:11px;font-weight:700;color:var(--ink);padding:5px 14px;border-radius:999px;
+  box-shadow:0 2px 8px rgba(27,37,64,.12);
+}
+
+/* ---------- 講師 ---------- */
+.prof-wrap{display:grid;grid-template-columns:210px 1fr;gap:48px;align-items:start;margin-top:16px}
+.prof-photo img{
+  border-radius:50%;
+  box-shadow:0 12px 36px rgba(27,37,64,.14);
+  aspect-ratio:1/1;object-fit:cover;width:100%;
+}
+.prof-name{font-size:clamp(22px,2.8vw,27px);font-weight:900;color:var(--ink);letter-spacing:.03em}
+.prof-role{font-size:13px;color:var(--accent);font-weight:700;margin-bottom:18px;letter-spacing:.05em}
+.threads-chip{
+  display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;
+  border-radius:999px;padding:13px 30px;font-size:13.5px;font-weight:700;margin-top:20px;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.threads-chip:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(27,37,64,.3)}
+.threads-chip svg{width:17px;height:17px;fill:#fff}
+
+/* ---------- なぜ、この活動を（開閉） ---------- */
+.why-details{
+  margin-top:36px;border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  background:#fff;transition:border-color .3s ease,box-shadow .3s ease;
+}
+.why-details[open]{border-color:rgba(217,138,31,.5);box-shadow:0 8px 28px rgba(27,37,64,.06)}
+.why-details summary{
+  cursor:pointer;list-style:none;padding:22px 58px 22px 26px;
+  font-weight:900;font-size:15.5px;letter-spacing:.03em;
+  position:relative;color:var(--ink);
+}
+.why-details summary::-webkit-details-marker{display:none}
+.why-details summary::after{
+  content:"＋";position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  color:var(--accent);font-size:19px;font-weight:400;transition:transform .3s ease;
+}
+.why-details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.why-inner{padding:4px 28px 32px;font-size:14.5px}
+.why-inner p{margin-bottom:1.15em}
+.office-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 8px}
+.office-gallery figure{margin:0}
+.office-gallery img{
+  border-radius:10px;aspect-ratio:4/3;object-fit:cover;width:100%;
+  box-shadow:0 4px 16px rgba(27,37,64,.1);
+}
+.office-caption{font-size:11.5px;color:var(--sub);text-align:center;margin-top:10px;letter-spacing:.03em}
+
+/* ---------- 中間CTAパネル ---------- */
+.cta-panel{
+  margin-top:64px;text-align:center;
+  border:1px solid var(--border);border-radius:18px;background:var(--bg-alt);
+  padding:52px 32px;
+}
+.cta-panel h3{
+  font-weight:900;color:var(--ink);font-size:clamp(17px,2.3vw,21px);
+  letter-spacing:.03em;margin-bottom:12px;
+}
+.cta-panel .cp-sub{font-size:13px;color:var(--sub);margin-bottom:26px;line-height:1.95}
+
+/* ---------- FAQ ---------- */
+.faq-list{margin-top:36px;display:grid;gap:12px}
+.faq-list details{
+  background:#fff;border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;transition:border-color .3s ease;
+}
+.faq-list details[open]{border-color:rgba(217,138,31,.5)}
+.faq-list summary{
+  cursor:pointer;list-style:none;padding:20px 54px 20px 24px;
+  font-weight:700;font-size:14.5px;position:relative;color:var(--ink);
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::before{
+  content:"Q";font-family:var(--en);font-weight:600;color:var(--accent);margin-right:14px;
+}
+.faq-list summary::after{
+  content:"＋";position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  color:var(--accent);font-size:18px;font-weight:400;transition:transform .3s ease;
+}
+.faq-list details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq-list .a{padding:0 24px 22px 52px;font-size:13.5px;color:var(--text)}
+
+/* ---------- 最後のCTA ---------- */
+.final-cta{text-align:center;background:var(--bg-alt);border-top:1px solid var(--border)}
+.final-cta h2{margin-bottom:16px}
+.final-cta .lead{max-width:580px;margin:0 auto 36px;font-size:14px;color:var(--text);text-align:left}
+
+/* ---------- フッター ---------- */
+footer{
+  border-top:1px solid var(--border);background:#fff;
+  padding:60px 0 104px;text-align:center;
+}
+.footer-logo{display:inline-block;margin-bottom:14px}
+.footer-logo img{height:50px;width:50px;margin:0 auto;transition:transform .3s ease}
+.footer-logo:hover img{transform:scale(1.1)}
+.footer-tagline{font-weight:900;color:var(--ink);font-size:clamp(14.5px,2vw,17px);letter-spacing:.04em;margin-bottom:4px}
+.footer-sub{font-size:12px;color:var(--sub);margin-bottom:30px}
+.footer-links{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:28px}
+.footer-links a{font-size:13px;color:var(--text)}
+.footer-links a:hover{color:var(--accent)}
+.footer-threads{
+  display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);
+  border-radius:999px;padding:11px 26px;font-size:13px;font-weight:700;color:var(--ink);
+  margin-bottom:30px;transition:border-color .3s,box-shadow .3s;
+}
+.footer-threads:hover{border-color:var(--accent);box-shadow:0 4px 14px rgba(27,37,64,.08)}
+.footer-threads svg{width:17px;height:17px;fill:var(--ink)}
+.copyright{font-size:11.5px;color:var(--sub);letter-spacing:.08em}
+
+/* ---------- モバイル固定CTA ---------- */
+.mobile-cta-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:98;
+  display:none;padding:11px 14px calc(11px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);box-shadow:0 -6px 24px rgba(27,37,64,.08);
+  transform:translateY(110%);transition:transform .4s ease;
+}
+.mobile-cta-bar.visible{transform:none}
+.mobile-cta-bar .btn-line{width:100%;padding:15px 10px;font-size:14px}
+
+
+
+/* ---------- オープニング ---------- */
+#introWhite{
+  position:fixed;inset:0;z-index:98;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .7s ease;
+}
+#introWhite.fade{opacity:0;pointer-events:none}
+#introWhite .iw-word{
+  font-family:var(--en);font-weight:700;color:var(--ink);
+  font-size:clamp(20px,4vw,34px);letter-spacing:.14em;
+  margin-top:210px;
+}
+#introWhite .iw-word .by-sp{font-weight:600;font-size:.6em;color:var(--sub);letter-spacing:.2em}
+#introWhite .iw-word .ch{display:inline-block;opacity:0;transform:translateY(16px)}
+#introWhite.s2 .iw-word .ch{animation:chIn .5s cubic-bezier(.2,.9,.3,1) both;animation-delay:calc(var(--i)*.045s)}
+@keyframes chIn{to{opacity:1;transform:translateY(0)}}
+#spinLogo.front{z-index:99}
+#spinLogo.rolling{transition:left .9s cubic-bezier(.22,.9,.3,1),top .9s cubic-bezier(.22,.9,.3,1),width .9s cubic-bezier(.22,.9,.3,1)}
+#spinLogo.squash{animation:squash .42s cubic-bezier(.3,1.5,.4,1)}
+@keyframes squash{
+  0%{transform:scale(1)}
+  38%{transform:scale(1.14,.84)}
+  70%{transform:scale(.95,1.07)}
+  100%{transform:scale(1)}
+}
+#spinLogo.intro-pop{animation:introPop 1s cubic-bezier(.2,.9,.25,1) both}
+@keyframes introPop{
+  from{opacity:0;transform:scale(.45)}
+  60%{opacity:1}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* ---------- ヒーロー2カラム＋回転ロゴ ---------- */
+.hero-grid2{display:grid;grid-template-columns:1.12fr .88fr;gap:44px;align-items:center}
+.hero-logo-col{display:flex;justify-content:center}
+#logoAnchor{width:min(300px,54vw);aspect-ratio:1/1}
+#spinLogo{
+  position:fixed;left:0;top:0;z-index:96;cursor:pointer;
+  visibility:hidden;will-change:left,top,width;
+}
+#spinLogo.ready{visibility:visible}
+#spinLogo.moving{transition:left .65s cubic-bezier(.5,0,.25,1),top .65s cubic-bezier(.5,0,.25,1),width .65s cubic-bezier(.5,0,.25,1)}
+#spinLogo img{width:100%;height:auto;display:block;will-change:transform;
+  filter:drop-shadow(0 10px 26px rgba(27,37,64,.16));}
+#spinLogo img.flash{animation:logoFlash .7s ease}
+@keyframes logoFlash{
+  0%{filter:drop-shadow(0 10px 26px rgba(27,37,64,.16))}
+  40%{filter:drop-shadow(0 0 28px var(--flash-c,rgba(217,138,31,.95))) brightness(1.5)}
+  100%{filter:drop-shadow(0 10px 26px rgba(27,37,64,.16))}
+}
+#hdrLogoImg{will-change:transform}
+
+/* ---------- 開催時期 ---------- */
+.sch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.sch-card{
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  padding:30px 26px;border-top:3px solid var(--accent);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.sch-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(27,37,64,.08)}
+.sch-month{
+  display:inline-block;font-weight:900;font-size:13px;color:var(--accent);
+  background:rgba(217,138,31,.1);border-radius:999px;padding:4px 16px;
+  letter-spacing:.06em;margin-bottom:14px;
+}
+.sch-title{font-size:16.5px;font-weight:900;color:var(--ink);line-height:1.7}
+
+/* ---------- オフィス写真キャプション ---------- */
+.office-gallery{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.office-gallery figcaption{font-size:11px;color:var(--sub);margin-top:8px;text-align:center;letter-spacing:.03em}
+
+/* ---------- プロフィールの遊び ---------- */
+#profPhoto{cursor:pointer}
+#profPhoto.boing{animation:boing .85s cubic-bezier(.35,1.6,.4,1)}
+@keyframes boing{
+  0%{transform:scale(1) rotate(0)}
+  28%{transform:scale(1.12,.86) rotate(-7deg)}
+  52%{transform:scale(.9,1.12) rotate(6deg)}
+  74%{transform:scale(1.06,.95) rotate(-3deg)}
+  100%{transform:scale(1) rotate(0)}
+}
+.prof-name{cursor:pointer;user-select:none}
+.prof-name span{display:inline-block}
+.prof-name.wave span{animation:charJump .65s ease both;animation-delay:calc(var(--i)*.06s)}
+@keyframes charJump{
+  0%,100%{transform:translateY(0) rotate(0);color:var(--ink)}
+  42%{transform:translateY(-14px) rotate(-5deg);color:var(--accent)}
+}
+
+
+/* ---------- 遊び心 ---------- */
+/* テーマ番号：ホバーでくるり */
+.theme-item .t-num{display:inline-block;transition:transform .5s cubic-bezier(.3,1.4,.4,1)}
+.theme-item:hover .t-num{transform:rotate(360deg)}
+
+/* 開催テーマカード：ホバーでほんの少し傾く */
+.sch-card:hover{transform:translateY(-4px) rotate(-.7deg);box-shadow:0 12px 30px rgba(27,37,64,.08)}
+.sch-card:nth-child(2):hover{transform:translateY(-4px) rotate(.7deg)}
+
+/* 写真ギャラリー：机に並べた写真のように少し傾き、ホバーでまっすぐに */
+.marquee-track figure:nth-child(odd) img{transform:rotate(-1.3deg)}
+.marquee-track figure:nth-child(even) img{transform:rotate(1.3deg)}
+.marquee-track figure:hover img{transform:translateY(-6px) rotate(0deg);box-shadow:0 18px 40px rgba(27,37,64,.16)}
+
+/* チェックリスト：タップでチェックが入る */
+.chk-hint{font-size:12.5px;color:var(--sub);margin-top:-8px}
+.check-list li{cursor:pointer;user-select:none;transition:opacity .3s ease}
+.check-list li::before{transition:background .25s ease,border-color .25s ease;background:#fff}
+.check-list li::after{opacity:.4;transition:opacity .25s ease,border-color .25s ease}
+.check-list li.done::before{background:var(--accent);border-color:var(--accent);animation:chkPop .45s cubic-bezier(.3,1.7,.4,1)}
+.check-list li.done::after{opacity:1;border-color:#fff}
+@keyframes chkPop{45%{transform:scale(1.3)}100%{transform:scale(1)}}
+.chk-count{
+  margin-top:22px;font-size:14.5px;font-weight:900;color:var(--accent);
+  opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;
+}
+.chk-count.show{opacity:1;transform:none}
+
+/* フッターロゴ：ホバーでひと回転 */
+.footer-logo img{transition:transform .7s cubic-bezier(.3,1.2,.4,1)}
+.footer-logo:hover img{transform:rotate(360deg) scale(1.08)}
+
+/* ロゴ5色コンプリートで紙吹雪 */
+.confetti{
+  position:fixed;width:9px;height:9px;border-radius:50%;
+  pointer-events:none;z-index:1001;
+  animation:confettiFly .95s cubic-bezier(.2,.7,.4,1) forwards;
+}
+@keyframes confettiFly{
+  to{transform:translate(var(--dx),var(--dy)) scale(.25);opacity:0}
+}
+
+
+/* ---------- トースト ---------- */
+.ak-toast{
+  position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(16px);
+  z-index:1002;max-width:min(560px,calc(100vw - 32px));
+  background:#fff;border:1px solid var(--border);border-left:3px solid var(--accent);
+  border-radius:12px;padding:14px 20px;
+  font-size:13px;font-weight:700;color:var(--ink);line-height:1.8;
+  box-shadow:0 14px 40px rgba(27,37,64,.18);
+  opacity:0;pointer-events:none;transition:opacity .4s ease,transform .4s ease;
+}
+.ak-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:760px){.ak-toast{bottom:92px}}
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width:860px){
+  .hero-grid2{grid-template-columns:1fr;gap:0;position:relative}
+  .hero-logo-col{position:absolute;top:-46px;right:2px;order:initial;padding:0}
+  #logoAnchor{width:86px}
+  .hero-copy2 .hero-label{padding-right:100px}
+  .sch-grid{grid-template-columns:1fr}
+  .theme-grid{grid-template-columns:1fr}
+  .theme-item:nth-child(odd){border-right:none;padding-right:8px}
+  .theme-item:nth-child(even){padding-left:8px}
+  .check-list{grid-template-columns:1fr}
+  .prof-wrap{grid-template-columns:1fr;gap:30px}
+  .prof-photo{max-width:170px}
+}
+@media (max-width:760px){
+  body{font-size:14.5px}
+  section{padding:76px 0}
+  .site-header{padding:0 16px;height:62px}
+  .header-nav{display:none}
+  .hamburger{display:flex}
+  .header-logo img{height:32px;width:32px}
+  .header-tagline{font-size:12.5px}
+  .header-tagline small{font-size:8.5px}
+  .hero{padding:118px 0 70px}
+  .hero::before{
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.82) 50%,rgba(255,255,255,.94) 100%),
+      url('assets/seminar.jpg') center 24%/cover no-repeat;
+    filter:saturate(.8);
+  }
+  .hero-bgtext{display:none}
+  .btn-line{width:100%;max-width:380px;padding:17px 26px;font-size:15px}
+  .marquee-track img{height:190px}
+  .why-inner{padding:2px 20px 26px}
+  .cta-panel{padding:38px 22px}
+  .mobile-cta-bar{display:block}
+  footer{padding-bottom:120px}
+  .office-gallery{gap:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  .hero-label,.hero h1,.hero-sub,.hero-body,.hero-cta{opacity:1;animation:none}
+  .marquee-track,.tm-track{animation:none}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NV5VRH3G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ヘッダー -->
+<header class="site-header" id="siteHeader">
+  <a class="header-logo" href="#top">
+    <img src="assets/spady-logo.png" alt="Spady" id="hdrLogoImg">
+    <span class="header-tagline">AKINDO Lab<small>by Spady｜デジタル集客勉強会</small></span>
+  </a>
+  <nav class="header-nav" aria-label="メインナビゲーション">
+    <a href="#about">AKINDO Labとは</a>
+    <a href="#themes">テーマ</a>
+    <a href="#scene">勉強会の様子</a>
+    <a href="#profile">講師</a>
+    <a href="#faq">よくある質問</a>
+    <a href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=QjL9jt" class="nav-cta" target="_blank" rel="noopener">LINEで受け取る</a>
+  </nav>
+  <button class="hamburger" id="hamburgerBtn" aria-label="メニューを開く" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">AKINDO Labとは</a>
+  <a href="#themes">テーマ</a>
+  <a href="#scene">勉強会の様子</a>
+  <a href="#profile">講師</a>
+  <a href="#faq">よくある質問</a>
+  <a href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=QjL9jt" class="nav-cta" target="_blank" rel="noopener">次回のお知らせをLINEで受け取る</a>
+</div>
+
+<!-- オープニング（白・ロゴがそのままファーストビューへ） -->
+<div id="introWhite" aria-hidden="true">
+  <div class="iw-word" id="iwWord">AKINDO Lab <span class="by-sp">by Spady</span></div>
+</div>
+
+<!-- 回転するSpadyロゴ（オープニング→ヒーロー右→スクロールで右端にドッキング） -->
+<div id="spinLogo" aria-hidden="true"><img src="assets/spady-logo.png" alt="" id="spinLogoImg"></div>
+
+<div id="top">
+
+<!-- ================= ファーストビュー ================= -->
+<section class="hero" id="hero" style="padding-top:190px">
+  <div class="hero-bgtext" aria-hidden="true">AKINDO</div>
+  <div class="hero-inner hero-grid2">
+    <div class="hero-copy2">
+    <div class="hero-label">OTARU, HOKKAIDO</div>
+    <h1>AKINDO Lab<span class="by">by Spady</span></h1>
+    <p class="hero-sub">小樽発地域事業者のための、デジタル集客勉強会<span class="dot">。</span></p>
+    <div class="hero-body">
+      <p>Instagram、LINE、Googleビジネスプロフィール、広告、AI活用などをテーマに、地域のお店や中小企業が無理なくデジタルを活用するための勉強会を不定期で開催しています。</p>
+      <p>人口が減っていく地域でも、必要な人に見つけてもらい、問い合わせ・予約・来店につながる流れを一緒に学びます。</p>
+    </div>
+    <div class="hero-cta">
+      <a href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=QjL9jt" class="btn-line" target="_blank" rel="noopener">次回開催のお知らせをLINEで受け取る</a>
+      <p class="cta-note">今後の勉強会情報を、LINEでお届けします。登録は無料です。</p>
+    </div>
+    </div>
+    <div class="hero-logo-col" aria-hidden="true"><div id="logoAnchor"></div></div>
+  </div>
+</section>
+
+<!-- 流れる英字の帯 -->
+<div class="text-marquee" aria-hidden="true">
+  <div class="tm-track">
+    <span>INSTAGRAM<b>・</b>LINE<b>・</b>GOOGLE<b>・</b>META ADS<b>・</b>AI<b>・</b>WEBSITE<b>・</b>AKINDO LAB BY SPADY</span>
+    <span>INSTAGRAM<b>・</b>LINE<b>・</b>GOOGLE<b>・</b>META ADS<b>・</b>AI<b>・</b>WEBSITE<b>・</b>AKINDO LAB BY SPADY</span>
+  </div>
+</div>
+
+<!-- ================= AKINDO Labとは ================= -->
+<section id="about">
+  <div class="container">
+    <div class="en-label reveal">ABOUT</div>
+    <h2 class="reveal">AKINDO Lab by Spadyとは</h2>
+    <p class="reveal">AKINDO Lab by Spadyは、小樽・銭函を拠点に活動するSpadyが主催する、地域事業者向けのデジタル集客勉強会です。</p>
+    <p class="reveal">Instagram、LINE、Googleビジネスプロフィール、Meta広告、AI活用などをテーマに、地域のお店や中小企業が、無理なくデジタルを活用するための考え方をお伝えしています。</p>
+    <p class="reveal">単なる操作方法ではなく、<span class="uline">問い合わせ・予約・来店につながる流れをどう作るか</span>を重視しています。</p>
+    <p class="note-text reveal">※AKINDO Lab by Spadyは、Spadyが独自に主催する勉強会です。小樽市が開催する「小樽商人塾」とは別の取り組みです。</p>
+  </div>
+</section>
+
+<!-- ================= 取り扱うテーマ ================= -->
+<section id="themes" class="alt">
+  <div class="container">
+    <div class="en-label reveal">THEMES</div>
+    <h2 class="reveal">取り扱うテーマ</h2>
+    <div class="theme-grid reveal">
+      <div class="theme-item"><span class="t-num">01</span><span class="t-name">Instagram活用</span></div>
+      <div class="theme-item"><span class="t-num">02</span><span class="t-name">LINE公式アカウント</span></div>
+      <div class="theme-item"><span class="t-num">03</span><span class="t-name">Meta広告 / Instagram広告</span></div>
+      <div class="theme-item"><span class="t-num">04</span><span class="t-name">Googleビジネスプロフィール</span></div>
+      <div class="theme-item"><span class="t-num">05</span><span class="t-name">口コミ・検索対策</span></div>
+      <div class="theme-item"><span class="t-num">06</span><span class="t-name">ホームページや予約導線の見直し</span></div>
+      <div class="theme-item"><span class="t-num">07</span><span class="t-name">AIを使った投稿作成、文章作成、業務効率化</span></div>
+      <div class="theme-item"><span class="t-num">08</span><span class="t-name">地域店舗の集客導線づくり</span></div>
+    </div>
+    <p class="note-text reveal">※開催回によって、取り扱うテーマや内容は変更となる場合があります。<br>Instagram、LINE、Googleビジネスプロフィール、広告、AI活用、ホームページや予約導線の見直しなど、地域事業者に役立つテーマを不定期で取り上げていきます。</p>
+  </div>
+</section>
+
+
+<!-- ================= 開催時期 ================= -->
+<section id="schedule">
+  <div class="container">
+    <div class="en-label reveal">SCHEDULE</div>
+    <h2 class="reveal">年間の開催テーマ</h2>
+    <div class="sch-grid">
+      <div class="sch-card reveal">
+        <div class="sch-month">2月・8月</div>
+        <div class="sch-title">ゼロからつくる集客の基本</div>
+      </div>
+      <div class="sch-card reveal">
+        <div class="sch-month">4月・10月</div>
+        <div class="sch-title">LINE公式の基本と活用法</div>
+      </div>
+      <div class="sch-card reveal">
+        <div class="sch-month">6月・12月</div>
+        <div class="sch-title">Instagram集客の新戦略</div>
+      </div>
+    </div>
+    <p class="note-text reveal">・興味のある回だけのご参加も可能です。<br>・内容や開催日程は変更となる場合があります。<br>・上記のほか、AI活用やGoogleビジネスプロフィールなど、地域事業者に役立つ幅広いテーマも不定期で取り扱います。</p>
+  </div>
+</section>
+
+<!-- ================= こんな方におすすめ ================= -->
+<section id="for" class="alt">
+  <div class="container">
+    <div class="en-label reveal">FOR YOU</div>
+    <h2 class="reveal">このような方におすすめです</h2>
+    <p class="chk-hint reveal">当てはまる項目を、タップしてチェックしてみてください。</p>
+    <ul class="check-list" id="checkList">
+      <li class="reveal">Instagramを投稿しているが、予約や問い合わせにつながっていない</li>
+      <li class="reveal">LINE公式アカウントを作ったが、うまく活用できていない</li>
+      <li class="reveal">Googleビジネスプロフィールを整えたい</li>
+      <li class="reveal">広告に興味はあるが、何から始めればいいかわからない</li>
+      <li class="reveal">AIを仕事に活用したいが、具体的な使い方が分からない</li>
+      <li class="reveal">ホームページ、SNS、LINE、広告がバラバラになっている</li>
+      <li class="reveal">人口減少の中で、地域のお店としてどう集客すべきか考えたい</li>
+      <li class="reveal">小樽、札幌、手稲、石狩、余市などの地域で事業をしている</li>
+    </ul>
+    <p class="chk-count" id="chkCount" role="status"></p>
+    <div class="cta-block reveal">
+      <a href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=QjL9jt" class="btn-line" target="_blank" rel="noopener" id="forCta">勉強会の案内をLINEで受け取る</a>
+      <p class="cta-note" id="forCtaNote">今後の勉強会情報や、Instagram・LINE・Google・広告・AI活用に関するお知らせをLINEでお届けします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 勉強会の様子 ================= -->
+<section id="scene" style="padding-bottom:120px">
+  <div class="container">
+    <div class="en-label reveal">SCENE</div>
+    <h2 class="reveal">少人数だから、その場で聞ける。</h2>
+    <p class="reveal" style="max-width:680px">少人数で質問しやすい形式で、テーマごとに席数を限定して開催しています。スライドを一方的に流すのではなく、参加された方の状況に近い例を交えながら進めています。</p>
+  </div>
+  <div class="gallery-marquee reveal" id="galleryMarquee">
+    <div class="marquee-track">
+      <figure><img src="assets/seminar.jpg" alt="勉強会の様子" loading="lazy"><figcaption>勉強会の様子（小樽にて）</figcaption></figure>
+      <figure><img src="assets/seminar2.jpg" alt="勉強会の様子" loading="lazy"><figcaption>会場の雰囲気</figcaption></figure>
+      <figure><img src="assets/seminar.jpg" alt="" loading="lazy" aria-hidden="true"></figure>
+      <figure><img src="assets/seminar2.jpg" alt="" loading="lazy" aria-hidden="true"></figure>
+      <figure><img src="assets/seminar.jpg" alt="" loading="lazy" aria-hidden="true"></figure>
+      <figure><img src="assets/seminar2.jpg" alt="" loading="lazy" aria-hidden="true"></figure>
+      <figure><img src="assets/seminar.jpg" alt="" loading="lazy" aria-hidden="true"></figure>
+      <figure><img src="assets/seminar2.jpg" alt="" loading="lazy" aria-hidden="true"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 大切にしていること ================= -->
+<section id="policy" class="alt">
+  <div class="container">
+    <div class="en-label reveal">POLICY</div>
+    <h2 class="reveal">大切にしていること</h2>
+    <p class="reveal">AKINDO Lab by Spadyでは、流行りのツールを紹介するだけではなく、地域のお店や中小企業が<span class="uline">実際に使える形に落とし込むこと</span>を大切にしています。</p>
+    <p class="reveal">広告を出す前に、Instagramプロフィール、LINE、Google検索、ホームページ、予約導線がつながっているかを確認する。<br>AIを使う場合も、単なる時短ではなく、日々の発信や顧客対応を続けやすくする。</p>
+    <p class="reveal">地域の商いを、無理なく続けていくためのデジタル活用を、一緒に考える場です。</p>
+  </div>
+</section>
+
+<!-- ================= 講師プロフィール ================= -->
+<section id="profile">
+  <div class="container">
+    <div class="en-label reveal">PROFILE</div>
+    <h2 class="reveal">講師プロフィール</h2>
+    <div class="prof-wrap">
+      <div class="prof-photo reveal">
+        <img src="assets/profile.jpg" alt="井上博史" loading="lazy" id="profPhoto" title="クリックしてみてください">
+      </div>
+      <div>
+        <div class="prof-name reveal" id="profName" title="クリックしてみてください">井上 博史</div>
+        <div class="prof-role reveal">Spady 代表</div>
+        <p class="reveal">北海道・小樽/銭函を拠点に、Meta広告、Instagram、LINE公式アカウントを活用した集客導線づくりを支援。</p>
+        <p class="reveal">前職ではMeta社に出向し、マーケティングプロとして広告主様・広告代理店様の広告運用をサポート。</p>
+        <p class="reveal">現在は地域のお店や中小企業向けに、広告・SNS・LINE・Google・AIを無理なく活用するための勉強会も開催しています。</p>
+        <p class="reveal">勉強会の開催報告や、日々の活動・考え方は<strong>Threads</strong>でも発信しています。よろしければフォローください。</p>
+        <div class="reveal">
+          <a class="threads-chip" href="https://www.threads.com/hiroshiinoue.spady" target="_blank" rel="noopener">
+            <svg viewBox="0 0 192 192" aria-hidden="true"><path d="M141.5 88.9c-.8-.4-1.6-.7-2.4-1.1-1.4-26.4-15.8-41.5-40-41.6h-.3c-14.5 0-26.5 6.2-33.9 17.4l13.3 9.1c5.5-8.4 14.2-10.2 20.6-10.2h.2c8 .1 14 2.4 17.9 6.9 2.8 3.3 4.7 7.8 5.6 13.5-7-1.2-14.6-1.6-22.7-1.1-22.9 1.3-37.6 14.7-36.6 33.2.5 9.4 5.2 17.5 13.2 22.8 6.8 4.5 15.5 6.7 24.6 6.2 12-.7 21.4-5.2 28-13.6 5-6.3 8.2-14.5 9.6-24.8 5.7 3.5 10 8 12.3 13.5 4 9.3 4.2 24.6-8.2 37-10.9 10.9-24 15.6-43.8 15.7-22-.2-38.6-7.2-49.4-20.9-10.1-12.8-15.3-31.3-15.5-55 .2-23.7 5.4-42.2 15.5-55C60.3 27.2 76.9 20.2 98.9 20c22.1.2 39 7.2 50.2 21 5.5 6.8 9.6 15.3 12.3 25.2l15.5-4.1c-3.3-12.2-8.5-22.7-15.6-31.4C147 13 126.2 4.3 99 4.1h-.1C71.7 4.3 51 13.1 37.5 30.3 25.4 45.6 19.2 66.8 19 93.1v.1c.2 26.3 6.4 47.5 18.5 62.8 13.5 17.1 34.3 25.9 61.4 26.1h.1c24.2-.2 41.2-6.5 55.3-20.6 18.2-18.2 17.6-41 11.7-55-4.3-10-12.5-18.2-23.5-23.6zm-41.1 39c-10 .6-20.4-3.9-20.9-13.5-.4-7.1 5.1-15.1 21.5-16 1.9-.1 3.7-.2 5.5-.2 6 0 11.5.6 16.6 1.7-1.9 23.6-13 27.5-22.7 28z"/></svg>
+            Threadsをフォローする
+          </a>
+        </div>
+
+        <!-- なぜ、この活動をしているのか？（開閉） -->
+        <details class="why-details reveal">
+          <summary>なぜ、この活動をしているのか？</summary>
+          <div class="why-inner">
+            <p>地域のお店や中小企業には、まだ十分に伝わっていない魅力がたくさんあります。</p>
+            <p>良い商品やサービスがあっても、Instagram、LINE、Google検索、広告、ホームページの流れがつながっていないことで、問い合わせや予約、来店につながらないケースも少なくありません。</p>
+            <p>前職ではMeta社に出向し、広告主様や広告代理店様のマーケティング支援に携わってきました。</p>
+            <p>その中で感じたのは、広告やSNS、デジタル活用に関する情報には大きな格差があるということです。</p>
+            <p>都市部の企業や広告代理店には新しい情報やノウハウが届きやすい一方で、地域のお店や中小企業には、本来使えるはずの選択肢が十分に届いていないこともあります。</p>
+            <p>人口が減っていく地域では、今までと同じやり方だけで新しいお客様に出会うことが難しくなっていきます。</p>
+            <p>だからこそ、Instagram、LINE、Google、広告、AI、ホームページをバラバラにせず、必要な人に見つけてもらい、問い合わせ・予約・来店につながる流れを整えることが大切だと考えています。</p>
+            <p>AKINDO Lab by Spadyでは、流行りのツールを紹介するだけではなく、地域のお店や中小企業が実際に使える形に落とし込むことを大切にしています。</p>
+            <p>小樽発の学びの場として、地域の商いを支えるような活動にしていきたいと考えています。</p>
+            <!--
+              ▼オフィス訪問時の写真（3枚）
+              Pinterest Japanオフィス訪問時の写真を表示しています。
+            -->
+            <div class="office-gallery" id="officeGallery">
+              <figure>
+                <img src="assets/office-pinterest.jpg" alt="Pinterest Japanオフィス訪問時の写真" loading="lazy">
+                <figcaption>Pinterest Japanオフィス訪問時の写真</figcaption>
+              </figure>
+            </div>
+            <p class="office-caption" id="officeCaption">広告・SNS・テクノロジーの現場に触れてきた記録</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- 中間CTA -->
+    <div class="cta-panel reveal">
+      <h3>次回開催のお知らせを、LINEでお届けします</h3>
+      <p class="cp-sub">今後の勉強会情報や、Instagram・LINE・Google・広告・AI活用に関するお知らせをLINEでお届けします。</p>
+      <a href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=QjL9jt" class="btn-line" target="_blank" rel="noopener">次回開催のお知らせをLINEで受け取る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="alt">
+  <div class="container">
+    <div class="en-label reveal">FAQ</div>
+    <h2 class="reveal">よくあるご質問</h2>
+    <div class="faq-list">
+      <details class="reveal">
+        <summary>広告を出したことがなくても参加できますか？</summary>
+        <div class="a">はい。広告初心者の方にも分かるように、基本的な考え方からお話しします。</div>
+      </details>
+      <details class="reveal">
+        <summary>その場でサービスを申し込む必要はありますか？</summary>
+        <div class="a">ありません。まずはInstagram・LINE・Google・広告・AI活用の基本的な考え方を知っていただくための勉強会です。</div>
+      </details>
+      <details class="reveal">
+        <summary>小樽以外の事業者でも参加できますか？</summary>
+        <div class="a">はい。小樽を中心に開催していますが、札幌、手稲、石狩、余市など周辺地域の店舗・中小企業の方にもご参加いただけます。</div>
+      </details>
+      <details class="reveal">
+        <summary>どのようなテーマを扱いますか？</summary>
+        <div class="a">Instagram、LINE公式アカウント、Googleビジネスプロフィール、Meta広告、AI活用、ホームページや予約導線の見直しなどを不定期で扱います。</div>
+      </details>
+      <details class="reveal">
+        <summary>毎回同じ内容ですか？</summary>
+        <div class="a">いいえ。開催回によってテーマや内容は変わります。Instagram、LINE、Googleビジネスプロフィール、Meta広告、AI活用、ホームページや予約導線の見直しなど、その時々で地域事業者に役立つテーマを取り上げていく予定です。</div>
+      </details>
+      <details class="reveal">
+        <summary>個別相談はできますか？</summary>
+        <div class="a">勉強会後に簡単なご質問は可能です。個別に詳しく相談したい場合は、別途ご相談ください。</div>
+      </details>
+      <details class="reveal">
+        <summary>LINE登録すると何が届きますか？</summary>
+        <div class="a">次回の勉強会情報や、地域事業者向けのデジタル活用に関するお知らせをお届けします。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 最後のCTA ================= -->
+<section class="final-cta" id="cta">
+  <div class="container">
+    <div class="en-label reveal" style="justify-content:center">NEWSLETTER</div>
+    <h2 class="reveal">次回開催のお知らせを<br>LINEで受け取る</h2>
+    <p class="lead reveal">AKINDO Lab by Spadyでは、Instagram、LINE、Google、広告、AI活用など、地域事業者向けの勉強会を不定期で開催しています。開催回によってテーマや内容は変わります。次回開催が決まり次第、LINEでご案内します。</p>
+    <div class="reveal">
+      <a href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=QjL9jt" class="btn-line" target="_blank" rel="noopener">次回開催のお知らせをLINEで受け取る</a>
+      <p class="cta-note">登録は無料です。不要になったら、いつでもブロックしていただいて大丈夫です。</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ================= フッター ================= -->
+<footer>
+  <div class="container">
+    <a class="footer-logo" href="#top">
+      <img src="assets/spady-logo.png" alt="Spady">
+    </a>
+    <div class="footer-tagline">AKINDO Lab by Spady</div>
+    <div class="footer-sub">小樽発地域事業者のためのデジタル集客勉強会｜北海道小樽市銭函｜井上博史</div>
+    <div class="footer-links">
+      <a href="https://spady.net/" target="_blank" rel="noopener">Spady 公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </div>
+    <div>
+      <a class="footer-threads" href="https://www.threads.com/hiroshiinoue.spady" target="_blank" rel="noopener">
+        <svg viewBox="0 0 192 192" aria-hidden="true"><path d="M141.5 88.9c-.8-.4-1.6-.7-2.4-1.1-1.4-26.4-15.8-41.5-40-41.6h-.3c-14.5 0-26.5 6.2-33.9 17.4l13.3 9.1c5.5-8.4 14.2-10.2 20.6-10.2h.2c8 .1 14 2.4 17.9 6.9 2.8 3.3 4.7 7.8 5.6 13.5-7-1.2-14.6-1.6-22.7-1.1-22.9 1.3-37.6 14.7-36.6 33.2.5 9.4 5.2 17.5 13.2 22.8 6.8 4.5 15.5 6.7 24.6 6.2 12-.7 21.4-5.2 28-13.6 5-6.3 8.2-14.5 9.6-24.8 5.7 3.5 10 8 12.3 13.5 4 9.3 4.2 24.6-8.2 37-10.9 10.9-24 15.6-43.8 15.7-22-.2-38.6-7.2-49.4-20.9-10.1-12.8-15.3-31.3-15.5-55 .2-23.7 5.4-42.2 15.5-55C60.3 27.2 76.9 20.2 98.9 20c22.1.2 39 7.2 50.2 21 5.5 6.8 9.6 15.3 12.3 25.2l15.5-4.1c-3.3-12.2-8.5-22.7-15.6-31.4C147 13 126.2 4.3 99 4.1h-.1C71.7 4.3 51 13.1 37.5 30.3 25.4 45.6 19.2 66.8 19 93.1v.1c.2 26.3 6.4 47.5 18.5 62.8 13.5 17.1 34.3 25.9 61.4 26.1h.1c24.2-.2 41.2-6.5 55.3-20.6 18.2-18.2 17.6-41 11.7-55-4.3-10-12.5-18.2-23.5-23.6zm-41.1 39c-10 .6-20.4-3.9-20.9-13.5-.4-7.1 5.1-15.1 21.5-16 1.9-.1 3.7-.2 5.5-.2 6 0 11.5.6 16.6 1.7-1.9 23.6-13 27.5-22.7 28z"/></svg>
+        Threadsをフォローする
+      </a>
+    </div>
+    <div class="copyright">© Spady</div>
+  </div>
+</footer>
+
+<!-- モバイル固定CTA -->
+<div class="mobile-cta-bar" id="mobileCtaBar">
+  <a href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=QjL9jt" class="btn-line" target="_blank" rel="noopener" id="mobCta">次回のお知らせをLINEで受け取る</a>
+</div>
+
+<script>
+/* ============ ヘッダー：スクロールで影 ============ */
+(function(){
+  const header=document.getElementById('siteHeader');
+  const bar=document.getElementById('mobileCtaBar');
+  function update(){
+    header.classList.toggle('scrolled',window.scrollY>10);
+    bar.classList.toggle('visible',window.scrollY>window.innerHeight*0.6);
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
+/* ============ モバイルメニュー ============ */
+(function(){
+  const btn=document.getElementById('hamburgerBtn');
+  const menu=document.getElementById('mobileMenu');
+  btn.addEventListener('click',()=>{
+    const open=menu.classList.toggle('open');
+    btn.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    menu.classList.remove('open');btn.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }));
+})();
+
+/* ============ ページ内リンク：なめらかなスクロール ============ */
+(function(){
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ease=t=>t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  function scrollToY(target,dur){
+    const start=window.scrollY,diff=target-start,t0=performance.now();
+    function step(now){
+      const p=Math.min(1,(now-t0)/dur);
+      window.scrollTo(0,start+diff*ease(p));
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.length<2)return;
+      const el=document.querySelector(id);
+      if(!el)return;
+      e.preventDefault();
+      const y=id==='#top'?0:el.getBoundingClientRect().top+window.scrollY-84;
+      if(reduce){window.scrollTo(0,y);return;}
+      scrollToY(y,850);
+    });
+  });
+})();
+
+/* ============ スクロールでふわっと表示＋マーカー ============ */
+(function(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        e.target.querySelectorAll('.uline').forEach(m=>m.classList.add('draw'));
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ============ オフィス写真：未設定ならキャプションも隠す ============ */
+window.addEventListener('load',()=>{
+  const g=document.getElementById('officeGallery');
+  const cap=document.getElementById('officeCaption');
+  setTimeout(()=>{
+    if(g && g.children.length===0){g.remove();if(cap)cap.remove();}
+  },600);
+});
+
+
+/* ============ 回転するSpadyロゴ：オープニング→ヒーロー右⇔画面右端 ============ */
+const FLASH_COLORS=['rgba(217,138,31,.95)','rgba(255,90,95,.95)','rgba(58,160,255,.95)','rgba(6,199,85,.95)','rgba(155,108,255,.95)'];
+let flashIdx=0;
+const CONFETTI_COLORS=['#d98a1f','#ff5a5f','#3aa0ff','#06c755','#9b6cff'];
+function confettiBurst(el){
+  const r=el.getBoundingClientRect();
+  const cx=r.left+r.width/2,cy=r.top+r.height/2;
+  for(let i=0;i<16;i++){
+    const d=document.createElement('span');
+    d.className='confetti';
+    d.style.background=CONFETTI_COLORS[i%CONFETTI_COLORS.length];
+    d.style.left=cx+'px';d.style.top=cy+'px';
+    const ang=Math.random()*Math.PI*2, dist=60+Math.random()*90;
+    d.style.setProperty('--dx',Math.cos(ang)*dist+'px');
+    d.style.setProperty('--dy',(Math.sin(ang)*dist-30)+'px');
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),1000);
+  }
+}
+function flashCycle(img){
+  img.style.setProperty('--flash-c',FLASH_COLORS[flashIdx++ % FLASH_COLORS.length]);
+  img.classList.remove('flash');void img.offsetWidth;img.classList.add('flash');
+  if(flashIdx%FLASH_COLORS.length===0)confettiBurst(img); /* 5色コンプリートで紙吹雪 */
+}
+(function(){
+  const logo=document.getElementById('spinLogo');
+  const img=document.getElementById('spinLogoImg');
+  const anchor=document.getElementById('logoAnchor');
+  const hero=document.getElementById('hero');
+  const intro=document.getElementById('introWhite');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let docked=false,moving=false,introActive=true;
+  let spinVel=0,spinExtra=0; /* 転がり込みの勢い */
+
+  function dockRect(){
+    const size=window.innerWidth<760?46:56;
+    return {left:window.innerWidth-size-14,top:window.innerHeight*0.5-size/2,width:size};
+  }
+  function centerRect(){
+    const size=Math.min(190,window.innerWidth*0.42);
+    return {left:(window.innerWidth-size)/2,top:window.innerHeight*0.36-size/2,width:size};
+  }
+  function setRect(r){logo.style.left=r.left+'px';logo.style.top=r.top+'px';logo.style.width=r.width+'px';}
+  function anchorRect(){const r=anchor.getBoundingClientRect();return{left:r.left,top:r.top,width:r.width};}
+
+  function frame(t){
+    if(!introActive){
+      const threshold=hero.offsetTop+hero.offsetHeight*0.55;
+      const shouldDock=window.scrollY>threshold;
+      if(shouldDock!==docked){
+        docked=shouldDock;moving=true;
+        logo.classList.add('moving');
+        setRect(docked?dockRect():anchorRect());
+        setTimeout(()=>{logo.classList.remove('moving');moving=false;},680);
+      }else if(!moving){
+        setRect(docked?dockRect():anchorRect());
+      }
+    }
+    if(!reduce){
+      if(spinVel>0.1){spinExtra+=spinVel;spinVel*=0.945;}
+      const deg=(t/1000)*14+window.scrollY*0.4+spinExtra;
+      img.style.transform='rotate('+deg+'deg)';
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function endIntro(fast){
+    if(!introActive)return;
+    introActive=false;
+    document.body.style.overflow='';
+    logo.classList.remove('intro-pop','rolling','squash');
+    if(fast){
+      if(intro)intro.remove();
+      logo.classList.remove('front');
+      setRect(anchorRect());
+      return;
+    }
+    logo.classList.add('moving');
+    setRect(anchorRect());
+    intro.classList.add('fade');
+    setTimeout(()=>{logo.classList.remove('moving','front');intro.remove();},720);
+  }
+
+  /* ---- オープニング ---- */
+  if(reduce||!intro){
+    if(intro)intro.remove();
+    introActive=false;
+    requestAnimationFrame(t=>{setRect(anchorRect());logo.classList.add('ready');frame(t);});
+  }else{
+    document.body.style.overflow='hidden';
+    /* 文字を1字ずつspan化 */
+    const word=document.getElementById('iwWord');
+    let ci=0;
+    [...word.childNodes].forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        [...n.textContent].forEach(ch=>{
+          const sp=document.createElement('span');
+          sp.className='ch';sp.style.setProperty('--i',ci++);
+          sp.textContent=ch===' '?'\u00a0':ch;
+          frag.appendChild(sp);
+        });
+        word.replaceChild(frag,n);
+      }else{
+        n.classList.add('ch');n.style.setProperty('--i',ci+2);ci+=3;
+      }
+    });
+    /* ロゴが画面左から転がり込む */
+    requestAnimationFrame(t=>{
+      const c=centerRect();
+      setRect({left:-c.width-60,top:c.top,width:c.width});
+      logo.classList.add('ready','front');
+      spinVel=30; /* 勢いよく回りながら */
+      requestAnimationFrame(()=>{
+        logo.classList.add('rolling');
+        setRect(c);
+      });
+      frame(t);
+    });
+    setTimeout(()=>{logo.classList.remove('rolling');logo.classList.add('squash');},950); /* 着地でぷるん */
+    setTimeout(()=>intro.classList.add('s2'),1050);  /* 文字が1字ずつ */
+    setTimeout(()=>{                                   /* ひとつウインク */
+      img.style.setProperty('--flash-c','rgba(217,138,31,.95)');
+      img.classList.remove('flash');void img.offsetWidth;img.classList.add('flash');
+    },1800);
+    setTimeout(()=>endIntro(false),2250);             /* ロゴが定位置へ */
+    setTimeout(()=>endIntro(true),4800);              /* 保険 */
+  }
+  window.addEventListener('resize',()=>{if(!moving&&!introActive)setRect(docked?dockRect():anchorRect());});
+
+  /* クリックでピカッ（押すたびに色が変わる） */
+  logo.addEventListener('click',()=>flashCycle(img));
+})();
+
+/* ============ ヘッダーロゴも同じく5色に光る ============ */
+(function(){
+  const img=document.getElementById('hdrLogoImg');
+  if(img)img.closest('.header-logo').addEventListener('click',()=>flashCycle(img));
+})();
+
+/* ============ LINEボタンのキラッを少しずつずらす ============ */
+document.querySelectorAll('.btn-line').forEach((b,i)=>{
+  b.style.setProperty('--shine-delay',(i*1.7)+'s');
+});
+
+/* ============ ヘッダーロゴ：ページ移動に合わせてボールのように転がる ============ */
+(function(){
+  const img=document.getElementById('hdrLogoImg');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce)return;
+  let last=-1;
+  function roll(){
+    const y=window.scrollY;
+    if(y!==last){img.style.transform='rotate('+(y*0.55)+'deg)';last=y;}
+    requestAnimationFrame(roll);
+  }
+  requestAnimationFrame(roll);
+})();
+
+/* ============ プロフィール：クリックで遊ぶ ============ */
+(function(){
+  const photo=document.getElementById('profPhoto');
+  const name=document.getElementById('profName');
+  if(photo){
+    photo.addEventListener('click',()=>{
+      photo.classList.remove('boing');void photo.offsetWidth;photo.classList.add('boing');
+    });
+  }
+  if(name){
+    /* 文字を1文字ずつspan化 */
+    const text=name.textContent;
+    name.textContent='';
+    [...text].forEach((ch,i)=>{
+      const sp=document.createElement('span');
+      sp.textContent=ch===' '?'\u00a0':ch;
+      sp.style.setProperty('--i',i);
+      name.appendChild(sp);
+    });
+    name.addEventListener('click',()=>{
+      name.classList.remove('wave');void name.offsetWidth;name.classList.add('wave');
+    });
+  }
+})();
+
+
+/* ============ チェックリスト：CTA文言が変わり、LINEヒアリングにつながる ============ */
+window.__akCheckedItems=[];
+(function(){
+  const list=document.getElementById('checkList');
+  const count=document.getElementById('chkCount');
+  const forCta=document.getElementById('forCta');
+  const mobCta=document.getElementById('mobCta');
+  if(!list)return;
+  const forDefault=forCta?forCta.textContent:'';
+  const mobDefault=mobCta?mobCta.textContent:'';
+  function update(){
+    const done=[...list.querySelectorAll('li.done')];
+    const n=done.length;
+    window.__akCheckedItems=done.map(li=>li.textContent.trim());
+    if(window.dataLayer){window.dataLayer.push({event:'checklist_update',checked_count:n,checked_items:window.__akCheckedItems});}
+    if(n===0){
+      count.classList.remove('show');
+      if(forCta)forCta.textContent=forDefault;
+      if(mobCta)mobCta.textContent=mobDefault;
+      return;
+    }
+    count.textContent=n+'個、当てはまりました。このままLINE登録いただくと、チェック内容を当日の内容に活かせます。';
+    count.classList.add('show');
+    if(forCta)forCta.textContent=n+'個当てはまった方へ｜LINEで案内を受け取る';
+    if(mobCta)mobCta.textContent=n+'個当てはまった方へ｜LINE登録';
+  }
+  list.querySelectorAll('li').forEach(li=>{
+    li.addEventListener('click',()=>{li.classList.toggle('done');update();});
+  });
+})();
+
+/* ============ ヒアリング連携：LINEクリック時にチェック項目をコピー ============ */
+function akShowToast(msg){
+  let t=document.getElementById('akToast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='akToast';t.className='ak-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;
+  t.classList.remove('show');void t.offsetWidth;t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm=setTimeout(()=>t.classList.remove('show'),4500);
+}
+
+/* ============ LINEリンクのクリック計測（チェック内容つき） ============ */
+document.querySelectorAll('a[href*="s.lmes.jp"]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const items=window.__akCheckedItems||[];
+    if(window.dataLayer){
+      window.dataLayer.push({event:'line_cta_click',page:'akinai-lab',checked_count:items.length,checked_items:items});
+    }
+    if(items.length){
+      const text='【AKINDO Lab 事前チェック】\n当てはまった項目（'+items.length+'個）：\n'+items.map(t=>'・'+t).join('\n')+'\n\n※このままトークに貼り付けて送っていただくと、当日の内容に反映します。';
+      try{
+        navigator.clipboard.writeText(text).then(()=>{
+          akShowToast('チェックした項目をコピーしました。LINE登録後、トークに貼り付けて送ると当日の内容に反映されます。');
+        }).catch(()=>{});
+      }catch(e){}
+    }
+  });
+});
+</script>
+</body>
+</html>
