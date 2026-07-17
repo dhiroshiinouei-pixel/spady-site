@@ -516,6 +516,21 @@ import Base from '../layouts/Base.astro';
             <p>前職ではMeta社に出向し、広告主様や広告代理店様のマーケティング支援に携わりました。そこで痛感したのは、デジタル活用の情報には大きな「格差」があるということです。都市部の企業や代理店には新しいノウハウが届きやすい一方で、地域のお店や中小企業には、本来使えるはずの選択肢が十分に届いていないのです。</p>
             <p>広告は、出せば終わりではありません。見た人がその後どこへ進み、どう問い合わせ・予約・来店につながるか——そこまで整えてはじめて意味を持ちます。現在は小樽・銭函を拠点に、Meta広告・Instagram・LINE公式アカウント・AIを組み合わせ、事業者の魅力が「必要な人に届く」導線づくりを行っています。</p>
             <p>人口減少が進むこれからの地域では、限られた商圏の中で「選ばれる力」がますます重要になります。地域の事業者が、自分たちの魅力をもっと自然に届けられる状態をつくること。そのために、マーケティングとテクノロジーを、現場で使える形にして届けていきます。</p>
+            <div class="why-office-gallery" aria-label="広告・SNS・テクノロジーの現場に触れてきた記録">
+              <figure>
+                <img src="/akindo/assets/office-pinterest.jpg" alt="Pinterest Japanオフィス訪問時の写真" width="700" height="525" loading="lazy" />
+                <figcaption>Pinterest Japanオフィス訪問時の写真</figcaption>
+              </figure>
+              <figure>
+                <img src="/akindo/assets/office-google.jpg" alt="Googleオフィス訪問時の写真" width="700" height="525" loading="lazy" />
+                <figcaption>Googleオフィス訪問時の写真</figcaption>
+              </figure>
+              <figure>
+                <img src="/akindo/assets/office-tiktok.jpg" alt="TikTok for Business関連イベント参加時の写真" width="700" height="525" loading="lazy" />
+                <figcaption>TikTok for Business関連イベント参加時の写真</figcaption>
+              </figure>
+            </div>
+            <p class="why-office-caption">広告・SNS・テクノロジーの現場に触れてきた記録</p>
             <div class="why-sign" aria-hidden="true"><img src="/logo.png?v=20260708-0021" alt="" width="46" height="46" loading="lazy" /></div>
           </div>
         </details>
@@ -1243,6 +1258,37 @@ import Base from '../layouts/Base.astro';
     .why[open] summary::after { content: '−'; transform: rotate(180deg); }
     .why-body { padding: 2px 26px 24px; }
     .why[open] .why-body { animation: whyReveal 0.5s ease both; }
+    .why-office-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 30px 0 10px;
+    }
+    .why-office-gallery figure { margin: 0; }
+    .why-office-gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--line-dark);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+    }
+    .why-office-gallery figcaption {
+      margin-top: 9px;
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.62);
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+    .why-office-caption {
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.54);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
     @keyframes whyReveal {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: none; }
