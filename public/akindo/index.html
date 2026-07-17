@@ -314,6 +314,9 @@ p + p{margin-top:1.2em}
   border-radius:10px;aspect-ratio:4/3;object-fit:cover;width:100%;
   box-shadow:0 4px 16px rgba(27,37,64,.1);
 }
+.office-gallery figcaption{
+  margin-top:8px;font-size:11.5px;line-height:1.6;color:var(--sub);text-align:center;
+}
 .office-caption{font-size:11.5px;color:var(--sub);text-align:center;margin-top:10px;letter-spacing:.03em}
 
 /* ---------- 中間CTAパネル ---------- */
@@ -573,7 +576,7 @@ footer{
   .cta-panel{padding:38px 22px}
   .mobile-cta-bar{display:block}
   footer{padding-bottom:120px}
-  .office-gallery{gap:8px}
+  .office-gallery{grid-template-columns:1fr;gap:12px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
@@ -809,6 +812,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <figure>
                 <img src="assets/office-pinterest.jpg" alt="Pinterest Japanオフィス訪問時の写真" loading="lazy">
                 <figcaption>Pinterest Japanオフィス訪問時の写真</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/office-google.jpg" alt="Googleオフィス訪問時の写真" loading="lazy">
+                <figcaption>Googleオフィス訪問時の写真</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/office-tiktok.jpg" alt="TikTok for Business関連イベント参加時の写真" loading="lazy">
+                <figcaption>TikTok for Business関連イベント参加時の写真</figcaption>
               </figure>
             </div>
             <p class="office-caption" id="officeCaption">広告・SNS・テクノロジーの現場に触れてきた記録</p>
