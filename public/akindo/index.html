@@ -589,6 +589,13 @@ footer{
   .hero-label,.hero h1,.hero-sub,.hero-body,.hero-cta{opacity:1;animation:none}
   .marquee-track,.tm-track{animation:none}
 }
+.local-pages-section{padding:64px 0 72px;border-top:1px solid var(--border);background:#fff}
+.local-pages-wrap{max-width:840px;margin:auto;text-align:center}
+.local-pages-link{display:block;border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.local-pages-link:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(27,37,64,.09)}
+.local-pages-link:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+.local-pages-link img{width:100%;height:auto}
+@media(max-width:760px){.local-pages-section{padding:44px 0 48px}.local-pages-section .container{padding:0 16px}}
 </style>
 </head>
 <body>
@@ -894,6 +901,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </div>
 
+<!-- ================= LOCAL PAGES 紹介 ================= -->
+<section id="local-pages" class="local-pages-section" aria-label="LOCAL PAGESのご紹介">
+  <div class="container">
+    <div class="local-pages-wrap">
+      <a class="local-pages-link" href="https://localpages.spady.net/" target="_blank" rel="noopener noreferrer" aria-label="LOCAL PAGESを新しいタブで見る">
+        <img src="assets/local-pages.jpg" alt="LOCAL PAGES. 地域の魅力を、ひとつのLPに。" width="1280" height="720" loading="lazy">
+      </a>
+    </div>
+  </div>
+</section>
 <!-- ================= フッター ================= -->
 <footer>
   <div class="container">
