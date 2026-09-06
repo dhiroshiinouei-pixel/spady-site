@@ -1,0 +1,22 @@
+---
+import HomeLayout from '../../layouts/HomeLayout.astro';
+import '../../styles/contact.css';
+import '../../styles/privacy.css';
+import { messages, pathFor } from '../../i18n';
+import type { Locale } from '../../i18n';
+const {lang='ja'}=Astro.props as {lang?:Locale};
+const t=messages(lang);
+---
+<HomeLayout lang={lang} page="privacy/" title={`${t.privacy}｜Spady`} description={t.privacyDescription}>
+  <main id="main" class="privacy-page section-shell">
+    <nav class="breadcrumbs" aria-label={t.navigation}><a href={pathFor(lang)}>{t.home}</a><span aria-hidden="true">/</span><span>{t.privacy}</span></nav>
+    <header class="privacy-heading"><p class="eyebrow">PRIVACY & TRUST</p><h1>{t.privacy}</h1><p>{t.privacyIntro}</p><time datetime="2026-09-06">{t.updated}</time><span class="privacy-mark" aria-hidden="true">✳</span></header>
+    <div class="privacy-layout">
+      <nav class="privacy-contents" aria-label={t.contents}><p>{t.contents}</p><ol>{t.privacySections.map((section,i)=><li><a href={`#policy-${i+1}`}>{section.title}</a></li>)}</ol><button type="button" data-cookie-settings>{t.cookieSettings} <span aria-hidden="true">↗</span></button></nav>
+      <div class="privacy-body">
+        {t.privacySections.map((section,i)=><section id={`policy-${i+1}`}><p class="policy-number" aria-hidden="true">{String(i+1).padStart(2,'0')}</p><h2>{section.title}</h2><p>{section.text}</p>{i===3 && <div class="privacy-services"><p>{t.servicePolicies}</p><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare ↗</a><a href="https://www.larksuite.com/en_us/privacy-policy">Lark ↗</a><a href="https://policies.google.com/privacy">Google ↗</a></div>}{i===4 && <button class="cookie-settings" type="button" data-cookie-settings>{t.cookieSettings} ↗</button>}</section>)}
+        <div class="privacy-contact"><p>{t.privacyContact}</p><a class="contact-button" href={pathFor(lang,'contact/')}><span class="button-label">{t.contact}</span><span aria-hidden="true">↗</span></a></div>
+      </div>
+    </div>
+  </main>
+</HomeLayout>

@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://spady.net/en/</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -32,13 +32,13 @@
   </url>
   <url>
     <loc>https://spady.net/privacy/</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://spady.net/en/privacy/</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -56,4 +56,4 @@
   </url>
   <url><loc>https://spady.net/fullfunnelmarketing/</loc><lastmod>2026-09-06</lastmod><priority>0.9</priority></url>
   <url><loc>https://spady.net/contact/</loc><lastmod>2026-09-06</lastmod><priority>0.8</priority></url>
-</urlset>
+<url><loc>https://spady.net/en/contact/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/zh-hant/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/zh-hant/contact/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/zh-hant/privacy/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/zh-hans/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/zh-hans/contact/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/zh-hans/privacy/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/ko/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/ko/contact/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/ko/privacy/</loc><lastmod>2026-09-06</lastmod></url><url><loc>https://spady.net/en/fullfunnelmarketing/</loc><lastmod>2026-09-06</lastmod></url></urlset>

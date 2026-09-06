@@ -1,0 +1,213 @@
+{
+  "metaTitle": "Spady｜让地方魅力，开启更多可能。小樽・钱函",
+  "metaDescription": "以小樽・钱函为据点，通过营销与科技，建立商业与生活的连接。了解我们的获客支持服务、LOCAL PAGES.、AKINDO Lab 及小樽生活日历。",
+  "tagline": "与地方，一起前行。",
+  "slogan": "让地方魅力，开启更多可能。",
+  "home": "首页",
+  "navAbout": "关于 Spady",
+  "navProjects": "服务与项目",
+  "navStories": "案例与活动",
+  "contact": "联系我们",
+  "privacy": "隐私政策",
+  "skip": "跳至主要内容",
+  "navigation": "主导航",
+  "menu": "菜单",
+  "language": "选择语言",
+  "pauseMotion": "暂停动画",
+  "playMotion": "继续播放动画",
+  "reducedMotion": "已启用减少动态效果",
+  "cookieSettings": "更改 Cookie 设置",
+  "cookieText": "我们使用 Cookie 改善网站并衡量广告效果。获得您的同意后，才会加载跟踪代码。",
+  "accept": "同意",
+  "decline": "不同意",
+  "heroTitle": "让地方魅力，<br /><span class=\"highlight-ink\">开启更多可能。</span>",
+  "heroDescription": "以小樽・钱函为据点，<br />通过营销与科技，<br />建立商业与生活的连接。",
+  "heroLink": "了解 Spady 的行动",
+  "heroImageAlt": "海滨小城中，人、店铺与日常生活相互连接的插画",
+  "heroImageLabel": "人、商业，与这座城。",
+  "aboutTitle": "让地方的美好，<br />传到需要的人手中。",
+  "aboutFirst": "街上的店铺、企业，还有日常生活里，<br />都有尚未被充分看见的魅力。",
+  "aboutSecond": "Spady 发掘并传递这些魅力，创造彼此连接的契机。无论是提供获客支持、制作网站、举办学习交流会，还是分享地方资讯，我们始终怀抱着同一份心意。",
+  "profileLink": "负责人及业务简介",
+  "projectsTitle": "从一份心意，<br />展开更多行动。",
+  "projectsNote": "支持商业、开启学习、连接生活。<br />Spady 正在做的 4 件事。",
+  "projects": [
+    {
+      "title": "营销支持",
+      "copy": "让您的生意，被更多人看见。",
+      "description": "连接广告、社交媒体与 LINE，建立获客和招聘流程。从地方店铺，到日本全国及海外的业务。",
+      "link": "查看服务内容",
+      "imageAlt": "营销支持",
+      "tags": "Meta 广告 / LINE / 社交媒体"
+    },
+    {
+      "title": "LOCAL PAGES.",
+      "copy": "把地方魅力，汇聚成一页。",
+      "description": "梳理店铺与企业尚未传达的魅力，制作引导浏览者采取下一步行动的落地页与网站。",
+      "link": "查看案例与服务",
+      "imageAlt": "LOCAL PAGES. 把地方魅力，汇聚在一页落地页。",
+      "tags": "落地页制作 / 网站制作"
+    },
+    {
+      "title": "AKINDO Lab",
+      "copy": "从学习出发，迈向经营的下一步。",
+      "description": "Instagram、LINE、广告、AI。为地方经营者举办学习交流会，学习能实际运用在日常工作中的数字工具。",
+      "link": "了解学习交流会",
+      "imageAlt": "AKINDO Lab 学习交流会",
+      "tags": "学习交流会 / 数字工具应用"
+    },
+    {
+      "title": "小樽生活日历",
+      "copy": "一起发现，这座城的今天。",
+      "description": "活动、育儿、招聘等资讯。将分散各处的小樽信息汇集成地方日历，让您按日期轻松查找。",
+      "link": "查找生活资讯",
+      "imageAlt": "小樽生活日历官方社交分享预览图",
+      "tags": "地方资讯 / 生活"
+    }
+  ],
+  "storiesTitle": "从连接之中，<br />萌生的故事。",
+  "storiesNote": "从小樽当地，到海外业务。<br />分享我们的服务案例与日常活动。",
+  "stories": [
+    {
+      "location": "小樽・钱函",
+      "title": "面对面，一起学习。<br />为地方经营者举办的学习交流会。",
+      "copy": "来自 AKINDO Lab 现场",
+      "alt": "井上博史在 AKINDO Lab 向参与者介绍数字营销获客方法"
+    },
+    {
+      "location": "制作案例",
+      "title": "店铺的氛围、经营的心意，<br />让网页好好传达。",
+      "copy": "LOCAL PAGES. 制作案例",
+      "alt": "LOCAL PAGES. 把地方魅力，汇聚在一页落地页。"
+    },
+    {
+      "location": "菲律宾・宿务岛",
+      "title": "从海外游学到在线英语口语，<br />用 LINE 系统支持两项业务。",
+      "copy": "QQEnglish 的 LINE 系统搭建／获客支持",
+      "alt": "QQEnglish"
+    }
+  ],
+  "topicsTitle": "最近想与您分享的事。",
+  "topicsNote": "来自我们的服务与地方行动。",
+  "topics": [
+    {
+      "tag": "学习交流会",
+      "text": "通过 LINE，了解 AKINDO Lab 下一场活动信息。"
+    },
+    {
+      "tag": "制作案例",
+      "text": "在 LOCAL PAGES. 浏览店铺、企业与地方项目的制作案例。"
+    },
+    {
+      "tag": "地方资讯",
+      "text": "从日历查看小樽的活动与生活安排。"
+    }
+  ],
+  "profileTitle": "生活在这座城，<br />从这里，连接更多。",
+  "profileIntro": "让数字工具，成为地方一线的实用助力。<br />生活在小樽・钱函，陪伴店铺与企业迈出下一步。",
+  "profileName": "井上 博史",
+  "profileRole": "HIROSHI INOUE / Spady 负责人",
+  "profileAlt": "Spady 负责人井上博史",
+  "profileBio": "上一份工作期间，曾派驻 Meta，担任营销专业顾问，为日本 80 家以上的广告代理商提供支持。独立创业后，已搭建 100 个以上的 LINE 官方账号。目前除了获客支持与网站制作，也开展面向地方经营者的学习交流会及地方资讯分享。",
+  "businessName": "商号",
+  "base": "据点",
+  "location": "北海道小樽市钱函",
+  "coverage": "服务范围",
+  "coverageValue": "北海道 / 日本全国及海外（线上）",
+  "threads": "在 Threads 看我们的日常",
+  "ctaTitle": "一起创造，<br />下一个契机。",
+  "ctaCopy": "关于业务、客源，或地方的想法。<br />即使还说不出完整轮廓，也欢迎与我们聊聊。",
+  "line": "通过 LINE 咨询",
+  "contactNote": "首次咨询免费・提供日本全国线上服务",
+  "japaneseLink": "链接内容为日语",
+  "contactDescription": "欢迎咨询获客与招聘、网站制作、学习交流会及地方项目。以小樽・钱函为据点，通过线上方式服务日本全国及海外。",
+  "contactTitle": "下一个契机，<br /><span class=\"highlight-ink\">从这里开始。</span>",
+  "contactIntro": "关于客源、网站制作、学习与地方。<br />想法还没整理好，也没关系。<br />欢迎告诉我们，您正在思考的事。",
+  "contactPoints": [
+    "首次咨询免费",
+    "通常在 2 个工作日内回复",
+    "提供日本全国及海外线上服务"
+  ],
+  "formIntro": "请告诉我们您的咨询需求。",
+  "formRequiredNote": "请填写标有“必填”的项目。",
+  "required": "必填",
+  "optional": "选填",
+  "name": "姓名",
+  "namePlaceholder": "例：王小明",
+  "company": "公司名称或商号",
+  "companyPlaceholder": "例：○○商店",
+  "email": "电子邮箱",
+  "emailHelp": "请填写可接收回复的电子邮箱。",
+  "topic": "咨询类别",
+  "select": "请选择",
+  "topicOptions": [
+    "获客、招聘、广告、社交媒体及 LINE 支持",
+    "落地页与网站制作（LOCAL PAGES.）",
+    "学习交流会与培训（AKINDO Lab）",
+    "小樽生活日历与地方项目",
+    "采访、合作及其他"
+  ],
+  "message": "咨询内容",
+  "messagePlaceholder": "请告诉我们目前遇到的问题，或想咨询的事项。简单几句话也可以。",
+  "meeting": "填写期望的会谈日期与时间",
+  "preferences": [
+    "首选时间",
+    "备选时间一",
+    "备选时间二"
+  ],
+  "meetingPlaceholder": "请填写日期、时段与时区",
+  "agreeBefore": "我同意",
+  "agreeAfter": "，并提交表单。",
+  "send": "提交咨询",
+  "sending": "发送中…",
+  "sendNote": "只是想先聊聊，也欢迎联系我们。",
+  "sendError": "无法确认是否发送成功。您填写的内容已保留。请稍后重试，或通过 LINE 联系我们。",
+  "thanksTitle": "已收到您的咨询",
+  "thanksHeading": "您的咨询，<br /><span class=\"highlight-ink\">我们收到了。</span>",
+  "thanksCopy": "感谢您的联系。<br />我们将确认内容，通常在 2 个工作日内回复。",
+  "backHome": "返回首页",
+  "privacyDescription": "介绍 Spady 如何处理咨询信息及个人信息，以及 Cookie 与外部服务的使用方式。",
+  "privacyIntro": "Spady 重视您在咨询过程中提供的信息。本页说明本网站收集的信息、使用目的与管理方式。",
+  "updated": "最后更新日期：2026 年 9 月 6 日",
+  "contents": "目录",
+  "privacySections": [
+    {
+      "title": "运营者与联系渠道",
+      "text": "本网站（spady.net）由 Spady 运营（负责人：井上博史；据点：北海道小樽市钱函）。如对个人信息的处理有任何疑问或请求，请通过联系页面与我们联系。"
+    },
+    {
+      "title": "收集的信息",
+      "text": "我们通过咨询表单收集您的姓名、公司名称或商号、电子邮箱、咨询类别与内容、期望的会谈日期与时间、是否同意，以及使用语言。选填项目未填写也可提交咨询。为提供及保护网站服务，我们使用的网站托管服务可能会处理 IP 地址、访问日期与时间等通信信息。"
+    },
+    {
+      "title": "使用目的",
+      "text": "我们将信息用于回复咨询、确认咨询内容、安排会谈、针对委托事项提出建议及联系、提供服务，以及防止不当使用。获得您的同意后，也会将信息用于改善网站及衡量广告效果。我们不会未经同意，将收集的信息用于与上述目的无关的用途。"
+    },
+    {
+      "title": "外部服务与委托处理",
+      "text": "我们使用 Cloudflare 提供网站服务及接收咨询。提交的咨询会通过 Lark 的通知功能，发送至 Spady 管理的通知接收端，供负责人员确认。根据各服务的设备与合同，信息可能在日本境外处理。关于信息处理的详细说明，也请参阅各服务的隐私政策。"
+    },
+    {
+      "title": "Cookie 与访问统计",
+      "text": "本网站设有 Google 跟踪代码管理器。在新版首页、联系页面及本政策的各语言版本页面中，我们会在获得 Cookie 同意后，才加载跟踪代码。不同意仍可浏览网站及提交咨询。Cookie 选择与动态效果显示设置会保存在您浏览器的本地存储中。您可通过“更改 Cookie 设置”调整选择。即使改为拒绝，也无法撤回已发送的信息。已保存的 Cookie 可通过浏览器设置删除。"
+    },
+    {
+      "title": "向第三方提供信息与外部链接",
+      "text": "除依据法律法规规定等情况外，我们不会在未获得本人同意的情况下，向第三方提供个人信息。如为实现使用目的而需委托业务，我们会审慎考虑信息的处理方式。LINE、Threads 及各项目等链接指向的网站与服务，适用其各自的隐私政策。"
+    },
+    {
+      "title": "信息管理与保存",
+      "text": "本网站使用 HTTPS 加密通信，咨询通知的接收端由服务器端管理。我们仅在处理咨询所需的范围内使用信息，并在考虑法律法规规定的保存义务等因素后，删除或整理不再需要的信息。"
+    },
+    {
+      "title": "请求查阅、更正或停止使用等",
+      "text": "如您希望获知本人个人信息的使用目的，或请求查阅、更正、删除、停止使用、停止向第三方提供等，请通过联系页面与我们联系。我们将确认您的身份，并依据适用法律法规处理。"
+    },
+    {
+      "title": "政策变更",
+      "text": "我们可能根据服务或信息处理方式的变更，调整本政策。变更后的内容与更新日期将公布于本页。"
+    }
+  ],
+  "servicePolicies": "外部服务的隐私政策",
+  "privacyContact": "咨询个人信息相关事项"
+}

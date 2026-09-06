@@ -1,0 +1,14 @@
+---
+import Home from '../components/pages/Home.astro';
+import Contact from '../components/pages/Contact.astro';
+import Thanks from '../components/pages/Thanks.astro';
+import Privacy from '../components/pages/Privacy.astro';
+import { locales } from '../i18n';
+import type { Locale } from '../i18n';
+export function getStaticPaths() {
+  return locales.filter(item=>item.id!=='ja').flatMap(item=>['','contact','contact/thanks','privacy'].map(page=>({params:{localized:`${item.id}${page?`/${page}`:''}`},props:{lang:item.id,page}})));
+}
+const {lang,page}=Astro.props as {lang:Locale;page:string};
+const Component=page==='contact'?Contact:page==='contact/thanks'?Thanks:page==='privacy'?Privacy:Home;
+---
+<Component lang={lang} />

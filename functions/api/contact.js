@@ -2,14 +2,29 @@
 const MAX_BODY_BYTES = 24 * 1024;
 const fields = { name: 100, company: 100, email: 200, topic: 100, message: 4000, pref1: 200, pref2: 200, pref3: 200, consent: 10, form_version: 40 };
 
+const localeCopy = {
+  ja: { tag:'ja', title:'送信できませんでした', back:'お問い合わせページへ戻る', error:'送信の完了を確認できませんでした。入力内容を確認して再度お試しいただくか、LINEからご連絡ください。' },
+  en: { tag:'en', title:'Your message could not be sent', back:'Return to contact', error:'We could not confirm delivery. Please check your entries and try again, or contact us on LINE.' },
+  'zh-hant': { tag:'zh-Hant', title:'訊息未能送出', back:'返回聯絡頁面', error:'無法確認訊息是否送達。請檢查填寫內容後重試，或透過 LINE 聯絡我們。' },
+  'zh-hans': { tag:'zh-Hans', title:'消息未能发送', back:'返回联系页面', error:'无法确认消息是否送达。请检查填写内容后重试，或通过 LINE 联系我们。' },
+  ko: { tag:'ko', title:'메시지를 보내지 못했습니다', back:'문의 페이지로 돌아가기', error:'전송 완료를 확인하지 못했습니다. 입력 내용을 확인한 후 다시 시도하거나 LINE으로 문의해 주세요.' },
+};
+function language(request) {
+  const value = new URL(request.url).searchParams.get('lang');
+  return Object.hasOwn(localeCopy, value) ? value : 'ja';
+}
 function reply(request, status, body) {
+  const lang = language(request);
+  const copy = localeCopy[lang];
+  const contact = `${lang === 'ja' ? '' : `/${lang}`}/contact/`;
   const headers = { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' };
+  if (status !== 200 && lang !== 'ja') body = { ...body, message: copy.error };
   if ((request.headers.get('accept') || '').includes('application/json')) {
     return Response.json(body, { status, headers });
   }
-  if (status === 200) return new Response(null, { status: 303, headers: { ...headers, Location: '/contact/thanks/' } });
-  // Only fixed, server-owned messages are rendered; submitted content is never reflected.
-  return new Response(`<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>送信内容をご確認ください｜Spady</title><body style="font-family:system-ui,sans-serif;max-width:640px;margin:12vh auto;padding:24px;line-height:2"><h1>送信できませんでした</h1><p>${body.message}</p><p><a href="/contact/">お問い合わせページへ戻る</a></p></body></html>`, { status, headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
+  if (status === 200) return new Response(null, { status: 303, headers: { ...headers, Location: `${contact}thanks/` } });
+  // Only fixed, server-owned messages and allowlisted language paths are rendered.
+  return new Response(`<!doctype html><html lang="${copy.tag}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${copy.title}｜Spady</title><body style="font-family:system-ui,sans-serif;max-width:640px;margin:12vh auto;padding:24px;line-height:2"><h1>${copy.title}</h1><p>${body.message}</p><p><a href="${contact}">${copy.back}</a></p></body></html>`, { status, headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
 }
 
 async function readForm(request) {
@@ -59,7 +74,7 @@ export async function onRequestPost({ request, env }) {
   }
   const text = [
     '【Spady HPからのお問い合わせ・無料相談】',
-    `受付番号：${requestId}`, `お名前：${data.name}`, `事業・会社名：${data.company || '（未記入）'}`,
+    `受付番号：${requestId}`, `表示言語：${language(request)}`, `お名前：${data.name}`, `事業・会社名：${data.company || '（未記入）'}`,
     `メール：${data.email}`, `ご相談内容：${data.topic}`,
     ...(data.pref1 || data.pref2 || data.pref3 ? [`第1希望：${data.pref1 || '（未記入）'}`, `第2希望：${data.pref2 || '（未記入）'}`, `第3希望：${data.pref3 || '（未記入）'}`] : []),
     '--- お問い合わせ内容 ---', data.message || '（未記入）',

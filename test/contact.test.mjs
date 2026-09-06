@@ -4,10 +4,10 @@ import { onRequestPost } from '../functions/api/contact.js';
 
 const values = { name: '動作確認', email: 'test@example.com', topic: 'その他', message: 'フォームのテスト', consent: 'yes', form_version: 'inquiry-v2' };
 const env = { LARK_WEBHOOK: 'https://open.larksuite.com/open-apis/bot/v2/hook/test-only' };
-function request(overrides = {}, options = {}) {
+function request(overrides = {}, options = {}, lang = '') {
   const form = new FormData();
   for (const [key, value] of Object.entries({ ...values, ...overrides })) if (value !== null) form.append(key, value);
-  return new Request('https://spady.net/api/contact', { method: 'POST', body: form, headers: { Accept: 'application/json', Origin: 'https://spady.net', ...options } });
+  return new Request(`https://spady.net/api/contact${lang ? `?lang=${encodeURIComponent(lang)}` : ''}`, { method: 'POST', body: form, headers: { Accept: 'application/json', Origin: 'https://spady.net', ...options } });
 }
 
 test('contact handler validates before delivery and confirms Lark application success', async t => {
@@ -64,6 +64,24 @@ test('contact handler validates before delivery and confirms Lark application su
     let count = 0; t.mock.method(globalThis, 'fetch', async () => { count++; throw new Error('offline'); });
     const result = await onRequestPost({ request: request(), env }); assert.equal(result.status, 502); assert.equal(count, 1);
   });
+  for (const lang of ['en', 'zh-hant', 'zh-hans', 'ko']) {
+    await t.test(`${lang} retains language after delivery and in Lark`, async () => {
+      mockResponse(); const result = await onRequestPost({ request: request({}, { Accept: 'text/html' }, lang), env });
+      assert.equal(result.status, 303); assert.equal(result.headers.get('location'), `/${lang}/contact/thanks/`);
+      assert.match(JSON.parse(calls[0].options.body).content.text, new RegExp(`表示言語：${lang}`));
+    });
+    await t.test(`${lang} returns localized errors without delivery`, async () => {
+      mockResponse(); const result = await onRequestPost({ request: request({ consent: null }, { Accept: 'text/html' }, lang), env });
+      assert.equal(result.status, 400); assert.equal(calls.length, 0);
+      const html = await result.text(); assert.ok(html.includes(`href="/${lang}/contact/"`)); assert.ok(!html.includes('送信できませんでした'));
+    });
+  }
+  for (const lang of ['https://evil.example/', '__proto__', '<script>alert(1)</script>']) {
+    await t.test(`untrusted locale is never used in a redirect: ${lang}`, async () => {
+      mockResponse(); const result = await onRequestPost({ request: request({}, { Accept: 'text/html' }, lang), env });
+      assert.equal(result.status, 303); assert.equal(result.headers.get('location'), '/contact/thanks/');
+    });
+  }
   await t.test('non-JavaScript form redirects to completion only after delivery', async () => {
     mockResponse(); const result = await onRequestPost({ request: request({}, { Accept: 'text/html' }), env });
     assert.equal(result.status, 303); assert.equal(result.headers.get('location'), '/contact/thanks/');

@@ -1,0 +1,15 @@
+---
+import HomeLayout from '../../layouts/HomeLayout.astro';
+import '../../styles/contact.css';
+import { messages, pathFor } from '../../i18n';
+import type { Locale } from '../../i18n';
+const {lang='ja'}=Astro.props as {lang?:Locale};
+const t=messages(lang);
+---
+<HomeLayout lang={lang} page="contact/thanks/" title={`${t.thanksTitle}｜Spady`} description={t.contactDescription} noindex={true}>
+  <main id="main" class="thanks-page section-shell">
+    <span class="thanks-mark" aria-hidden="true">✓</span><p class="eyebrow">THANK YOU FOR CONNECTING.</p>
+    <h1 set:html={t.thanksHeading} /><p set:html={t.thanksCopy} />
+    <a class="contact-button" href={pathFor(lang)}><span class="button-label">{t.backHome}</span><span aria-hidden="true">↗</span></a>
+  </main>
+</HomeLayout>

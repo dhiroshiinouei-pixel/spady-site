@@ -1,40 +1,60 @@
 ---
 import '../styles/home.css';
 import '../styles/motion.css';
+import '../styles/i18n.css';
 import SiteConsent from '../components/SiteConsent.astro';
-const {title='Spady｜地域の魅力に、次のきっかけを。',description='小樽・銭函を拠点に、マーケティングとテクノロジーで商いと暮らしのつながるをつくる。Spadyの事業、サービス、地域での活動をご紹介します。',noindex=false}=Astro.props;
-const canonical=new URL(Astro.url.pathname,'https://spady.net').href;
+import { messages, locales, pathFor, absolute } from '../i18n';
+import type { Locale, Page } from '../i18n';
+interface Props { lang?: Locale; page?: Page; title?: string; description?: string; noindex?: boolean }
+const {lang='ja',page='',noindex=false}=Astro.props;
+const t=messages(lang);
+const {title=t.metaTitle,description=t.metaDescription}=Astro.props;
+const locale=locales.find(item=>item.id===lang)!;
+const home=pathFor(lang);
+const canonical=absolute(pathFor(lang,page));
+const ogImage=absolute('/og.png?v=20260906');
+const schema={'@context':'https://schema.org','@graph':[
+  {'@type':'Organization','@id':'https://spady.net/#organization',name:'Spady',url:'https://spady.net/',logo:'https://spady.net/logo.png',founder:{'@type':'Person',name:'井上博史',alternateName:'Hiroshi Inoue'},sameAs:['https://www.threads.com/@hiroshiinoue.spady']},
+  {'@type':'WebSite','@id':'https://spady.net/#website',url:'https://spady.net/',name:'Spady',publisher:{'@id':'https://spady.net/#organization'},inLanguage:locales.map(item=>item.tag)},
+  {'@type':page==='contact/'?'ContactPage':'WebPage','@id':canonical,url:canonical,name:title,description,inLanguage:locale.tag,isPartOf:{'@id':'https://spady.net/#website'},about:{'@id':'https://spady.net/#organization'}}
+]};
 ---
 <!doctype html>
-<html lang="ja">
+<html lang={locale.tag}>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title><meta name="description" content={description} />
-  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="canonical" href={canonical} />
+  {locales.map(item=><link rel="alternate" hreflang={item.tag} href={absolute(pathFor(item.id,page))} />)}
+  <link rel="alternate" hreflang="x-default" href={absolute(pathFor('ja',page))} />
   <meta property="og:type" content="website" /><meta property="og:site_name" content="Spady" />
   <meta property="og:title" content={title} /><meta property="og:description" content={description} />
-  <meta property="og:url" content={canonical} /><meta property="og:locale" content="ja_JP" />
-  <meta property="og:image" content="https://spady.net/home/coastal-neighborhood.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta property="og:url" content={canonical} /><meta property="og:locale" content={locale.og} />
+  {locales.filter(item=>item.id!==lang).map(item=><meta property="og:locale:alternate" content={item.og} />)}
+  <meta property="og:image" content={ogImage} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:image:type" content="image/png" /><meta property="og:image:alt" content={`Spady — ${t.slogan}`} />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content={ogImage} /><meta name="twitter:image:alt" content={`Spady — ${t.slogan}`} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g,'\\u003c')} />
+  <link rel="icon" type="image/png" href="/favicon.png" /><link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#164ddc" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href={lang==='ja'?'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap':'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap'} rel="stylesheet" />
   <script is:inline>try{if(localStorage.getItem('spady_motion')==='paused')document.documentElement.dataset.motion='paused';}catch{}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">本文へ移動</a>
+  <a class="skip-link" href="#main">{t.skip}</a>
   <div class="scroll-progress" aria-hidden="true"></div><div class="scroll-aura" aria-hidden="true"></div>
-    <header class="home-header">
-      <a class="brand" href="/" aria-label="Spady ホーム"><img src="/logo.png" width="68" height="68" alt="Spady" /><span>地域と、ともに。</span></a>
-      <nav class="desktop-nav" aria-label="メインナビゲーション"><a href="/#about">Spadyについて</a><a href="/#projects">事業・プロジェクト</a><a href="/#stories">実績・活動</a><a class="nav-contact" href="/contact/">お問い合わせ <span aria-hidden="true">↗</span></a></nav>
-      <details class="mobile-menu"><summary aria-label="メニュー"><span></span><span></span></summary><nav aria-label="モバイルナビゲーション"><a href="/#about">Spadyについて <span aria-hidden="true">↗</span></a><a href="/#projects">事業・プロジェクト <span aria-hidden="true">↗</span></a><a href="/#stories">実績・活動 <span aria-hidden="true">↗</span></a><a href="/contact/">お問い合わせ <span aria-hidden="true">↗</span></a></nav></details>
-    </header>
-<slot />
-    <footer class="home-footer section-shell"><div class="footer-main"><div class="footer-brand"><a href="/" aria-label="Spady ホーム"><img src="/logo.png" width="78" height="78" alt="Spady" /></a><p>地域の魅力に、次のきっかけを。<span>北海道小樽市銭函</span></p></div><div class="footer-nav"><a href="/#about">Spadyについて</a><a href="/#projects">事業・プロジェクト</a><a href="/#stories">実績・活動</a><a href="https://www.threads.com/@hiroshiinoue.spady">Threads ↗</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Spady</span><a href="/privacy/">プライバシーポリシー</a><a href="#main">PAGE TOP ↑</a></div></footer>
-
-  <button class="motion-control" type="button" aria-pressed="false" aria-label="動きを停止"><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">動きを停止</span></button>
-  <SiteConsent />
+  <header class="home-header">
+    <a class="brand" href={home} aria-label={`Spady ${t.home}`}><img src="/logo.png" width="68" height="68" alt="Spady" /><span>{t.tagline}</span></a>
+    <nav class="desktop-nav" aria-label={t.navigation}><a href={`${home}#about`}>{t.navAbout}</a><a href={`${home}#projects`}>{t.navProjects}</a><a href={`${home}#stories`}>{t.navStories}</a><a class="nav-contact" href={pathFor(lang,'contact/')}>{t.contact} <span aria-hidden="true">↗</span></a></nav>
+    <div class="header-tools">
+      <details class="language-menu"><summary aria-label={t.language}><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg><span lang={locale.tag}>{locale.label}</span><span aria-hidden="true">⌄</span></summary><nav aria-label={t.language}>{locales.map(item=><a href={pathFor(item.id,page)} lang={item.tag} hreflang={item.tag} aria-current={item.id===lang?'page':undefined}>{item.label}<span aria-hidden="true">{item.id===lang?'✓':'↗'}</span></a>)}</nav></details>
+      <details class="mobile-menu"><summary aria-label={t.menu}><span></span><span></span></summary><nav aria-label={t.navigation}><a href={`${home}#about`}>{t.navAbout} <span aria-hidden="true">↗</span></a><a href={`${home}#projects`}>{t.navProjects} <span aria-hidden="true">↗</span></a><a href={`${home}#stories`}>{t.navStories} <span aria-hidden="true">↗</span></a><a href={pathFor(lang,'contact/')}>{t.contact} <span aria-hidden="true">↗</span></a></nav></details>
+    </div>
+  </header>
+  <slot />
+  <footer class="home-footer section-shell"><div class="footer-main"><div class="footer-brand"><a href={home} aria-label={`Spady ${t.home}`}><img src="/logo.png" width="78" height="78" alt="Spady" /></a><p>{t.slogan}<span>{t.location}</span></p></div><div class="footer-nav"><a href={`${home}#about`}>{t.navAbout}</a><a href={`${home}#projects`}>{t.navProjects}</a><a href={`${home}#stories`}>{t.navStories}</a><a href="https://www.threads.com/@hiroshiinoue.spady">Threads ↗</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Spady</span><a href={pathFor(lang,'privacy/')}>{t.privacy}</a><button class="cookie-settings" type="button" data-cookie-settings>{t.cookieSettings}</button><a href="#main">PAGE TOP ↑</a></div></footer>
+  <button class="motion-control" type="button" aria-pressed="false" aria-label={t.pauseMotion} data-pause={t.pauseMotion} data-play={t.playMotion} data-reduced={t.reducedMotion}><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">{t.pauseMotion}</span></button>
+  <SiteConsent lang={lang} />
   <script>import '../scripts/home-motion';</script>
 </body></html>

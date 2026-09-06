@@ -1,0 +1,63 @@
+---
+import HomeLayout from '../../layouts/HomeLayout.astro';
+import '../../styles/contact.css';
+import { messages, pathFor } from '../../i18n';
+import type { Locale } from '../../i18n';
+const {lang='ja'}=Astro.props as {lang?:Locale};
+const t=messages(lang);
+const topicValues=messages('ja').topicOptions;
+---
+<HomeLayout lang={lang} page="contact/" title={`${t.contact}｜Spady`} description={t.contactDescription}>
+  <main id="main" class="inquiry-page section-shell">
+    <nav class="breadcrumbs" aria-label={t.navigation}><a href={pathFor(lang)}>{t.home}</a><span aria-hidden="true">/</span><span>{t.contact}</span></nav>
+    <div class="inquiry-layout">
+      <div class="inquiry-heading">
+        <p class="eyebrow">LET’S MAKE A CONNECTION.</p>
+        <h1 set:html={t.contactTitle} /><p set:html={t.contactIntro} />
+        <ul class="inquiry-points">{t.contactPoints.map(point=><li>{point}</li>)}</ul>
+        <a class="contact-line inquiry-line" href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry"><img class="line-icon" src="/home/line.svg" width="26" height="26" alt="" />{t.line} <span aria-hidden="true">↗</span></a>
+        <span class="inquiry-asterisk" aria-hidden="true">✳</span>
+      </div>
+      <div class="inquiry-card">
+        <form id="inquiryForm" action={`/api/contact?lang=${lang}`} method="POST" data-sending={t.sending} data-send={t.send} data-error={t.sendError} data-thanks={pathFor(lang,'contact/thanks/')}>
+          <input type="hidden" name="form_version" value="inquiry-v2" />
+          <div class="honeypot" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <p class="form-intro">{t.formIntro}<span>{t.formRequiredNote}</span></p>
+          <div class="field"><label for="name">{t.name} <b class="required">{t.required}</b></label><input id="name" name="name" autocomplete="name" required maxlength="100" placeholder={t.namePlaceholder} /></div>
+          <div class="field"><label for="company">{t.company} <span class="optional">{t.optional}</span></label><input id="company" name="company" autocomplete="organization" maxlength="100" placeholder={t.companyPlaceholder} /></div>
+          <div class="field"><label for="email">{t.email} <b class="required">{t.required}</b></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="example@company.jp" /><p class="field-help">{t.emailHelp}</p></div>
+          <div class="field"><label for="topic">{t.topic} <b class="required">{t.required}</b></label><select id="topic" name="topic" required><option value="">{t.select}</option>{t.topicOptions.map((label,i)=><option value={topicValues[i]}>{label}</option>)}</select></div>
+          <div class="field"><label for="message">{t.message} <b class="required">{t.required}</b></label><textarea id="message" name="message" rows="6" required maxlength="4000" placeholder={t.messagePlaceholder}></textarea></div>
+          <details class="meeting-options"><summary>{t.meeting} <span>{t.optional}</span></summary>{t.preferences.map((label,i)=><div class="field"><label for={`pref${i+1}`}>{label}</label><input id={`pref${i+1}`} name={`pref${i+1}`} maxlength="200" placeholder={i===0?t.meetingPlaceholder:undefined} /></div>)}</details>
+          <label class="consent-field"><input type="checkbox" name="consent" value="yes" required /><span>{t.agreeBefore}<a href={pathFor(lang,'privacy/')} target="_blank" rel="noopener">{t.privacy}</a>{t.agreeAfter}<b class="required">{t.required}</b></span></label>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite" tabindex="-1" hidden></p>
+          <button class="contact-button inquiry-submit" type="submit"><span class="button-label">{t.send}</span><span aria-hidden="true">↗</span></button>
+          <p class="submit-note">{t.sendNote}</p>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script>
+    const form=document.querySelector<HTMLFormElement>('#inquiryForm');
+    const status=document.querySelector<HTMLElement>('#formStatus');
+    const button=form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+    form?.addEventListener('submit',async event=>{
+      event.preventDefault();
+      if(!button||!status||button.disabled)return;
+      button.disabled=true;form.setAttribute('aria-busy','true');
+      const label=button.querySelector('.button-label');if(label)label.textContent=form.dataset.sending||'';
+      status.hidden=true;
+      const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),20000);
+      try{
+        const response=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'},signal:controller.signal});
+        const result=await response.json().catch(()=>({ok:false}));
+        if(!response.ok||result.ok!==true)throw new Error('delivery_not_confirmed');
+        window.location.assign(form.dataset.thanks||'/contact/thanks/');
+      }catch{
+        status.textContent=form.dataset.error||'';
+        status.hidden=false;status.focus();button.disabled=false;form.removeAttribute('aria-busy');
+        if(label)label.textContent=form.dataset.send||'';
+      }finally{clearTimeout(timeout);}
+    });
+  </script>
+</HomeLayout>

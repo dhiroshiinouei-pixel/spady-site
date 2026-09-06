@@ -1,0 +1,213 @@
+{
+  "metaTitle": "Spady | New possibilities for local places. Otaru & Zenibako",
+  "metaDescription": "Based in Otaru and Zenibako, Spady connects local business and everyday life through marketing and technology. Explore our marketing support, LOCAL PAGES., AKINDO Lab, and Otaru Life Calendar.",
+  "tagline": "Together with our community.",
+  "slogan": "New possibilities for local places.",
+  "home": "Home",
+  "navAbout": "About Spady",
+  "navProjects": "Services & projects",
+  "navStories": "Work & activities",
+  "contact": "Contact",
+  "privacy": "Privacy Policy",
+  "skip": "Skip to main content",
+  "navigation": "Main navigation",
+  "menu": "Menu",
+  "language": "Choose a language",
+  "pauseMotion": "Pause animation",
+  "playMotion": "Resume animation",
+  "reducedMotion": "Reduced motion enabled",
+  "cookieSettings": "Change cookie settings",
+  "cookieText": "We use cookies to improve our website and measure advertising performance. Measurement tags load only after you consent.",
+  "accept": "Accept",
+  "decline": "Decline",
+  "heroTitle": "Local character.<br /><span class=\"highlight-ink\">New possibilities.</span>",
+  "heroDescription": "Based in Otaru and Zenibako, <br />we use marketing and technology <br />to connect business and everyday life.",
+  "heroLink": "Explore our work",
+  "heroImageAlt": "Illustration of people, shops, and everyday life coming together in a seaside town",
+  "heroImageLabel": "People, businesses, and this town.",
+  "aboutTitle": "Helping good things<br />reach the right people.",
+  "aboutFirst": "In local shops, businesses, and everyday life,<br />there are stories and qualities waiting to be discovered.",
+  "aboutSecond": "Spady finds what makes them special, shares it, and creates opportunities to connect. From marketing support and website creation to workshops and local information, the same idea is at the heart of everything we do.",
+  "profileLink": "Founder & business details",
+  "projectsTitle": "One shared purpose.<br />Many ways forward.",
+  "projectsNote": "Supporting business, opening up learning, and connecting daily life.<br />Discover our four areas of work.",
+  "projects": [
+    {
+      "title": "Marketing support",
+      "copy": "Helping your business reach people.",
+      "description": "We connect advertising, social media, and LINE to create a clear path for customer acquisition and recruitment. From local shops to businesses across Japan and overseas.",
+      "link": "Explore our support",
+      "imageAlt": "Marketing support",
+      "tags": "Meta ads / LINE / Social media"
+    },
+    {
+      "title": "LOCAL PAGES.",
+      "copy": "What makes a place special, on one page.",
+      "description": "We bring out the qualities of shops and businesses that have yet to be fully shared, creating landing pages and websites that help visitors take the next step.",
+      "link": "View our work & services",
+      "imageAlt": "LOCAL PAGES. What makes a place special, on one landing page.",
+      "tags": "Landing pages / Websites"
+    },
+    {
+      "title": "AKINDO Lab",
+      "copy": "Learn something new. Move your business forward.",
+      "description": "Instagram, LINE, advertising, and AI. Our workshops help local business owners learn digital skills they can put to work every day.",
+      "link": "Learn about our workshops",
+      "imageAlt": "An AKINDO Lab workshop",
+      "tags": "Workshops / Digital skills"
+    },
+    {
+      "title": "Otaru Life Calendar",
+      "copy": "Discover what’s happening in town today.",
+      "description": "Events, parenting information, job openings, and more. This local calendar brings together information from across Otaru, so you can find it by date.",
+      "link": "Explore local information",
+      "imageAlt": "Official social sharing image for Otaru Life Calendar",
+      "tags": "Local information / Everyday life"
+    }
+  ],
+  "storiesTitle": "What grows<br />from a connection.",
+  "storiesNote": "From local work in Otaru to businesses overseas,<br />explore our client projects and everyday activities.",
+  "stories": [
+    {
+      "location": "Otaru & Zenibako",
+      "title": "Meeting face to face, learning together.<br />Workshops for local businesses.",
+      "copy": "Inside an AKINDO Lab workshop",
+      "alt": "Hiroshi Inoue teaching participants about digital marketing at AKINDO Lab"
+    },
+    {
+      "location": "Our work",
+      "title": "The feel of a shop. The purpose of a business.<br />Pages that bring them to life.",
+      "copy": "Our work at LOCAL PAGES.",
+      "alt": "LOCAL PAGES. What makes a place special, on one landing page."
+    },
+    {
+      "location": "Cebu, Philippines",
+      "title": "From studying abroad to online English lessons.<br />LINE setups supporting two businesses.",
+      "copy": "LINE account setup for QQEnglish / About our marketing support",
+      "alt": "QQEnglish"
+    }
+  ],
+  "topicsTitle": "What’s happening now.",
+  "topicsNote": "Updates from our services and community projects.",
+  "topics": [
+    {
+      "tag": "Workshops",
+      "text": "Get details of upcoming AKINDO Lab workshops on LINE."
+    },
+    {
+      "tag": "Our work",
+      "text": "At LOCAL PAGES., explore websites we have created for shops, businesses, and communities."
+    },
+    {
+      "tag": "Local information",
+      "text": "Find Otaru events and everyday plans on the calendar."
+    }
+  ],
+  "profileTitle": "Living here.<br />Connecting from here.",
+  "profileIntro": "Making digital tools useful in local, everyday work.<br />Based in Otaru and Zenibako, I help shops and businesses take their next step.",
+  "profileName": "Hiroshi Inoue",
+  "profileRole": "HIROSHI INOUE / Founder of Spady",
+  "profileAlt": "Hiroshi Inoue, founder of Spady",
+  "profileBio": "In my previous role, I was seconded to Meta, where I supported 80+ advertising agencies in Japan as a Marketing Pro. Since going independent, I have built 100+ official LINE accounts. Today, alongside marketing support and website creation, I run workshops for local business owners and share community information.",
+  "businessName": "Business name",
+  "base": "Based in",
+  "location": "Zenibako, Otaru, Hokkaido, Japan",
+  "coverage": "Service area",
+  "coverageValue": "Hokkaido / Across Japan and overseas (online)",
+  "threads": "Follow our everyday work on Threads",
+  "ctaTitle": "Let’s create <br />your next opportunity.",
+  "ctaCopy": "Your business, your marketing, your community. <br />Tell us what’s on your mind, even if you’re still finding the words.",
+  "line": "Talk to us on LINE",
+  "contactNote": "Free initial consultation · Online support across Japan",
+  "japaneseLink": "Linked page is in Japanese",
+  "contactDescription": "Talk to us about marketing, recruitment, website creation, workshops, or community projects. Based in Otaru and Zenibako, we also work online with clients across Japan and overseas.",
+  "contactTitle": "Your next opportunity<br /><span class=\"highlight-ink\">starts here.</span>",
+  "contactIntro": "Marketing, websites, learning, or your community.<br />You don’t need to have everything figured out.<br />Tell us what you’re thinking about.",
+  "contactPoints": [
+    "Your initial consultation is free",
+    "We usually reply within 2 business days",
+    "Online support across Japan and overseas"
+  ],
+  "formIntro": "Tell us how we can help.",
+  "formRequiredNote": "Please complete all fields marked “Required.”",
+  "required": "Required",
+  "optional": "Optional",
+  "name": "Name",
+  "namePlaceholder": "e.g. Alex Smith",
+  "company": "Company or business name",
+  "companyPlaceholder": "e.g. Seaside Shop",
+  "email": "Email address",
+  "emailHelp": "Enter the email address where you would like to receive our reply.",
+  "topic": "What would you like to discuss?",
+  "select": "Please select",
+  "topicOptions": [
+    "Marketing, recruitment, advertising, social media, or LINE support",
+    "Landing page or website creation (LOCAL PAGES.)",
+    "Workshops or training (AKINDO Lab)",
+    "Otaru Life Calendar or community projects",
+    "Media inquiries, collaboration, or other"
+  ],
+  "message": "Your message",
+  "messagePlaceholder": "Tell us about your current challenges or what you’d like to discuss. A short message is fine.",
+  "meeting": "Add your preferred meeting dates and times",
+  "preferences": [
+    "First choice",
+    "Second choice",
+    "Third choice"
+  ],
+  "meetingPlaceholder": "Enter a date, time range, and time zone",
+  "agreeBefore": "I agree to the ",
+  "agreeAfter": " and consent to submitting this form.",
+  "send": "Send your inquiry",
+  "sending": "Sending…",
+  "sendNote": "You’re welcome to get in touch just to discuss an idea.",
+  "sendError": "We couldn’t confirm that your message was sent. Your entries have been kept. Please try again in a little while, or contact us on LINE.",
+  "thanksTitle": "We’ve received your inquiry",
+  "thanksHeading": "Your inquiry<br /><span class=\"highlight-ink\">has been received.</span>",
+  "thanksCopy": "Thank you for getting in touch.<br />We’ll review your message and usually reply within 2 business days.",
+  "backHome": "Back to home",
+  "privacyDescription": "Learn how Spady handles personal information, inquiry details, cookies, and the use of external services.",
+  "privacyIntro": "Spady takes care in handling the information you share with us through your inquiries. This page explains what information this website collects, why we use it, and how we manage it.",
+  "updated": "Last updated: September 6, 2026",
+  "contents": "Contents",
+  "privacySections": [
+    {
+      "title": "Website operator and contact",
+      "text": "This website (spady.net) is operated by Spady (representative: Hiroshi Inoue; based in Zenibako, Otaru, Hokkaido, Japan). Please use our contact page for questions or requests regarding the handling of personal information."
+    },
+    {
+      "title": "Information we collect",
+      "text": "Through our contact form, we collect your name, company or business name, email address, inquiry category and message, preferred meeting dates and times, consent status, and language used. You can submit an inquiry without completing optional fields. To deliver and protect the website, our hosting service may process communication information such as your IP address and the date and time of access."
+    },
+    {
+      "title": "How we use information",
+      "text": "We use information to respond to inquiries, confirm the details of your request, arrange meetings, make proposals and communicate about your request, provide services, and prevent misuse. With your consent, we also use information for measurement to improve the website and understand advertising performance. We do not use collected information for purposes unrelated to these without your authorization."
+    },
+    {
+      "title": "External services and service providers",
+      "text": "We use Cloudflare to deliver the website and receive inquiries. Submitted inquiries are sent through Lark’s notification features to a destination managed by Spady, where the person responsible can review them. Depending on each service’s infrastructure and contractual arrangements, information may be processed outside Japan. Please also refer to each service’s privacy policy for details of how information is handled."
+    },
+    {
+      "title": "Cookies and website measurement",
+      "text": "This website uses Google Tag Manager. On the new homepage, contact page, and this policy page in each language, measurement tags load after you consent to cookies. You can browse the website and submit inquiries without consenting. Your cookie choice and motion display settings are saved in your browser’s local storage. You can change your choice using “Change cookie settings.” Changing your choice to decline does not withdraw information that has already been sent. You can delete stored cookies through your browser settings."
+    },
+    {
+      "title": "Sharing with third parties and external links",
+      "text": "We do not provide personal information to third parties without your consent, except where required by law or in other legally permitted circumstances. When we engage service providers as necessary to fulfill the stated purposes, we take care in how information is handled. Websites and services linked from this site, including LINE, Threads, and individual projects, are subject to their own privacy policies."
+    },
+    {
+      "title": "Information management and retention",
+      "text": "This website encrypts communications using HTTPS, and inquiry notification destinations are managed on the server side. We handle information to the extent necessary to respond to inquiries. Information that is no longer needed is deleted or organized, taking into account legal retention obligations and other relevant considerations."
+    },
+    {
+      "title": "Requests for disclosure, correction, or suspension of use",
+      "text": "If you would like notification of the purposes for which your personal information is used, disclosure, correction, deletion, suspension of use, suspension of provision to third parties, or similar action, please contact us through our contact page. We will verify your identity and respond in accordance with applicable laws."
+    },
+    {
+      "title": "Changes to this policy",
+      "text": "We may review this policy as our services or information handling practices change. The revised policy and its update date will be posted on this page."
+    }
+  ],
+  "servicePolicies": "Privacy policies of external services",
+  "privacyContact": "Contact us about personal information"
+}

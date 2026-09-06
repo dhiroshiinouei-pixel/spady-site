@@ -8,10 +8,10 @@ function updateControl() {
   const stopped = !enabled();
   root.dataset.motion = stopped ? 'paused' : 'playing';
   control?.setAttribute('aria-pressed', String(stopped));
-  control?.setAttribute('aria-label', stopped ? '動きを再開' : '動きを停止');
+  control?.setAttribute('aria-label', stopped ? (control?.dataset.play || 'Resume motion') : (control?.dataset.pause || 'Pause motion'));
   const label = control?.querySelector('.motion-label');
   const symbol = control?.querySelector('.motion-symbol');
-  if (label) label.textContent = reduceMotion.matches ? '動きを抑える設定中' : stopped ? '動きを再開' : '動きを停止';
+  if (label) label.textContent = reduceMotion.matches ? (control?.dataset.reduced || 'Reduced motion') : stopped ? (control?.dataset.play || 'Resume motion') : (control?.dataset.pause || 'Pause motion');
   if (symbol) symbol.textContent = stopped ? '▶' : 'Ⅱ';
   if (control) control.disabled = reduceMotion.matches;
 }
@@ -122,3 +122,9 @@ document.querySelectorAll<HTMLElement>('.project-card').forEach(card => {
 if (location.pathname === '/' && ['#lp-services', '#lp-works', '#local'].includes(location.hash)) {
   location.replace(`/fullfunnelmarketing/${location.search}${location.hash}`);
 }
+
+const languageMenu = document.querySelector<HTMLDetailsElement>('.language-menu');
+languageMenu?.addEventListener('toggle', () => { if (languageMenu.open && menu) menu.open = false; });
+menu?.addEventListener('toggle', () => { if (menu.open && languageMenu) languageMenu.open = false; });
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && languageMenu?.open) { languageMenu.open = false; languageMenu.querySelector('summary')?.focus(); } });
+document.addEventListener('click', event => { if (languageMenu?.open && event.target instanceof Node && !languageMenu.contains(event.target)) languageMenu.open = false; });

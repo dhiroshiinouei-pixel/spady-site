@@ -1,6 +1,12 @@
-<aside class="site-consent" id="siteConsent" aria-label="Cookieの設定" hidden>
-  <p>サイトの改善と広告の計測にCookieを使用します。<a href="/privacy/">プライバシーポリシー</a></p>
-  <div><button type="button" data-consent="granted">同意する</button><button type="button" data-consent="denied">同意しない</button></div>
+---
+import { messages, pathFor } from '../i18n';
+import type { Locale } from '../i18n';
+const {lang='ja'}=Astro.props as {lang?:Locale};
+const t=messages(lang);
+---
+<aside class="site-consent" id="siteConsent" aria-label={t.cookieSettings} hidden>
+  <p>{t.cookieText} <a href={pathFor(lang,'privacy/')}>{t.privacy}</a></p>
+  <div><button type="button" data-consent="granted">{t.accept}</button><button type="button" data-consent="denied">{t.decline}</button></div>
 </aside>
 <script is:inline>
   (()=>{
@@ -14,10 +20,22 @@
     };
     let consent=null;try{consent=localStorage.getItem('spady_cookie_consent')}catch{}
     const bar=document.getElementById('siteConsent');
-    if(consent==='granted')load();else if(!consent)bar.hidden=false;
+    if(consent==='granted')load();else if(consent!=='denied')bar.hidden=false;
+    document.querySelectorAll('[data-cookie-settings]').forEach(button=>button.addEventListener('click',()=>{
+      bar.hidden=false;bar.querySelector('button').focus();
+    }));
     bar.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
-      const value=button.dataset.consent;try{localStorage.setItem('spady_cookie_consent',value)}catch{}
-      if(value==='granted')load();bar.hidden=true;
+      const value=button.dataset.consent;
+      // A rejected storage write must not cause an automatic reload loop.
+      let saved=false;try{localStorage.setItem('spady_cookie_consent',value);saved=true}catch{}
+      bar.hidden=true;
+      if(value==='granted')load();
+      else if(window.__spadyGtmLoaded){
+        window.dataLayer=window.dataLayer||[];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('consent','update',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+        if(saved)window.location.reload();
+      }
     }));
   })();
 </script>

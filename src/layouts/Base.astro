@@ -4,10 +4,10 @@ import '../styles/global.css';
 // ▼ Googleタグマネージャー：コンテナIDを入れると計測が有効になります（例: 'GTM-ABC1234'）
 const GTM_ID = 'GTM-NV5VRH3G';
 
-const { title = 'Spady｜集客と採用の導線設計', description = 'Meta広告・LINE公式アカウント・SNSで、集客と採用の導線を設計します。店舗・中小企業から留学・海外事業まで。元Metaマーケティングプロ。北海道・小樽/銭函拠点。', lang = 'ja' } = Astro.props;
+const { title = 'Spady｜集客と採用の導線設計', description = 'Meta広告・LINE公式アカウント・SNSで、集客と採用の導線を設計します。店舗・中小企業から留学・海外事業まで。元Metaマーケティングプロ。北海道・小樽/銭函拠点。', lang = 'ja', noindex = false } = Astro.props;
 
 // 言語別ラベルとリンク
-const home = lang === 'en' ? '/en/' : '/fullfunnelmarketing/';
+const home = lang === 'en' ? '/en/fullfunnelmarketing/' : '/fullfunnelmarketing/';
 const t = lang === 'en'
   ? {
       nav: ['Services', 'Work', 'Local & Seminars', 'Profile'],
@@ -32,15 +32,15 @@ const t = lang === 'en'
       footPrivacy: 'プライバシーポリシー',
       privacyHref: '/privacy/',
       langLabel: 'EN',
-      langHref: '/en/',
+      langHref: '/en/fullfunnelmarketing/',
       cookieText: '当サイトでは、サービス改善と広告の計測のためにCookieを使用します。',
       cookieAccept: '同意する',
       cookieDecline: '同意しない',
     };
 
 // hreflang用の対応URL
-const jaPath = lang === 'en' ? (Astro.url.pathname === '/en/' ? '/fullfunnelmarketing/' : Astro.url.pathname.replace(/^\/en/, '') || '/') : Astro.url.pathname;
-const enPath = lang === 'en' ? Astro.url.pathname : Astro.url.pathname === '/fullfunnelmarketing/' ? '/en/' : ('/en' + Astro.url.pathname).replace(/\/$/, '/');
+const jaPath = lang === 'en' ? Astro.url.pathname.replace(/^\/en/, '') || '/' : Astro.url.pathname;
+const enPath = lang === 'en' ? Astro.url.pathname : '/en' + Astro.url.pathname;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -49,6 +49,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : Astro.url.pathname === '/ful
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={new URL(Astro.url.pathname, 'https://spady.net').href} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -58,9 +59,9 @@ const enPath = lang === 'en' ? Astro.url.pathname : Astro.url.pathname === '/ful
     <meta property="og:site_name" content="Spady" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://spady.net/og-20260708-0021.png" />
-    <link rel="alternate" hreflang="ja" href={new URL(jaPath, 'https://spady.net').href} />
-    <link rel="alternate" hreflang="en" href={new URL(enPath, 'https://spady.net').href} />
-    <link rel="alternate" hreflang="x-default" href={new URL(jaPath, 'https://spady.net').href} />
+    {!noindex && <link rel="alternate" hreflang="ja" href={new URL(jaPath, 'https://spady.net').href} />}
+    {!noindex && <link rel="alternate" hreflang="en" href={new URL(enPath, 'https://spady.net').href} />}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(jaPath, 'https://spady.net').href} />}
     <link rel="icon" type="image/png" href="/favicon.png?v=20260708-0021" />
     <link rel="apple-touch-icon" href="/favicon.png?v=20260708-0021" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -133,7 +134,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : Astro.url.pathname === '/ful
 
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
-        <a class="brand" href="/">
+        <a class="brand" href={lang==='en'?'/en/':'/'}>
           <img class="brand-logo" src="/logo.png?v=20260708-0021" alt="Spady" width="56" height="56" />
         </a>
         <nav class="nav" id="nav">
