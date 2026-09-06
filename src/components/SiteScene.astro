@@ -1,0 +1,13 @@
+---
+const { tagline, language } = Astro.props;
+---
+<div class="site-scene" aria-hidden="true" data-site-scene>
+  <div class="scene-wash"></div>
+  <div class="scene-core">
+    <div class="scene-emblem"><span class="scene-orbit"></span><img class="scene-logo" src="/logo.png" width="120" height="120" alt="" /></div>
+    <p class="scene-tagline">{tagline}</p>
+    <p class="scene-language"><span class="scene-from">{language}</span><span class="scene-direction">↗</span><strong data-scene-language>{language}</strong></p>
+    <p class="scene-note">LOCAL ROOTS. NEW POSSIBILITIES.</p>
+  </div>
+  <div class="scene-edge"></div>
+</div>

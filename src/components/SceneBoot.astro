@@ -1,0 +1,42 @@
+---
+const { isHome = false } = Astro.props;
+---
+<script is:inline define:vars={{ isHome }}>
+  (() => {
+    const root = document.documentElement;
+    const key = 'spady_language_scene';
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    let incoming = null;
+    try {
+      const raw = sessionStorage.getItem(key);
+      sessionStorage.removeItem(key);
+      if (raw) {
+        const item = JSON.parse(raw);
+        const age = Date.now() - item.at;
+        if (item && typeof item.at === 'number' && age >= 0 && age < 12000 &&
+            item.path === location.pathname && typeof item.id === 'string') incoming = item;
+      }
+    } catch {}
+    try { if (localStorage.getItem('spady_motion') === 'paused') root.dataset.motion = 'paused'; } catch {}
+    const restored = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
+    if (motion.matches || root.dataset.motion === 'paused' || restored) return;
+    const scene = incoming ? 'language-entering' : isHome && !location.hash ? 'opening' : null;
+    if (!scene) return;
+    if (incoming) {
+      for (const [field, property] of [['x', '--scene-x'], ['y', '--scene-y']]) {
+        const value = incoming[field];
+        if (typeof value === 'number' && Number.isFinite(value)) root.style.setProperty(property, `${Math.max(0, Math.min(1, value)) * 100}%`);
+      }
+    }
+    root.dataset.scene = scene;
+    // Independent of the main bundle: missing scripts never leave a cover on the page.
+    const clear = () => { if (root.dataset.scene === scene) delete root.dataset.scene; };
+    const timer = setTimeout(clear, scene === 'opening' ? 1650 : 800);
+    const dismiss = () => { clearTimeout(timer); clear(); };
+    for (const event of ['pointerdown', 'wheel', 'touchstart', 'keydown']) addEventListener(event, dismiss, { once: true, passive: true });
+    addEventListener('pagehide', dismiss, { once: true });
+    addEventListener('pageshow', event => { if (event.persisted) dismiss(); });
+    addEventListener('spady:motionchange', () => { if (root.dataset.motion === 'paused') dismiss(); });
+    motion.addEventListener('change', event => { if (event.matches) dismiss(); });
+  })();
+</script>

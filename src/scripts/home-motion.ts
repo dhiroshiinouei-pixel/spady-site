@@ -1,3 +1,4 @@
+import { initPageScenes } from './page-scene';
 const root = document.documentElement;
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const control = document.querySelector<HTMLButtonElement>('.motion-control');
@@ -14,6 +15,7 @@ function updateControl() {
   if (label) label.textContent = reduceMotion.matches ? (control?.dataset.reduced || 'Reduced motion') : stopped ? (control?.dataset.play || 'Resume motion') : (control?.dataset.pause || 'Pause motion');
   if (symbol) symbol.textContent = stopped ? '▶' : 'Ⅱ';
   if (control) control.disabled = reduceMotion.matches;
+  dispatchEvent(new Event('spady:motionchange'));
 }
 control?.addEventListener('click', () => {
   paused = !paused;
@@ -77,7 +79,7 @@ function celebrateTap(x: number, y: number) {
 }
 
 document.addEventListener('click', event => {
-  if (!(event.target instanceof Element)) return;
+  if (event.defaultPrevented || !(event.target instanceof Element)) return;
   const target = event.target.closest<HTMLElement>('a, button');
   if (!target || target.classList.contains('motion-control') || target.closest('.site-consent')) return;
   const rect = target.getBoundingClientRect();
@@ -128,3 +130,5 @@ languageMenu?.addEventListener('toggle', () => { if (languageMenu.open && menu) 
 menu?.addEventListener('toggle', () => { if (menu.open && languageMenu) languageMenu.open = false; });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && languageMenu?.open) { languageMenu.open = false; languageMenu.querySelector('summary')?.focus(); } });
 document.addEventListener('click', event => { if (languageMenu?.open && event.target instanceof Node && !languageMenu.contains(event.target)) languageMenu.open = false; });
+
+initPageScenes();

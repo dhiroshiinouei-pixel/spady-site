@@ -1,9 +1,4 @@
 /* Playful movement stays separate from readable content and native scrolling. */
-@view-transition{navigation:auto}
-::view-transition-old(root){animation:page-out .18s ease both}
-::view-transition-new(root){animation:page-in .35s ease both}
-@keyframes page-out{to{opacity:0;transform:translateY(-8px)}}
-@keyframes page-in{from{opacity:0;transform:translateY(12px)}}
 :root{--scroll-turn:0deg;--scroll-progress:0;--scroll-shift:0px;--motion-accent:#164ddc}
 body{overflow-x:clip}
 main,footer{position:relative}
