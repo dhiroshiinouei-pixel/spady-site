@@ -9,3 +9,5 @@
 ## September 6, 2026 social previews
 - `/home/otaru-calendar-og.jpg`: exact official OGP image from https://otaru.spady.net/assets/og-image-20260713.jpg, as specified in the live calendar og:image metadata. Reused at the owner's explicit request.
 - `/og.png`: original generated Spady social card, using the provided brand logo and existing coastal illustration as references. Headline: 地域の魅力に、次のきっかけを。 Dimensions: 1200×630.
+
+- `/home/threads.svg`: Threads brand icon from Simple Icons 16.0.0 (CC0-1.0), https://github.com/simple-icons/simple-icons/blob/16.0.0/icons/threads.svg. Matches the approved button preview.

@@ -1,5 +1,6 @@
 ---
 import HomeLayout from '../../layouts/HomeLayout.astro';
+import ThreadsLink from '../ThreadsLink.astro';
 import { messages, marketingPath, calendarPath, pathFor } from '../../i18n';
 import type { Locale } from '../../i18n';
 const { lang = 'ja' } = Astro.props as {lang?: Locale};
@@ -40,7 +41,7 @@ const projects = t.projects.map((item,i)=>({...item, number:String(i+1).padStart
       </section>
       <section class="profile section-shell" id="profile" aria-labelledby="profile-title">
         <div class="profile-photo"><span class="profile-photo-note">HELLO FROM OTARU.</span><img src="/profile.jpg" width="320" height="320" loading="lazy" alt={t.profileAlt} /><p>{t.tagline}<span>HIROSHI INOUE / SPADY</span></p></div>
-        <div class="profile-copy"><p class="eyebrow">PEOPLE BEHIND SPADY</p><h2 id="profile-title" set:html={t.profileTitle} /><p set:html={t.profileIntro} /><div class="profile-name"><h3>{t.profileName}</h3><span>{t.profileRole}</span></div><p class="profile-bio">{t.profileBio}</p><dl class="profile-facts"><div><dt>{t.businessName}</dt><dd>Spady</dd></div><div><dt>{t.base}</dt><dd>{t.location}</dd></div><div><dt>{t.coverage}</dt><dd>{t.coverageValue}</dd></div></dl><a class="text-link small-link" href="https://www.threads.com/@hiroshiinoue.spady">{t.threads} <span class="arrow-circle" aria-hidden="true">↗</span></a></div>
+        <div class="profile-copy"><p class="eyebrow">PEOPLE BEHIND SPADY</p><h2 id="profile-title" set:html={t.profileTitle} /><p set:html={t.profileIntro} /><div class="profile-name"><h3>{t.profileName}</h3><span>{t.profileRole}</span></div><p class="profile-bio">{t.profileBio}</p><dl class="profile-facts"><div><dt>{t.businessName}</dt><dd>Spady</dd></div><div><dt>{t.base}</dt><dd>{t.location}</dd></div><div><dt>{t.coverage}</dt><dd>{t.coverageValue}</dd></div></dl><div class="profile-threads"><ThreadsLink lang={lang} /><p class="threads-account">{t.threadsNote}<br />@hiroshiinoue.spady</p></div></div>
       </section>
       <section class="contact" id="contact" aria-labelledby="contact-title"><div class="section-shell contact-inner"><div><p class="eyebrow">LET’S TALK</p><h2 id="contact-title" set:html={t.ctaTitle} /><p set:html={t.ctaCopy} /></div><div class="contact-links"><a class="contact-button" href={pathFor(lang,'contact/')}><span class="button-label">{t.contact}</span> <span aria-hidden="true">↗</span></a><a class="contact-line" href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry"><img class="line-icon" src="/home/line.svg" width="26" height="26" alt="" />{t.line} <span aria-hidden="true">↗</span></a><span class="contact-note">{t.contactNote}</span></div></div></section>
     </main>

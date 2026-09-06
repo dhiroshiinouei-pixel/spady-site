@@ -1,0 +1,11 @@
+---
+import { messages } from '../i18n';
+import type { Locale } from '../i18n';
+const {lang='ja',compact=false}=Astro.props as {lang?:Locale;compact?:boolean};
+const t=messages(lang);
+---
+<a class={compact?'threads-footer-link':'threads-button'} href="https://www.threads.com/@hiroshiinoue.spady" target="_blank" rel="noopener noreferrer" aria-label={t.threadsAccessible}>
+  <img src="/home/threads.svg" alt="" width={compact?23:27} height={compact?23:27} loading="lazy" />
+  <span>{compact?'Threads':t.threads}</span>
+  <span class="threads-arrow" aria-hidden="true">↗</span>
+</a>

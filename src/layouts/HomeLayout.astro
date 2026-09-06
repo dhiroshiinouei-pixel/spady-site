@@ -2,6 +2,8 @@
 import '../styles/home.css';
 import '../styles/motion.css';
 import '../styles/i18n.css';
+import '../styles/threads.css';
+import ThreadsLink from '../components/ThreadsLink.astro';
 import '../styles/page-scene.css';
 import SceneBoot from '../components/SceneBoot.astro';
 import SiteScene from '../components/SiteScene.astro';
@@ -57,7 +59,7 @@ const schema={'@context':'https://schema.org','@graph':[
     </div>
   </header>
   <slot />
-  <footer class="home-footer section-shell"><div class="footer-main"><div class="footer-brand"><a href={home} aria-label={`Spady ${t.home}`}><img src="/logo.png" width="78" height="78" alt="Spady" /></a><p>{t.slogan}<span>{t.location}</span></p></div><div class="footer-nav"><a href={`${home}#about`}>{t.navAbout}</a><a href={`${home}#projects`}>{t.navProjects}</a><a href={`${home}#stories`}>{t.navStories}</a><a href="https://www.threads.com/@hiroshiinoue.spady">Threads ↗</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Spady</span><a href={pathFor(lang,'privacy/')}>{t.privacy}</a><button class="cookie-settings" type="button" data-cookie-settings>{t.cookieSettings}</button><a href="#main">PAGE TOP ↑</a></div></footer>
+  <footer class="home-footer section-shell"><div class="footer-main"><div class="footer-brand"><a href={home} aria-label={`Spady ${t.home}`}><img src="/logo.png" width="78" height="78" alt="Spady" /></a><p>{t.slogan}<span>{t.location}</span></p></div><div class="footer-nav"><a href={`${home}#about`}>{t.navAbout}</a><a href={`${home}#projects`}>{t.navProjects}</a><a href={`${home}#stories`}>{t.navStories}</a><ThreadsLink lang={lang} compact /></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Spady</span><a href={pathFor(lang,'privacy/')}>{t.privacy}</a><button class="cookie-settings" type="button" data-cookie-settings>{t.cookieSettings}</button><a href="#main">PAGE TOP ↑</a></div></footer>
   <button class="motion-control" type="button" aria-pressed="false" aria-label={t.pauseMotion} data-pause={t.pauseMotion} data-play={t.playMotion} data-reduced={t.reducedMotion}><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">{t.pauseMotion}</span></button>
   <SiteConsent lang={lang} />
   <script>import '../scripts/home-motion';</script>
