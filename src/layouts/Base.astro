@@ -7,7 +7,7 @@ const GTM_ID = 'GTM-NV5VRH3G';
 const { title = 'Spady｜集客と採用の導線設計', description = 'Meta広告・LINE公式アカウント・SNSで、集客と採用の導線を設計します。店舗・中小企業から留学・海外事業まで。元Metaマーケティングプロ。北海道・小樽/銭函拠点。', lang = 'ja' } = Astro.props;
 
 // 言語別ラベルとリンク
-const home = lang === 'en' ? '/en/' : '/';
+const home = lang === 'en' ? '/en/' : '/fullfunnelmarketing/';
 const t = lang === 'en'
   ? {
       nav: ['Services', 'Work', 'Local & Seminars', 'Profile'],
@@ -18,7 +18,7 @@ const t = lang === 'en'
       footPrivacy: 'Privacy Policy',
       privacyHref: '/en/privacy/',
       langLabel: '日本語',
-      langHref: '/',
+      langHref: '/fullfunnelmarketing/',
       cookieText: 'We use cookies to improve this site and measure advertising.',
       cookieAccept: 'Accept',
       cookieDecline: 'Decline',
@@ -39,8 +39,8 @@ const t = lang === 'en'
     };
 
 // hreflang用の対応URL
-const jaPath = lang === 'en' ? (Astro.url.pathname.replace(/^\/en/, '') || '/') : Astro.url.pathname;
-const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname).replace(/\/$/, '/') ;
+const jaPath = lang === 'en' ? (Astro.url.pathname === '/en/' ? '/fullfunnelmarketing/' : Astro.url.pathname.replace(/^\/en/, '') || '/') : Astro.url.pathname;
+const enPath = lang === 'en' ? Astro.url.pathname : Astro.url.pathname === '/fullfunnelmarketing/' ? '/en/' : ('/en' + Astro.url.pathname).replace(/\/$/, '/');
 ---
 <!doctype html>
 <html lang={lang}>
@@ -93,7 +93,6 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
     )}
   </head>
   <body>
- )}
 
     <!-- サイト全体の夜空（星・流れ星・色とりどりの飛行機） -->
     <div class="sky" aria-hidden="true">
@@ -134,7 +133,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
 
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
-        <a class="brand" href={home}>
+        <a class="brand" href="/">
           <img class="brand-logo" src="/logo.png?v=20260708-0021" alt="Spady" width="56" height="56" />
         </a>
         <nav class="nav" id="nav">
@@ -284,7 +283,7 @@ const enPath = lang === 'en' ? Astro.url.pathname : ('/en' + Astro.url.pathname)
         fl.classList.remove('ping');
         void fl.offsetWidth; // 再アニメーションのためのリフロー
         fl.classList.add('ping');
-        const homeHref = document.documentElement.lang === 'en' ? '/en/' : '/';
+        const homeHref = '/';
         const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
         setTimeout(() => {
           if (location.pathname === homeHref) {

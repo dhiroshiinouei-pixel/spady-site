@@ -1,0 +1,23 @@
+<aside class="site-consent" id="siteConsent" aria-label="Cookieの設定" hidden>
+  <p>サイトの改善と広告の計測にCookieを使用します。<a href="/privacy/">プライバシーポリシー</a></p>
+  <div><button type="button" data-consent="granted">同意する</button><button type="button" data-consent="denied">同意しない</button></div>
+</aside>
+<script is:inline>
+  (()=>{
+    const load=()=>{
+      if(window.__spadyGtmLoaded)return;
+      window.__spadyGtmLoaded=true;
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
+      const script=document.createElement('script');script.async=true;
+      script.src='https://www.googletagmanager.com/gtm.js?id=GTM-NV5VRH3G';document.head.append(script);
+    };
+    let consent=null;try{consent=localStorage.getItem('spady_cookie_consent')}catch{}
+    const bar=document.getElementById('siteConsent');
+    if(consent==='granted')load();else if(!consent)bar.hidden=false;
+    bar.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
+      const value=button.dataset.consent;try{localStorage.setItem('spady_cookie_consent',value)}catch{}
+      if(value==='granted')load();bar.hidden=true;
+    }));
+  })();
+</script>
