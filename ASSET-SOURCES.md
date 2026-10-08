@@ -11,3 +11,8 @@
 - `/og.png`: original generated Spady social card, using the provided brand logo and existing coastal illustration as references. Headline: 地域の魅力に、次のきっかけを。 Dimensions: 1200×630.
 
 - `/home/threads.svg`: Threads brand icon from Simple Icons 16.0.0 (CC0-1.0), https://github.com/simple-icons/simple-icons/blob/16.0.0/icons/threads.svg. Matches the approved button preview.
+
+## 2026-10-08 corporate renewal
+- `public/home/spady-social.png` / `.svg`: Spadyロゴ（既存所有素材）を使ったオリジナルの文字・店舗図形によるOGP。`scripts/render-social.mjs`で1200×630にレンダリング。実在顧客や製品画面の描写ではありません。
+- `ProductArt.astro` / `Icon.astro`: 今回制作したSVG・CSSの概念図。Google・LINEの公式マーク、確定済み製品UIを模したものではありません。
+- 小樽暮らしカレンダーの画像は従来どおり、同サービスの公開済みOGP画像を使用しています。

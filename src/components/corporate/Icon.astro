@@ -1,0 +1,6 @@
+---
+const {name='map',size=32}=Astro.props;
+---
+<svg width={size} height={size} viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+ {name==='map' ? <><path d="M25 13c0 7-9 15-9 15S7 20 7 13a9 9 0 1 1 18 0Z"/><circle cx="16" cy="13" r="3"/></> : name==='line' ? <><rect x="6" y="3" width="20" height="26" rx="4"/><path d="M13 25h6M10 10h12M10 15h8"/></> : name==='web' ? <><rect x="3" y="5" width="26" height="22" rx="3"/><path d="M3 12h26M8 9h.1M12 9h.1M7 17h8v6H7zM20 17h5M20 22h5"/></> : name==='ads' ? <><path d="m5 13 15-7v19L5 18zM20 12h5a3 3 0 0 1 0 6h-5M9 20l2 8h5l-3-6M25 5l3-2M27 24l3 2"/></> : <><circle cx="8" cy="8" r="4"/><circle cx="24" cy="24" r="4"/><path d="M12 8h8a4 4 0 0 1 4 4v8M8 12v8a4 4 0 0 0 4 4h8M20 5l4 3-4 3"/></>}
+</svg>

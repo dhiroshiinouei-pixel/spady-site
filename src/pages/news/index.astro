@@ -1,0 +1,36 @@
+---
+import CorporateLayout from '../../layouts/CorporateLayout.astro';
+import ContactBand from '../../components/corporate/ContactBand.astro';
+---
+<CorporateLayout title="お知らせ・サービス開発情報｜Spady" description="Spadyのサービス開発方針と各プロジェクトの最新情報へのご案内。店舗・小規模事業者向けSaaSの開発状況は、確定した内容からお知らせします。" page="news/">
+  <main id="main">
+    <header class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><span aria-current="page">お知らせ・開発情報</span></nav><p class="kicker">お知らせ・サービス開発情報</p><h1>Spadyからのご案内</h1><p class="lead">サービスの開発と、日々の取り組みについて。<br class="wide-break" />決まったことを、一つずつお伝えしていきます。</p></div></header>
+    <section class="section wrap" aria-labelledby="development-title">
+      <div class="section-head"><p class="kicker">サービス開発</p><h2 id="development-title">これからのSpady</h2></div>
+      <a class="news-feature" href="/news/saas-development/"><div class="news-label">サービス開発方針</div><div><h3>店舗・小規模事業者が自分で使える、<br class="wide-break" />ソフトウェアづくりへ。</h3><p>マーケティング支援で培った経験を土台に、Googleビジネスプロフィールの管理を支援するSaaSと、LINEミニアプリを活用したサービスを検討しています。</p><span class="news-read">開発方針を読む <span aria-hidden="true">↗</span></span></div></a>
+      <p class="notice">自社SaaSは開発・提供準備段階です。機能、料金、リリース時期などは確定後にご案内します。</p>
+    </section>
+    <section class="project-updates section"><div class="wrap split"><div class="section-head"><p class="kicker">各プロジェクトの情報</p><h2>活動の続きは、<br />それぞれの場所で。</h2></div><div class="update-list">
+      <a href="/akindo/"><div><span>勉強会・デジタル活用</span><h3>AKINDO Lab</h3><p>開催案内や勉強会について</p></div><span aria-hidden="true">↗</span></a>
+      <a href="https://localpages.spady.net/"><div><span>Webサイト・LP制作</span><h3>LOCAL PAGES.</h3><p>サービス内容や制作実績について</p></div><span aria-hidden="true">↗</span></a>
+      <a href="https://otaru.spady.net/"><div><span>地域のイベント・暮らし</span><h3>小樽暮らしカレンダー</h3><p>日付から探せる小樽の情報</p></div><span aria-hidden="true">↗</span></a>
+    </div></div></section>
+    <ContactBand title="開発中のサービスに、関心をお持ちの方へ。" text="使ってみたい機能や、日々の業務で困っていることをお聞かせください。ご案内を希望される方も、お問い合わせからご連絡いただけます。" />
+  </main>
+</CorporateLayout>
+<style>
+  .news-feature { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 40px; padding: 38px 0; border-top: 1px solid #cdd6cd; border-bottom: 1px solid #cdd6cd; text-decoration: none; }
+  .news-label { font-size: .8rem; color: #214e48; padding-top: 8px; }
+  .news-feature h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.65; margin: 0 0 20px; }
+  .news-feature p { max-width: 45em; color: #4b5a52; line-height: 1.9; }
+  .news-read { margin-top: 25px; display: inline-flex; align-items: center; gap: 30px; font-size: .9rem; font-weight: 700; text-decoration: underline; text-underline-offset: 6px; }
+  .news-feature:hover h3, .news-feature:focus-visible h3 { color: #275f50; }
+  .project-updates { background: #f5f6f2; }
+  .update-list a { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 0; text-decoration: none; border-top: 1px solid #cdd6cd; }
+  .update-list a:last-child { border-bottom: 1px solid #cdd6cd; }
+  .update-list span { color: #53655a; font-size: .8rem; }
+  .update-list h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); margin: 8px 0; }
+  .update-list p { font-size: .85rem; color: #53655a; }
+  .update-list a > span { font-size: 1.5rem; }
+  @media (max-width: 700px) { .wide-break { display: none; } .news-feature { grid-template-columns: 1fr; gap: 14px; } }
+</style>

@@ -1,10 +1,10 @@
 ---
-import '../styles/home.css';
-import '../styles/motion.css';
-import '../styles/i18n.css';
-import '../styles/threads.css';
+import layoutStyle0 from '../styles/home.css?inline';
+import layoutStyle1 from '../styles/motion.css?inline';
+import layoutStyle2 from '../styles/i18n.css?inline';
+import layoutStyle3 from '../styles/threads.css?inline';
 import ThreadsLink from '../components/ThreadsLink.astro';
-import '../styles/page-scene.css';
+import layoutStyle4 from '../styles/page-scene.css?inline';
 import SceneBoot from '../components/SceneBoot.astro';
 import SiteScene from '../components/SiteScene.astro';
 import SiteConsent from '../components/SiteConsent.astro';
@@ -27,6 +27,7 @@ const schema={'@context':'https://schema.org','@graph':[
 <!doctype html>
 <html lang={locale.tag}>
 <head>
+<style is:inline set:html={layoutStyle0+layoutStyle1+layoutStyle2+layoutStyle3+layoutStyle4}/>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title><meta name="description" content={description} />
   {noindex && <meta name="robots" content="noindex, follow" />}

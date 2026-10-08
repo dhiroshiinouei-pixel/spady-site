@@ -1,0 +1,11 @@
+.spady-legacy-consent{position:fixed;z-index:2147480;right:20px;bottom:20px;width:min(460px,calc(100% - 40px));box-sizing:border-box;padding:22px;background:#fff;color:#202923;border:1px solid #ced5d0;border-radius:16px;box-shadow:0 8px 32px #0002;font:14px/1.8 system-ui,sans-serif;max-height:70svh;overflow:auto;text-align:left}
+.spady-legacy-consent[hidden]{display:none!important}
+.spady-legacy-consent p{margin:0 0 16px;color:inherit;font:inherit}
+.spady-legacy-consent a{color:#194fba;text-decoration:underline;text-underline-offset:3px;font:inherit}
+.spady-legacy-consent-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.spady-legacy-consent button{min-height:44px;margin:0;padding:10px 12px;border:1px solid #202923;border-radius:9px;background:#fff;color:#202923;font:600 14px/1.6 system-ui,sans-serif;cursor:pointer}
+.spady-legacy-consent button[data-consent="granted"]{background:#202923;color:#fff}
+.spady-legacy-consent button:focus-visible,.spady-legacy-consent a:focus-visible,.spady-legacy-settings button:focus-visible{outline:3px solid #477fe9;outline-offset:4px}
+.spady-legacy-settings{position:relative;padding:12px 20px;text-align:center}
+.spady-legacy-settings button{padding:10px 14px;min-height:44px;border:0;background:transparent;color:inherit;font:14px/1.6 system-ui,sans-serif;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+@media(max-width:480px){.spady-legacy-consent{right:12px;bottom:12px;width:calc(100% - 24px);padding:18px}}

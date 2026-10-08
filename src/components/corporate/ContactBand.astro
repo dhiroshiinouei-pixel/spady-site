@@ -1,0 +1,4 @@
+---
+const {title='お店のこれからを、話すことから。',text='サービスへのご質問も、日々の集客・運営のお悩みも。まだまとまっていない段階から、お聞かせください。'}=Astro.props;
+---
+<section class="contact-band" aria-label="お問い合わせのご案内"><div class="wrap"><div><p class="kicker">お問い合わせ</p><h2>{title.split(/(?<=、)/).map(phrase=><span>{phrase}</span>)}</h2><p>{text}</p><small>北海道・小樽を拠点に、全国へオンラインで対応。</small></div><div class="contact-band-actions"><a class="btn" href="/contact/"><span>お問い合わせ</span><span aria-hidden="true">↗</span></a><a class="line-link" href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry"><img src="/home/line.svg" alt="" width="24" height="24" loading="lazy"/>LINEで相談する <span aria-hidden="true">↗</span></a></div></div></section>

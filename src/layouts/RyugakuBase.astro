@@ -1,9 +1,6 @@
 ---
 import '../styles/ryugaku-global.css';
 
-// ▼ Googleタグマネージャー：コンテナIDを入れると計測が有効になります（例: 'GTM-ABC1234'）
-const GTM_ID = 'GTM-NV5VRH3G';
-
 const { title = 'Spady｜留学・語学学校・海外事業のマーケティング支援', description = '留学・語学学校・オンライン英会話・海外関連事業の集客導線を、Meta広告・LINE公式アカウント・SNSで設計します。北海道・小樽/銭函を拠点に、地域事業者の支援も行っています。', lang = 'ja' } = Astro.props;
 const basePath = Astro.url.pathname.startsWith('/ryugaku') ? '/ryugaku' : '';
 
@@ -65,29 +62,10 @@ const enPath = lang === 'en' ? currentPath : `${basePath}/en${currentPath.slice(
       href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    {GTM_ID && (
-      <script is:inline define:vars={{ GTM_ID }}>
-        window.dataLayer = window.dataLayer || [];
-        (function (w, d, s, l, i) {
-          w[l] = w[l] || [];
-          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-          var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s),
-            dl = l != 'dataLayer' ? '&l=' + l : '';
-          j.async = true;
-          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-          f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', GTM_ID);
-      </script>
-    )}
+    <link rel="stylesheet" href="/legacy-consent.css" />
+    <script is:inline src="/legacy-consent.js" data-lang={lang} data-privacy={t.privacyHref} defer></script>
   </head>
   <body>
-    {GTM_ID && (
-      <noscript>
-        <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style="display:none;visibility:hidden"></iframe>
-      </noscript>
-    )}
-
     <!-- サイト全体の夜空（星・流れ星・色とりどりの飛行機） -->
     <div class="sky" aria-hidden="true">
       <i style="left:6%;top:8%;animation-delay:0s"></i>

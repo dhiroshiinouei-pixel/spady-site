@@ -1,0 +1,71 @@
+---
+import CorporateLayout from '../layouts/CorporateLayout.astro';
+const categories = [
+  { id: 'service', title: 'サービスについて', text: 'サービスの内容や対象となる事業、ご利用前の疑問について。開発中のSaaSに関するご相談もこちらからお寄せください。', topic: 'other' },
+  { id: 'billing', title: '契約・請求について', text: 'ご依頼済みのサービスの契約内容、お見積もり、請求に関するお問い合わせ。サービス名と、確認したい内容をお知らせください。', topic: 'billing' },
+  { id: 'cancellation', title: 'キャンセル・解約について', text: '現在のご契約内容を確認してご案内します。新しいSaaSの解約方法・適用時期は、提供開始前に各サービスの条件として明示します。', topic: 'billing' },
+  { id: 'account', title: 'アカウントについて', text: 'Spadyが関わるサービスのアカウントに関するご相談。パスワード、認証コード、APIキーは送信しないでください。', topic: 'other' },
+  { id: 'bug', title: '不具合の報告', text: '対象のサービス・ページ、発生した日時、お使いの端末やブラウザー、直前の操作、表示されたエラーを可能な範囲でお知らせください。', topic: 'other' },
+  { id: 'privacy', title: '個人情報について', text: 'ご自身の情報の開示・訂正・利用停止などのご請求や、情報の取り扱いに関するご質問を受け付けています。', topic: 'other' },
+];
+---
+<CorporateLayout title="カスタマーサポート｜Spady" description="Spadyのサービス、契約・請求、キャンセル・解約、アカウント、不具合、個人情報に関するお問い合わせ窓口です。フォームまたはメールからご相談ください。" page="support/">
+  <main id="main">
+    <header class="page-hero"><div class="wrap">
+      <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><span aria-current="page">カスタマーサポート</span></nav>
+      <p class="kicker">カスタマーサポート</p><h1>お困りのことは<br class="wide-break" />ありませんか。</h1>
+      <p class="lead">サービスのことから、契約や情報の取り扱いまで。<br class="wide-break" />お問い合わせ内容に合わせて、Spadyがご案内します。</p>
+      <div class="support-actions"><a class="btn" href="/contact/">フォームで問い合わせる <span aria-hidden="true">↗</span></a><a class="text-link" href="mailto:info@spady.net">info@spady.net <span aria-hidden="true">↗</span></a></div>
+    </div></header>
+
+    <section class="section wrap" aria-labelledby="topics-title">
+      <div class="section-head"><p class="kicker">お問い合わせ内容</p><h2 id="topics-title">ご相談の種類から探す</h2></div>
+      <p class="notice">Googleビジネスプロフィール管理SaaSとLINEミニアプリを活用した自社サービスは、現在、提供開始前です。新しいSaaSの利用申込・月額課金はまだ受け付けていません。</p>
+      <div class="support-topics">{categories.map((category, index) => (
+        <article id={category.id}>
+          <span class="support-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <div><h3>{category.title}</h3><p>{category.text}</p>{category.id === 'privacy' && <a href="/privacy/" class="policy-link">プライバシーポリシーを確認する</a>}{category.id === 'cancellation' && <a href="/cancellation/" class="policy-link">返金・キャンセル・解約について確認する</a>}</div>
+          <a class="support-topic-link" href={`/contact/?topic=${category.topic}`} aria-label={`${category.title}問い合わせる`}><span>お問い合わせ</span><span aria-hidden="true">↗</span></a>
+        </article>
+      ))}</div>
+    </section>
+
+    <section class="support-guide section" aria-labelledby="before-title"><div class="wrap split">
+      <div class="section-head"><p class="kicker">スムーズな確認のために</p><h2 id="before-title">お問い合わせの前に</h2></div>
+      <div class="prose">
+        <ul class="rule-list"><li>対象となるサービス名と、確認したい内容をご記入ください。</li><li>不具合の場合は、発生日時や操作の手順が分かると確認しやすくなります。</li><li>カード番号、パスワード、認証コード、APIキーなどの機密情報は送信しないでください。</li><li>お客様や従業員の個人情報は、確認に不要であれば記載しないでください。</li></ul>
+        <p>ご連絡には、フォームにご入力いただいたメールアドレス、または送信元のメールアドレスへお返事します。迷惑メールの設定などもあわせてご確認ください。</p>
+        <p>内容によっては、状況を確認するために追加で情報をお伺いする場合があります。</p>
+      </div>
+    </div></section>
+
+    <section class="section wrap split" aria-labelledby="faq-title"><div class="section-head"><p class="kicker">よくあるご質問</p><h2 id="faq-title">ご利用前の疑問に</h2></div><div class="support-faq">
+      <details class="faq"><summary>開発中のSaaSは、今から利用できますか？</summary><div class="prose"><p>現在は開発・提供準備段階です。利用開始時期、提供する機能、料金などは確定後に各サービスページでご案内します。ご要望や事前のご相談は、お問い合わせフォームからお寄せください。</p><a href="/services/">サービスごとの状況を確認する</a></div></details>
+      <details class="faq"><summary>どこから問い合わせればよいですか？</summary><div class="prose"><p><a href="/contact/">お問い合わせフォーム</a>、または<a href="mailto:info@spady.net">info@spady.net</a>にご連絡ください。内容を確認し、メールでご案内します。</p></div></details>
+      <details class="faq"><summary>GoogleやLINEのアカウント自体の問題も相談できますか？</summary><div class="prose"><p>Spadyが提供する支援やサービスに関する内容は、当窓口にご相談ください。Google・LINEなど外部サービスのアカウント停止や本人確認は、各サービスの案内に沿って手続きが必要です。Spadyが審査や復旧を保証するものではありません。</p></div></details>
+      <details class="faq"><summary>解約や返金の条件はどこで確認できますか？</summary><div class="prose"><p>ご依頼済みの支援サービスは、個別にご案内した契約内容をご確認ください。今後提供するSaaSの条件は、販売開始前に各サービスの申込画面と関連ページで明示します。</p><a href="/cancellation/">返金・キャンセル・解約について</a></div></details>
+    </div></section>
+
+    <section class="contact-band" aria-labelledby="support-contact-title"><div class="wrap support-contact"><div><p class="kicker">お問い合わせ窓口</p><h2 id="support-contact-title">解決への一歩を、ここから。</h2><p>ご相談内容を確認して、担当者よりメールでご案内します。</p></div><div class="support-contact-links"><a class="btn" href="/contact/">お問い合わせ <span aria-hidden="true">↗</span></a><a href="mailto:info@spady.net">info@spady.net</a></div></div></section>
+  </main>
+</CorporateLayout>
+
+<style>
+  .support-actions { display: flex; gap: 22px 32px; align-items: center; flex-wrap: wrap; margin-top: 32px; }
+  .support-topics { margin-top: 40px; }
+  .support-topics article { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 26px; padding: 30px 0; border-top: 1px solid #d7ded8; align-items: start; scroll-margin-top: 120px; }
+  .support-number { color: #53786a; font-size: .85rem; padding-top: 5px; }
+  .support-topics h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin: 0 0 12px; }
+  .support-topics p { max-width: 44em; line-height: 1.85; color: #4b5a52; }
+  .policy-link { display: inline-block; margin-top: 10px; text-underline-offset: 4px; font-size: .9rem; }
+  .support-topic-link { display: flex; gap: 25px; align-items: center; min-height: 44px; border-bottom: 1px solid #778a7c; font-size: .9rem; text-decoration: none; }
+  .support-guide { background: #f5f6f2; }
+  .support-faq .faq { margin: 0; border-top: 1px solid #d7ded8; }
+  .support-faq .faq:last-child { border-bottom: 1px solid #d7ded8; }
+  .support-faq .faq summary { cursor: pointer; padding: 24px 0; font-weight: 700; line-height: 1.75; }
+  .support-faq .faq > div { padding-bottom: 28px; }
+  .support-contact { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+  .support-contact-links { display: grid; gap: 20px; text-align: center; min-width: 220px; }
+  .support-contact-links > a:last-child { font-size: .9rem; text-underline-offset: 4px; }
+  @media (max-width: 700px) { .wide-break { display: none; } .support-topics article { grid-template-columns: 24px minmax(0, 1fr); gap: 10px 16px; } .support-topic-link { grid-column: 2; justify-self: start; } .support-contact { align-items: stretch; flex-direction: column; } }
+</style>

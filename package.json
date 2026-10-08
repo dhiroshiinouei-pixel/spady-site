@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "node --test test/*.test.mjs",
+    "check:release": "npm run build && npm test && python3 test/seo.test.py && python3 test/corporate.test.py"
   },
   "dependencies": {
     "astro": "^5.0.0"

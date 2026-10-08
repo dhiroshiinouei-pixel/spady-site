@@ -1,0 +1,45 @@
+---
+import layoutStyle0 from '../styles/corporate.css?inline';
+import layoutStyle1 from '../styles/threads.css?inline';
+import layoutStyle2 from '../styles/page-scene.css?inline';
+import ThreadsLink from '../components/ThreadsLink.astro';
+import SiteConsent from '../components/SiteConsent.astro';
+import SceneBoot from '../components/SceneBoot.astro';
+import SiteScene from '../components/SiteScene.astro';
+import { locales, absolute, pathFor } from '../i18n';
+import type { Page } from '../i18n';
+interface Props {title?:string;description?:string;page?:string;noindex?:boolean}
+const {title='Spady｜店舗の集客と運営を支えるSaaS・デジタルサービス',description='店舗や小規模事業者の集客と運営を、もっとシンプルに。Spadyはマーケティング支援の経験を土台に、店舗向けSaaSを企画・開発する個人事業です。広告・LINE・Web制作の支援は全国オンライン対応。',page='',noindex=false}=Astro.props;
+const canonical=absolute('/'+page);
+const translated=['','contact/','privacy/','contact/thanks/'].includes(page);
+const ogImage=absolute('/home/spady-social.png');
+const nav=[['サービス','/services/'],['Spadyについて','/about/'],['実績・プロジェクト','/projects/']];
+const schema={'@context':'https://schema.org','@graph':[
+ {'@type':'Organization','@id':'https://spady.net/#organization',name:'Spady',url:'https://spady.net/',logo:'https://spady.net/logo.png',description:'井上博史が運営する個人事業。店舗向けSaaSの企画・開発、デジタルマーケティング支援、Web制作。',founder:{'@type':'Person',name:'井上 博史'},email:'info@spady.net',sameAs:['https://www.threads.com/@hiroshiinoue.spady']},
+ {'@type':'WebSite','@id':'https://spady.net/#website',url:'https://spady.net/',name:'Spady',publisher:{'@id':'https://spady.net/#organization'},inLanguage:locales.map(l=>l.tag)},
+ {'@type':page==='contact/'?'ContactPage':page==='about/'?'AboutPage':'WebPage','@id':canonical,url:canonical,name:title,description,inLanguage:'ja',isPartOf:{'@id':'https://spady.net/#website'}}
+]};
+---
+<!doctype html><html lang="ja"><head>
+<style is:inline set:html={layoutStyle0+layoutStyle1+layoutStyle2}/>
+ <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+ <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
+ {noindex&&<meta name="robots" content="noindex, follow"/>}
+ {translated&&<>{locales.map(l=><link rel="alternate" hreflang={l.tag} href={absolute(pathFor(l.id,page as Page))}/>)}<link rel="alternate" hreflang="x-default" href={canonical}/></>}
+ <meta property="og:type" content="website"/><meta property="og:site_name" content="Spady"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ja_JP"/>
+ <meta property="og:image" content={ogImage}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:type" content="image/png"/><meta property="og:image:alt" content="Spady — お店の集客と運営を、もっとシンプルに。"/>
+ <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={ogImage}/><meta name="twitter:image:alt" content="Spady — お店の集客と運営を、もっとシンプルに。"/>
+ <link rel="icon" href="/favicon.png" type="image/png"/><link rel="apple-touch-icon" href="/favicon.png"/><meta name="theme-color" content="#f8f7f3"/>
+ <script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
+ <SceneBoot isHome={page===''} />
+</head><body class="corporate-site">
+ <SiteScene tagline="難しいデジタルを、現場で使える形に。" language="日本語"/>
+ <a class="skip-link" href="#main">本文へ移動</a>
+ <header class="corp-header"><a class="corp-brand" href="/" aria-label="Spady ホーム"><img src="/logo.png" alt="Spady" width="58" height="58"/><span>小さなお店の、<br/>大きな可能性へ。</span></a>
+ <nav class="corp-nav" aria-label="メインナビゲーション">{nav.map(([label,href])=><a href={href} aria-current={'/'+page===href?'page':undefined}>{label}</a>)}</nav>
+ <div class="corp-tools"><details class="language-menu"><summary aria-label="言語を切り替える"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg><span>JP</span><span aria-hidden="true">⌄</span></summary><nav aria-label="言語">{locales.map(l=><a href={pathFor(l.id,translated?page as Page:'')} lang={l.tag} hreflang={l.tag} data-language-label={l.label} aria-current={translated&&l.id==='ja'?'page':undefined}>{l.label}<span aria-hidden="true">{l.id==='ja'?'✓':'↗'}</span></a>)}{!translated&&<small>各言語のトップページへ</small>}</nav></details><a class="header-contact" href="/contact/">お問い合わせ <span aria-hidden="true">↗</span></a><details class="mobile-menu"><summary aria-label="メニュー"><span></span><span></span></summary><nav aria-label="モバイルナビゲーション">{nav.map(([label,href])=><a href={href}>{label}<span aria-hidden="true">↗</span></a>)}<a href="/news/">お知らせ・開発情報 <span aria-hidden="true">↗</span></a><a href="/support/">カスタマーサポート <span aria-hidden="true">↗</span></a><a href="/contact/">お問い合わせ <span aria-hidden="true">↗</span></a></nav></details></div></header>
+ <slot/>
+ <footer class="corp-footer"><div class="wrap"><div class="footer-top"><div><a href="/" aria-label="Spady ホーム"><img src="/logo.png" width="72" height="72" alt="Spady" loading="lazy"/></a><p class="footer-message">難しいデジタルを、<br/>現場で使える形に。</p><p class="footer-location">北海道小樽市銭函 ／ 全国オンライン対応</p><ThreadsLink compact /></div><nav class="footer-columns" aria-label="フッターナビゲーション"><div><b>Spady</b><a href="/about/">Spadyについて</a><a href="/services/">サービス一覧</a><a href="/projects/">実績・プロジェクト</a><a href="/news/">お知らせ・開発情報</a></div><div><b>ご相談・ご利用について</b><a href="/contact/">お問い合わせ</a><a href="/support/">カスタマーサポート</a><a href="/book/">オンライン相談の予約</a><a href="/legal/">特定商取引法に基づく表記</a><a href="/terms/">利用規約</a><a href="/cancellation/">返金・キャンセル・解約</a></div></nav></div><div class="footer-bottom"><small>© {new Date().getFullYear()} Spady</small><a href="/privacy/">プライバシーポリシー</a><button type="button" data-cookie-settings>Cookie設定</button><button class="motion-control" type="button" aria-pressed="false" data-pause="演出を停止" data-play="演出を再開" data-reduced="演出を停止中"><span class="motion-symbol" aria-hidden="true">Ⅱ</span> <span class="motion-label">演出を停止</span></button><a href="#main">ページ上部へ ↑</a></div></div></footer>
+ <SiteConsent/>
+ <script>import '../scripts/corporate';</script>
+</body></html>

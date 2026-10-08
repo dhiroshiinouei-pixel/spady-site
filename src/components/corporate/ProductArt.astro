@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+const {type='map',hero=false}=Astro.props;
+---
+{hero ? <div class="ecosystem" aria-label="店舗の集客と運営を、ソフトウェアと支援でつなぐイメージ" role="img">
+ <div class="eco-grid" aria-hidden="true"></div><div class="eco-label">毎日の仕事に、使える仕組み。</div>
+ <div class="eco-orbit" aria-hidden="true"><span></span></div>
+ <div class="eco-store" aria-hidden="true"><div class="awning"><i></i><i></i><i></i><i></i><i></i></div><div class="shop-front"><span class="shop-window"></span><span class="shop-door"></span></div><strong>あなたのお店</strong></div>
+ <div class="eco-panel eco-map"><span class="mini-icon"><Icon name="map"/></span><div><small>見つけてもらう</small><strong>店舗情報の管理</strong><em>自社サービスを企画中</em></div></div>
+ <div class="eco-panel eco-line"><span class="mini-icon"><Icon name="line"/></span><div><small>また来てもらう</small><strong>予約・来店の接点</strong><em>自社サービスを企画中</em></div></div>
+ <div class="eco-support"><span class="eco-dot"></span>広告・Web・LINEの支援経験を、土台に。</div><div class="eco-spark" aria-hidden="true">＋</div>
+</div> : <div class={`product-art product-art-${type}`} aria-hidden="true">
+ <div class="product-art-lines"></div>
+ {type==='map' ? <><div class="map-road road-one"></div><div class="map-road road-two"></div><div class="map-pin"><Icon name="map" size={70}/></div><div class="art-note"><span class="art-note-icon"><Icon name="web" size={24}/></span><div><b>店舗情報を整える</b><span>日々の運用を、ひとつずつ。</span></div></div></> : <><div class="mini-phone"><div class="phone-top"></div><div class="phone-symbol"><Icon name="line" size={36}/></div><div class="phone-rule"></div><div class="phone-tiles"><i></i><i></i><i></i><i></i></div><div class="phone-bottom"></div></div><div class="art-note"><span class="art-note-icon"><Icon name="strategy" size={24}/></span><div><b>お店とお客さまをつなぐ</b><span>使い慣れた場所から。</span></div></div></>}
+ <span class="art-caption">サービス構想のイメージ</span>
+</div>}
