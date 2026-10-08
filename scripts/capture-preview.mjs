@@ -10,6 +10,7 @@ const context=await browser.newContext({viewport:{width:1440,height:1050},device
 await context.addInitScript(()=>localStorage.setItem('spady_cookie_consent','denied'));
 const page=await context.newPage();
 const base=process.env.PREVIEW_URL||'http://127.0.0.1:4328';
+const homeOnly=process.argv.includes('--home-only');
 if(process.argv.includes('--interactions-only')){try{await verifyInteractions(browser,base,dir);}finally{await browser.close();}process.exit(0);}
 if(process.argv.includes('--visuals-only')){
  for(const width of [320,390,768,1024,1440]){await page.setViewportSize({width,height:1000});await page.goto(base,{waitUntil:'networkidle'});await page.waitForTimeout(1700);await page.evaluate(async()=>{await Promise.all([...document.images].map(async i=>{i.loading='eager';try{await i.decode();}catch{}}));});await page.screenshot({path:dir+'home-'+width+'.png'});if(width===390||width===1440){await page.screenshot({path:dir+'home-full-'+width+'.png',fullPage:true});for(const name of ['projects','services','profile','contact']){await page.locator('#'+name).screenshot({path:dir+name+'-section-'+width+'.png',style:'.corp-header,.skip-link{visibility:hidden!important}'});}}}
@@ -23,7 +24,7 @@ await page.screenshot({path:dir+'home-390.png'});await page.screenshot({path:dir
 const report=[];
 for(const width of [320,390,768,1024,1440]){
  await page.setViewportSize({width,height:900});
- for(const route of ['/','/services/','/services/google-business-profile/','/services/line-mini-app/','/about/','/projects/','/support/','/contact/','/privacy/','/legal/','/terms/','/cancellation/','/news/']){
+ for(const route of homeOnly?['/']:['/','/services/','/services/google-business-profile/','/services/line-mini-app/','/about/','/projects/','/support/','/contact/','/privacy/','/legal/','/terms/','/cancellation/','/news/']){
   await page.goto(base+route,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);await page.evaluate(async()=>{await Promise.all([...document.images].map(async image=>{image.loading='eager';try{await image.decode();}catch{}}));});
   const result=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,h1:document.querySelector('h1')?.textContent,images:[...document.images].filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.getAttribute('src')),badElements:[...document.querySelectorAll('main *')].filter(e=>{const r=e.getBoundingClientRect();return r.width&&r.right>innerWidth+2&&getComputedStyle(e).position!=='absolute';}).slice(0,4).map(e=>({tag:e.tagName,class:e.className}))}));
   report.push({width,route,...result});
@@ -32,7 +33,7 @@ for(const width of [320,390,768,1024,1440]){
  }
 }
 // Reference is read-only; failure doesn't invalidate local checks.
-try{await page.setViewportSize({width:1440,height:1000});await page.goto('https://www.tsg-jpn.co.jp/',{waitUntil:'domcontentloaded',timeout:30000});await page.waitForTimeout(4500);await page.screenshot({path:dir+'reference-tsg.png'});}catch(e){console.log('Reference capture unavailable:',e.message.split('\n')[0]);}
+if(!homeOnly)try{await page.setViewportSize({width:1440,height:1000});await page.goto('https://www.tsg-jpn.co.jp/',{waitUntil:'domcontentloaded',timeout:30000});await page.waitForTimeout(4500);await page.screenshot({path:dir+'reference-tsg.png'});}catch(e){console.log('Reference capture unavailable:',e.message.split('\n')[0]);}
 await writeFile(dir+'layout-results.json',JSON.stringify(report,null,2));
 console.log(JSON.stringify({checks:report.length,issues:report.filter(r=>r.overflow||r.images.length),screenshots:dir}));
 await verifyInteractions(browser,base,dir);

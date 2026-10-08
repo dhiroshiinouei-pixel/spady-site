@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro';
+import { products, currentServices, statusLabels } from '../../data/services';
+
+const productVisuals: Record<string, { image: string; alt: string; copy: string[] }> = {
+  'google-business-profile': {
+    image: '/home/gbp-sculpture.webp',
+    alt: '店舗の情報とお客さまの声をつなぐ、立体的なピンのコンセプトビジュアル',
+    copy: ['見つけてもらう。', '選ばれる入口を、整える。'],
+  },
+  'line-mini-app': {
+    image: '/home/line-sculpture.webp',
+    alt: 'お店とお客さまのつながりを表す、立体的な吹き出しのコンセプトビジュアル',
+    copy: ['日々の接点を、', 'お店の力に変えていく。'],
+  },
+};
+---
+<div class="h-content">
+  <section class="h-section h-mission h-wrap" id="about" aria-labelledby="h-mission-title">
+    <div class="h-section-label"><span aria-hidden="true"></span>Spadyが目指すこと</div>
+    <div class="h-mission-main">
+      <h2 id="h-mission-title"><span>難しいデジタルを、</span><span>現場で使える形に。</span></h2>
+      <div class="h-mission-bottom">
+        <p>お客さまに向き合う時間を、もっと。<br class="h-desktop-break"/>集客や運営に追われる毎日を、少しでも軽く。<br class="h-desktop-break"/>そのために、Spadyは仕組みをつくります。</p>
+        <div><p>大切にしているのは、<strong>自分たちで続けられること。</strong>広告・Web・LINEの支援で培った経験を土台に、店舗や小規模事業者が使いやすいソフトウェアの開発へ取り組んでいきます。</p><a class="h-link" href="/about/">Spadyの考え方<span class="h-arrow" aria-hidden="true">↗</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-section h-products" id="projects" aria-labelledby="h-products-title">
+    <div id="products" class="h-anchor"></div>
+    <div class="h-wrap">
+      <div class="h-section-head"><div><p class="h-section-label"><span aria-hidden="true"></span>これからの自社サービス</p><h2 id="h-products-title"><span>お店の毎日から、</span><span>次のサービスを。</span></h2></div><p class="h-section-intro">集客の入口から、来店後のつながりまで。<br class="h-desktop-break"/>まずは、2つのサービスを企画しています。</p></div>
+      <div class="h-product-list">
+        {products.slice(0, 2).map((product, index) => {
+          const visual = productVisuals[product.id] || { image: '/home/spady-sculpture.webp', alt: 'Spadyの自社サービスのコンセプトビジュアル', copy: [product.shortName] };
+          return <article class:list={['h-product', { 'h-product-reverse': index === 1 }]}>
+            <a class="h-product-art" href={product.detailUrl} aria-label={`${product.name}の構想を見る`}>
+              <span class="h-product-number" aria-hidden="true">0{index + 1}</span>
+              <img src={product.image || visual.image} alt={product.imageAlt || visual.alt} width="1000" height="1000" loading="lazy" decoding="async"/>
+              <span class="h-product-caption">コンセプトビジュアル</span>
+            </a>
+            <div class="h-product-copy">
+              <p class="h-product-status"><span>{statusLabels[product.status]}</span>自社開発サービス</p>
+              <h3>{visual.copy.map(line => <span>{line}</span>)}</h3>
+              <p class="h-product-name">{product.nameParts ? product.nameParts.map(part => <span>{part}</span>) : product.name}</p>
+              <p class="h-product-description">{product.summary}</p>
+              <a class="h-link" href={product.detailUrl}>構想・開発予定を見る<span class="h-arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>;
+        })}
+      </div>
+      <div class="h-products-foot"><p>いずれも企画・開発準備段階です。提供機能・料金・開始時期は未定で、利用申し込みや決済は受け付けていません。GoogleおよびLINEヤフー株式会社による公式提供・認定・推奨を示すものではありません。</p><a class="h-link" href="/services/#products">自社サービスの一覧<span class="h-arrow" aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="h-section h-wrap h-support" id="services" aria-labelledby="h-support-title">
+    <div class="h-support-heading"><p class="h-section-label"><span aria-hidden="true"></span>現在提供している支援</p><h2 id="h-support-title"><span>いま必要なことも、</span><span>一緒に整えます。</span></h2><p>集客の設計から、制作、運用まで。<br class="h-desktop-break"/>事業に合った取り組みを、<br class="h-desktop-break"/>全国へオンラインで。</p><a class="h-link" href="/services/#current">支援サービスの一覧<span class="h-arrow" aria-hidden="true">↗</span></a></div>
+    <div class="h-service-list">{currentServices.map((service, index) => <a class="h-service" href={service.detailUrl}><span class="h-service-index">0{index + 1}</span><span class="h-service-icon"><Icon name={service.icon} size={29}/></span><div><h3>{service.name}</h3><p>{service.summary}</p></div><span class="h-arrow" aria-hidden="true">↗</span></a>)}</div>
+  </section>
+
+  <section class="h-section h-strength" aria-labelledby="h-strength-title">
+    <div class="h-wrap"><div class="h-section-head"><div><p class="h-section-label"><span aria-hidden="true"></span>Spadyの強み</p><h2 id="h-strength-title"><span>現場を知ることから、</span><span>使える仕組みへ。</span></h2></div><p class="h-section-intro">つくって終わりにせず、<br class="h-desktop-break"/>日々の仕事の中で使えることを考えます。</p></div>
+      <div class="h-strength-list">
+        <article><span class="h-strength-number">01</span><h3><span>集客の流れを、</span><span>つなげて考える。</span></h3><p>見つけてもらうところから、問い合わせ・来店まで。広告・Web・LINEをつなぎ、事業全体の流れを整理します。</p></article>
+        <article><span class="h-strength-number">02</span><h3><span>つくる視点と、</span><span>運用する視点。</span></h3><p>LINE公式アカウントやWeb制作の経験を土台に、日々の使いやすさと、無理なく続けられる仕組みを考えます。</p></article>
+        <article><span class="h-strength-number">03</span><h3><span>小さく始めて、</span><span>育てていく。</span></h3><p>いまの課題と、これからの事業に目を向けて。必要なことの優先順位を整理し、ひとつずつ形にしていきます。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-section h-wrap h-stories" id="stories" aria-labelledby="h-stories-title">
+    <div class="h-section-head"><div><p class="h-section-label"><span aria-hidden="true"></span>実績・活動</p><h2 id="h-stories-title"><span>人と事業に向き合う、</span><span>私たちの仕事。</span></h2></div><a class="h-link" href="/projects/">実績・プロジェクトを見る<span class="h-arrow" aria-hidden="true">↗</span></a></div>
+    <div class="h-work-grid">
+      <a class="h-work h-work-feature" href="/akindo/#scene"><div class="h-work-image"><img src="/akindo/assets/akindo-venue-20260722.jpg" alt="AKINDO Labの勉強会で学ぶ参加者の様子" width="1456" height="1092" loading="lazy" decoding="async"/></div><div class="h-work-caption"><div><p class="h-work-category">地域事業者との学び ／ AKINDO Lab</p><h3><span>学んで、試して、次につなぐ。</span><span>小樽から広がるデジタル活用。</span></h3></div><span class="h-arrow" aria-hidden="true">↗</span></div></a>
+      <div class="h-work-side">
+        <a class="h-work h-work-small" href="/fullfunnelmarketing/"><div class="h-work-image h-work-qq"><img src="/logo-qqenglish.png" alt="QQEnglish" width="244" height="87" loading="lazy" decoding="async"/></div><div class="h-work-caption"><div><p class="h-work-category">LINE公式アカウント構築支援</p><h3>2つの事業を支える、<br/>QQEnglish様のLINE構築。</h3></div><span class="h-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="h-work h-work-small" href="https://localpages.spady.net/#works"><div class="h-work-image"><img src="/akindo/assets/local-pages.jpg" alt="LOCAL PAGES.のブランドビジュアル" width="1280" height="720" loading="lazy" decoding="async"/></div><div class="h-work-caption"><div><p class="h-work-category">Webサイト制作 ／ LOCAL PAGES.</p><h3>お店の空気も、事業の想いも。<br/>伝わるページをつくる。</h3></div><span class="h-arrow" aria-hidden="true">↗</span></div></a>
+      </div>
+    </div>
+    <a class="h-calendar" href="https://otaru.spady.net/"><div class="h-calendar-image"><img src="/home/otaru-calendar-og.jpg" alt="小樽暮らしカレンダーのOGP画像。雪景色の小樽と地域の暮らしの案内" width="1200" height="630" loading="lazy" decoding="async"/></div><div><p class="h-work-category">暮らしの中から生まれたプロジェクト</p><h3>小樽暮らしカレンダー</h3><p>地域で暮らす日々のために。<br class="h-desktop-break"/>身近な情報を、必要な人へ届ける取り組みです。</p></div><span class="h-arrow" aria-hidden="true">↗</span></a>
+  </section>
+
+  <section class="h-section h-founder" id="profile" aria-labelledby="h-founder-title"><div class="h-wrap h-founder-grid"><div class="h-founder-portrait"><img src="/profile.jpg" alt="Spady代表の井上博史" width="320" height="320" loading="lazy" decoding="async"/><p>北海道・小樽市銭函を拠点に</p></div><div class="h-founder-copy"><p class="h-section-label"><span aria-hidden="true"></span>代表者紹介</p><h2 id="h-founder-title"><span>事業のそばで考え、</span><span>自分の手で、つくる。</span></h2><p class="h-founder-description">マーケティングの現場で重ねてきた経験を、もっと身近な道具に。広告・LINE・Web制作の支援を続けながら、店舗や小規模事業者が自分で使えるソフトウェアづくりへ取り組んでいます。</p><div class="h-founder-name"><span>Spady 代表 ／ 個人事業</span><strong>井上 博史</strong></div><a class="h-link" href="/about/#profile">代表者・事業者情報を見る<span class="h-arrow" aria-hidden="true">↗</span></a></div></div></section>
+
+  <section class="h-section h-wrap h-news" aria-labelledby="h-news-title"><div><p class="h-section-label"><span aria-hidden="true"></span>お知らせ・サービス開発情報</p><h2 id="h-news-title"><span>これからのこと。</span><span>日々の取り組み。</span></h2><a class="h-link" href="/news/">お知らせ一覧<span class="h-arrow" aria-hidden="true">↗</span></a></div><div class="h-news-list"><a href="/news/saas-development/"><span class="h-news-category">開発方針</span><strong>店舗向けSaaSの企画について。最初の2つのサービスと、Spadyが目指すこと。</strong><span class="h-arrow" aria-hidden="true">↗</span></a><a href="/akindo/"><span class="h-news-category">学び・活動</span><strong>地域の事業者と学ぶ、AKINDO Lab。開催情報と活動はこちら。</strong><span class="h-arrow" aria-hidden="true">↗</span></a><a href="https://otaru.spady.net/"><span class="h-news-category">地域の情報</span><strong>小樽で暮らす日々のために。小樽暮らしカレンダー。</strong><span class="h-arrow" aria-hidden="true">↗</span></a></div></section>
+</div>

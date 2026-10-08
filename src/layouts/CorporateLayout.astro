@@ -32,7 +32,7 @@ const schema={'@context':'https://schema.org','@graph':[
  <link rel="icon" href="/favicon.png" type="image/png"/><link rel="apple-touch-icon" href="/favicon.png"/><meta name="theme-color" content="#f8f7f3"/>
  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
  <SceneBoot isHome={page===''} />
-</head><body class="corporate-site">
+</head><body class:list={['corporate-site', {'home-renewal':page===''}]}>
  <SiteScene tagline="難しいデジタルを、現場で使える形に。" language="日本語"/>
  <a class="skip-link" href="#main">本文へ移動</a>
  <header class="corp-header"><a class="corp-brand" href="/" aria-label="Spady ホーム"><img src="/logo.png" alt="Spady" width="58" height="58"/><span>小さなお店の、<br/>大きな可能性へ。</span></a>

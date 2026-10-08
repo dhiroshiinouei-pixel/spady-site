@@ -1,0 +1,26 @@
+# Spady 3D artwork — 2026-10-08
+
+Generated with the built-in image generation tool. Original conceptual brand artwork, not photographs, product screenshots, or representations of released software. Transparency preserved. Production copies are WebP; source PNGs are preserved in this directory.
+
+## Hero: spady-sculpture.png
+
+Use case: stylized-concept
+Asset type: original premium 3D hero artwork for Spady, a Japanese small-business software and digital service brand, composited over a warm white website.
+Primary request: A sophisticated, playful, sculptural composition with convincing 3D materials and beautiful studio lighting. A single large flowing vermilion-red sculptural ribbon forms an open, loose S-shaped double loop, like a thick broad inflated ribbon with a rounded rectangular cross-section. It weaves upward through a small cluster of warm ivory architectural modules, connecting simple shapes into a cohesive whole. This is an abstract editorial sculpture expressing simplicity and connection, not a new logo.
+Supporting forms: one substantial translucent pale ice-blue glass sphere nested in one loop, a small cobalt-blue softly rounded cube near the base, and one smooth warm ivory cylinder. Only these few forms. The red ribbon is the clear protagonist. The arrangement has an elegant, slightly improbable balance, resting rather than an explosion of floating objects.
+Style: world-class contemporary CGI brand art, polished but tactile, physically based raytraced rendering, red satin ceramic with restrained glossy highlights, frosted and clear blue glass with believable refraction, matte warm porcelain, soft ambient occlusion and delicate grounding shadows. Like a high-end industrial design editorial, refined and approachable, not a toy shop.
+Composition: isolated full sculpture, near-square frame, entire sculpture visible with generous empty margin, camera slightly elevated in a 3/4 perspective, asymmetrical yet balanced. Crisp clean silhouette readable on mobile. Sculptural height about 80% of canvas. Light from top-left, natural warm daylight. No floor plane, preserve transparent background and subtle contact shadows only.
+Palette: distinctive Spady red #ee2535, warm ivory #f2f0e9, restrained cobalt blue #3866bd, ice-blue transparent glass. No rainbow, no gradient backdrop.
+Text: no text, letters, logos, numbers, UI panels or watermarks.
+Avoid: generic SaaS dashboard illustrations, flat vector look, stock clipart, neon lighting, thin wireframes, excessive tiny parts, glowing particles, abstract blob pile, metallic chrome, character faces, people, buildings, screenshots. This must feel physically three-dimensional, sculptural and art-directed, not a diagram.
+
+## Product concepts
+
+### gbp-sculpture.png
+
+Use case: stylized-concept. Asset type: original 3D service concept artwork for a sophisticated Japanese digital-services website. Premium physically-based studio CGI, tactile satin ceramic, frosted ice-blue glass and warm porcelain, softly rounded substantial forms, beautiful natural top-left lighting and ambient occlusion. Full object visible, centered with generous margins, square canvas, isolated transparent background with subtle contact shadow, three-quarter camera slightly elevated. Very few sculptural objects, clean silhouette, refined high-end industrial design photography, no faces or characters, no text, letters, logos, screenshots, fake interface or UI, no visual clutter, no scenery. This is a conceptual image, not a functional product screenshot. Subject: a sculptural location marker in rich cobalt-blue satin ceramic, with a large circular opening framing a translucent pale ice-blue glass sphere. Marker rests on two offset warm ivory rounded square tiles suggesting a simplified folded map. A small vermilion-red sphere beside the base creates a brand accent. Elegant sculptural balance, convincingly three-dimensional and tangible, not flat vector art.
+
+### line-sculpture.png
+
+Use case: stylized-concept. Asset type: original 3D service concept artwork for a sophisticated Japanese digital-services website. Premium physically-based studio CGI, tactile satin ceramic, frosted ice-blue glass and warm porcelain, softly rounded substantial forms, beautiful natural top-left lighting and ambient occlusion. Full object visible, centered with generous margins, square canvas, isolated transparent background with subtle contact shadow, three-quarter camera slightly elevated. Very few sculptural objects, clean silhouette, refined high-end industrial design photography, no faces or characters, no text, letters, logos, screenshots, fake interface or UI, no visual clutter, no scenery. This is a conceptual image, not a functional product screenshot. Subject: two interlocking sculptural speech bubbles, one large vertical warm-ivory frosted-glass rounded-square speech bubble behind, one smaller vivid vermilion-red satin ceramic rounded speech bubble in front. They rest with a slight lean on a low warm ivory disc. A small pale ice-blue glass sphere sits beside their base. Their sculptural negative spaces express conversation and connection. Do not include LINE logo, Google logo, green brand elements, text, dots or characters.
+

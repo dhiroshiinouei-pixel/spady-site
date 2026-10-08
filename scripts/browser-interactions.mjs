@@ -16,8 +16,15 @@ export async function verifyInteractions(browser,base,dir){
   await page.locator('.language-menu summary').click();await page.locator('.language-menu a[lang="en"]').click();await page.waitForURL(base+'/en/');assert.equal(await page.locator('html').getAttribute('lang'),'en');
   await page.locator('.language-menu summary').click();await page.locator('.language-menu a[lang="ja"]').click();await page.waitForURL(base+'/');
  });
- await check('reduced motion skips cover and pauses orbit',async()=>{
-  await page.emulateMedia({reducedMotion:'reduce'});await page.goto(base);assert.equal(await page.locator('html').getAttribute('data-scene'),null);assert.equal(await page.locator('.eco-orbit').evaluate(e=>getComputedStyle(e).animationName),'none');await page.emulateMedia({reducedMotion:'no-preference'});
+ await check('3D artwork controls stay synchronized and remember pause',async()=>{
+  await page.locator('.h-motion').click();assert.equal(await page.locator('html').getAttribute('data-motion'),'paused');
+  assert.deepEqual(await page.locator('.motion-control').evaluateAll(buttons=>buttons.map(b=>b.getAttribute('aria-pressed'))),['true','true']);
+  assert.equal(await page.locator('.h-sculpture').evaluate(e=>getComputedStyle(e).animationName),'none');
+  await page.reload();assert.equal(await page.locator('html').getAttribute('data-motion'),'paused');
+  await page.locator('.h-motion').click();assert.equal(await page.locator('html').getAttribute('data-motion'),'playing');
+ });
+ await check('reduced motion skips cover and pauses 3D artwork',async()=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto(base);assert.equal(await page.locator('html').getAttribute('data-scene'),null);assert.equal(await page.locator('.h-sculpture').evaluate(e=>getComputedStyle(e).animationName),'none');assert.equal(await page.locator('.h-motion').isDisabled(),true);await page.emulateMedia({reducedMotion:'no-preference'});
  });
  let posted=[];let mode='error';
  await context.route('**/api/contact?*',async route=>{posted.push(route.request().postData());await route.fulfill({status:mode==='success'?200:503,contentType:'application/json',body:JSON.stringify(mode==='success'?{ok:true}:{ok:false})});});

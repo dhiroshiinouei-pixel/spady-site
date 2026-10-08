@@ -13,6 +13,12 @@
 - `/home/threads.svg`: Threads brand icon from Simple Icons 16.0.0 (CC0-1.0), https://github.com/simple-icons/simple-icons/blob/16.0.0/icons/threads.svg. Matches the approved button preview.
 
 ## 2026-10-08 corporate renewal
-- `public/home/spady-social.png` / `.svg`: Spadyロゴ（既存所有素材）を使ったオリジナルの文字・店舗図形によるOGP。`scripts/render-social.mjs`で1200×630にレンダリング。実在顧客や製品画面の描写ではありません。
+- `public/home/spady-social.png` / `.svg`: Spadyロゴ（既存所有素材）と今回の3Dブランドビジュアルを使ったオリジナルのOGP。`scripts/render-social.mjs`で1200×630にレンダリング。実在顧客や製品画面の描写ではありません。
 - `ProductArt.astro` / `Icon.astro`: 今回制作したSVG・CSSの概念図。Google・LINEの公式マーク、確定済み製品UIを模したものではありません。
 - 小樽暮らしカレンダーの画像は従来どおり、同サービスの公開済みOGP画像を使用しています。
+
+## 2026-10-08 3D visual revision
+- `public/home/spady-sculpture.webp` / `spady-sculpture-600.webp`: Spady向けに新規生成した赤い曲線・ガラス・陶器の3Dコンセプト。既存ロゴの変更ではありません。
+- `public/home/gbp-sculpture.webp` / `line-sculpture.webp`: 自社サービスの構想を表すオリジナル3Dコンセプト画像。公式サービスのロゴや実装済みの製品画面ではありません。
+- Built-in image generationで制作。透過PNG原本と生成プロンプトは `design/3d-source/` に保存。WebPへの変換はサイズ・エンコードの最適化のみ。本文ではレスポンシブ画像・遅延読み込みを使用。
+- TSG公式サイト https://www.tsg-jpn.co.jp/ は立体的な素材と余白のアートディレクションの参照のみ。画像・キャラクター・コードは流用していません。
