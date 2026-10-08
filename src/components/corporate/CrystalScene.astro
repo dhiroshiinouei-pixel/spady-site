@@ -1,0 +1,11 @@
+---
+const {variant='hero',label='ゆっくり回転し、光を屈折させるクリスタル',poster=`/home/crystal-${variant}.webp`}=Astro.props;
+---
+<div class:list={['crystal-scene',`crystal-${variant}`]} data-crystal={variant}>
+  <div class="crystal-viewport" role="img" aria-label={label}>
+    <img class="crystal-poster" src={poster} width="1000" height="1000" alt="" loading={variant==='hero'?'eager':'lazy'} fetchpriority={variant==='hero'?'high':'auto'}/>
+    <canvas class="crystal-canvas" aria-hidden="true"></canvas>
+    <span class="crystal-star crystal-star-a" aria-hidden="true">✧</span><span class="crystal-star crystal-star-b" aria-hidden="true">✦</span>
+  </div>
+  {variant==='hero'&&<div class="crystal-controls" aria-label="クリスタルの演出"><div class="crystal-palettes" aria-label="光の色"><button type="button" data-crystal-palette="0" class="crystal-palette" aria-label="オーロラの光" aria-pressed="true"><span></span></button><button type="button" data-crystal-palette="1" class="crystal-palette" aria-label="サンセットの光" aria-pressed="false"><span></span></button><button type="button" data-crystal-palette="2" class="crystal-palette" aria-label="ミントの光" aria-pressed="false"><span></span></button></div><button class="crystal-turn" type="button" data-crystal-turn>回してみる <span aria-hidden="true">↻</span></button><span class="crystal-light-name" aria-live="polite">オーロラの光</span></div>}
+</div>

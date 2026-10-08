@@ -1,16 +1,15 @@
 ---
 import Icon from './Icon.astro';
+import CrystalScene from './CrystalScene.astro';
 import { products, currentServices, statusLabels } from '../../data/services';
 
-const productVisuals: Record<string, { image: string; alt: string; copy: string[] }> = {
+const productVisuals: Record<string, { alt: string; copy: string[] }> = {
   'google-business-profile': {
-    image: '/home/gbp-sculpture.webp',
-    alt: '店舗の情報とお客さまの声をつなぐ、立体的なピンのコンセプトビジュアル',
+    alt: 'お店の新しい可能性を表す、ミント色のクリスタル',
     copy: ['見つけてもらう。', '選ばれる入口を、整える。'],
   },
   'line-mini-app': {
-    image: '/home/line-sculpture.webp',
-    alt: 'お店とお客さまのつながりを表す、立体的な吹き出しのコンセプトビジュアル',
+    alt: 'お店とお客さまのつながりを表す、ピンクのクリスタル',
     copy: ['日々の接点を、', 'お店の力に変えていく。'],
   },
 };
@@ -30,14 +29,14 @@ const productVisuals: Record<string, { image: string; alt: string; copy: string[
   <section class="h-section h-products" id="projects" aria-labelledby="h-products-title">
     <div id="products" class="h-anchor"></div>
     <div class="h-wrap">
-      <div class="h-section-head"><div><p class="h-section-label"><span aria-hidden="true"></span>これからの自社サービス</p><h2 id="h-products-title"><span>お店の毎日から、</span><span>次のサービスを。</span></h2></div><p class="h-section-intro">集客の入口から、来店後のつながりまで。<br class="h-desktop-break"/>まずは、2つのサービスを企画しています。</p></div>
+      <div class="h-section-head"><div><p class="h-section-label"><span aria-hidden="true"></span>これからの自社サービス</p><h2 id="h-products-title"><span>お店の毎日から、</span><span>次のサービスを。</span></h2></div><p class="h-section-intro">集客の入口から、来店後のつながりまで。<br class="h-desktop-break"/>まずは、<span class="h-phrase">2つのサービス</span>を企画しています。</p></div>
       <div class="h-product-list">
         {products.slice(0, 2).map((product, index) => {
-          const visual = productVisuals[product.id] || { image: '/home/spady-sculpture.webp', alt: 'Spadyの自社サービスのコンセプトビジュアル', copy: [product.shortName] };
+          const visual = productVisuals[product.id] || { alt: 'Spadyの自社サービスのコンセプトビジュアル', copy: [product.shortName] };
           return <article class:list={['h-product', { 'h-product-reverse': index === 1 }]}>
             <a class="h-product-art" href={product.detailUrl} aria-label={`${product.name}の構想を見る`}>
               <span class="h-product-number" aria-hidden="true">0{index + 1}</span>
-              <img src={product.image || visual.image} alt={product.imageAlt || visual.alt} width="1000" height="1000" loading="lazy" decoding="async"/>
+              {product.image?<img src={product.image} alt={product.imageAlt || visual.alt} width="1000" height="1000" loading="lazy" decoding="async"/>:<CrystalScene variant={product.id==='line-mini-app'?'line':'map'} label={product.id==='line-mini-app'?'お店とお客さまのつながりを表す、ピンクのクリスタル':'お店の新しい可能性を表す、ミント色のクリスタル'}/>}
               <span class="h-product-caption">コンセプトビジュアル</span>
             </a>
             <div class="h-product-copy">

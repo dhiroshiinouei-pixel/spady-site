@@ -1,0 +1,65 @@
+/* Small, original interactions; nothing changes native navigation or page flow. */
+.play-reading-progress { position: fixed; inset: 0 0 auto; height: 3px; z-index: 180; pointer-events: none; overflow: hidden; }
+.play-reading-progress > span { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, #649ce9, #8d6fda 35%, #df83b7 65%, #e9c372 84%, #75bfbd); }
+.play-reading-progress[data-direction='up'] > span { filter: saturate(1.25); }
+.play-tap-layer { position: fixed; display: block; pointer-events: none; overflow: hidden; z-index: 185; }
+.play-tap-ring { position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 1px solid #a7b2f1; background: radial-gradient(circle, transparent 20%, #d9c9fa55 55%, #92d9e999 75%, transparent 77%); opacity: 0; animation: play-tap .65s ease-out both; }
+@keyframes play-tap { 0% { transform: translate(-50%, -50%) scale(.1); opacity: .9; } 85% { opacity: .18; } 100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; } }
+
+.h-content .h-service { --play-service: #527ac4; position: relative; }
+.h-content .h-service:nth-child(2) { --play-service: #309489; }
+.h-content .h-service:nth-child(3) { --play-service: #9364c0; }
+.h-content .h-service:nth-child(4) { --play-service: #be7188; }
+.h-content .h-service-icon { position: relative; isolation: isolate; color: var(--play-service); transform-origin: 50% 65%; transition: transform .4s cubic-bezier(.2,.75,.25,1.5), color .2s; }
+.h-content .h-service-icon::before { content: ''; position: absolute; inset: -8px -7px -5px; border-radius: 36% 50% 44% 48%; z-index: -1; opacity: 0; background: color-mix(in srgb, var(--play-service) 13%, transparent); transform: scale(.7) rotate(-20deg); transition: opacity .3s, transform .4s; }
+.h-content .h-service-index { transition: color .25s, transform .4s; }
+.h-content .h-service:is(:hover, :focus-visible) .h-service-icon { transform: rotate(-9deg) translateY(-2px); }
+.h-content .h-service:is(:hover, :focus-visible) .h-service-icon::before { opacity: 1; transform: scale(1) rotate(0); }
+.h-content .h-service:is(:hover, :focus-visible) .h-service-index { color: var(--play-service); transform: translateY(-2px); }
+.h-content .h-service:active .h-service-icon { transform: rotate(6deg) scale(.92); }
+
+.h-content .play-surface { --play-x: 50%; --play-y: 50%; --play-rx: 0deg; --play-ry: 0deg; }
+.h-content .h-product-art.play-surface::after { content: ''; position: absolute; inset: 6%; border-radius: 50%; background: radial-gradient(ellipse at var(--play-x) var(--play-y), #fff 0%, #e3cffa66 17%, #c7e9fa33 35%, transparent 61%); pointer-events: none; z-index: 2; opacity: 0; mix-blend-mode: soft-light; transition: opacity .4s; }
+.h-content .h-product-art.play-pointing::after { opacity: .9; }
+.h-content .h-product-art.play-pointing img { transform: perspective(1000px) rotateX(var(--play-rx)) rotateY(var(--play-ry)) scale(1.015); }
+.h-content .h-work.play-surface .h-work-image, .h-content .h-calendar.play-surface .h-calendar-image { position: relative; transition: transform .45s cubic-bezier(.2,.65,.3,1), box-shadow .45s; }
+.h-content .h-work.play-pointing .h-work-image, .h-content .h-calendar.play-pointing .h-calendar-image { transform: perspective(1100px) rotateX(var(--play-rx)) rotateY(var(--play-ry)); box-shadow: 0 13px 26px -23px #45456a99; }
+.h-content .h-work.play-surface .h-work-image::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at var(--play-x) var(--play-y), #fff6, #e8dfff11 36%, transparent 63%); opacity: 0; pointer-events: none; transition: opacity .3s; }
+.h-content .h-work.play-pointing .h-work-image::after { opacity: .4; }
+.h-content .h-news-list > a .h-news-category { transition: color .2s; }
+.h-content .h-news-list > a:is(:hover, :focus-visible) .h-news-category { color: #7655bd; }
+
+.h-content .h-mission > .h-section-label { position: relative; }
+.play-buddy { position: absolute; top: 58px; left: 0; width: 94px; height: 116px; display: grid; place-items: center; padding: 0; border: 0; background: none; color: #626680; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.play-buddy-art { display: block; width: 88px; height: 94px; overflow: visible; }
+.play-buddy-gem { transform-origin: 50px 50px; }
+.play-buddy-eyes { transform-origin: 50px 47px; }
+.play-buddy[data-play-visible='true'] .play-buddy-eyes { animation: play-buddy-blink 8s infinite; }
+.play-buddy-hint { display: block; text-align: center; font-size: 9px; line-height: 1.5; font-weight: 500; letter-spacing: .06em; opacity: .8; }
+.play-buddy-stars { opacity: .2; transform-origin: center; }
+.play-buddy:focus-visible { outline: 2px solid #626dc2; outline-offset: 4px; border-radius: 12px; }
+.play-buddy:is(:hover, :focus-visible) .play-buddy-hint { color: #7761b5; opacity: 1; }
+.play-buddy[data-mood='1'] .play-buddy-smile { transform: translateY(1px) scaleY(1.15); transform-origin: 50px 57px; }
+.play-buddy[data-mood='2'] .play-buddy-eyes { transform: scaleY(.6); }
+.play-buddy-hello .play-buddy-gem { animation: play-buddy-hello 1.05s cubic-bezier(.2,.7,.25,1) both; }
+.play-buddy-hello .play-buddy-stars { animation: play-buddy-sparkle 1.05s ease-out both; }
+@keyframes play-buddy-blink { 0%, 44%, 48%, 100% { transform: scaleY(1); } 46% { transform: scaleY(.1); } }
+@keyframes play-buddy-hello { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg) translateY(-4px); } 55% { transform: rotate(9deg) translateY(-1px); } 80% { transform: rotate(-4deg); } }
+@keyframes play-buddy-sparkle { 0% { opacity: .2; transform: scale(.8); } 30% { opacity: 1; transform: scale(1.08); } 100% { opacity: .2; transform: scale(1); } }
+
+@media (max-width: 800px) {
+  .play-buddy { top: -17px; right: 0; left: auto; width: 65px; height: 70px; }
+  .play-buddy-art { width: 63px; height: 67px; }
+  .play-buddy-hint { display: none; }
+  .h-content .h-mission > .h-section-label { min-height: 40px; padding-right: 73px; margin-bottom: 25px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .play-buddy *, .play-tap-ring { animation: none !important; }
+  .h-content .play-surface *, .h-content .h-service-icon, .h-content .h-service-icon::before, .h-content .h-service-index { transition: none !important; }
+  .h-content .play-surface::after { display: none; }
+  .h-content .h-service:is(:hover, :focus-visible, :active) .h-service-icon, .h-content .h-service:is(:hover, :focus-visible) .h-service-index { transform: none; }
+}
+[data-motion='paused'] .play-buddy *, .play-document-hidden .play-buddy * { animation: none !important; }
+[data-motion='paused'] .h-content .play-surface *, [data-motion='paused'] .h-content .h-service-icon, [data-motion='paused'] .h-content .h-service-icon::before, [data-motion='paused'] .h-content .h-service-index { transition: none !important; }
+[data-motion='paused'] .h-content .play-surface::after { display: none; }
+[data-motion='paused'] .h-content .h-service:is(:hover, :focus-visible, :active) .h-service-icon, [data-motion='paused'] .h-content .h-service:is(:hover, :focus-visible) .h-service-index { transform: none; }

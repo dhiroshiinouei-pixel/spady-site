@@ -5,6 +5,9 @@ export async function verifyInteractions(browser,base,dir){
  let gtm=0;await context.route('https://www.googletagmanager.com/**',async route=>{gtm++;await route.abort();});
  const page=await context.newPage();const failures=[];const errors=[];page.on('pageerror',e=>errors.push(e.message));
  async function check(name,fn){try{await fn();console.log('PASS',name);}catch(e){failures.push({name,error:e.message});console.log('FAIL',name,e.message);}}
+ async function waitForPausedCrystal(){
+  await page.waitForFunction(()=>document.documentElement.dataset.motion==='paused'&&document.querySelector('[data-crystal="hero"]')?.getAttribute('data-moving')==='false',null,{timeout:30000});
+ }
  await check('GTM waits for consent and loads only once',async()=>{
   await page.goto(base,{waitUntil:'networkidle'});assert.equal(gtm,0);
   await page.locator('[data-consent="denied"]').click();assert.equal(gtm,0);
@@ -17,14 +20,16 @@ export async function verifyInteractions(browser,base,dir){
   await page.locator('.language-menu summary').click();await page.locator('.language-menu a[lang="ja"]').click();await page.waitForURL(base+'/');
  });
  await check('3D artwork controls stay synchronized and remember pause',async()=>{
+  // Initial WebGL setup may take longer than DOM load; no fixed animation sleep.
+  await page.locator('[data-crystal="hero"][data-initialized="ready"]').waitFor({state:'attached',timeout:30000});
   await page.locator('.h-motion').click();assert.equal(await page.locator('html').getAttribute('data-motion'),'paused');
   assert.deepEqual(await page.locator('.motion-control').evaluateAll(buttons=>buttons.map(b=>b.getAttribute('aria-pressed'))),['true','true']);
-  assert.equal(await page.locator('.h-sculpture').evaluate(e=>getComputedStyle(e).animationName),'none');
-  await page.reload();assert.equal(await page.locator('html').getAttribute('data-motion'),'paused');
+  await waitForPausedCrystal();
+  await page.reload();await waitForPausedCrystal();
   await page.locator('.h-motion').click();assert.equal(await page.locator('html').getAttribute('data-motion'),'playing');
  });
  await check('reduced motion skips cover and pauses 3D artwork',async()=>{
-  await page.emulateMedia({reducedMotion:'reduce'});await page.goto(base);assert.equal(await page.locator('html').getAttribute('data-scene'),null);assert.equal(await page.locator('.h-sculpture').evaluate(e=>getComputedStyle(e).animationName),'none');assert.equal(await page.locator('.h-motion').isDisabled(),true);await page.emulateMedia({reducedMotion:'no-preference'});
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto(base);assert.equal(await page.locator('html').getAttribute('data-scene'),null);await waitForPausedCrystal();assert.equal(await page.locator('.h-motion').isDisabled(),true);await page.emulateMedia({reducedMotion:'no-preference'});
  });
  let posted=[];let mode='error';
  await context.route('**/api/contact?*',async route=>{posted.push(route.request().postData());await route.fulfill({status:mode==='success'?200:503,contentType:'application/json',body:JSON.stringify(mode==='success'?{ok:true}:{ok:false})});});

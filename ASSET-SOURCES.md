@@ -22,3 +22,13 @@
 - `public/home/gbp-sculpture.webp` / `line-sculpture.webp`: 自社サービスの構想を表すオリジナル3Dコンセプト画像。公式サービスのロゴや実装済みの製品画面ではありません。
 - Built-in image generationで制作。透過PNG原本と生成プロンプトは `design/3d-source/` に保存。WebPへの変換はサイズ・エンコードの最適化のみ。本文ではレスポンシブ画像・遅延読み込みを使用。
 - TSG公式サイト https://www.tsg-jpn.co.jp/ は立体的な素材と余白のアートディレクションの参照のみ。画像・キャラクター・コードは流用していません。
+
+## 2026-10-08 crystal / real-time 3D revision
+
+- `src/vendor/three/three.core.min.js` / `three.module.min.js`: Three.js r180のMITライセンス原本を同梱。著作権表示・ライセンス全文は `src/vendor/three/LICENSE` に保持。出典：https://github.com/mrdoob/three.js/tree/r180 。実行時に外部CDNへ接続する構成ではありません。
+- `src/scripts/crystal-geometry.ts` / `crystal-material.ts` / `crystal-scene.ts`: Spady向けに制作したオリジナルの89面の結晶ジオメトリと描画処理。屈折、色の分離、最大3回の内部反射を扱うシェーダを使用し、WebGLで実際に回転させています。実在する宝石やTSGのモデルを複製したものではありません。
+- `public/home/crystal-hero.webp` / `crystal-map.webp` / `crystal-line.webp`: 上記WebGLシーンの実際のレンダリングから作成した静止画フォールバック。生成AI画像ではありません。WebGLを使用できない場合や初期表示にも結晶のビジュアルを保持するための素材です。
+- `src/scripts/home-play.ts` のミッション内SVGキャラクター：今回制作したオリジナル。タップへの反応とまばたきを実装。TSGの画像・キャラクター・コードは流用していません。
+- `public/home/spady-social.png` / `.svg`: OGPを新しいクリスタルのレンダリング素材に更新。Spadyの既存ロゴとオリジナルの文字組みを組み合わせ、`scripts/render-social.mjs` で1200×630に出力します。
+- 前節の赤いS状の3D画像・生成プロンプトは制作履歴として保持していますが、今回の新トップページでは使用していません。今回の結晶素材と、以前の生成AIによる3Dコンセプト画像は制作方法が異なります。
+- TSG公式サイト https://www.tsg-jpn.co.jp/ は、結晶の質感・多色使い・親しみのある動きの参考として確認。参照先の素材を本サイトの配信ファイルへ転用していません。

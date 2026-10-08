@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://spady.net',
+  devToolbar: { enabled: false },
   vite: { cacheDir: './.astro/vite-cache' },
   build: {
     // プレビュー確認をしやすくするため、CSSをHTMLに埋め込む。

@@ -2,8 +2,11 @@
 import CorporateLayout from '../layouts/CorporateLayout.astro';
 import ContactBand from '../components/corporate/ContactBand.astro';
 import HomeSections from '../components/corporate/HomeSections.astro';
+import CrystalScene from '../components/corporate/CrystalScene.astro';
 import '../styles/home-renewal.css';
 import '../styles/home-sections.css';
+import '../styles/crystal.css';
+import '../styles/home-play.css';
 ---
 <CorporateLayout>
   <main id="main">
@@ -19,10 +22,7 @@ import '../styles/home-sections.css';
           </div>
         </div>
         <div class="h-hero-visual" data-hero-visual>
-          <div class="h-art-tilt" data-art-tilt>
-            <img class="h-sculpture" src="/home/spady-sculpture.webp" srcset="/home/spady-sculpture-600.webp 600w, /home/spady-sculpture.webp 1000w" sizes="(max-width: 699px) 94vw, (max-width: 1100px) 53vw, 660px" width="1000" height="1000" alt="赤い曲線とガラス、陶器の形がつながる、Spadyの3Dビジュアル" fetchpriority="high" decoding="async"/>
-          </div>
-          <span class="h-art-caption" aria-hidden="true">ひとつずつ、使える仕組みへ。</span>
+          <CrystalScene/>
           <button class="motion-control h-motion" type="button" aria-pressed="false" data-pause="演出を停止" data-play="演出を再開" data-reduced="演出を停止中"><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">演出を停止</span></button>
         </div>
       </div>
@@ -34,5 +34,5 @@ import '../styles/home-sections.css';
     <HomeSections/>
     <div id="contact"><ContactBand/></div>
   </main>
-  <script>import '../scripts/home-renewal-motion';</script>
+  <script>import '../scripts/crystal-scene';import '../scripts/home-play';</script>
 </CorporateLayout>
