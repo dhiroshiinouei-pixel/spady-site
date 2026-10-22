@@ -22,6 +22,7 @@
 <meta name="twitter:image" content="https://spady.net/akindo/og-20260723.jpg">
 <meta name="twitter:image:alt" content="AKINDO Lab by Spady｜小樽発・地域事業者のためのデジタル集客勉強会">
 <link rel="icon" href="assets/spady-logo.png">
+<link rel="preload" as="image" href="assets/akindo-hero-poster-20261022.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
@@ -158,15 +159,32 @@ p + p{margin-top:1.2em}
 .hero{
   padding:190px 0 96px;position:relative;overflow:hidden;background:#fff;
 }
-.hero::before{ /* 勉強会の様子を、ごく薄く */
-  content:"";position:absolute;inset:0;z-index:0;
-  background:
-    linear-gradient(90deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.86) 42%,rgba(255,255,255,.68) 100%),
-    linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.35) 40%,rgba(255,255,255,.9) 100%),
-    url('assets/seminar.jpg') center 28%/cover no-repeat;
-  filter:saturate(.8);
+.hero-media{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('assets/akindo-hero-poster-20261022.jpg') center/cover no-repeat;
 }
-.hero-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.hero-video{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:0;filter:saturate(.8);transition:opacity .45s ease;
+}
+.hero-media.has-video .hero-video{opacity:1}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.8) 42%,rgba(255,255,255,.3) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.08) 60%,rgba(255,255,255,.65) 100%);
+}
+.hero-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:2}
+.hero-video-toggle{
+  position:absolute;right:28px;bottom:20px;z-index:3;
+  display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  padding:10px 16px;border:1px solid rgba(27,37,64,.18);border-radius:999px;
+  background:rgba(255,255,255,.94);color:var(--ink);font:600 12px/1.5 var(--sans);
+  cursor:pointer;transition:background .2s ease;
+}
+.hero-video-toggle[hidden]{display:none}
+.hero-video-toggle:hover{background:#fff}
+.hero-video-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .hero-label{
   font-family:var(--en);font-size:12.5px;font-weight:600;letter-spacing:.3em;color:var(--accent);
   margin-bottom:22px;display:flex;align-items:center;gap:12px;
@@ -185,8 +203,10 @@ p + p{margin-top:1.2em}
 .hero-sub{
   font-size:clamp(17px,2.4vw,23px);font-weight:900;color:var(--ink);letter-spacing:.04em;
   margin:26px 0 22px;opacity:0;animation:fadeUp .8s .34s ease forwards;
+  text-wrap:balance;line-break:strict;
 }
 .hero-sub .dot{color:var(--accent)}
+.hero-sub .phrase{display:inline-block;max-width:100%}
 .hero-body{
   max-width:600px;font-size:clamp(13.5px,1.5vw,15px);
   margin-bottom:36px;opacity:0;animation:fadeUp .8s .46s ease forwards;
@@ -196,7 +216,7 @@ p + p{margin-top:1.2em}
 
 /* 背景の大きな英字（ごく薄く） */
 .hero-bgtext{
-  position:absolute;right:-1.5vw;bottom:-2vw;z-index:0;pointer-events:none;
+  position:absolute;right:-1.5vw;bottom:-2vw;z-index:1;pointer-events:none;
   font-family:var(--en);font-weight:700;font-size:clamp(90px,17vw,240px);line-height:1;
   color:transparent;-webkit-text-stroke:1px rgba(27,37,64,.06);letter-spacing:.02em;
   user-select:none;white-space:nowrap;
@@ -554,6 +574,10 @@ footer{
   .prof-wrap{grid-template-columns:1fr;gap:30px}
   .prof-photo{max-width:170px}
 }
+@media (max-width:960px){
+  .header-nav{display:none}
+  .hamburger{display:flex}
+}
 @media (max-width:760px){
   body{font-size:14.5px}
   section{padding:76px 0}
@@ -566,10 +590,9 @@ footer{
   .hero{padding:118px 0 70px}
   .hero::before{
     background:
-      linear-gradient(180deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.82) 50%,rgba(255,255,255,.94) 100%),
-      url('assets/seminar.jpg') center 24%/cover no-repeat;
-    filter:saturate(.8);
+      linear-gradient(180deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.78) 50%,rgba(255,255,255,.91) 100%);
   }
+  .hero-video-toggle{top:86px;right:16px;bottom:auto}
   .hero-bgtext{display:none}
   .btn-line{width:100%;max-width:380px;padding:17px 26px;font-size:15px}
   .marquee-track img{height:190px}
@@ -583,6 +606,7 @@ footer{
   *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
   .hero-label,.hero h1,.hero-sub,.hero-body,.hero-cta{opacity:1;animation:none}
   .marquee-track,.tm-track{animation:none}
+  .hero-video,.hero-video-toggle{display:none}
 }
 .local-pages-section{padding:64px 0 72px;border-top:1px solid var(--border);background:#fff}
 .local-pages-wrap{max-width:840px;margin:auto;text-align:center}
@@ -634,12 +658,16 @@ footer{
 
 <!-- ================= ファーストビュー ================= -->
 <section class="hero" id="hero" style="padding-top:190px">
+  <div class="hero-media" id="heroMedia" aria-hidden="true">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="none" poster="assets/akindo-hero-poster-20261022.jpg" data-src="assets/akindo-hero-20261022.mp4" tabindex="-1"></video>
+  </div>
+  <button class="hero-video-toggle" id="heroVideoToggle" type="button" aria-controls="heroVideo" hidden>背景動画を一時停止</button>
   <div class="hero-bgtext" aria-hidden="true">AKINDO</div>
   <div class="hero-inner hero-grid2">
     <div class="hero-copy2">
     <div class="hero-label">OTARU, HOKKAIDO</div>
     <h1>AKINDO Lab<span class="by">by Spady</span></h1>
-    <p class="hero-sub">小樽発地域事業者のための、デジタル集客勉強会<span class="dot">。</span></p>
+    <p class="hero-sub"><span class="phrase">小樽発地域事業者のための、</span><span class="phrase">デジタル集客勉強会<span class="dot">。</span></span></p>
     <div class="hero-body">
       <p>Instagram、LINE、Googleビジネスプロフィール、広告、AI活用などをテーマに、地域のお店や中小企業が無理なくデジタルを活用するための勉強会を不定期で開催しています。</p>
       <p>人口が減っていく地域でも、必要な人に見つけてもらい、問い合わせ・予約・来店につながる流れを一緒に学びます。</p>
@@ -930,6 +958,52 @@ footer{
 </div>
 
 <script>
+/* ============ 背景動画：無音再生・一時停止・静止画への切り替え ============ */
+(function(){
+  const hero=document.getElementById('hero');
+  const media=document.getElementById('heroMedia');
+  const video=document.getElementById('heroVideo');
+  const toggle=document.getElementById('heroVideoToggle');
+  if(!hero||!media||!video||!toggle)return;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const saveData=Boolean(navigator.connection&&navigator.connection.saveData);
+  let userPaused=false,inView=true,failed=false;
+  video.muted=true;
+  video.defaultMuted=true;
+  function updateButton(){
+    toggle.textContent=video.paused?'背景動画を再生':'背景動画を一時停止';
+  }
+  function showPoster(){
+    video.pause();
+    media.classList.remove('has-video');
+    toggle.hidden=true;
+  }
+  function sync(){
+    if(reduce.matches||saveData||failed){showPoster();return;}
+    if(!video.getAttribute('src'))video.src=video.dataset.src;
+    if(userPaused||document.hidden||!inView){video.pause();return;}
+    video.play().catch(()=>{if(!video.paused||document.hidden||!inView||userPaused)return;showPoster();});
+  }
+  video.addEventListener('playing',()=>{
+    if(reduce.matches||saveData){showPoster();return;}
+    media.classList.add('has-video');
+    toggle.hidden=false;
+    updateButton();
+  });
+  video.addEventListener('pause',updateButton);
+  video.addEventListener('error',()=>{failed=true;showPoster();});
+  toggle.addEventListener('click',()=>{userPaused=!video.paused;sync();});
+  document.addEventListener('visibilitychange',sync);
+  reduce.addEventListener('change',()=>{
+    if(reduce.matches){showPoster();video.removeAttribute('src');video.load();}
+    else sync();
+  });
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;sync();}).observe(hero);
+  }
+  sync();
+})();
+
 /* ============ ヘッダー：スクロールで影 ============ */
 (function(){
   const header=document.getElementById('siteHeader');

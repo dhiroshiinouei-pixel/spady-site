@@ -1,5 +1,10 @@
 # Homepage assets
 
+## 2026-10-22 AKINDO hero video
+
+- `public/akindo/assets/akindo-hero-20261022.mp4`: User-provided `217753715.mp4`, used at the owner's request for the AKINDO first-view background. Original H.264 video samples retained without re-encoding; audio removed and MP4 metadata moved to the start for progressive playback. 960 x 600, 10.621 seconds, 2,096,689 bytes.
+- `public/akindo/assets/akindo-hero-poster-20261022.jpg`: A frame at 1.0 second from the same supplied video, used before playback and as the reduced-motion / unavailable-playback fallback. No generated imagery.
+
 - `public/home/coastal-neighborhood.png`: Original AI-generated conceptual illustration created for Spady. Not a photograph of an actual location.
 - `public/home/calendar.svg`: Bootstrap Icons calendar3, https://icons.getbootstrap.com/icons/calendar3/ — MIT; geometry unchanged, fill set to green.
 - `public/home/megaphone.svg`: Bootstrap Icons megaphone, https://icons.getbootstrap.com/icons/megaphone/ — MIT; geometry unchanged, fill set to blue. License included in `public/home/bootstrap-icons-LICENSE.txt`.
