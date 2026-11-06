@@ -1,5 +1,12 @@
 # Homepage assets
 
+## 2026-11-06 AKINDO Lab 開業準備
+
+- `public/akindo/kaigyo-assets/seminar.webp`：既存の所有素材 `public/akindo/assets/akindo-venue-20260722.jpg` を960×720のWebPにリサイズ。内容や人物の編集なし。
+- `public/akindo/kaigyo-assets/social.svg` / `.png`：今回の独自タイポグラフィとチェックリストの概念図で作成した1200×630のOGP。実データではなく「利用イメージ」と明記。
+- ヒーローの進捗カード・小さな商店の線画：オリジナルのHTML/CSS/インラインSVG。既存 `corporate/Icon.astro` も再利用。
+- FAVTOWNは情報整理と視覚的な階層の参考のみ。素材・文章・コードは転用していません。新規の外部ストック写真・Webフォントは使用していません。初回実装後の改訂で追加した生成画像は、以下の制作記録に記載しています。
+
 ## 2026-10-22 AKINDO hero video
 
 - `public/akindo/assets/akindo-hero-20261022.mp4`: User-provided `217753715.mp4`, used at the owner's request for the AKINDO first-view background. Original H.264 video samples retained without re-encoding; audio removed and MP4 metadata moved to the start for progressive playback. 960 x 600, 10.621 seconds, 2,096,689 bytes.
@@ -37,3 +44,10 @@
 - `public/home/spady-social.png` / `.svg`: OGPを新しいクリスタルのレンダリング素材に更新。Spadyの既存ロゴとオリジナルの文字組みを組み合わせ、`scripts/render-social.mjs` で1200×630に出力します。
 - 前節の赤いS状の3D画像・生成プロンプトは制作履歴として保持していますが、今回の新トップページでは使用していません。今回の結晶素材と、以前の生成AIによる3Dコンセプト画像は制作方法が異なります。
 - TSG公式サイト https://www.tsg-jpn.co.jp/ は、結晶の質感・多色使い・親しみのある動きの参考として確認。参照先の素材を本サイトの配信ファイルへ転用していません。
+
+## AKINDO Lab 開業準備：画像・図解の改善（2026-11-06）
+
+- `public/akindo/kaigyo-assets/illustrations/`：内蔵imagegenで新規制作した商店街、準備ノート、サロンのコンセプトイラスト3点。1200px / 640px のWebPで配信。実在店舗・実績写真ではありません。
+- 原寸PNG、正確な生成プロンプト、生成方法・用途は [制作記録](docs/kaigyo-image-prompts.md) に保存。
+- `PreparationSketch.astro`、`ToolGlyph.astro`、`BusinessFlow.astro`：このサービスのために実装したオリジナルSVG・HTML図解。FAVTOWNの素材・装飾の転用なし。
+- 既存の実際の勉強会写真 `seminar.webp` は引き続き「AKINDO Labの思想」で使用。

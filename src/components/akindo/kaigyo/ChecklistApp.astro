@@ -1,0 +1,185 @@
+---
+import { checklistItems, phases } from '../../../data/akindo/checklist';
+const levels = { required: '基本の準備', recommended: '必要に応じて', optional: '任意で選ぶ' };
+const statuses = [
+  { value: 'not_started', label: '未着手', symbol: '○' },
+  { value: 'in_progress', label: '進行中', symbol: '◐' },
+  { value: 'completed', label: '完了にする', symbol: '✓' },
+];
+---
+<div class="checklist-app" data-checklist-app>
+  <noscript><p class="checklist-notice">チェック項目はこのまま読めます。状態の変更と端末への保存を使うには、ブラウザーのJavaScriptを有効にしてください。</p></noscript>
+  <section class="checklist-dashboard" aria-label="準備の進み具合">
+    <div class="checklist-progress">
+      <h2>あなたの開業準備</h2>
+      <div class="checklist-count"><p><strong data-completed-count>0</strong><span> / {checklistItems.length} 完了</span></p><b data-progress-percent>0%</b></div>
+      <label class="checklist-sr-only" for="kaigyo-progress">開業準備の完了数</label>
+      <progress id="kaigyo-progress" value="0" max={checklistItems.length}></progress>
+    </div>
+    <div class="checklist-next">
+      <span data-next-label>次に進めること</span>
+      <p data-next-title>{checklistItems[0].title}</p>
+      <a class="checklist-resume" href={`#task-${checklistItems[0].id}`} data-resume>ここから始める <span aria-hidden="true">↓</span></a>
+    </div>
+    <img class="checklist-desk-art" src="/akindo/kaigyo-assets/illustrations/planning-desk-v2-640.webp" alt="" width="240" height="180" />
+  </section>
+  <div class="checklist-utility">
+    <details class="checklist-storage-details"><summary data-storage-summary>この端末に保存・登録不要</summary><div><p class="checklist-storage" data-storage-message>進捗はこの端末のブラウザーに保存します。</p><p class="checklist-storage-note">個人情報は保存しません。端末やブラウザーを変えると引き継がれません。履歴の削除などで消えることがあります。</p></div></details>
+    <button class="checklist-reset" type="button" data-reset-open disabled>進捗をリセット</button>
+  </div>
+  <ol class="checklist-howto" aria-label="チェックリストの使い方">
+    <li><svg viewBox="0 0 48 42" width="48" height="42" fill="none" aria-hidden="true"><path d="M24 35V10M24 10C18 6 10 6 4 9V32C11 29 18 30 24 35C30 30 37 29 44 32V9C38 6 30 6 24 10Z" fill="#fff" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 14H17M10 19H17M31 14H38M31 19H38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><strong><span>1</span> 読む</strong><p>進め方を確認</p></li>
+    <li><svg viewBox="0 0 48 42" width="48" height="42" fill="none" aria-hidden="true"><rect x="9" y="5" width="27" height="33" rx="3" fill="#fff" stroke="currentColor" stroke-width="2"/><path d="M15 14H27M15 21H24M15 28H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M25 30L28 22L39 11L44 16L33 27L25 30Z" fill="#e8bc47" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><strong><span>2</span> 準備する</strong><p>できることをひとつ</p></li>
+    <li><svg viewBox="0 0 48 42" width="48" height="42" fill="none" aria-hidden="true"><circle cx="24" cy="21" r="16" fill="#e2ebdd" stroke="currentColor" stroke-width="2"/><path d="M16 21L22 27L33 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong><span>3</span> 完了にする</strong><p>ボタンで進捗を記録</p></li>
+  </ol>
+  <div class="checklist-layout">
+    <div class="checklist-main">
+      <section class="checklist-filters" aria-label="チェック項目の絞り込み">
+        <details class="checklist-phase-picker"><summary><span>段階で絞り込む</span><span data-selected-phase>すべて</span></summary>
+          <div class="checklist-phase-filters" role="group" aria-label="段階で絞り込む">
+            <button type="button" data-phase-filter="all" aria-pressed="true" disabled>すべて</button>
+            {phases.map((phase, index) => <button type="button" data-phase-filter={phase.id} aria-pressed="false" disabled><span>{index < 5 ? String(index + 1).padStart(2, '0') : '+'}</span> {phase.label}</button>)}
+          </div>
+        </details>
+        <div class="checklist-filter-bottom">
+          <label class="checklist-incomplete"><input type="checkbox" data-incomplete-filter disabled /><span>未完了のみ</span></label>
+          <span class="k-muted" data-visible-count>{checklistItems.length}項目を表示</span>
+        </div>
+      </section>
+      <div data-checklist-groups>
+        {phases.map((phase, index) => <section class="checklist-phase" id={phase.id} data-phase={phase.id} aria-labelledby={`phase-heading-${phase.id}`}>
+          <div class="checklist-phase-heading"><span class="checklist-phase-number" aria-hidden="true">{index < 5 ? String(index + 1).padStart(2, '0') : '+'}</span><div><h2 id={`phase-heading-${phase.id}`}>{phase.label}</h2><p>{phase.description}</p></div><span class="checklist-phase-total" data-phase-count>{checklistItems.filter(item => item.phase === phase.id).length}項目</span></div>
+          <div class="checklist-items">
+            {checklistItems.filter(item => item.phase === phase.id).map(item => <article class="checklist-item" id={`task-${item.id}`} data-item-id={item.id} data-state="not_started" data-title={item.title} tabindex="-1">
+              <div class="checklist-item-top"><span class="checklist-step">STEP {String(item.step).padStart(2, '0')}</span><span class="checklist-level">{levels[item.requiredLevel]}</span></div>
+              <h3 id={`task-title-${item.id}`}>{item.title}</h3>
+              <p class="checklist-item-description">{item.shortDescription}</p>
+              <p class="checklist-status-label">いまの状態を選ぶ <span data-current-status>未着手</span></p>
+              <div class="checklist-statuses" role="group" aria-labelledby={`task-title-${item.id}`}>
+                {statuses.map(status => <button type="button" data-status={status.value} aria-label={`${item.title}：状態を${status.value === 'completed' ? '完了にする' : status.label + 'にする'}`} aria-pressed={status.value === 'not_started' ? 'true' : 'false'} disabled><span aria-hidden="true">{status.symbol}</span><span data-status-label>{status.label}</span></button>)}
+              </div>
+              <details class="checklist-details" open={item.step === 1}><summary>進め方と、完了の目安 <span>{item.estimatedTime}</span></summary><div class="checklist-detail-content"><p>{item.detail}</p><ul>{item.notes.map(note => <li>{note}</li>)}</ul><div class="checklist-related">{item.relatedToolSlugs.length > 0 && <a class="k-link" href={`/akindo/kaigyo/tools/#${item.relatedToolSlugs[0]}`}>関連する道具を見る <span aria-hidden="true">→</span></a>}{item.guideHref && <a class="k-link" href={item.guideHref}>サロンの場合を確認する <span aria-hidden="true">→</span></a>}</div></div></details>
+            </article>)}
+          </div>
+        </section>)}
+      </div>
+      <div class="checklist-empty k-card" data-empty hidden><span aria-hidden="true">✓</span><h2>この範囲の準備は完了です。</h2><p>別の段階を選ぶか、「未完了のみ」を解除して、内容を見直せます。</p><button type="button" class="k-button k-button-secondary" data-show-all>すべての項目を見る</button></div>
+      <p class="checklist-time-note">所要時間は、自分で内容を整理・設定する際の目安です。審査や専門家への相談、制作にかかる時間は含みません。不要な項目は、確認して「導入しない」と決めたら完了にできます。</p>
+      <a class="checklist-help" href="/akindo/kaigyo/diagnosis/"><span>自分に必要なものを絞りたい方へ</span><strong>開業準備診断を使う <span aria-hidden="true">→</span></strong></a>
+      <aside class="checklist-notice"><strong>事業に合わせて、必要な準備は変わります。</strong><p>このリストは準備を整理するための目安です。必要な届出、資格、許認可は、提供するサービスや地域によって異なります。行政機関、税理士、社会保険労務士などの専門家へご確認ください。料金や利用条件は各サービスの公式サイトでご確認ください。</p></aside>
+    </div>
+  </div>
+  <p class="checklist-sr-only" role="status" aria-live="polite" aria-atomic="true" data-checklist-announcement></p>
+  <dialog class="checklist-reset-dialog" aria-labelledby="reset-title" aria-describedby="reset-description" data-reset-dialog>
+    <h2 id="reset-title">進捗をリセットしますか？</h2>
+    <p id="reset-description">この端末に保存した{checklistItems.length}項目の状態を、すべて「未着手」に戻します。この操作は元に戻せません。</p>
+    <div><button class="k-button k-button-secondary" type="button" data-reset-cancel autofocus>戻る</button><button class="k-button" type="button" data-reset-confirm>リセットする</button></div>
+  </dialog>
+</div>
+<script>import '../../../scripts/akindo-checklist';</script>
+<style>
+  .checklist-app { --checklist-green: #254f40; --checklist-pale: #edf3ee; }
+  .checklist-layout { max-width: 900px; margin-inline: auto; }
+  .checklist-main { min-width: 0; }
+  .checklist-dashboard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 18px; align-items: center; padding: 18px; border: 1px solid #cbd5c5; border-radius: 18px; background: #f4f7ef; }
+  .checklist-progress h2 { margin: 0 0 8px; font-size: .78rem; font-weight: 650; }
+  .checklist-count { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px; }
+  .checklist-count p { margin: 0; white-space: nowrap; }
+  .checklist-count strong { font-size: 2.3rem; line-height: 1; letter-spacing: -.05em; }
+  .checklist-count p span { font-size: .75rem; color: var(--color-text-muted, #63655d); }
+  .checklist-count > b { font-size: .75rem; color: var(--checklist-green); }
+  progress { display: block; width: 100%; height: 7px; margin: 10px 0 0; border: 0; border-radius: 10px; appearance: none; overflow: hidden; background: #dce3d6; }
+  progress::-webkit-progress-bar { background: #dce3d6; border-radius: 10px; }
+  progress::-webkit-progress-value { background: var(--checklist-green); border-radius: 10px; transition: width .2s ease; }
+  progress::-moz-progress-bar { background: var(--checklist-green); border-radius: 10px; }
+  .checklist-next { min-width: 0; border-left: 1px solid #cbd5c5; padding-left: 17px; }
+  .checklist-next > span { display: block; font-size: .69rem; color: var(--color-text-muted); margin-bottom: 3px; }
+  .checklist-next > p { font-size: .82rem; font-weight: 750; margin: 0; line-height: 1.6; text-wrap: pretty; }
+  .checklist-resume { display: flex; gap: 8px; align-items: center; font-size: .75rem; font-weight: 750; min-height: 44px; color: var(--checklist-green); text-decoration: underline; text-underline-offset: 4px; }
+  .checklist-desk-art { display: none; }
+  .checklist-utility { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+  .checklist-storage-details { flex: 1; min-width: 0; }
+  .checklist-storage-details summary { font-size: .72rem; color: var(--color-text-muted); cursor: pointer; padding-block: 11px; min-height: 44px; }
+  .checklist-storage-details > div { max-width: 530px; padding: 0 0 12px; }
+  .checklist-storage { font-size: .82rem; line-height: 1.7; margin: 0 0 6px; font-weight: 700; }
+  .checklist-storage-note { font-size: .78rem; line-height: 1.8; color: var(--color-text-muted, #63655d); }
+  .checklist-reset { border: 0; color: var(--color-text-muted, #63655d); background: none; font: inherit; font-size: .72rem; text-decoration: underline; text-underline-offset: 4px; padding: 11px 0; min-height: 44px; cursor: pointer; white-space: nowrap; }
+  .checklist-howto { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; max-width: 900px; margin: 0 auto 22px; padding: 0; list-style: none; }
+  .checklist-howto li { position: relative; text-align: center; min-width: 0; color: var(--checklist-green); }
+  .checklist-howto li + li::before { content: '→'; position: absolute; left: -13px; top: 12px; color: #9a9f90; font-size: 16px; }
+  .checklist-howto svg { display: block; margin: 0 auto 5px; }
+  .checklist-howto strong { display: block; font-size: .75rem; color: var(--color-text); }
+  .checklist-howto strong span { color: var(--checklist-green); font-family: Arial, sans-serif; font-size: .7rem; }
+  .checklist-howto p { display: none; font-size: .75rem; color: var(--color-text-muted); margin-top: 3px; }
+  .checklist-help { display: grid; gap: 7px; padding: 22px; border-radius: 16px; background: #f5efd9; color: inherit; text-decoration: none; }
+  .checklist-help > span { font-size: .85rem; color: var(--color-text-muted, #63655d); }
+  .checklist-help strong { font-size: .95rem; }
+  .checklist-filters { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding-block: 5px; margin-bottom: 25px; }
+  .checklist-phase-picker summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; min-height: 44px; font-size: .82rem; font-weight: 700; cursor: pointer; }
+  .checklist-phase-picker summary::after { content: '+'; font-size: 20px; font-weight: 400; }
+  .checklist-phase-picker[open] summary::after { content: '−'; }
+  .checklist-phase-picker summary > span:last-of-type { font-size: .75rem; font-weight: 450; color: var(--color-text-muted); margin-left: auto; }
+  .checklist-phase-picker[open] .checklist-phase-filters { margin-block: 5px 12px; }
+  .checklist-phase-filters { display: flex; flex-wrap: wrap; gap: 7px; }
+  .checklist-phase-filters button { border: 1px solid var(--color-border, #dedbd2); border-radius: 30px; background: var(--color-surface, #fff); color: var(--color-text, #252b25); padding: 10px 15px; min-height: 44px; font: inherit; font-size: .86rem; font-weight: 600; cursor: pointer; }
+  .checklist-phase-filters button > span { opacity: .7; margin-right: 2px; font-size: .75rem; }
+  .checklist-phase-filters button[aria-pressed='true'] { background: var(--color-text, #252b25); color: #fff; border-color: var(--color-text, #252b25); }
+  .checklist-filter-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; font-size: .78rem; }
+  .checklist-incomplete { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; cursor: pointer; }
+  .checklist-incomplete input { width: 20px; height: 20px; margin: 0; accent-color: var(--checklist-green); }
+  .checklist-time-note { font-size: .82rem; line-height: 1.8; color: var(--color-text-muted, #63655d); margin: 16px 0 24px; }
+  .checklist-phase { scroll-margin-top: 110px; margin-bottom: 36px; }
+  .checklist-phase-heading { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 13px; }
+  .checklist-phase-number { flex: 0 0 38px; display: grid; place-items: center; width: 38px; height: 38px; background: var(--color-brand, #e8bc47); border-radius: 12px; font-weight: 750; font-size: .85rem; }
+  .checklist-phase-heading h2 { font-size: 1.15rem; margin: 4px 0 6px; }
+  .checklist-phase-heading p { display: none; font-size: .85rem; line-height: 1.8; color: var(--color-text-muted, #63655d); margin: 0; }
+  .checklist-phase-total { margin: 9px 0 0 auto; white-space: nowrap; font-size: .8rem; color: var(--color-text-muted, #63655d); }
+  .checklist-items { display: grid; gap: 13px; }
+  .checklist-item { padding: 22px; border: 1px solid var(--color-border, #dedbd2); border-radius: 18px; background: var(--color-surface, #fff); scroll-margin-top: 110px; transition: border-color .15s ease, background .15s ease; }
+  .checklist-item[data-state='completed'] { background: #f5f8f4; border-color: #b4c6b7; }
+  .checklist-item-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .checklist-step { font-size: .75rem; letter-spacing: .08em; font-weight: 750; color: var(--color-text-muted, #63655d); }
+  .checklist-level { font-size: .75rem; padding: 3px 8px; border-radius: 5px; background: #f0eee6; color: #656253; }
+  .checklist-item h3 { font-size: 1.05rem; line-height: 1.65; margin: 0 0 7px; overflow-wrap: anywhere; text-wrap: pretty; }
+  .checklist-item-description { font-size: .9rem; line-height: 1.85; color: var(--color-text-muted, #63655d); margin: 0 0 18px; }
+  .checklist-status-label { display: flex; justify-content: space-between; gap: 12px; max-width: 390px; font-size: .72rem; margin: 0 0 7px; color: var(--color-text-muted); }
+  .checklist-status-label > span { font-weight: 700; color: var(--checklist-green); }
+  .checklist-item[data-state='completed'] .checklist-status-label > span::before { content: '✓ '; }
+  .checklist-statuses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; max-width: 390px; }
+  .checklist-statuses button { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; border: 1px solid var(--color-border, #dedbd2); border-radius: 9px; color: var(--color-text-muted, #63655d); background: var(--color-surface, #fff); font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; padding: 7px 4px; }
+  .checklist-statuses button[aria-pressed='true'] { border-color: #aaa89d; color: var(--color-text, #252b25); background: #eeeee8; }
+  .checklist-statuses button[data-status='in_progress'][aria-pressed='true'] { color: #644914; background: #fff2cb; border-color: #b99c49; }
+  .checklist-statuses button[data-status='completed'] { border-color: #7b9a83; background: #f0f5eb; color: var(--checklist-green); }
+  .checklist-statuses button[data-status='completed'][aria-pressed='true'] { color: #fff; background: var(--checklist-green); border-color: var(--checklist-green); }
+  .checklist-details { margin-top: 17px; border-top: 1px solid var(--color-border, #dedbd2); }
+  .checklist-details summary { cursor: pointer; padding-top: 14px; min-height: 44px; font-size: .85rem; font-weight: 600; line-height: 1.9; }
+  .checklist-details summary span { display: block; color: var(--color-text-muted, #63655d); font-size: .75rem; font-weight: 400; margin-left: 17px; }
+  .checklist-detail-content { font-size: .9rem; line-height: 1.95; margin-top: 13px; }
+  .checklist-detail-content p { margin: 0 0 16px; }
+  .checklist-detail-content ul { padding-left: 1.25em; margin: 0; color: var(--color-text-muted, #63655d); }
+  .checklist-detail-content li + li { margin-top: 8px; }
+  .checklist-related { display: flex; flex-wrap: wrap; gap: 10px 25px; margin-top: 15px; }
+  .checklist-related:empty { display: none; }
+  .checklist-notice { background: #efeee6; border-radius: 16px; padding: 22px; font-size: .85rem; line-height: 1.9; margin: 24px 0 0; }
+  .checklist-notice p { color: var(--color-text-muted, #63655d); margin: 8px 0 0; }
+  .checklist-empty { padding: 36px 24px; text-align: center; }
+  .checklist-empty > span { color: var(--checklist-green); font-size: 2rem; }
+  .checklist-empty h2 { font-size: 1.2rem; }
+  .checklist-empty p { font-size: .9rem; line-height: 1.9; }
+  .checklist-reset-dialog { background: var(--color-surface, #fff); color: var(--color-text, #252b25); border: 1px solid var(--color-border, #dedbd2); border-radius: 24px; max-width: min(460px, calc(100vw - 32px)); margin: auto; padding: 28px; }
+  .checklist-reset-dialog::backdrop { background: #18231cb3; }
+  .checklist-reset-dialog h2 { font-size: 1.3rem; margin: 0 0 15px; }
+  .checklist-reset-dialog p { line-height: 1.9; font-size: .95rem; }
+  .checklist-reset-dialog > div { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .checklist-reset-dialog .k-button { flex: 1; min-width: 130px; }
+  .checklist-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .checklist-app :focus-visible { outline: 3px solid #31705a; outline-offset: 4px; }
+  .checklist-app button:disabled { opacity: .55; cursor: default; }
+  .checklist-app [hidden] { display: none !important; }
+  @media (max-width: 400px) { .checklist-statuses button[data-status='completed'] > span[aria-hidden] { display: none; } }
+  @media (min-width: 520px) { .checklist-details summary span { display: inline; float: right; margin-left: 10px; } .checklist-howto p { display: block; } .checklist-howto { margin-block: 12px 26px; } .checklist-filters { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: start; } .checklist-filter-bottom { gap: 26px; } .checklist-phase-heading p { display: block; } .checklist-progress h2 { font-size: .9rem; } .checklist-next > p { font-size: 1rem; } .checklist-resume { font-size: .85rem; } }
+  @media (min-width: 960px) { .checklist-dashboard { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 160px; padding: 18px 32px; gap: 32px; } .checklist-desk-art { display: block; width: 160px; height: 110px; object-fit: contain; } .checklist-count strong { font-size: 3rem; } .checklist-count p span { font-size: .9rem; } .checklist-next { padding-left: 32px; } .checklist-next > span { font-size: .75rem; } .checklist-item { padding: 25px 28px; } .checklist-howto { max-width: 680px; } .checklist-howto li { display: grid; grid-template-columns: 48px auto; column-gap: 12px; text-align: left; justify-content: center; } .checklist-howto svg { grid-row: 1 / 3; margin: 0; } .checklist-howto strong { align-self: end; font-size: .9rem; } .checklist-howto p { margin: 0; } .checklist-utility { max-width: 900px; margin-inline: auto; } }
+  @media (prefers-reduced-motion: reduce) { .checklist-item, progress::-webkit-progress-value { transition: none; } }
+
+  @media(max-width:359px){.checklist-dashboard{grid-template-columns:1fr;gap:12px}.checklist-next{border-left:0;border-top:1px solid #cbd5c5;padding-left:0;padding-top:12px;display:grid;grid-template-columns:1fr auto;column-gap:10px}.checklist-next>span{grid-column:1}.checklist-next>p{grid-column:1}.checklist-resume{grid-column:2;grid-row:1/3;font-size:.7rem}.checklist-count strong{font-size:2rem}}
+</style>

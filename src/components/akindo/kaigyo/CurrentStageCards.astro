@@ -1,0 +1,11 @@
+---
+import PreparationSketch from './PreparationSketch.astro';
+const stages = [
+  { title:'これから開業したい', description:'まだ事業内容や準備の順番が決まっていない方へ。', cta:'最初から確認する', href:'/akindo/kaigyo/checklist/#concept', icon:'map' },
+  { title:'開業準備を進めている', description:'必要な手続きやサービスに漏れがないか確認したい方へ。', cta:'チェックリストを見る', href:'/akindo/kaigyo/checklist/', icon:'web' },
+  { title:'すでに開業している', description:'予約、LINE、集客、顧客管理を整えたい方へ。', cta:'開業後の準備を見る', href:'/akindo/kaigyo/checklist/#after', icon:'flow' },
+];
+---
+<section class="k-container k-section k-stages" aria-labelledby="stage-title"><div class="k-section-heading"><div><p class="k-eyebrow">START HERE</p><h2 id="stage-title">いま、どの段階ですか？</h2></div><p>全部を一度に、完璧にしなくても大丈夫。<br/>いまの自分に合うところから始めましょう。</p></div><div class="k-grid">{stages.map((s,i)=><a class="k-card k-stage-card" href={s.href}><div class="k-stage-top"><PreparationSketch kind={(['plan', 'shop', 'announce'] as const)[i]}/><span class="k-stage-number">0{i+1}</span></div><h3>{s.title}</h3><p>{s.description}</p><span class="k-card-link">{s.cta}<span aria-hidden="true">→</span></span></a>)}</div></section>
+
+<style>.k-stage-top{margin-bottom:12px}.k-stage-card{background:#fffdf7}.k-stage-card:nth-child(2){background:#eff3e9}.k-stage-card:nth-child(3){background:#fbf0e7}.k-stage-number{font-size:13px;align-self:flex-start;border:1px solid var(--color-border);border-radius:50%;width:30px;height:30px;display:grid;place-items:center}.k-stage-card h3{font-size:20px}@media(max-width:767px){.k-stage-card{display:grid;grid-template-columns:74px 1fr;column-gap:16px;padding:20px}.k-stage-top{grid-row:1/4;display:block;margin:0}.k-stage-top :global(svg){width:74px;height:64px}.k-stage-number{display:none}.k-stage-card h3{font-size:18px;margin-bottom:6px}.k-stage-card p{font-size:13px;margin-bottom:12px}.k-card-link{font-size:12px;padding-top:10px}}</style>

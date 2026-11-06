@@ -1,0 +1,32 @@
+---
+import KaigyoHeader from '../components/akindo/kaigyo/KaigyoHeader.astro';
+import KaigyoFooter from '../components/akindo/kaigyo/KaigyoFooter.astro';
+import styles from '../styles/akindo-kaigyo.css?inline';
+import { kaigyoBase, updatedAt, kaigyoTestRelease } from '../data/akindo/site';
+interface Props { title: string; description: string; pageTitle?: string; pageTitleParts?: string[]; eyebrow?: string; intro?: string; breadcrumbs?: {label:string;href?:string}[]; active?: string; compactHeading?: boolean; }
+const { title, description, pageTitle, pageTitleParts, eyebrow = 'YOUR NEXT STEP', intro, breadcrumbs, compactHeading = false } = Astro.props;
+const documentTitle = kaigyoTestRelease ? `【テスト公開】${title}` : title;
+const origin = Astro.site ?? new URL('https://spady.net');
+const canonical = new URL(Astro.url.pathname, origin).href;
+const crumbs = breadcrumbs ?? [{ label: 'Spady', href: '/' }, { label: 'AKINDO Lab', href: '/akindo/' }, { label: '開業準備', href: pageTitle ? kaigyoBase : undefined }, ...(pageTitle ? [{label:pageTitle}] : [])];
+const social = new URL('/akindo/kaigyo-assets/social.png', origin).href;
+const schema = { '@context':'https://schema.org', '@graph':[
+  { '@type':'WebPage','@id':canonical,url:canonical,name:title,description,inLanguage:'ja',dateModified:updatedAt,isPartOf:{'@id':'https://spady.net/#website'},publisher:{'@id':'https://spady.net/#organization', '@type':'Organization',name:'Spady',url:'https://spady.net/'} },
+  { '@type':'BreadcrumbList',itemListElement:crumbs.map((c,i)=>({'@type':'ListItem',position:i+1,name:c.label,item:c.href ? new URL(c.href,origin).href : canonical})) }
+]};
+---
+<!doctype html><html lang="ja"><head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{documentTitle}</title>
+  {kaigyoTestRelease && <meta name="robots" content="noindex, nofollow"/>}<meta name="description" content={description}/><link rel="canonical" href={canonical}/>
+  <meta property="og:type" content="website"/><meta property="og:site_name" content="AKINDO Lab｜開業準備"/><meta property="og:title" content={documentTitle}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ja_JP"/><meta property="og:image" content={social}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="AKINDO Lab 開業準備。小さな商いに、次の一手。"/>
+  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={documentTitle}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={social}/><meta name="twitter:image:alt" content="AKINDO Lab 開業準備。小さな商いに、次の一手。"/>
+  <link rel="icon" href="/favicon.png" type="image/png"/><meta name="theme-color" content="#f7f6f0"/>
+  <style is:inline set:html={styles}/><script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
+</head><body class="kaigyo-site"><KaigyoHeader/>
+{kaigyoTestRelease && <aside class="k-test-notice" aria-label="公開状況"><div class="k-container"><strong>テスト公開中</strong><span>開業準備を試せる、改善中のページです。</span></div></aside>}
+<main id="main" tabindex="-1">
+  <nav class="k-container k-breadcrumb" aria-label="パンくず"><ol>{crumbs.map(c => <li>{c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}</li>)}</ol></nav>
+  {pageTitle && <div class:list={['k-container', 'k-page-heading', { 'k-page-heading-compact': compactHeading }]}><p class="k-eyebrow">{eyebrow}</p><h1>{pageTitleParts ? pageTitleParts.map(part => <span class="k-phrase">{part}</span>) : pageTitle}</h1>{intro && <p class="k-page-intro">{intro}</p>}</div>}
+  <slot/>
+</main><KaigyoFooter/></body></html>

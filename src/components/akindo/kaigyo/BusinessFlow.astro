@@ -1,0 +1,35 @@
+---
+interface Props { id?: string; salon?: boolean; title?: string; intro?: string; }
+const { id = 'business-flow', salon = false, title = '道具をつなぐと、商いの流れになる。', intro = 'お客さまの動きに合わせて、窓口をひとつずつ整えましょう。全部を別のサービスでそろえる必要はありません。' } = Astro.props;
+const steps = [
+  { title: '見つける', thought: salon ? '近くに、よさそうなサロン。' : 'こんなお店、探していた。', tools: 'Instagram / Google', action: '雰囲気・場所・できることを伝える', category: 'google' },
+  { title: salon ? '予約する' : '予約・購入', thought: salon ? 'メニューと空き時間を確認。' : '内容と料金を見て、申し込む。', tools: 'ホームページ / 予約', action: '料金と予約先を、分かりやすく', category: 'reservation' },
+  { title: salon ? '来店する' : '来店・利用', thought: salon ? '安心して施術を受けられた。' : '気持ちよく、支払いまで。', tools: '決済 / 会計', action: '受付から支払いまでを一度試す', category: 'payment' },
+  { title: 'また来る', thought: salon ? '次も、ここにお願いしたい。' : 'またお願いしたいな。', tools: 'LINE / 顧客管理', action: '次回の利用方法を、そっと案内', category: 'line' },
+];
+---
+<section class="business-flow" aria-labelledby={`${id}-heading`}>
+  <div class="flow-heading"><p class="k-eyebrow">お客さまの目線で考える</p><h2 id={`${id}-heading`}>{title}</h2><p>{intro}</p></div>
+  <ol class="flow-path">
+    {steps.map((step, index) => <li>
+      <div class="flow-scene" aria-hidden="true">
+        <svg viewBox="0 0 180 88" width="180" height="88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 75h150" stroke="#B7C1AE" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="50" cy="31" r="10" fill="#EAC19F"/><path d="M39 30c-2-18 24-18 23 0-6-1-10-5-12-10-1 7-6 10-11 10Z" fill="#294C3B"/>
+          <path d="M31 75V56c0-17 38-17 38 0v19" fill={index === 2 ? '#E9B94E' : '#DDE5D3'} stroke="#294C3B" stroke-width="1.6"/>
+          {index === 0 && <g stroke="#294C3B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="103" y="14" width="34" height="52" rx="5" fill="#FFFDF5"/><rect x="108" y="24" width="24" height="18" rx="2" fill="#E9B94E"/><path d="M110 48h18m-18 6h12m1-34h5M76 38h16m-5-4 5 4-5 4"/><circle cx="120" cy="33" r="4"/></g>}
+          {index === 1 && <g stroke="#294C3B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="96" y="24" width="49" height="40" rx="4" fill="#FFFDF5"/><path d="M96 34h49m-38-16v11m25-11v11M104 42h5m8 0h5m-18 10h5"/><circle cx="138" cy="58" r="12" fill="#E9B94E"/><path d="m133 58 3 3 6-7M76 44h12m-5-4 5 4-5 4"/></g>}
+          {index === 2 && <g stroke="#294C3B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M93 35h57v40H93z" fill="#FFFDF5"/><path d="m89 35 8-16h49l8 16H89Z" fill="#DDE5D3"/><path d="M89 35c0 8 16 8 16 0 0 8 17 8 17 0 0 8 16 8 16 0 0 8 16 8 16 0M102 54h15v21m11-21h13v11h-13zM76 53h9m-4-4 4 4-4 4"/></g>}
+          {index === 3 && <g stroke="#294C3B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M94 20h53v35h-18l-12 12V55H94V20Z" fill="#FFFDF5"/><path d="M105 31h28m-28 9h17"/><path d="M73 24c8-15 36-20 50-13m-7-6 7 6-8 3" stroke="#AC7A20"/><path d="m129 45 5 5 8-10" stroke="#AC7A20"/></g>}
+        </svg>
+      </div>
+      <span class="flow-number">{String(index + 1).padStart(2, '0')}</span><h3>{step.title}</h3>
+      <p class="flow-thought">{step.thought}</p>
+      <a href={`/akindo/kaigyo/tools/?category=${step.category}`}><span>{step.tools}</span><span aria-hidden="true">↗</span></a>
+      <p class="flow-action">{step.action}</p>
+    </li>)}
+  </ol>
+</section>
+<style>
+  .business-flow{padding:34px;border:1px solid #d6dece;border-radius:24px;background:#eef1e7}.flow-heading{max-width:740px}.flow-heading .k-eyebrow{margin-bottom:10px}.flow-heading h2{font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.65;letter-spacing:-.035em;margin:0}.flow-heading>p:last-child{font-size:.9rem;color:var(--color-text-muted);line-height:1.9;margin-top:12px}.flow-path{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}.flow-path>li{position:relative;min-width:0}.flow-path>li:not(:last-child):after{content:'→';position:absolute;right:-23px;top:44px;color:#486346;font-size:24px}.flow-scene{background:#fffdf5;border-radius:16px;display:grid;place-items:center;padding:10px 0;margin-bottom:18px}.flow-scene svg{width:100%;height:auto;max-width:190px}.flow-number{font-size:.75rem;font-weight:750;color:#79601f;display:inline-block;margin-right:8px}.flow-path h3{display:inline;font-size:1.13rem;line-height:1.7}.flow-thought{font-size:.82rem;line-height:1.8;margin:8px 0 12px;color:var(--color-text-muted)}.flow-path a{display:flex;gap:8px;align-items:center;justify-content:space-between;min-height:44px;font-size:.77rem;font-weight:700;color:#294c3b;border-block:1px solid #cdd6c5;text-decoration:none}.flow-path a:hover{text-decoration:underline;text-underline-offset:4px}.flow-action{font-size:.77rem;line-height:1.8;color:var(--color-text-muted);margin-top:9px}@media(max-width:850px){.flow-path{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}.flow-path>li:not(:last-child):after{display:none}.flow-scene{padding:8px 0}.flow-path a{font-size:.82rem}}@media(max-width:540px){.business-flow{padding:24px 20px}.flow-heading h2{font-size:1.4rem}.flow-path{grid-template-columns:1fr;gap:24px;margin-top:24px}.flow-path>li{display:grid;grid-template-columns:112px minmax(0,1fr);column-gap:15px;padding-bottom:24px;border-bottom:1px solid #cdd6c5}.flow-path>li:last-child{border-bottom:0;padding-bottom:0}.flow-scene{grid-column:1;grid-row:1/6;margin-bottom:0;align-self:start;padding:14px 0}.flow-number{grid-column:2;font-size:.72rem;margin:0}.flow-path h3{grid-column:2;font-size:1.06rem}.flow-thought{grid-column:2;font-size:.78rem;margin:5px 0 6px}.flow-path a{grid-column:2;min-height:42px;line-height:1.7;font-size:.73rem;gap:4px}.flow-action{grid-column:2;font-size:.73rem;margin-top:7px}}@media(max-width:359px){.business-flow{padding:22px 16px}.flow-path>li{grid-template-columns:88px minmax(0,1fr);column-gap:12px}}
+</style>

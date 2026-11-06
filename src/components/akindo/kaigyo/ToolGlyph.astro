@@ -1,0 +1,21 @@
+---
+interface Props { category: string; size?: number; }
+const { category, size = 64 } = Astro.props;
+---
+<svg class="tool-glyph" width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="29" fill="#F2EACD"/>
+  <g stroke="#294C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    {category === 'accounting' && <><path d="M16 12h30v42H16z" fill="#FFFDF5"/><path d="M22 21h18M22 28h9M22 35h9M22 42h9"/><path d="m35 35 2 2 4-5m-6 10 2 2 4-5"/><path d="M13 17h6m-6 10h6m-6 10h6m-6 10h6" stroke="#AC7A20"/></>}
+    {category === 'banking' && <><path d="M12 25 28 14l16 11H12Z" fill="#FFFDF5"/><path d="M16 29v15m8-15v15m8-15v12m8-12v12M11 48h25M10 52h27"/><rect x="34" y="35" width="23" height="16" rx="3" fill="#E8BA4A"/><path d="M35 41h21M39 46h4"/></>}
+    {category === 'payment' && <><rect x="17" y="11" width="29" height="43" rx="5" fill="#FFFDF5"/><rect x="22" y="17" width="19" height="14" rx="2" fill="#DDE7D7"/><path d="m27 24 3 3 6-6M23 37h2m7 0h2m7 0h0M23 44h2m7 0h2m7 0h0"/><path d="M40 33h17v13H40z" fill="#E8BA4A"/><path d="M41 38h15"/></>}
+    {category === 'reservation' && <><rect x="12" y="17" width="39" height="35" rx="5" fill="#FFFDF5"/><path d="M12 28h39M22 12v10m19-10v10"/><path d="M20 35h4m8 0h4m-16 8h4"/><circle cx="44" cy="43" r="11" fill="#E8BA4A"/><path d="m39 43 3 3 6-7"/></>}
+    {category === 'line' && <><path d="M13 16h37v25H31L21 51V41h-8V16Z" fill="#FFFDF5"/><path d="M22 25h20M22 32h13"/><circle cx="48" cy="44" r="10" fill="#E8BA4A"/><path d="m44 44 3 3 5-6"/></>}
+    {category === 'website' && <><rect x="10" y="14" width="44" height="35" rx="4" fill="#FFFDF5"/><path d="M10 24h44M16 19h1m5 0h1m5 0h1"/><path d="M16 30h16v12H16z" fill="#E8BA4A"/><path d="M38 31h9m-9 6h9m-31 17h31M27 49v5m10-5v5"/></>}
+    {category === 'google' && <><path d="m10 25 14-5 16 5 14-5v29l-14 5-16-5-14 5V25Z" fill="#FFFDF5"/><path d="M24 36v13m16-11v16M11 42l13-6 16 6 13-7" stroke="#91A58B"/><path d="M43 21c0 8-11 17-11 17S21 29 21 21a11 11 0 0 1 22 0Z" fill="#E8BA4A"/><circle cx="32" cy="21" r="4"/></>}
+    {category === 'instagram' && <><rect x="17" y="9" width="30" height="46" rx="6" fill="#FFFDF5"/><path d="M28 15h8M29 49h6"/><rect x="22" y="21" width="20" height="18" rx="2" fill="#E8BA4A"/><circle cx="28" cy="27" r="2"/><path d="m23 36 6-5 4 3 5-6 4 7M22 44h11m5 0h3"/></>}
+    {category === 'crm' && <><path d="M13 16h15l5 5h19v29H13V16Z" fill="#FFFDF5"/><path d="M17 13h28v8"/><circle cx="27" cy="32" r="5" fill="#E8BA4A"/><path d="M18 44c1-8 17-8 18 0m3-13h7m-7 6h7m-7 6h5"/></>}
+    {category === 'shop' && <><path d="M14 25h37v28H14z" fill="#FFFDF5"/><path d="m12 25 5-12h31l5 12H12Z" fill="#E8BA4A"/><path d="M12 25c0 7 10 7 10 0 0 7 10 7 10 0 0 7 10 7 10 0 0 7 11 7 11 0M24 14l-2 11m18-11 2 11"/><path d="M21 37h11v16M39 37h6v7h-6z"/></>}
+    {!['accounting','banking','payment','reservation','line','website','google','instagram','crm','shop'].includes(category) && <><path d="M17 16h30v37H17z" fill="#FFFDF5"/><path d="M25 13h14v7H25z" fill="#E8BA4A"/><path d="m23 31 3 3 5-6m-8 16 3 3 5-6m5-10h5m-5 13h5"/></>}
+  </g>
+</svg>
+<style>.tool-glyph{display:block;flex-shrink:0;max-width:100%;height:auto}</style>

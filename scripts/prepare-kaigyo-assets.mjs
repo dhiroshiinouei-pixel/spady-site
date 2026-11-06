@@ -1,0 +1,22 @@
+import { createRequire } from 'node:module';
+import { mkdir, writeFile } from 'node:fs/promises';
+const require = createRequire(import.meta.url);
+const sharp = require('sharp');
+const target = new URL('../public/akindo/kaigyo-assets/', import.meta.url);
+await mkdir(target, {recursive:true});
+// Resize only: the original owner-provided seminar photo remains untouched.
+await sharp(new URL('../public/akindo/assets/akindo-venue-20260722.jpg',import.meta.url).pathname).resize(960,720).webp({quality:80}).toFile(new URL('seminar.webp',target).pathname);
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#f7f6f0"/><circle cx="993" cy="320" r="230" fill="#e9eee5"/>
+<g font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, sans-serif" fill="#202b27">
+<text x="70" y="100" font-size="32" font-weight="700">AKINDO Lab</text><circle cx="298" cy="91" r="7" fill="#ecc04b"/><text x="70" y="140" font-size="20">開業準備</text>
+<text x="67" y="280" font-size="59" font-weight="700">開業したい。</text><text x="67" y="365" font-size="48" font-weight="700">何から始めればいい？</text><rect x="70" y="386" width="555" height="8" rx="4" fill="#ecc04b"/>
+<text x="70" y="450" font-size="23">小さな商いに、次の一手。</text><text x="70" y="555" font-size="18">チェックリスト / 開業準備診断 / 道具選び</text>
+<rect x="770" y="167" width="340" height="323" rx="24" fill="#fff" stroke="#c9cfbf"/>
+<text x="801" y="220" font-size="24" font-weight="700">わたしの開業準備</text><text x="803" y="250" font-size="13" fill="#60665e">利用イメージ</text>
+<rect x="803" y="277" width="273" height="10" rx="5" fill="#e9eee5"/><rect x="803" y="277" width="150" height="10" rx="5" fill="#244c3d"/>
+<text x="802" y="337" font-size="20">✓ 商いを決める</text><text x="802" y="379" font-size="20">✓ 手続きとお金</text><rect x="796" y="405" width="287" height="54" rx="12" fill="#f9edc9"/><text x="812" y="439" font-size="18" font-weight="700">次の一歩へ →</text>
+</g></svg>`;
+await writeFile(new URL('social.svg',target),svg);
+await sharp(Buffer.from(svg)).png().toFile(new URL('social.png',target).pathname);
+console.log('Kaigyo photo: 960×720 WebP; social image: 1200×630 PNG');

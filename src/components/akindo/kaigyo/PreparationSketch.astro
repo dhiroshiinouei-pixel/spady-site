@@ -1,0 +1,13 @@
+---
+interface Props { kind: 'plan' | 'finance' | 'shop' | 'discovery' | 'announce'; }
+const { kind } = Astro.props;
+---
+<svg class="preparation-sketch" width="104" height="80" viewBox="0 0 104 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<ellipse cx="52" cy="69" rx="42" ry="5" fill="#dce3d3"/>
+<g stroke="#244c3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+{kind === 'plan' && <><path d="M24 15L67 10L76 65L32 70Z" fill="#fffdf5"/><path d="M31 12L35 32L44 25L49 30L45 11" fill="#ecc04b"/><path d="M42 41L63 38M43 49L65 46M45 57L57 55"/><path d="M79 14L85 17L69 50L63 55L64 46Z" fill="#ecc04b"/><path d="M63 55L69 50M77 19L82 22"/><path d="M17 32L12 27M19 23V17M23 31H16"/></>}
+{kind === 'finance' && <><rect x="25" y="17" width="36" height="50" rx="5" fill="#fffdf5"/><path d="M33 25H54V37H33Z" fill="#dce3d3"/><path d="M33 45H36M43 45H46M53 45H54M33 53H36M43 53H46M53 53H54M33 61H36M43 61H46M53 61H54"/><ellipse cx="75" cy="62" rx="12" ry="5" fill="#ecc04b"/><path d="M63 57V62M87 57V62"/><ellipse cx="75" cy="56" rx="12" ry="5" fill="#ecc04b"/><path d="M63 51V56M87 51V56"/><ellipse cx="75" cy="50" rx="12" ry="5" fill="#ecc04b"/><circle cx="73" cy="27" r="11" fill="#ecc04b"/><path d="M70 23L73 28L76 23M69 29H77M69 32H77M73 28V35"/></>}
+{kind === 'shop' && <><path d="M22 34H81V68H22Z" fill="#fffdf5"/><path d="M17 30L25 15H78L86 30Z" fill="#ecc04b"/><path d="M17 30V34C17 42 31 42 31 34C31 42 45 42 45 34C45 42 59 42 59 34C59 42 73 42 73 34C73 42 86 42 86 34V30M35 15L31 30M47 15L45 30M58 15L59 30M70 15L73 30"/><path d="M31 48H47V68M56 48H73V59H56Z" fill="#dce3d3"/><path d="M42 57V61"/></>}
+{kind === 'discovery' && <><rect x="29" y="10" width="36" height="59" rx="6" fill="#fffdf5"/><path d="M40 15H53M43 63H51M35 24H59V53H35Z" fill="#e9eee5"/><path d="M47 29C35 29 37 40 47 48C57 40 59 29 47 29Z" fill="#ecc04b"/><circle cx="47" cy="36" r="3"/><path d="M71 27L84 23M72 37H87M71 47L81 54M17 24L21 31M12 39H20"/></>}
+{kind === 'announce' && <><path d="M28 33L66 16V57L28 43Z" fill="#ecc04b"/><path d="M28 33H20V43H28Z" fill="#fffdf5"/><path d="M32 44L36 65H47L42 48" fill="#fffdf5"/><path d="M66 16C78 21 78 52 66 57Z" fill="#e9eee5"/><path d="M83 19L89 13M86 35H96M83 51L90 58M19 15L21 21M12 22L17 24"/><circle cx="16" cy="54" r="3" fill="#ecc04b"/></>}
+</g></svg>

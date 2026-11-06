@@ -1,0 +1,19 @@
+---
+import KaigyoLayout from '../../../layouts/KaigyoLayout.astro';
+import DiagnosisApp from '../../../components/akindo/kaigyo/DiagnosisApp.astro';
+---
+<KaigyoLayout
+  title="開業準備診断｜あなたに必要なツールを整理｜AKINDO Lab"
+  description="8つの質問に答えて、あなたの商いに必要な準備とツールの優先度を整理。会計、決済、予約、LINE、Google、ホームページを、予算や運営方法に合わせて考えられます。登録不要・無料。"
+  pageTitle="あなたの商いに、必要なものは？"
+  eyebrow="開業準備診断"
+  breadcrumbs={[{ label: '開業準備', href: '/akindo/kaigyo/' }, { label: '開業準備診断' }]}
+  active="diagnosis"
+  compactHeading
+  pageTitleParts={['あなたの商いに、','必要なものは？']}
+>
+  <section class="k-container diagnosis-page-body" aria-label="開業準備診断の質問と結果">
+    <DiagnosisApp />
+  </section>
+</KaigyoLayout>
+<style>.diagnosis-page-body { padding-bottom: clamp(64px, 8vw, 112px); }</style>

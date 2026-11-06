@@ -1,0 +1,17 @@
+---
+import { toolCategories } from '../../../data/akindo/tools';
+import ToolGlyph from './ToolGlyph.astro';
+---
+<div class="category-cards">
+  {toolCategories.map(category => <a class="k-card category-card" href={`/akindo/kaigyo/tools/?category=${category.id}`}>
+    <span class="category-icon"><ToolGlyph category={category.id} size={64}/></span>
+    <h3>{category.name}<span aria-hidden="true">↗</span></h3>
+    <p>{category.description}</p>
+    <dl><div><dt>こんな方に</dt><dd>{category.bestFor}</dd></div><div><dt>始めどき</dt><dd>{category.timing}</dd></div></dl>
+  </a>)}
+</div>
+<style>
+  .category-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.category-card{display:flex;flex-direction:column;padding:24px;text-decoration:none;color:var(--color-text);transition:transform .18s,border-color .18s}.category-card:hover{transform:translateY(-3px);border-color:var(--color-brand-dark)}.category-icon{display:grid;place-items:center;width:72px;height:64px;border-radius:14px;background:var(--color-background);color:var(--color-brand-dark);margin-bottom:10px}.category-card h3{display:flex;justify-content:space-between;gap:12px;font-size:1.12rem;margin:0 0 9px}.category-card h3 span{font-size:1rem;color:var(--color-text-muted)}.category-card p{margin:0 0 18px;font-size:.94rem;line-height:1.75}.category-card dl{border-top:1px solid var(--color-border);padding-top:14px;margin:auto 0 0;font-size:.8rem;line-height:1.7}.category-card dl div+div{margin-top:8px}.category-card dt{color:var(--color-text-muted)}.category-card dd{margin:0;font-weight:600}@media(min-width:1000px){.category-cards{grid-template-columns:repeat(5,minmax(0,1fr))}.category-card{padding:20px}}@media(max-width:470px){.category-cards{grid-template-columns:1fr}.category-card{padding:22px}.category-card dl{display:grid;grid-template-columns:1fr 1fr;gap:12px}.category-card dl div+div{margin:0}}@media(prefers-reduced-motion:reduce){.category-card{transition:none}.category-card:hover{transform:none}}
+</style>
+
+<style>@media(max-width:767px){.category-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.category-card{padding:16px}.category-card h3{font-size:15px}.category-card p{font-size:12px;margin-bottom:12px}.category-card dl{display:block;font-size:11px;padding-top:10px}.category-card dl div+div{margin-top:8px}.category-icon{background:none;margin-bottom:10px}.category-card dd{font-weight:500}}@media(max-width:359px){.category-card{padding:13px}.category-card h3{font-size:14px}.category-card p{font-size:12px}}</style>

@@ -1,0 +1,14 @@
+---
+const problems = [
+  ['何から始めればいいか分からない','やることを順番に確認しましょう。','checklist/'],
+  ['予約をDMで受けるのが大変','空き枠の案内と予約受付を整える。','tools/?category=reservation'],
+  ['LINEを始めたい','連絡と再来店のきっかけをつくる。','tools/?category=line'],
+  ['ホームページを作りたい','お店の情報と予約先を一つの場所に。','tools/?category=website'],
+  ['Googleマップに表示したい','利用条件を確認して、お店の情報を整える。','tools/?category=google'],
+  ['キャッシュレス決済を導入したい','支払い方法と入金サイクルを確認。','tools/?category=payment'],
+  ['お客さまの情報を管理したい','必要な情報だけ、安全に記録する。','tools/?category=crm'],
+  ['Instagramから予約につなげたい','プロフィールから予約までの流れを確認。','checklist/#task-journey'],
+  ['開業費用を抑えたい','予算に合わせて、必要な道具を絞る。','diagnosis/'],
+];
+---
+<section class="k-section k-container" aria-labelledby="problem-title"><div class="k-section-heading"><div><p class="k-eyebrow">FIND YOUR NEXT STEP</p><h2 id="problem-title">困っていることから探す</h2></div></div><div class="k-problem-grid">{problems.map(([title,description,href])=><a class="k-problem" href={'/akindo/kaigyo/'+href}><strong>{title}</strong><p>{description}</p><span aria-hidden="true">↗</span></a>)}</div></section>

@@ -1,0 +1,17 @@
+---
+import KaigyoLayout from '../../../layouts/KaigyoLayout.astro';
+import KaigyoHero from '../../../components/akindo/kaigyo/KaigyoHero.astro';
+import CurrentStageCards from '../../../components/akindo/kaigyo/CurrentStageCards.astro';
+import PhaseRoadmap from '../../../components/akindo/kaigyo/PhaseRoadmap.astro';
+import ProblemCards from '../../../components/akindo/kaigyo/ProblemCards.astro';
+import IndustryCards from '../../../components/akindo/kaigyo/IndustryCards.astro';
+import ToolCards from '../../../components/akindo/kaigyo/ToolCards.astro';
+import SupportChoice from '../../../components/akindo/kaigyo/SupportChoice.astro';
+import AkindoStory from '../../../components/akindo/kaigyo/AkindoStory.astro';
+import LineCta from '../../../components/akindo/kaigyo/LineCta.astro';
+---
+<KaigyoLayout title="開業準備チェックリスト｜小さな事業を始めるなら AKINDO Lab" description="個人事業主、ひとりサロン、小さな店舗の開業準備を、チェックリストと診断で分かりやすく整理。会計、決済、予約、LINE、Google、ホームページ、集客まで順番に確認できます。">
+  <KaigyoHero/><CurrentStageCards/><PhaseRoadmap/><ProblemCards/><IndustryCards/>
+  <section class="k-section k-container k-tool-section" aria-labelledby="tools-title"><div class="k-section-heading"><div><p class="k-eyebrow">A SMALL TOOLBOX</p><h2 id="tools-title"><span class="k-phrase">開業に必要な道具を、</span><span class="k-phrase">選びやすく。</span></h2><p>人気の順番より、自分の商いに合うかどうか。必要なタイミングで、必要なものだけ。</p></div></div><ToolCards/><div class="k-actions"><a class="k-button k-button-secondary" href="/akindo/kaigyo/tools/">開業ツールを見る <span aria-hidden="true">→</span></a></div></section>
+  <SupportChoice/><AkindoStory/><LineCta/>
+</KaigyoLayout>

@@ -1,0 +1,23 @@
+---
+import KaigyoLayout from '../../../../layouts/KaigyoLayout.astro';
+import ToolsApp from '../../../../components/akindo/kaigyo/ToolsApp.astro';
+import BusinessFlow from '../../../../components/akindo/kaigyo/BusinessFlow.astro';
+---
+<KaigyoLayout title="開業に必要なツール一覧｜会計・決済・予約・LINE｜AKINDO Lab" description="会計、決済、予約、LINE、ホームページなど、開業に必要な道具を目的と導入タイミングから整理。向いている使い方と急がなくてもよい場合を確認できます。" pageTitle="いまの商いに、合う道具を。" eyebrow="開業ツール一覧" intro="まずは整えたいことを選んでみましょう。用途と始めどきから、必要な道具を探せます。" compactHeading active="tools" breadcrumbs={[{label:'開業準備',href:'/akindo/kaigyo/'},{label:'開業ツール一覧'}]}>
+  <div class="k-container tools-content">
+    <aside class="tools-disclosure" aria-label="掲載情報と広告について">
+      <p><strong>掲載情報と広告について</strong> 当サイトには広告・アフィリエイトリンクが含まれる場合があります。掲載の有無や報酬額だけで、おすすめを決めることはありません。</p>
+      <details><summary>現在は公式リンクのみ掲載。料金・掲載情報について</summary><p>料金・無料プラン・利用条件は公式サイトで確認してください。「公式URL確認日」はリンクとサービス概要の確認日で、料金の確認日ではありません。</p></details>
+    </aside>
+    <ToolsApp/>
+    <details class="tool-selection">
+      <summary><span>契約する前の、3つの確認。</span><span aria-hidden="true">＋</span></summary>
+      <ol><li><span>01</span><div><h3>困りごとをひとつ決める</h3><p>「予約の往復を減らす」など、道具で解決したいことを具体的に。</p></div></li><li><span>02</span><div><h3>いまある機能を確かめる</h3><p>決済や予約に顧客管理が含まれることも。役割の重複を減らします。</p></div></li><li><span>03</span><div><h3>実際の流れで試す</h3><p>費用、設定、解約、データの取り出し方まで、導入前に確認。</p></div></li></ol>
+    </details>
+    <BusinessFlow id="tools-business-flow"/>
+    <section class="tools-next k-card" aria-labelledby="tools-next-heading"><div><p class="k-eyebrow">選ぶ前に、整理したい方へ</p><h2 id="tools-next-heading">あなたに必要なものを、<wbr/>一緒に見つける。</h2><p>8つの質問で、最初に整えることと後回しにできることを整理します。</p></div><a class="k-button" href="/akindo/kaigyo/diagnosis/">開業準備診断へ <span aria-hidden="true">→</span></a></section>
+  </div>
+</KaigyoLayout>
+<style>
+  .tools-content{padding-bottom:72px}.tools-disclosure{font-size:.74rem;line-height:1.85;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--color-border)}.tools-disclosure strong{font-size:.76rem;color:var(--color-text);margin-right:8px}.tools-disclosure p{margin:0;color:var(--color-text-muted)}.tools-disclosure summary{cursor:pointer;min-height:35px;display:list-item;align-content:center;color:var(--color-text-muted);text-decoration:underline;text-underline-offset:3px;font-size:.74rem;margin-left:1em}.tools-disclosure details>p{margin-top:4px;max-width:840px}.tool-selection{margin:32px 0 48px;border-block:1px solid var(--color-border)}.tool-selection summary{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;list-style:none;font-size:1rem;font-weight:700}.tool-selection summary::-webkit-details-marker{display:none}.tool-selection summary>span:last-child{font-size:22px;transition:transform .2s}.tool-selection[open] summary>span:last-child{transform:rotate(45deg)}.tool-selection ol{list-style:none;margin:0;padding:0 0 26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.tool-selection li{display:flex;align-items:flex-start;gap:14px}.tool-selection li>span{font-size:.85rem;font-weight:800;color:var(--color-brand-dark);padding-top:3px}.tool-selection h3{font-size:.92rem;margin:0 0 8px}.tool-selection p{font-size:.84rem;color:var(--color-text-muted);line-height:1.9;margin:0}.tools-next{padding:36px;margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:30px;background:var(--color-soft-yellow,#f9edc9)}.tools-next h2{font-size:clamp(1.25rem,2vw,1.7rem);line-height:1.6;margin:8px 0 12px}.tools-next p:not(.k-eyebrow){font-size:.9rem;margin:0;line-height:1.9}.tools-next .k-button{flex-shrink:0}@media(max-width:700px){.tool-selection ol{grid-template-columns:1fr;gap:22px}.tool-selection{margin-block:26px 32px}.tools-next{display:block;padding:26px}.tools-next .k-button{margin-top:24px}.tools-disclosure{margin-bottom:24px}.tools-content{padding-bottom:48px}}
+</style>

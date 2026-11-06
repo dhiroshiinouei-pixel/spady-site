@@ -1,0 +1,8 @@
+---
+import KaigyoLayout from '../../../layouts/KaigyoLayout.astro';
+import ChecklistApp from '../../../components/akindo/kaigyo/ChecklistApp.astro';
+---
+<KaigyoLayout compactHeading title="無料の開業準備チェックリスト｜AKINDO Lab" description="開業に必要な20の準備を、順番に確認できる無料チェックリスト。会計、決済、予約、LINE、Google、集客まで。登録不要で進捗をこの端末に保存できます。" pageTitle="今日の一歩を、進めよう。" pageTitleParts={["今日の一歩を、", "進めよう。"]} eyebrow="開業準備チェックリスト" intro="まずは、ひとつだけ。進め方を読んで、準備ができたら完了を記録しましょう。" active="checklist" breadcrumbs={[{ label: '開業準備', href: '/akindo/kaigyo/' }, { label: 'チェックリスト' }]}>
+  <section class="k-container checklist-page-content" aria-label="開業準備チェックリスト"><ChecklistApp /></section>
+</KaigyoLayout>
+<style>.checklist-page-content { padding-bottom: 80px; }</style>

@@ -2,3 +2,10 @@
   Cache-Control: no-cache, must-revalidate
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+
+# Public test release: keep crawlers able to read the noindex directive.
+/akindo/kaigyo
+  X-Robots-Tag: noindex, nofollow
+
+/akindo/kaigyo/*
+  X-Robots-Tag: noindex, nofollow

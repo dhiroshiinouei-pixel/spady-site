@@ -1,0 +1,219 @@
+---
+import ToolGlyph from './ToolGlyph.astro';
+import { diagnosisQuestions, diagnosisSteps, diagnosisPriorityLabels } from '../../../data/akindo/diagnosis';
+---
+<div class="diagnosis-app" data-diagnosis>
+  <div class="diagnosis-intro">
+    <img src="/akindo/kaigyo-assets/illustrations/planning-desk-v2-640.webp" width="640" height="427" alt="ノートとカレンダーで開業準備を整理するイラスト"/>
+    <div><p><span class="k-phrase">必要な道具を、</span><span class="k-phrase">必要な順番に。</span></p><span class="diagnosis-intro-guide">8つの質問 → あなたの準備リスト</span><small>登録不要・無料。回答は保存・送信しません。</small></div>
+  </div>
+  <noscript>
+    <p class="diagnosis-notice">診断にはJavaScriptが必要です。JavaScriptを有効にするか、<a href="/akindo/kaigyo/checklist/">開業準備チェックリスト</a>で必要な準備をご確認ください。</p>
+  </noscript>
+  <div data-diagnosis-questions>
+    <div class="diagnosis-progress" data-diagnosis-progress hidden>
+      <ol class="diagnosis-step-map" aria-label="診断の4段階">{['商いのかたち','お金と販売','運営と連絡','予算と進め方'].map((label,index)=><li data-step-marker={index}><span aria-hidden="true">{index+1}</span><strong>{label}</strong></li>)}</ol>
+      <p><span data-diagnosis-stage>STEP 1 / 4</span><span data-diagnosis-answered>0 / 8 回答済み</span></p>
+      <progress max="8" value="0" aria-label="診断の回答状況" data-diagnosis-meter></progress>
+    </div>
+    <form data-diagnosis-form novalidate>
+      {diagnosisSteps.map((step, stepIndex) => (
+        <section class="diagnosis-step" data-diagnosis-step={stepIndex} aria-labelledby={`diagnosis-step-${stepIndex}`}>
+          <header class="diagnosis-step-heading">
+            <p class="k-eyebrow">STEP {String(stepIndex + 1).padStart(2, '0')}</p>
+            <h2 id={`diagnosis-step-${stepIndex}`} tabindex="-1">{step.title}</h2>
+            <p class="k-muted">{step.description}</p>
+          </header>
+          {step.questionIds.map((id) => {
+            const question = diagnosisQuestions.find((item) => item.id === id)!;
+            const questionIndex = diagnosisQuestions.indexOf(question);
+            return (
+              <fieldset class="diagnosis-question" data-diagnosis-question={id}>
+                <legend><span class="diagnosis-question-number">{String(questionIndex + 1).padStart(2, '0')}</span><span>{question.title}<span class="diagnosis-required">必須</span></span></legend>
+                <p id={`diagnosis-help-${id}`} class="diagnosis-question-help">{question.help}</p>
+                <div class:list={['diagnosis-options', { 'diagnosis-options-business': id === 'business' }]}>
+                  {question.options.map((option) => (
+                    <label class="diagnosis-option">
+                      <input type="radio" name={id} value={option.value} required aria-describedby={`diagnosis-help-${id}`} />
+                      {id === 'business' && <span class="diagnosis-business-icon"><ToolGlyph category={({salon:'reservation',food:'payment',school:'crm',visiting:'google',online:'shop',other:'website'} as Record<string,string>)[option.value]} size={42}/></span>}
+                      <span><strong>{option.label}</strong>{option.description && <small>{option.description}</small>}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            );
+          })}
+        </section>
+      ))}
+      <p class="diagnosis-error" role="alert" data-diagnosis-error hidden></p>
+      <div class="diagnosis-navigation" data-diagnosis-navigation hidden>
+        <button type="button" class="k-button k-button-secondary" data-diagnosis-back hidden>前の質問へ</button>
+        <button type="button" class="k-button" data-diagnosis-next>次の質問へ <span aria-hidden="true">→</span></button>
+      </div>
+    </form>
+  </div>
+  <section class="diagnosis-results" data-diagnosis-results hidden aria-labelledby="diagnosis-result-title">
+    <header class="diagnosis-result-heading">
+      <p class="k-eyebrow">YOUR NEXT STEP</p>
+      <h2 id="diagnosis-result-title" tabindex="-1"><span class="k-phrase">あなたの商いに、</span><span class="k-phrase">いま必要な準備。</span></h2>
+      <p>回答をもとに、準備の優先度を整理しました。<br />すべてのサービスを契約する必要はありません。</p>
+    </header>
+    <div class="diagnosis-next k-card">
+      <span class="k-tag">まず、この一歩から</span>
+      <h3 data-diagnosis-next-title></h3>
+      <p data-diagnosis-next-description></p>
+      <a href="/akindo/kaigyo/checklist/" class="k-link">チェックリストを始める <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="diagnosis-priorities">
+      {Object.entries(diagnosisPriorityLabels).map(([priority, content], index) => (
+        <section class:list={['diagnosis-priority', `diagnosis-priority-${priority}`]} aria-labelledby={`diagnosis-${priority}-title`}>
+          <header>
+            <span class="diagnosis-priority-number" aria-hidden="true">0{index + 1}</span>
+            <div><h3 id={`diagnosis-${priority}-title`}>{content.title}<span class="diagnosis-tier-count" data-diagnosis-count={priority}></span></h3><p>{content.description}</p></div>
+          </header>
+          <ul data-diagnosis-tier={priority}></ul>
+        </section>
+      ))}
+    </div>
+    <div class="diagnosis-guidance" data-diagnosis-guidance></div>
+    <aside class="diagnosis-notice" aria-label="診断のご利用にあたって">
+      <strong>準備の順番を考えるための目安です。</strong>
+      <p>事業内容や地域、許認可によって必要な準備は異なります。必要な届出、資格、許認可は行政機関などへご確認ください。サービスの料金や利用条件は公式サイトで確認しましょう。</p>
+    </aside>
+    <div class="diagnosis-result-actions">
+      <a href="/akindo/kaigyo/checklist/" class="k-button">チェックリストを始める <span aria-hidden="true">→</span></a>
+      <a href="/akindo/kaigyo/tools/" class="k-button k-button-secondary">ツール一覧を見る</a>
+    </div>
+    <div class="diagnosis-retry">
+      <button type="button" data-diagnosis-edit>回答を見直す</button>
+      <button type="button" data-diagnosis-reset>回答を消して、もう一度</button>
+    </div>
+  </section>
+</div>
+<script>
+  import '../../../scripts/akindo-diagnosis';
+</script>
+<style>
+  .diagnosis-app { --diagnosis-error: #822e21; --diagnosis-error-surface: #fff0eb; max-width: 880px; margin-inline: auto; }
+  .diagnosis-app [hidden] { display: none !important; }
+  .diagnosis-intro { padding: clamp(24px, 4vw, 36px); background: var(--color-surface); }
+  .diagnosis-intro p { margin: 16px 0 12px; font-size: clamp(18px, 2.3vw, 23px); line-height: 1.7; font-weight: 700; }
+  .diagnosis-intro .k-muted { font-size: 14px; }
+  .diagnosis-progress { margin: 32px 0; }
+  .diagnosis-progress p { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 700; margin: 0 0 10px; }
+  progress { display: block; width: 100%; height: 8px; appearance: none; border: 0; border-radius: 99px; overflow: hidden; background: var(--color-border); }
+  progress::-webkit-progress-bar { background: var(--color-border); }
+  progress::-webkit-progress-value { background: var(--color-brand-dark); transition: width .2s ease; }
+  progress::-moz-progress-bar { background: var(--color-brand-dark); }
+  .diagnosis-step-heading { margin: 32px 0; }
+  .diagnosis-step-heading h2 { font-size: clamp(25px, 4vw, 34px); margin: 8px 0 10px; line-height: 1.4; }
+  .diagnosis-step-heading p { margin: 0; }
+  .diagnosis-question { min-width: 0; border: 0; padding: 0; margin: 0 0 36px; }
+  .diagnosis-question legend { display: flex; align-items: baseline; gap: 12px; padding: 0; width: 100%; font-size: clamp(18px, 2.6vw, 22px); font-weight: 750; line-height: 1.6; }
+  .diagnosis-question-number { color: var(--color-brand-dark); font-size: 15px; font-variant-numeric: tabular-nums; }
+  .diagnosis-required { display: inline-block; margin-inline-start: 10px; vertical-align: middle; font-size: 11px; font-weight: 650; padding: 1px 7px; border: 1px solid var(--color-border); border-radius: 6px; }
+  .diagnosis-question-help { margin: 8px 0 16px; color: var(--color-text-muted); font-size: 14px; line-height: 1.8; }
+  .diagnosis-options { display: grid; gap: 10px; }
+  .diagnosis-option { display: flex; gap: 14px; align-items: center; padding: 18px 20px; min-height: 64px; border: 1px solid var(--color-border); border-radius: 16px; background: var(--color-surface); cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+  .diagnosis-option:hover { border-color: var(--color-brand-dark); }
+  .diagnosis-option:has(input:checked) { background: var(--color-soft-yellow); border-color: var(--color-brand-dark); box-shadow: inset 0 0 0 1px var(--color-brand-dark); }
+  .diagnosis-option:has(input:focus-visible) { outline: 3px solid var(--color-text); outline-offset: 3px; }
+  .diagnosis-option input { flex: 0 0 auto; accent-color: var(--color-brand-dark); width: 20px; height: 20px; margin: 0; }
+  .diagnosis-option strong { display: block; font-size: 16px; font-weight: 650; line-height: 1.6; }
+  .diagnosis-option small { display: block; margin-top: 3px; color: var(--color-text-muted); font-size: 13px; line-height: 1.7; }
+  .diagnosis-navigation { display: flex; justify-content: flex-end; flex-wrap: wrap; align-items: stretch; gap: 12px; padding-top: 24px; border-top: 1px solid var(--color-border); }
+  .diagnosis-navigation button { min-width: 160px; }
+  .diagnosis-error { border-left: 3px solid var(--diagnosis-error); color: var(--diagnosis-error); padding: 12px 16px; background: var(--diagnosis-error-surface); line-height: 1.7; }
+  .diagnosis-result-heading { margin: 48px 0 28px; }
+  .diagnosis-result-heading h2 { margin: 12px 0 16px; font-size: clamp(28px, 4.3vw, 42px); line-height: 1.5; }
+  .diagnosis-result-heading > p:last-child { color: var(--color-text-muted); line-height: 1.9; }
+  .diagnosis-next { padding: clamp(24px, 4vw, 36px); background: var(--color-soft-yellow); border-color: var(--color-brand); margin-bottom: 32px; }
+  .diagnosis-next h3 { font-size: clamp(20px, 2.8vw, 27px); line-height: 1.5; margin: 18px 0 12px; }
+  .diagnosis-next p { line-height: 1.9; margin: 0 0 18px; }
+  .diagnosis-priorities { display: grid; gap: 24px; }
+  .diagnosis-priority { border: 1px solid var(--color-border); border-radius: 24px; background: var(--color-surface); overflow: hidden; }
+  .diagnosis-priority > header { display: flex; gap: 16px; padding: 24px; border-bottom: 1px solid var(--color-border); align-items: flex-start; }
+  .diagnosis-priority-first > header { background: var(--color-soft-green); }
+  .diagnosis-priority-useful > header { background: var(--color-soft-yellow); }
+  .diagnosis-priority-later > header { background: var(--color-background); }
+  .diagnosis-priority-number { font-size: 14px; border: 1px solid currentColor; border-radius: 50%; width: 32px; height: 32px; display: grid; place-items: center; flex-shrink: 0; color: var(--color-brand-dark); font-weight: 750; }
+  .diagnosis-priority h3 { font-size: 21px; margin: 0 0 5px; line-height: 1.5; }
+  .diagnosis-priority header p { font-size: 14px; color: var(--color-text-muted); margin: 0; line-height: 1.8; }
+  .diagnosis-priority ul { padding: 0 24px; list-style: none; margin: 0; }
+  .diagnosis-priority :global(li) { padding: 22px 0; }
+  .diagnosis-priority :global(li + li) { border-top: 1px solid var(--color-border); }
+  .diagnosis-priority :global(h4) { margin: 0 0 8px; font-size: 17px; line-height: 1.6; }
+  .diagnosis-priority :global(li p) { margin: 0; color: var(--color-text-muted); font-size: 15px; line-height: 1.9; }
+  .diagnosis-guidance { display: grid; gap: 16px; margin: 32px 0; }
+  .diagnosis-guidance :global(article) { padding: 24px; border: 1px solid var(--color-border); border-radius: 16px; }
+  .diagnosis-guidance :global(h3) { font-size: 18px; margin: 0 0 12px; }
+  .diagnosis-guidance :global(p) { font-size: 15px; line-height: 1.9; margin: 0; }
+  .diagnosis-notice { font-size: 14px; padding: 24px; background: var(--color-soft-green); border-radius: 16px; line-height: 1.9; }
+  .diagnosis-notice p { margin: 8px 0 0; }
+  .diagnosis-result-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .diagnosis-retry { display: flex; gap: 8px 24px; flex-wrap: wrap; margin-top: 18px; }
+  .diagnosis-retry button { background: none; border: 0; color: var(--color-text-muted); font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; min-height: 44px; padding: 8px 0; cursor: pointer; }
+  .diagnosis-app :is(h2, button, a):focus-visible { outline: 3px solid var(--color-text); outline-offset: 5px; }
+  .diagnosis-step-heading h2:focus:not(:focus-visible), .diagnosis-result-heading h2:focus:not(:focus-visible) { outline: none; }
+  @media (min-width: 600px) { .diagnosis-options-business, .diagnosis-guidance { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) {
+    .diagnosis-intro-break { display: none; }
+    .diagnosis-option { padding: 16px; }
+    .diagnosis-navigation button { min-width: 0; flex: 1 1 auto; }
+    .diagnosis-result-actions > a { width: 100%; }
+    .diagnosis-priority > header { padding: 20px; }
+    .diagnosis-priority ul { padding-inline: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .diagnosis-option, progress::-webkit-progress-value { transition: none; } }
+
+  /* Let the questions lead. A small illustration explains the outcome without delaying input. */
+  .diagnosis-app{max-width:1120px}
+  .diagnosis-intro,[data-diagnosis-questions]{max-width:780px;margin-inline:auto}
+  .diagnosis-intro{display:flex;align-items:center;gap:24px;padding:0;background:transparent;margin-bottom:24px}
+  .diagnosis-intro img{width:160px;aspect-ratio:3/2;object-fit:cover;border-radius:16px;flex-shrink:0}
+  .diagnosis-intro p{margin:0 0 5px;font-size:20px;line-height:1.5}
+  .diagnosis-intro-guide{display:block;font-size:13px;color:var(--color-accent)}
+  .diagnosis-intro small{display:block;font-size:11px;margin-top:5px;color:var(--color-text-muted)}
+  .diagnosis-progress{margin:0 0 22px}
+  .diagnosis-progress>p{font-size:11px;margin-top:14px}
+  .diagnosis-step-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0;list-style:none;gap:12px}
+  .diagnosis-step-map li{display:flex;gap:9px;align-items:center;position:relative;font-size:12px;color:var(--color-text-muted)}
+  .diagnosis-step-map li>span{width:28px;height:28px;border-radius:50%;background:#e7e8df;display:grid;place-items:center;flex-shrink:0;font-size:12px;font-weight:700}
+  .diagnosis-step-map li[aria-current=step]{color:var(--color-accent)}
+  .diagnosis-step-map li[aria-current=step]>span{background:var(--color-accent);color:#fff}
+  .diagnosis-step-map li.is-finished>span{background:var(--color-brand);color:var(--color-text)}
+  [data-diagnosis-form]{background:var(--color-surface);border:1px solid var(--color-border);border-radius:24px;padding:30px}
+  .diagnosis-step-heading{margin:0 0 24px}
+  .diagnosis-step-heading h2{font-size:22px;margin:3px 0 5px}
+  .diagnosis-step-heading .k-eyebrow{font-size:10px}
+  .diagnosis-step-heading>.k-muted{font-size:13px}
+  .diagnosis-question legend{font-size:18px}
+  .diagnosis-question-help{font-size:12px;margin:6px 0 12px}
+  .diagnosis-option{padding:14px 16px;gap:12px;background:var(--color-background);border-radius:12px;min-height:58px}
+  .diagnosis-option strong{font-size:14px}
+  .diagnosis-option small{font-size:12px}
+  .diagnosis-options-business .diagnosis-option{gap:10px}
+  .diagnosis-business-icon{flex-shrink:0;display:grid;place-items:center}
+  .diagnosis-question{margin-bottom:28px}
+  .diagnosis-result-heading{margin:24px 0}
+  .diagnosis-priorities{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+  .diagnosis-priority>header{padding:22px 18px;gap:10px}
+  .diagnosis-priority h3{font-size:18px}
+  .diagnosis-priority header p{font-size:12px}
+  .diagnosis-priority ul{padding-inline:20px}
+  .diagnosis-priority :global(li){padding-block:18px}
+  .diagnosis-priority :global(li p){font-size:13px;line-height:1.85}
+  .diagnosis-priority :global(h4){font-size:15px}
+  .diagnosis-tier-count{display:inline-flex;font-size:11px;margin-left:7px;color:var(--color-text-muted);font-weight:500}
+  .diagnosis-next{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:28px;margin-bottom:24px}
+  .diagnosis-next .k-tag{justify-self:start;grid-column:1/-1}
+  .diagnosis-next h3{margin:3px 0;font-size:24px}
+  .diagnosis-next p{margin:0;font-size:14px;grid-column:1}
+  .diagnosis-next .k-link{grid-column:2;grid-row:2/4;align-self:center}
+  @media(max-width:767px){
+    .diagnosis-intro{gap:14px;margin-bottom:20px}.diagnosis-intro img{width:100px;height:100px;object-fit:cover;border-radius:12px}.diagnosis-intro p{font-size:17px}.diagnosis-intro-guide{font-size:11px}.diagnosis-intro small{font-size:10px;line-height:1.7}
+    .diagnosis-step-map{gap:8px}.diagnosis-step-map li{flex-direction:column;gap:5px;text-align:center;font-size:10px}.diagnosis-step-map li>span{width:26px;height:26px;font-size:11px}.diagnosis-step-map li:not(:last-child):after{content:'';position:absolute;top:12px;left:calc(50% + 19px);width:calc(100% - 30px);height:1px;background:var(--color-border)}
+    [data-diagnosis-form]{padding:20px 16px;border-radius:18px}.diagnosis-step-heading{margin-bottom:22px}.diagnosis-step-heading h2{font-size:20px}.diagnosis-step-heading>.k-muted{font-size:12px}.diagnosis-question legend{font-size:17px;gap:8px}.diagnosis-options{gap:8px}.diagnosis-option{padding:12px;gap:10px}.diagnosis-options-business .diagnosis-option{min-height:62px}.diagnosis-options-business .diagnosis-option strong{font-size:13px}.diagnosis-option input{width:18px;height:18px}.diagnosis-business-icon :global(svg){width:34px;height:34px}
+    .diagnosis-priorities{grid-template-columns:1fr}.diagnosis-priority>header{padding:18px 20px}.diagnosis-priority-number{width:28px;height:28px;font-size:12px}.diagnosis-priority :global(li){padding-block:15px}.diagnosis-result-heading h2{font-size:29px}.diagnosis-next{display:block;padding:22px}.diagnosis-next h3{font-size:21px;margin-top:14px}.diagnosis-next p{margin-top:10px;font-size:13px}.diagnosis-next .k-link{margin-top:12px;font-size:13px}
+  }
+</style>
