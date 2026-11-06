@@ -3,8 +3,8 @@ import KaigyoHeader from '../components/akindo/kaigyo/KaigyoHeader.astro';
 import KaigyoFooter from '../components/akindo/kaigyo/KaigyoFooter.astro';
 import styles from '../styles/akindo-kaigyo.css?inline';
 import { kaigyoBase, updatedAt, kaigyoTestRelease } from '../data/akindo/site';
-interface Props { title: string; description: string; pageTitle?: string; pageTitleParts?: string[]; eyebrow?: string; intro?: string; breadcrumbs?: {label:string;href?:string}[]; active?: string; compactHeading?: boolean; }
-const { title, description, pageTitle, pageTitleParts, eyebrow = 'YOUR NEXT STEP', intro, breadcrumbs, compactHeading = false } = Astro.props;
+interface Props { title: string; description: string; pageTitle?: string; pageTitleParts?: string[]; eyebrow?: string; intro?: string; breadcrumbs?: {label:string;href?:string}[]; active?: string; compactHeading?: boolean; headingIllustration?: string; headingIllustrationAlt?: string; }
+const { title, description, pageTitle, pageTitleParts, eyebrow = 'YOUR NEXT STEP', intro, breadcrumbs, compactHeading = false, headingIllustration, headingIllustrationAlt = '' } = Astro.props;
 const documentTitle = kaigyoTestRelease ? `【テスト公開】${title}` : title;
 const origin = Astro.site ?? new URL('https://spady.net');
 const canonical = new URL(Astro.url.pathname, origin).href;
@@ -27,6 +27,6 @@ const schema = { '@context':'https://schema.org', '@graph':[
 {kaigyoTestRelease && <aside class="k-test-notice" aria-label="公開状況"><div class="k-container"><strong>テスト公開中</strong><span>開業準備を試せる、改善中のページです。</span></div></aside>}
 <main id="main" tabindex="-1">
   <nav class="k-container k-breadcrumb" aria-label="パンくず"><ol>{crumbs.map(c => <li>{c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}</li>)}</ol></nav>
-  {pageTitle && <div class:list={['k-container', 'k-page-heading', { 'k-page-heading-compact': compactHeading }]}><p class="k-eyebrow">{eyebrow}</p><h1>{pageTitleParts ? pageTitleParts.map(part => <span class="k-phrase">{part}</span>) : pageTitle}</h1>{intro && <p class="k-page-intro">{intro}</p>}</div>}
+  {pageTitle && <div class:list={['k-container', 'k-page-heading', { 'k-page-heading-compact': compactHeading, 'k-page-heading-illustrated': !!headingIllustration }]}><div class="k-page-heading-copy"><p class="k-eyebrow">{eyebrow}</p><h1>{pageTitleParts ? pageTitleParts.map(part => <span class="k-phrase">{part}</span>) : pageTitle}</h1>{intro && <p class="k-page-intro">{intro}</p>}</div>{headingIllustration && <img class="k-page-heading-art" src={`/akindo/kaigyo-assets/illustrations/${headingIllustration}.webp`} srcset={`/akindo/kaigyo-assets/illustrations/${headingIllustration}-640.webp 640w, /akindo/kaigyo-assets/illustrations/${headingIllustration}.webp 1200w`} sizes="(max-width: 767px) calc(100vw - 40px), 350px" width="1200" height="800" alt={headingIllustrationAlt} decoding="async" fetchpriority="high"/>}</div>}
   <slot/>
 </main><KaigyoFooter/></body></html>

@@ -1,18 +1,23 @@
 ---
 import ToolGlyph from './ToolGlyph.astro';
 import { diagnosisQuestions, diagnosisSteps, diagnosisPriorityLabels } from '../../../data/akindo/diagnosis';
+const stepGlyphs = ['concept', 'payment', 'people', 'compass'];
+const questionGlyphs: Record<string, string> = { business: 'shop', reservation: 'reservation', payment: 'payment', online: 'shop', staff: 'people', line: 'line', skill: 'website', budget: 'banking' };
+const businessGlyphs: Record<string, string> = { salon: 'salon', food: 'shop', school: 'school', visiting: 'visiting', online: 'website', other: 'compass' };
+const priorityGlyphs: Record<string, string> = { first: 'checklist', useful: 'spark', later: 'pause' };
+const recommendationGlyphs: Record<string, string> = { accounting: 'accounting', payment: 'payment', booking: 'reservation', shop: 'shop', google: 'google', customer: 'people', line: 'line', website: 'website', instagram: 'instagram', advertising: 'megaphone', crm: 'crm' };
 ---
 <div class="diagnosis-app" data-diagnosis>
   <div class="diagnosis-intro">
-    <img src="/akindo/kaigyo-assets/illustrations/planning-desk-v2-640.webp" width="640" height="427" alt="ノートとカレンダーで開業準備を整理するイラスト"/>
-    <div><p><span class="k-phrase">必要な道具を、</span><span class="k-phrase">必要な順番に。</span></p><span class="diagnosis-intro-guide">8つの質問 → あなたの準備リスト</span><small>登録不要・無料。回答は保存・送信しません。</small></div>
+    <img src="/akindo/kaigyo-assets/illustrations/diagnosis-planning-v3-640.webp" srcset="/akindo/kaigyo-assets/illustrations/diagnosis-planning-v3-640.webp 640w, /akindo/kaigyo-assets/illustrations/diagnosis-planning-v3.webp 1200w" sizes="(max-width: 767px) 112px, 200px" width="1200" height="800" alt="商いに必要な道具と準備の順番を考えるイラスト"/>
+    <div><p><span class="k-phrase">必要な道具を、</span><span class="k-phrase">必要な順番に。</span></p><span class="diagnosis-intro-guide">8つの質問 → あなたの準備リスト</span><small><span class="k-phrase">登録不要・無料。</span><span class="k-phrase">回答は保存・送信しません。</span></small></div>
   </div>
   <noscript>
     <p class="diagnosis-notice">診断にはJavaScriptが必要です。JavaScriptを有効にするか、<a href="/akindo/kaigyo/checklist/">開業準備チェックリスト</a>で必要な準備をご確認ください。</p>
   </noscript>
   <div data-diagnosis-questions>
     <div class="diagnosis-progress" data-diagnosis-progress hidden>
-      <ol class="diagnosis-step-map" aria-label="診断の4段階">{['商いのかたち','お金と販売','運営と連絡','予算と進め方'].map((label,index)=><li data-step-marker={index}><span aria-hidden="true">{index+1}</span><strong>{label}</strong></li>)}</ol>
+      <ol class="diagnosis-step-map" aria-label="診断の4段階">{['商いのかたち','お金と販売','運営と連絡','予算と進め方'].map((label,index)=><li data-step-marker={index}><span class="diagnosis-step-symbol" aria-hidden="true"><ToolGlyph category={stepGlyphs[index]} size={40}/><small>{index+1}</small></span><strong>{label}</strong></li>)}</ol>
       <p><span data-diagnosis-stage>STEP 1 / 4</span><span data-diagnosis-answered>0 / 8 回答済み</span></p>
       <progress max="8" value="0" aria-label="診断の回答状況" data-diagnosis-meter></progress>
     </div>
@@ -29,13 +34,13 @@ import { diagnosisQuestions, diagnosisSteps, diagnosisPriorityLabels } from '../
             const questionIndex = diagnosisQuestions.indexOf(question);
             return (
               <fieldset class="diagnosis-question" data-diagnosis-question={id}>
-                <legend><span class="diagnosis-question-number">{String(questionIndex + 1).padStart(2, '0')}</span><span>{question.title}<span class="diagnosis-required">必須</span></span></legend>
+                <legend><span class="diagnosis-question-symbol" aria-hidden="true"><ToolGlyph category={questionGlyphs[id]} size={40}/><span class="diagnosis-question-number">{String(questionIndex + 1).padStart(2, '0')}</span></span><span>{question.title}<span class="diagnosis-required">必須</span></span></legend>
                 <p id={`diagnosis-help-${id}`} class="diagnosis-question-help">{question.help}</p>
                 <div class:list={['diagnosis-options', { 'diagnosis-options-business': id === 'business' }]}>
                   {question.options.map((option) => (
                     <label class="diagnosis-option">
                       <input type="radio" name={id} value={option.value} required aria-describedby={`diagnosis-help-${id}`} />
-                      {id === 'business' && <span class="diagnosis-business-icon"><ToolGlyph category={({salon:'reservation',food:'payment',school:'crm',visiting:'google',online:'shop',other:'website'} as Record<string,string>)[option.value]} size={42}/></span>}
+                      {id === 'business' && <span class="diagnosis-business-icon"><ToolGlyph category={businessGlyphs[option.value]} size={42}/></span>}
                       <span><strong>{option.label}</strong>{option.description && <small>{option.description}</small>}</span>
                     </label>
                   ))}
@@ -56,7 +61,7 @@ import { diagnosisQuestions, diagnosisSteps, diagnosisPriorityLabels } from '../
     <header class="diagnosis-result-heading">
       <p class="k-eyebrow">YOUR NEXT STEP</p>
       <h2 id="diagnosis-result-title" tabindex="-1"><span class="k-phrase">あなたの商いに、</span><span class="k-phrase">いま必要な準備。</span></h2>
-      <p>回答をもとに、準備の優先度を整理しました。<br />すべてのサービスを契約する必要はありません。</p>
+      <p><span class="k-phrase">回答をもとに、</span><span class="k-phrase">準備の優先度を整理しました。</span><br /><span class="k-phrase">すべてのサービスを</span><span class="k-phrase">契約する必要はありません。</span></p>
     </header>
     <div class="diagnosis-next k-card">
       <span class="k-tag">まず、この一歩から</span>
@@ -68,7 +73,7 @@ import { diagnosisQuestions, diagnosisSteps, diagnosisPriorityLabels } from '../
       {Object.entries(diagnosisPriorityLabels).map(([priority, content], index) => (
         <section class:list={['diagnosis-priority', `diagnosis-priority-${priority}`]} aria-labelledby={`diagnosis-${priority}-title`}>
           <header>
-            <span class="diagnosis-priority-number" aria-hidden="true">0{index + 1}</span>
+            <span class="diagnosis-priority-symbol" aria-hidden="true"><ToolGlyph category={priorityGlyphs[priority]} size={48}/><span>0{index + 1}</span></span>
             <div><h3 id={`diagnosis-${priority}-title`}>{content.title}<span class="diagnosis-tier-count" data-diagnosis-count={priority}></span></h3><p>{content.description}</p></div>
           </header>
           <ul data-diagnosis-tier={priority}></ul>
@@ -89,6 +94,7 @@ import { diagnosisQuestions, diagnosisSteps, diagnosisPriorityLabels } from '../
       <button type="button" data-diagnosis-reset>回答を消して、もう一度</button>
     </div>
   </section>
+  {Object.entries(recommendationGlyphs).map(([id, category]) => <template data-diagnosis-icon={id}><ToolGlyph category={category} size={32}/></template>)}
 </div>
 <script>
   import '../../../scripts/akindo-diagnosis';
@@ -215,5 +221,40 @@ import { diagnosisQuestions, diagnosisSteps, diagnosisPriorityLabels } from '../
     .diagnosis-step-map{gap:8px}.diagnosis-step-map li{flex-direction:column;gap:5px;text-align:center;font-size:10px}.diagnosis-step-map li>span{width:26px;height:26px;font-size:11px}.diagnosis-step-map li:not(:last-child):after{content:'';position:absolute;top:12px;left:calc(50% + 19px);width:calc(100% - 30px);height:1px;background:var(--color-border)}
     [data-diagnosis-form]{padding:20px 16px;border-radius:18px}.diagnosis-step-heading{margin-bottom:22px}.diagnosis-step-heading h2{font-size:20px}.diagnosis-step-heading>.k-muted{font-size:12px}.diagnosis-question legend{font-size:17px;gap:8px}.diagnosis-options{gap:8px}.diagnosis-option{padding:12px;gap:10px}.diagnosis-options-business .diagnosis-option{min-height:62px}.diagnosis-options-business .diagnosis-option strong{font-size:13px}.diagnosis-option input{width:18px;height:18px}.diagnosis-business-icon :global(svg){width:34px;height:34px}
     .diagnosis-priorities{grid-template-columns:1fr}.diagnosis-priority>header{padding:18px 20px}.diagnosis-priority-number{width:28px;height:28px;font-size:12px}.diagnosis-priority :global(li){padding-block:15px}.diagnosis-result-heading h2{font-size:29px}.diagnosis-next{display:block;padding:22px}.diagnosis-next h3{font-size:21px;margin-top:14px}.diagnosis-next p{margin-top:10px;font-size:13px}.diagnosis-next .k-link{margin-top:12px;font-size:13px}
+  }
+  /* Pictograms explain each question and carry through into the preparation list. */
+  .diagnosis-intro img{width:200px;height:auto;aspect-ratio:3/2;object-fit:contain;background:#f4f0e5}
+  .diagnosis-intro small{font-size:12px;line-height:1.7}
+  .diagnosis-step-map li{gap:8px}
+  .diagnosis-step-map li>.diagnosis-step-symbol{position:relative;width:40px;height:40px;background:transparent;border-radius:50%;outline:2px solid transparent;outline-offset:3px}
+  .diagnosis-step-symbol small{position:absolute;bottom:-3px;right:-3px;display:grid;place-items:center;width:17px;height:17px;border-radius:50%;border:2px solid var(--color-background);background:#e7e8df;color:var(--color-text);font-size:10px;line-height:1}
+  .diagnosis-step-map li[aria-current=step]>.diagnosis-step-symbol{background:transparent;outline-color:var(--color-accent)}
+  .diagnosis-step-map li[aria-current=step] .diagnosis-step-symbol small{background:var(--color-accent);color:white}
+  .diagnosis-step-map li.is-finished>.diagnosis-step-symbol{background:transparent}
+  .diagnosis-step-map li.is-finished .diagnosis-step-symbol small{background:var(--color-brand)}
+  .diagnosis-question legend{align-items:center;gap:10px}
+  .diagnosis-question-symbol{position:relative;flex:0 0 40px;align-self:flex-start}
+  .diagnosis-question-number{position:absolute;bottom:-4px;right:-3px;background:var(--color-surface);padding:0 2px;border-radius:3px;font-size:10px;line-height:1.4}
+  .diagnosis-priority-symbol{display:grid;justify-items:center;flex:0 0 48px;gap:1px}
+  .diagnosis-priority-symbol>span{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--color-text-muted)}
+  .diagnosis-priority :global(h4){display:flex;align-items:center;gap:9px}
+  .diagnosis-priority :global(h4 svg){flex:0 0 32px;width:32px;height:32px}
+  .diagnosis-priority :global(h4 span){min-width:0}
+  @media(max-width:767px){
+    .diagnosis-intro img{width:112px;height:auto;aspect-ratio:3/2;border-radius:12px}
+    .diagnosis-intro p{font-size:16px}
+    .diagnosis-intro-guide{font-size:12px;line-height:1.7}
+    .diagnosis-intro small{font-size:11px}
+    .diagnosis-step-map li>.diagnosis-step-symbol{width:36px;height:36px}
+    .diagnosis-step-map li:not(:last-child):after{top:18px;left:calc(50% + 27px);width:calc(100% - 46px)}
+    .diagnosis-step-map li{font-size:11px;gap:9px}
+    .diagnosis-question-symbol{flex-basis:34px}
+    .diagnosis-question-symbol :global(svg){width:34px;height:34px}
+    .diagnosis-priority-symbol{flex-basis:44px}
+    .diagnosis-priority-symbol :global(svg){width:44px;height:44px}
+  }
+  @media(max-width:359px){
+    .diagnosis-intro{gap:10px}.diagnosis-intro img{width:94px}.diagnosis-intro p{font-size:15px}.diagnosis-intro-guide{font-size:11px}
+    .diagnosis-step-map{gap:6px}.diagnosis-step-map li{font-size:10px}
   }
 </style>

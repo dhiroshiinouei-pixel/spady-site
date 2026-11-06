@@ -53,7 +53,11 @@ if (root) {
         const row = document.createElement('li');
         const title = document.createElement('h4');
         const description = document.createElement('p');
-        title.textContent = item.title;
+        const titleText = document.createElement('span');
+        titleText.textContent = item.title;
+        const icon = root!.querySelector<HTMLTemplateElement>(`template[data-diagnosis-icon="${item.id}"]`);
+        if (icon) title.append(icon.content.cloneNode(true));
+        title.append(titleText);
         description.textContent = item.reason;
         row.append(title, description);
         list.append(row);

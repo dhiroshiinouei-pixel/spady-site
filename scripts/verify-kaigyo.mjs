@@ -27,6 +27,8 @@ try{
       assert((await page.title()).startsWith('【テスト公開】'));
       if(base.startsWith('https:'))assert.match(response.headers()['x-robots-tag']||'',/noindex/);
       await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(async i=>{i.loading='eager';try{await i.decode();}catch{}}));});
+      const pageArt = ({'checklist/':'.checklist-desk-art','diagnosis/':'img[src*="diagnosis-planning-v3"]','tools/':'img[src*="tools-workbench-v3"]','start/salon/':'img[src*="salon-preparation-v3"]'})[route];
+      if(pageArt)assert(await page.locator(pageArt).isVisible(),`${route}: supporting illustration must be visible at ${width}px`);
       const result=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,h1:document.querySelectorAll('h1').length,images:[...document.images].filter(i=>i.naturalWidth===0).map(i=>i.src),outside:[...document.querySelectorAll('body *')].filter(e=>{const r=e.getBoundingClientRect();return r.width&&r.right>innerWidth+1;}).map(e=>e.className).slice(0,5)}));
       const actionSelector = ({'':'.visual-hero .k-button','checklist/':'[data-item-id="business"]','diagnosis/':'input[name="business"]','tools/':'[data-category="all"]','start/salon/':'.salon-lead .k-button'})[route];
       const firstActionY = await page.locator(actionSelector).first().evaluate(el => Math.round(el.getBoundingClientRect().top + scrollY));
@@ -39,6 +41,7 @@ try{
       if([375,768,1280].includes(width)&&route==='')await page.screenshot({path:out+`home-full-${width}.png`,fullPage:true});
       if([375,1280].includes(width)&&route==='')for(const section of ['.k-stages','.k-roadmap-wrap','.k-industries'])await page.locator(section).screenshot({path:out+`section-${section.slice(1)}-${width}.png`,style:".k-header,.k-skip{visibility:hidden!important}"});
       if([375,1280].includes(width)&&route==='start/salon/')await page.locator('.business-flow').screenshot({path:out+`salon-flow-${width}.png`,style:".k-header,.k-skip{visibility:hidden!important}"});
+      if([320,375,768,1280].includes(width)&&route==='start/salon/')await page.locator('.salon-phase-nav').screenshot({path:out+`salon-phases-${width}.png`,style:".k-header,.k-skip{visibility:hidden!important}"});
     }
   }
   const sitemap=await context.request.get(base+'/sitemap.xml');

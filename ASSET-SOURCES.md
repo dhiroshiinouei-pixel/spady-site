@@ -1,5 +1,12 @@
 # Homepage assets
 
+## AKINDO Lab 開業準備：全下層ページの画像・アイコン追加（2026-11-07）
+
+- 診断の準備風景、開業ツールの作業台、サロンの開店準備の3点を内蔵imagegenで新規生成。実在店舗・利用者の写真ではないコンセプトイラストです。
+- 原寸PNGは `design/kaigyo-generated/*-v3.png`、配信用1200px/640px WebPは `public/akindo/kaigyo-assets/illustrations/*-v3*.webp`。
+- 正確な生成プロンプト・保存先・使用方法は [下層ページの制作記録](docs/kaigyo-subpage-image-prompts.md) を参照。
+- `ToolGlyph.astro` は既存の配色・線幅に合わせてオリジナルSVGを拡張。全20チェック項目、診断の質問・結果、ツール選び、サロンの準備段階で文字と併用しています。
+
 ## 2026-11-06 AKINDO Lab 開業準備
 
 - `public/akindo/kaigyo-assets/seminar.webp`：既存の所有素材 `public/akindo/assets/akindo-venue-20260722.jpg` を960×720のWebPにリサイズ。内容や人物の編集なし。
