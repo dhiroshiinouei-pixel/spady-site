@@ -1,8 +1,9 @@
 ---
 import { checklistItems, phases } from '../../../data/akindo/checklist';
 import ToolGlyph from './ToolGlyph.astro';
+import { serviceLabelParts } from '../../../data/akindo/brands';
 const levels = { required: '基本の準備', recommended: '必要に応じて', optional: '任意で選ぶ' };
-const phaseIcons: Record<string, string> = { concept: 'concept', finance: 'accounting', sales: 'shop', discovery: 'google', launch: 'megaphone', after: 'chart' };
+const phaseIcons: Record<string, string> = { concept: 'concept', finance: 'accounting', sales: 'shop', discovery: 'compass', launch: 'megaphone', after: 'chart' };
 const taskIcons: Record<string, string> = {
   business: 'concept', audience: 'target', name: 'shop', 'opening-date': 'calendar',
   permits: 'document', tax: 'document', bank: 'banking', card: 'payment', accounting: 'accounting',
@@ -61,7 +62,7 @@ const statuses = [
           <div class="checklist-items">
             {checklistItems.filter(item => item.phase === phase.id).map(item => <article class="checklist-item" id={`task-${item.id}`} data-item-id={item.id} data-state="not_started" data-title={item.title} tabindex="-1">
               <div class="checklist-item-top"><span class="checklist-step">STEP {String(item.step).padStart(2, '0')}</span><span class="checklist-level">{levels[item.requiredLevel]}</span></div>
-              <div class="checklist-task-heading"><ToolGlyph category={taskIcons[item.id] || 'checklist'} size={40} /><h3 id={`task-title-${item.id}`}>{item.title}</h3></div>
+              <div class="checklist-task-heading"><ToolGlyph category={taskIcons[item.id] || 'checklist'} size={40} /><h3 id={`task-title-${item.id}`}>{serviceLabelParts(item.title).length > 1 ? serviceLabelParts(item.title).map(part => <span class="k-phrase">{part}</span>) : item.title}</h3></div>
               <p class="checklist-item-description">{item.shortDescription}</p>
               <p class="checklist-status-label">いまの状態を選ぶ <span data-current-status>未着手</span></p>
               <div class="checklist-statuses" role="group" aria-labelledby={`task-title-${item.id}`}>

@@ -1,0 +1,15 @@
+---
+import { serviceBrands, type ServiceBrandId } from '../../../data/akindo/brands';
+interface Props { brand: ServiceBrandId; }
+const { brand } = Astro.props;
+const mark = serviceBrands[brand];
+// The adjacent text supplies the accessible service name. Preserve clear space,
+// aspect ratio and original colours; no rounded clipping or CSS filters.
+---
+<span class="service-mark" data-service-brand={brand} aria-hidden="true" style={`--mark-width:${mark.width}px;--mark-height:${mark.height}px;--mark-padding:${mark.padding}px`}>
+  <img src={`/akindo/kaigyo-assets/brands/${mark.file}`} width={mark.width} height={mark.height} alt="" loading="lazy" decoding="async" />
+</span>
+<style>
+  .service-mark{display:inline-flex;align-items:center;justify-content:center;box-sizing:content-box;width:var(--mark-width);height:var(--mark-height);padding:var(--mark-padding);flex-shrink:0;vertical-align:middle}
+  .service-mark img{display:block;width:var(--mark-width);height:var(--mark-height);max-width:none;object-fit:contain;border:0;border-radius:0;box-shadow:none;filter:none}
+</style>

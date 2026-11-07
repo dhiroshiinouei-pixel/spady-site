@@ -1,3 +1,4 @@
+import { serviceLabelParts } from '../data/akindo/brands';
 import { diagnosisQuestions, diagnosisSteps, getDiagnosisResult, isCompleteDiagnosis, type DiagnosisAnswers } from '../data/akindo/diagnosis';
 
 const root = document.querySelector<HTMLElement>('[data-diagnosis]');
@@ -54,7 +55,12 @@ if (root) {
         const title = document.createElement('h4');
         const description = document.createElement('p');
         const titleText = document.createElement('span');
-        titleText.textContent = item.title;
+        serviceLabelParts(item.title).forEach(part => {
+          const phrase = document.createElement('span');
+          phrase.className = 'k-phrase';
+          phrase.textContent = part;
+          titleText.append(phrase);
+        });
         const icon = root!.querySelector<HTMLTemplateElement>(`template[data-diagnosis-icon="${item.id}"]`);
         if (icon) title.append(icon.content.cloneNode(true));
         title.append(titleText);

@@ -34,7 +34,7 @@ const recommendationGlyphs: Record<string, string> = { accounting: 'accounting',
             const questionIndex = diagnosisQuestions.indexOf(question);
             return (
               <fieldset class="diagnosis-question" data-diagnosis-question={id}>
-                <legend><span class="diagnosis-question-symbol" aria-hidden="true"><ToolGlyph category={questionGlyphs[id]} size={40}/><span class="diagnosis-question-number">{String(questionIndex + 1).padStart(2, '0')}</span></span><span>{question.title}<span class="diagnosis-required">必須</span></span></legend>
+                <legend><span class:list={["diagnosis-question-symbol", {"diagnosis-brand-question": id === "line"}]} aria-hidden="true"><ToolGlyph category={questionGlyphs[id]} size={40}/><span class="diagnosis-question-number">{String(questionIndex + 1).padStart(2, '0')}</span></span><span>{id === "line" ? <><span class="k-phrase">LINEを</span><span class="k-phrase">使いたいですか？</span></> : question.title}<span class="diagnosis-required">必須</span></span></legend>
                 <p id={`diagnosis-help-${id}`} class="diagnosis-question-help">{question.help}</p>
                 <div class:list={['diagnosis-options', { 'diagnosis-options-business': id === 'business' }]}>
                   {question.options.map((option) => (
@@ -257,4 +257,7 @@ const recommendationGlyphs: Record<string, string> = { accounting: 'accounting',
     .diagnosis-intro{gap:10px}.diagnosis-intro img{width:94px}.diagnosis-intro p{font-size:15px}.diagnosis-intro-guide{font-size:11px}
     .diagnosis-step-map{gap:6px}.diagnosis-step-map li{font-size:10px}
   }
+
+  .diagnosis-question-symbol.diagnosis-brand-question{flex:0 0 80px}
+  .diagnosis-brand-question .diagnosis-question-number{position:static;display:block;text-align:center;margin-top:0;padding:0;background:none}
 </style>

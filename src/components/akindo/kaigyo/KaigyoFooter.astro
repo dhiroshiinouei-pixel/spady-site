@@ -1,8 +1,10 @@
 ---
 import { kaigyoBase, updatedAt } from '../../../data/akindo/site';
+const dateLabel = updatedAt.split('-').map(Number);
+const updatedLabel = `${dateLabel[0]}年${dateLabel[1]}月${dateLabel[2]}日`;
 ---
 <footer class="k-footer"><div class="k-container">
   <div class="k-footer-top"><div><a class="k-brand" href={kaigyoBase}><span>AKINDO <span class="k-brand-lab">Lab</span><i aria-hidden="true"></i></span><small>開業準備</small></a><p class="k-footer-message">小さな商いに、次の一手。</p><p>小樽・銭函から、全国の小さな商いへ。<br/>企画・運営：Spady</p></div><nav aria-label="フッターナビゲーション"><div><strong>開業の準備をする</strong><a href={`${kaigyoBase}checklist/`}>開業準備チェックリスト</a><a href={`${kaigyoBase}diagnosis/`}>自分に必要なものを診断</a><a href={`${kaigyoBase}tools/`}>開業ツール一覧</a><a href={`${kaigyoBase}start/salon/`}>ひとりサロン開業ガイド</a></div><div><strong>AKINDO Labについて</strong><a href="/akindo/">勉強会・学びの場</a><a href="/about/">運営者情報</a><a href="/contact/">必要なところだけ相談する</a><a href="/">Spady公式サイト</a></div></nav></div>
-  <div class="k-footer-notes"><p>このサービスは一般的な準備の目安を提供します。税務・法律・許認可は行政機関や専門家へ、ツールの料金・利用条件は各公式サイトへご確認ください。</p><p>進捗はお使いのブラウザに保存されます。端末・ブラウザの変更や閲覧データの削除で引き継がれない場合があります。サーバーへ進捗や診断の回答を送信しません。</p></div>
-  <div class="k-footer-bottom"><small>© {new Date().getFullYear()} Spady</small><span>情報更新：<time datetime={updatedAt}>2026年11月6日</time></span><a href="/privacy/">プライバシーポリシー</a><a href="#main">先頭へ ↑</a></div>
+  <div class="k-footer-notes"><p>このサービスは一般的な準備の目安を提供します。税務・法律・許認可は行政機関や専門家へ、ツールの料金・利用条件は各公式サイトへご確認ください。</p><p>進捗はお使いのブラウザに保存されます。端末・ブラウザの変更や閲覧データの削除で引き継がれない場合があります。サーバーへ進捗や診断の回答を送信しません。</p><p>掲載のサービス名・ロゴは各権利者に帰属します。Googleの名称・製品ロゴはGoogle LLCに帰属します。サービスの紹介を目的とした掲載であり、各社とAKINDO Labの提携・推奨を示すものではありません。</p></div>
+  <div class="k-footer-bottom"><small>© {new Date().getFullYear()} Spady</small><span>情報更新：<time datetime={updatedAt}>{updatedLabel}</time></span><a href="/privacy/">プライバシーポリシー</a><a href="#main">先頭へ ↑</a></div>
 </div></footer>
