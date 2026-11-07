@@ -18,6 +18,8 @@
 | Studio | `studio-wordmark.svg` | [Studio ブランドページ](https://studio.design/ja/brandbook) のヘッダー原本 [s-80x17_b5c1ab9c-6742-40f1-8fad-48d23bafba5b.svg](https://storage.googleapis.com/studio-design-asset-files/projects/BVqXjjLVWR/s-80x17_b5c1ab9c-6742-40f1-8fad-48d23bafba5b.svg) |
 | Googleビジネスプロフィール | `google-business-profile.svg` | [公式製品ページ](https://business.google.com/jp/business-profile/) の [192px.svg](https://www.gstatic.com/images/branding/productlogos/google_my_business/v7/192px.svg)。原本を使用。個別承認は未取得（下記参照） |
 | Google スプレッドシート | `google-sheets.svg` | [公式製品ページ](https://workspace.google.com/products/sheets/) の [2026 Q3版192px.svg](https://www.gstatic.com/images/branding/productlogos/sheets_2026q3/v1/web/192px.svg)。原本を使用。個別承認は未取得（下記参照） |
+| L Message（エルメ） | `l-message.png` | [L Message公式サイト](https://lme.jp/) のヘッダー原本 [logo.png](https://lme.jp/img/common/logo.png)。1409 × 266pxのPNGを無改変で使用 |
+| エルグラム | `lgram.webp` | [エルグラム公式サイト](https://lgram.jp/) のヘッダーsrcsetにある [480px配信用ロゴ](https://lgram.jp/lp-assets/b-b5ae110858cb/speed-images/header-lgram-type-transparent-f41de955ead6-480.webp)。480 × 119pxのWebPを無改変で使用 |
 
 ### 加工と寸法
 
@@ -33,6 +35,7 @@
 - **Square**：公式プレス素材は編集・報道用途です。今回の中立的なサービス紹介に使い、提携バッジにはしません。2025年版プレスロゴの数値による余白条件は未確認です。別途公開されている開発者向け連携ロゴの規定とは混同しません。
 - **STORES**：メインロゴは基準サイズXに対し四辺X/2以上、シンボルはX/6以上の余白。公開ページの最小サイズは印刷用の数値であり、画面用の数値は示されていません。囲み、影、色変更、反転、変形、要素の追加は禁止されています。STORESのロゴとサービス名「STORES 予約」を並べ、ロゴに「予約」を描き足しません。
 - **Studio**：現行の `/Studio` ロゴを公式ブランドページから取得しました。数値による余白・最小サイズや独立した公開配布キットは未確認です。公式ページ上の原本であることと、個別の利用許諾を取得したことは区別します。
+- **L Message・エルグラム**：各公式サイトのヘッダーで使われているシンボルと文字を組み合わせたロゴです。LINE・Instagramのロゴで代用せず、シンボルの切り出しや文字の描き足しは行いません。数値による余白・最小サイズや独立した配布キットは未確認です。公式原本の出典確認と、個別の利用許諾を取得したことは区別します。画像取得にはトラッキングパラメーターのない公式URLを使用しました。
 
 ## 使用許諾の確認事項
 
@@ -56,5 +59,7 @@ Googleの現在の公開案内は [Partner Marketing Hub](https://partnermarketi
 | LINEブランドPNG | `5e93437eb5ec0dcdece92d1562fcd435d1d521cca5c013d2d9e15b544a1d8a39` |
 | GoogleビジネスプロフィールSVG | `9dfa724a7e8b1066a83cbd487cf6b4177cb477d3589322c98eeb2d4dc5847bb9` |
 | Google スプレッドシートSVG | `3dd989706d03cf9ed780beb45af592bb46aa777edcc18543ea0764463ec936d2` |
+| L Message PNG | `49b0ce0f19f54a8f0f26d4f085bd796dad916998e4f9da8ff9a728f4a7898267` |
+| エルグラム WebP | `f41de955ead6f907c42b8bf143ec929e4d97dfbcfcc48d85eb1ecd19dc794ff9` |
 
 PNG縮小版のハッシュは原本とは異なります。配布元の規約やロゴは更新されるため、差し替え時には上記公式ページで再確認してください。

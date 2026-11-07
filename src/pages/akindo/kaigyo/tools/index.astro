@@ -1,8 +1,10 @@
 ---
 import KaigyoLayout from '../../../../layouts/KaigyoLayout.astro';
+import { tools } from '../../../../data/akindo/tools';
 import ToolsApp from '../../../../components/akindo/kaigyo/ToolsApp.astro';
 import BusinessFlow from '../../../../components/akindo/kaigyo/BusinessFlow.astro';
 import ToolGlyph from '../../../../components/akindo/kaigyo/ToolGlyph.astro';
+const hasAffiliateLinks = tools.some(tool => tool.status !== 'draft' && tool.affiliateUrl);
 const selectionSteps = [
   { glyph: 'target', title: '困りごとをひとつ決める', description: '「予約の往復を減らす」など、道具で解決したいことを具体的に。' },
   { glyph: 'checklist', title: 'いまある機能を確かめる', description: '決済や予約に顧客管理が含まれることも。役割の重複を減らします。' },
@@ -12,8 +14,8 @@ const selectionSteps = [
 <KaigyoLayout title="開業に必要なツール一覧｜会計・決済・予約・LINE｜AKINDO Lab" description="会計、決済、予約、LINE、ホームページなど、開業に必要な道具を目的と導入タイミングから整理。向いている使い方と急がなくてもよい場合を確認できます。" pageTitle="いまの商いに、合う道具を。" eyebrow="開業ツール一覧" intro="まずは整えたいことを選んでみましょう。用途と始めどきから、必要な道具を探せます。" compactHeading headingIllustration="tools-workbench-v3" headingIllustrationAlt="会計帳簿、予約カレンダー、決済端末など、商いに使う道具を並べた作業机のイラスト" active="tools" breadcrumbs={[{label:'開業準備',href:'/akindo/kaigyo/'},{label:'開業ツール一覧'}]}>
   <div class="k-container tools-content">
     <aside class="tools-disclosure" aria-label="掲載情報と広告について">
-      <p><strong>掲載情報と広告について</strong> 当サイトには広告・アフィリエイトリンクが含まれる場合があります。掲載の有無や報酬額だけで、おすすめを決めることはありません。</p>
-      <details><summary>現在は公式リンクのみ掲載。料金・掲載情報について</summary><p>料金・無料プラン・利用条件は公式サイトで確認してください。「公式URL確認日」はリンクとサービス概要の確認日で、料金の確認日ではありません。</p></details>
+      <p><strong>掲載情報と広告について</strong> {hasAffiliateLinks ? '当サイトには広告・アフィリエイトリンクが含まれています。' : '当サイトには広告・アフィリエイトリンクが含まれる場合があります。'}掲載の有無や報酬額だけで、おすすめを決めることはありません。</p>
+      <details><summary>広告リンク・料金・掲載情報について</summary>{hasAffiliateLinks && <p>「広告」と表示したリンクを経由した申込みなどにより、運営者に報酬が発生する場合があります。各サービスには、紹介コードを含まない公式サイトへのリンクも併記しています。</p>}<p>料金・無料プラン・利用条件は公式サイトで確認してください。「公式URL確認日」はリンクとサービス概要の確認日で、料金の確認日ではありません。</p></details>
     </aside>
     <ToolsApp/>
     <details class="tool-selection">

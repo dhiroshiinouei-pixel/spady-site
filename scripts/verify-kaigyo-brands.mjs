@@ -106,7 +106,22 @@ try {
     await capture('#discovery', 'checklist-discovery', width);
 
     await visit('tools/');
-    await inspect('tools', width, ['instagram', 'line', 'google-business']);
+    await inspect('tools', width, ['instagram', 'line', 'google-business', 'l-message', 'lgram']);
+    // Validate affiliate markup without visiting the tracking destinations.
+    const affiliateLinks = {'l-message':'https://lme.jp?ucode=YJlq1DkYrR6B', lgram:'https://lgram.jp?ucode=eaNArJo9qyE2'};
+    assert.equal(await page.locator('a[rel~=sponsored]').count(), 2);
+    assert.match(await page.locator('.tools-disclosure').textContent(), /アフィリエイトリンクが含まれています/);
+    assert.doesNotMatch(await page.locator('.tools-disclosure').textContent(), /現在は公式リンクのみ/);
+    for (const [id, href] of Object.entries(affiliateLinks)) {
+      const card = page.locator(`#${id}`);
+      const ad = card.locator('a[rel~=sponsored]');
+      assert.equal(await ad.getAttribute('href'), href);
+      assert((await ad.getAttribute('rel')).split(' ').includes('nofollow'));
+      assert.match(await ad.textContent(), /広告/);
+      assert(await card.locator('.tool-ad-label').isVisible());
+      assert.equal(await card.locator('.tool-actions .k-link').getAttribute('href'), new URL(href).origin + '/');
+      await capture(`#${id}`, `tools-affiliate-${id}`, width);
+    }
     await capture('.tool-filters', 'tools-filters', width);
     for (let index = 0; index < 3; index++) {
       const card = page.locator('.tool-result:visible').nth(index);

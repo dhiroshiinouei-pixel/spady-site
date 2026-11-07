@@ -8,6 +8,8 @@ export const serviceBrands = {
   square: { file: 'square-wordmark.svg', name: 'Square', width: 120, height: 30.09, padding: 20 },
   stores: { file: 'stores-web-wordmark.svg', name: 'STORES', width: 128, height: 27.58, padding: 20 },
   studio: { file: 'studio-wordmark.svg', name: 'Studio', width: 120, height: 25.5, padding: 20 },
+  'l-message': { file: 'l-message.png', name: 'L Message', width: 144, height: 27.19, padding: 20 },
+  lgram: { file: 'lgram.webp', name: 'エルグラム', width: 144, height: 35.7, padding: 20 },
 } as const;
 
 export type ServiceBrandId = keyof typeof serviceBrands;
@@ -23,6 +25,7 @@ export function serviceLabelParts(label: string): string[] {
     { name: 'Googleビジネスプロフィール', parts: ['Google', 'ビジネス', 'プロフィール'] },
     { name: 'LINE公式アカウント', parts: ['LINE公式', 'アカウント'] },
     { name: 'Instagram', parts: ['Instagram'] },
+    { name: 'L Message', parts: ['L Message'] },
   ];
   const service = names.find(item => label.startsWith(item.name));
   return service ? [...service.parts, label.slice(service.name.length)].filter(Boolean) : [label];

@@ -103,8 +103,8 @@ try{
   assert.equal(await page.locator('[data-tool-category]:visible').getAttribute('id'),'stores-reserve');
   await page.locator('[data-category="line"]').focus();await page.keyboard.press('Enter');
   assert.equal(await page.locator('[data-category="line"]').getAttribute('aria-pressed'),'true');
-  assert.equal(await page.locator('[data-tool-category]:visible').getAttribute('id'),'line-official');
-  await page.locator('.tool-result:visible details summary').focus();await page.keyboard.press('Enter');assert(await page.locator('.tool-result:visible details').getAttribute('open')!==null);
+  assert.deepEqual(await page.locator('[data-tool-category]:visible').evaluateAll(cards => cards.map(card => card.id)),['line-official','l-message']);
+  await page.locator('#line-official details summary').focus();await page.keyboard.press('Enter');assert(await page.locator('#line-official details').getAttribute('open')!==null);
   await page.goto(base+'/akindo/kaigyo/tools/#square');assert.equal(await page.locator('[data-tool-category]:visible').getAttribute('id'),'square');
   await page.goto(base+'/akindo/kaigyo/start/salon/#permissions');
   await page.locator('#permissions details summary').focus();await page.keyboard.press('Enter');assert(await page.locator('#permissions details').getAttribute('open')!==null);
