@@ -1,0 +1,37 @@
+---
+import {metaAdsSetup as service} from '../../data/meta-ads-setup';
+import Cta from './Cta.astro';
+---
+<div class="line-reservation">
+  <img src="/home/line.svg" width="48" height="48" alt="LINE" loading="lazy"/>
+  <p class="eyebrow">相談日時はLINEで調整</p>
+  <h3><span class="phrase">まずはLINEから、</span><span class="phrase">相談のご予約を。</span></h3>
+  <p>Spadyの公式LINEを開き、<strong>「Meta広告の初期設定について相談したい」</strong>とお送りください。</p>
+  <ol aria-label="LINEでの予約の流れ">
+    <li><span>01</span><div><strong>公式LINEを開く</strong><p>初めての方は友だち追加をお願いします。</p></div></li>
+    <li><span>02</span><div><strong>希望日時と状況を送る</strong><p>ご希望の日程と、お困りのことをお知らせください。</p></div></li>
+    <li><span>03</span><div><strong>相談日時を確認する</strong><p>状況と対応範囲を確認し、相談日時をご案内します。</p></div></li>
+  </ol>
+  <p class="line-hours"><span class="phrase">オンライン相談：</span><span class="phrase">{service.consultationHours.split('（')[0]}</span><span class="phrase">（日本時間）</span></p>
+  <Cta placement="final"/>
+  <p class="cta-note">{service.ctaNoteParts.map(part=><span class="phrase">{part}</span>)}</p>
+  <p class="small-note">ボタンを押すだけでは予約は確定しません。LINEでのご案内をご確認ください。</p>
+  <p class="small-note">パスワード、二段階認証コード、カード番号・セキュリティコードは送らないでください。</p>
+</div>
+<style>
+  .line-reservation{padding:36px;background:#fff;border:1px solid #ceded6;border-top:4px solid #087b45;border-radius:6px;min-width:0}
+  .line-reservation>img{margin-bottom:22px}
+  .line-reservation .eyebrow{color:#087b45;margin-bottom:12px}
+  h3{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.65;margin-bottom:18px}
+  .line-reservation>p{font-size:.9375rem}
+  ol{list-style:none;padding:0;margin:28px 0}
+  li{display:flex;gap:16px;padding:18px 0;border-top:1px solid #e0e7e3}
+  li>span{flex:0 0 1.7em;white-space:nowrap;font-size:.85rem;font-weight:700;color:#087b45;padding-top:3px}
+  li>div{min-width:0}
+  li p{font-size:.875rem;color:var(--muted);margin-top:5px}
+  .line-hours{font-weight:650;margin:0 0 20px}
+  .line-reservation :global(.primary-cta){width:100%}
+  .line-reservation .cta-note{text-align:center;margin-top:12px;font-size:.875rem}
+  .line-reservation .small-note{font-size:.875rem}
+  @media(max-width:599px){.line-reservation{padding:26px 20px}}
+</style>

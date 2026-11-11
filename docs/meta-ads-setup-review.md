@@ -1,5 +1,80 @@
 # Meta広告 初期設定サポート LP 確認資料
 
+## 現在の導線：LINEで予約する
+
+公開URLは `https://spady.net/meta-ads-setup/`。最新の依頼「フォーム送信ではなく、LINEで予約する」に合わせ、ヘッダー・ファーストビュー・料金・最終案内・スマホ追従の主CTAを **「LINEで予約する」** に統一しました。既存GitHub main → Cloudflare Pagesの公開経路を使用します。
+
+遷移先は既存のSpady公式LINEで使用している `https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry` です。企業サイトのお問い合わせ・ホーム・集客支援ページと同じURLを使用し、AKINDO Lab用の登録先は流用しません。
+
+LP内の入力フォームとカレンダー選択画面を撤去し、LINEでの連絡から相談日時を調整する案内へ変更します。リンクのクリックや友だち追加を予約確定として表示・計測しません。LINE上の自動予約、Google Calendar登録、Sheets記録、Lark通知の接続を新たに行った扱いにはしません。
+
+相談・日時調整の時点で契約・支払いは発生しません。LINE構築・LP制作などの追加サービス購入は引き続き任意です。33,000円（税込）、45分の操作説明、提供範囲、法的文書、支払い条件は変更していません。
+
+## 今回の主な変更ファイル
+
+- `src/pages/meta-ads-setup.astro` — フォームをLINE予約案内へ変更。ご利用の流れ・相談案内の文言を調整。
+- `src/data/meta-ads-setup.ts` — CTA・LINE URL・流れ・注記・計測設定を集約。
+- `src/components/meta-ads/Cta.astro` — 全主CTAのリンクを共通化。
+- `src/components/meta-ads/LineReservation.astro` — 公式LINEでの相談・日時調整の案内。
+- `src/styles/meta-ads-setup.css` — LINE案内とCTAのレスポンシブ表示。
+- `src/scripts/meta-ads-setup.ts` — 同意時のLINE CTAクリック計測と追従CTA制御。フォーム送信・予約APIを呼び出さない。
+- `scripts/verify-meta-ads.mjs` — 表示幅、LINEリンク、フォーム不在、FAQ、Cookie、CTA計測の確認用。外部LINEへの実送信やOGPの再生成を行わない。
+- `README.md` / 本資料 — 現在のLINE導線と旧フォーム実装の履歴を区別。
+
+以前の `ConsultationForm.astro` と `src/scripts/meta-ads-booking.ts` は削除しました。`functions/api/meta-ads-setup.js`、`functions/api/meta-ads-booking.js`、既存一般予約APIとそのテストは保持しますが、現在のLPから呼び出す導線はありません。
+
+## 起動方法
+
+```sh
+npm run dev -- --host 127.0.0.1 --port 4330
+```
+
+確認URL: `http://127.0.0.1:4330/meta-ads-setup/`。静的ビルドは `npm run build`、ビルド後は `python3 -m http.server 4331 --bind 127.0.0.1 --directory dist` で確認できます。LINEへの外部リンクはプレビューでも本番URLを参照します。クリックだけでは予約確定や通知送信は発生しません。
+
+この環境で利用するNode: `/Users/hiroshiinoue/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node`
+
+```sh
+node node_modules/astro/astro.js build
+node node_modules/.pnpm/typescript@5.9.3/node_modules/typescript/bin/tsc -p tsconfig.meta-ads.json
+```
+
+## 現在の計測
+
+- 既存 `SiteConsent.astro`、Cookie同意キー、GTM `GTM-NV5VRH3G` を再利用。新しい計測IDは作成しません。
+- 同意かつ既存GTMの読み込み時だけ `meta_setup_cta_click` を送信。固定値 `service: meta_ads_setup`、`destination: line`、配置名のみを付与。
+- 配置名は `header` / `hero` / `pricing` / `final` / `sticky`。氏名・メール・自由記述・受付ID・URLパラメータ・UTMを送信しません。
+- フォーム入力開始・受付成功・受付失敗のイベントは現在のLPから発火しません。LINEリンクのクリックを予約完了や問い合わせ完了へ転用しません。
+- スマホ追従CTAはファーストビュー・最終案内・Cookie同意画面の表示中に非表示。LP上で個人情報を入力・永続保存する処理はありません。
+
+## 現在の残作業
+
+- [ ] **LINE側の実予約確認**：公式LINEへ移動後、実際に相談日時を調整・確定する運用を確認。友だち追加だけでは予約は確定しません。
+- [ ] **計測設定**：既存GTMでCTAクリックを必要な集計先へ対応付け。LINE側の予約完了を計測する場合は、実際の完了を確認できる別の連携設計が必要です。
+- [x] **最終公開URL**：`https://spady.net/meta-ads-setup/`。canonical・OGP URL・サイトマップに設定済み。
+- [ ] **操作ガイド**：共通ガイドを別タスクで制作・内容確認。架空のダウンロードリンクはありません。
+- [ ] **正式申込み・支払い方法**：対応可否確認後の案内文と受付方法を事業者が確定。
+- [ ] **納期**：必要情報・権限・素材がそろった後の進め方と日程案内方法を確定。
+- [ ] **キャンセル・返金・作業中断時の条件**：Metaの審査・制限で進められない場合も含めて事業者が確定。
+- [ ] **規約との整合**：既存 `/terms/`、`/cancellation/`、`/legal/` とサービス条件を確認。`/legal/` は既存の「公開前確認中の草案」のまま。今回の変更で法的文書を改変していません。
+
+## 今回のLINE導線変更の検証
+
+変更前のフォーム・カレンダーのテスト結果を、今回のLINE予約導線の検証済み証拠として扱いません。
+
+- Astroビルド・LPのTypeScript型チェック：成功。
+- SEO検査4件、企業サイト・リンク検査8件：成功。実ブラウザーで主CTA5箇所のLINE URL一致、フォーム0件を確認。
+- ブラウザー内のレスポンシブ確認用iframeで320・390・768・1440px幅のLINE案内、390px幅のファーストビューを目視確認。各幅で横スクロールなし。手順番号と320px幅の見出しの折り返しを修正し、320px幅で再確認済み。実機検証とは別の確認です。
+- 既存公式LINEリンクのHTTP 200応答を確認。
+- `scripts/verify-meta-ads.mjs` はLINE導線に合わせて更新し、Node構文確認に成功。この更新時に同スクリプトのPlaywright実行は行っていない。
+- LINE内での実予約、友だち追加、メッセージ送信、GTM/GA4での実受信確認：未実施。
+- 実機端末での検証、全Astroテンプレートの `astro check`：未実施。
+
+---
+
+## 以下は旧フォーム・カレンダー導線の履歴
+
+**以下はLINE切り替え前の実装・検証記録です。現在のLP利用者にGoogle Calendar・Sheets・Larkが自動連携されることを示すものではありません。旧フォーム用のAPI・管理基盤は維持しますが、今回の変更では呼び出しません。**
+
 ## 状態
 
 公開URLは `https://spady.net/meta-ads-setup/`。既存GitHub main → Cloudflare Pagesの公開経路を使用。追加依頼により、実績表示・45分への変更・既存予約連携・専用受付シートへの記録を実装。今回の更新では、提供された参考画像に合わせたファーストビューと、受付完了後にLP内で相談日時を選ぶ導線を追加。法的文書・支払い条件は変更しません。

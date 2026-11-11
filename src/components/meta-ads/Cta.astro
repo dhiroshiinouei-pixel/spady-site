@@ -3,4 +3,4 @@ import {metaAdsSetup as service} from '../../data/meta-ads-setup';
 import Icon from './Icon.astro';
 const {placement='body',compact=false}=Astro.props;
 ---
-<a href="#consultation" class:list={['primary-cta',{'compact':compact}]} data-setup-cta={placement}><span>{service.cta}</span><Icon name="arrow"/></a>
+<a href={service.lineUrl} target="_blank" rel="noopener noreferrer" class:list={['primary-cta','line-cta',{'compact':compact}]} data-setup-cta={placement}><span>{service.cta}</span><Icon name="arrow"/><span class="sr-only">（新しいタブで開きます）</span></a>

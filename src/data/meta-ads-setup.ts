@@ -14,16 +14,17 @@ export const metaAdsSetup = {
   profileExpertise: ['Meta広告', 'LINE公式・エルメ', 'Web・LP制作'],
   profileDescription: 'Meta広告の初期設定に加え、LINE公式アカウント・エルメの構築、Web・LP制作まで。広告・LINE・Webの実務経験をもとに、事業の課題に合わせた支援をご相談いただけます。',
   profileScopeNote: 'LINE構築・Web・LP制作は別途お見積もりです。初期設定サービスだけのご利用も可能です。',
-  // 公開承認済みのURL。相談受付は既存Cloudflare Pagesの通知基盤を再利用。
+  // 公開承認済みのURL。予約導線は既存Spady公式LINEへ統一。
   canonical: 'https://spady.net/meta-ads-setup/' as string | null,
   noindex: false,
-  cta: '初期設定について相談する', secondaryCta: 'サービス内容を見る',
-  ctaNote: '送信時点で、ご契約・お支払いは発生しません。',
-  ctaNoteParts: ['送信時点で、', 'ご契約・お支払いは', '発生しません。'],
+  cta: 'LINEで予約する', secondaryCta: 'サービス内容を見る',
+  ctaNote: 'ご相談・ご予約の時点で、ご契約・お支払いは発生しません。',
+  ctaNoteParts: ['ご相談・ご予約の時点で、', 'ご契約・お支払いは', '発生しません。'],
+  lineUrl: 'https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry',
+  consultationHours: '平日10:00〜17:00（日本時間）',
   contactEmail: 'info@spady.net',
-  form: { endpoint: '/api/meta-ads-setup', version: 'meta-ads-setup-v1', acceptingInquiries: true },
   // 既存SiteConsentのGTMのみ利用。新しい計測ID・UTM保存は追加しない。
-  tracking: { enabled: true, events: { cta: 'meta_setup_cta_click', start: 'meta_setup_form_start', success: 'meta_setup_inquiry_success', failure: 'meta_setup_inquiry_failure' } },
+  tracking: { enabled: true, events: { cta: 'meta_setup_cta_click' } },
   links: [
     {label:'事業者情報',href:'/about/'}, {label:'プライバシーポリシー',href:'/privacy/'},
     {label:'利用規約',href:'/terms/'}, {label:'キャンセル条件',href:'/cancellation/'},
@@ -47,7 +48,7 @@ export const extras = [
   '複雑な既存環境の整理など、標準範囲を超える作業',
 ];
 export const steps = [
-  ['フォームからご相談','現在の状況をお知らせください。初期設定の相談・対応可否確認を受け付けます。'],
+  ['LINEで相談を予約','Spadyの公式LINEから、ご希望の日程と現在の状況をお知らせください。相談日時を調整します。'],
   ['アカウントとご依頼内容を事前確認','現在の設定・権限、過去と現在の制限状況、ご希望の内容を確認します。'],
   ['正式なお手続きのご案内','対応可能な場合に、正式な申込み・支払い・準備事項をご案内します。'],
   ['初期設定・広告1件の入稿','初期環境と最初の広告を設定し、今回の設定範囲をチェックします。'],
