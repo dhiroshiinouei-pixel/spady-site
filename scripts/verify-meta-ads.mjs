@@ -9,6 +9,7 @@ await mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true,channel:'chrome'});
 const context=await browser.newContext({reducedMotion:'reduce'});
 await context.route(/googletagmanager|google-analytics|facebook\.com\/tr/,route=>route.fulfill({status:200,body:''}));
+await context.route('**/api/booking/availability',route=>route.fulfill({status:503,contentType:'application/json',body:'{"error":"mock unavailable"}'}));
 const page=await context.newPage();
 const errors=[];
 page.on('pageerror',e=>errors.push(e.message));
@@ -49,7 +50,7 @@ try{
    await page.locator('#setup-industry').selectOption('学習塾');await page.locator('input[name="restriction_current"][value="分からない"]').check();await page.locator('input[name="restriction_history"][value="あり"]').check();
    for(const name of ['pixel_scope','no_recovery','consent'])await page.locator(`input[name="${name}"]`).check();
  };
- let posts=0;await page.route('**/api/contact?*',async route=>{posts++;await route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({ok:false})});});
+ let posts=0;await page.route('**/api/meta-ads-setup',async route=>{posts++;await route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({ok:false})});});
  await page.locator('.form-submit').click();assert.equal(posts,0);assert(!(await page.locator('#setup-company').evaluate(e=>e.validity.valid)));
  await page.locator('#setupForm').evaluate(e=>e.dataset.accepting='false');
  await fill();await page.locator('.form-submit').click();await page.waitForFunction(()=>document.querySelector('#setupStatus').dataset.state==='preview');assert.equal(posts,0);assert.match(await page.locator('#setupStatus').textContent(),/入力内容は送信されていません/);
@@ -59,8 +60,8 @@ try{
  assert.equal(await page.evaluate(()=>(window.dataLayer||[]).filter(e=>e.event==='meta_setup_inquiry_success').length),0);
  // Consent given: existing GTM loader only; its request is intercepted above.
  await page.evaluate(()=>localStorage.setItem('spady_cookie_consent','granted'));await page.reload({waitUntil:'domcontentloaded'});await fill();await page.locator('#setupForm').evaluate(e=>e.dataset.accepting='true');
- await page.unroute('**/api/contact?*');
- await page.route('**/api/contact?*',async route=>{posts++;await new Promise(r=>setTimeout(r,350));await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({ok:true,request_id:'mock-accepted-only'})});});
+ await page.unroute('**/api/meta-ads-setup');
+ await page.route('**/api/meta-ads-setup',async route=>{posts++;await new Promise(r=>setTimeout(r,350));await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({ok:true,request_id:'mock-accepted-only'})});});
  const before=posts;
  await page.locator('#setupForm').evaluate(e=>{e.requestSubmit();e.requestSubmit();});
  await page.waitForFunction(()=>document.querySelector('#setupStatus').dataset.state==='success');assert.equal(posts,before+1);
@@ -70,8 +71,8 @@ try{
  assert(!JSON.stringify(tracking).includes('qa@example.com'));assert(!JSON.stringify(tracking).includes('QA教室'));assert(!JSON.stringify(tracking).includes('動作確認'));
  assert.equal(await page.locator('#setup-email').inputValue(),'');assert(await page.locator('.form-submit').isDisabled());
  // A nominal HTTP 200 with no actual acceptance must remain a failure.
- await page.reload({waitUntil:'domcontentloaded'});await fill();await page.locator('#setupForm').evaluate(e=>e.dataset.accepting='true');await page.unroute('**/api/contact?*');
- await page.route('**/api/contact?*',route=>route.fulfill({status:200,contentType:'application/json',body:'{"ok":true}'}));await page.locator('.form-submit').click();await page.waitForFunction(()=>document.querySelector('#setupStatus').dataset.state==='error');
+ await page.reload({waitUntil:'domcontentloaded'});await fill();await page.locator('#setupForm').evaluate(e=>e.dataset.accepting='true');await page.unroute('**/api/meta-ads-setup');
+ await page.route('**/api/meta-ads-setup',route=>route.fulfill({status:200,contentType:'application/json',body:'{"ok":true}'}));await page.locator('.form-submit').click();await page.waitForFunction(()=>document.querySelector('#setupStatus').dataset.state==='error');
  assert.equal(await page.evaluate(()=>(window.dataLayer||[]).filter(e=>e.event==='meta_setup_inquiry_success').length),0);
  // Mobile bar never overlays form or consent, including when cookie settings reopen.
  await page.setViewportSize({width:390,height:844});await page.reload({waitUntil:'domcontentloaded'});await page.locator('#service').scrollIntoViewIfNeeded();await page.waitForTimeout(150);assert(await page.locator('#setupSticky').isVisible());
@@ -88,6 +89,6 @@ try{
  await mkdir(new URL('../public/meta-ads-setup/',import.meta.url),{recursive:true});
  const og=await context.newPage({viewport:{width:1200,height:630}});await og.setViewportSize({width:1200,height:630});
  const logo=await readFile(new URL('../public/logo.png',import.meta.url));
- await og.setContent(`<!doctype html><html lang="ja"><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;width:1200px;height:630px;background:#f8f7f3;color:#172d48;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;padding:50px 65px;border-bottom:16px solid #2157be}header{display:flex;align-items:center;gap:20px;font-size:24px;font-weight:700}img{width:65px;height:65px}h1{font-size:52px;line-height:1.5;margin:36px 0 22px;letter-spacing:-.03em}em{color:#2157be;font-style:normal}.bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #cbd6e4;padding-top:25px}.price{font-size:60px;font-weight:750}.price span{font-size:22px;margin-left:10px}.info{font-size:23px;line-height:1.8;text-align:right}.note{font-size:17px;margin-top:10px;color:#536174}</style><header><img src="data:image/png;base64,${logo.toString('base64')}">Meta広告 初期設定サポート</header><h1>Meta広告の初期設定は、<em>専門家に。</em><br>その後の基本操作は、<em>自社で。</em></h1><div class="bottom"><div class="price">33,000<span>円（税込）</span></div><div class="info">買い切り・月額契約不要<br>広告1件の入稿＋60分の操作説明</div></div><p class="note">全国オンライン対応 ／ 広告費別途・素材はお客様にご用意いただきます。</p></html>`);
+ await og.setContent(`<!doctype html><html lang="ja"><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;width:1200px;height:630px;background:#f8f7f3;color:#172d48;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;padding:50px 65px;border-bottom:16px solid #2157be}header{display:flex;align-items:center;gap:20px;font-size:24px;font-weight:700}img{width:65px;height:65px}h1{font-size:52px;line-height:1.5;margin:36px 0 22px;letter-spacing:-.03em}em{color:#2157be;font-style:normal}.bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #cbd6e4;padding-top:25px}.price{font-size:60px;font-weight:750}.price span{font-size:22px;margin-left:10px}.info{font-size:23px;line-height:1.8;text-align:right}.note{font-size:17px;margin-top:10px;color:#536174}</style><header><img src="data:image/png;base64,${logo.toString('base64')}">Meta広告 初期設定サポート</header><h1>Meta広告の初期設定は、<em>専門家に。</em><br>その後の基本操作は、<em>自社で。</em></h1><div class="bottom"><div class="price">33,000<span>円（税込）</span></div><div class="info">買い切り・月額契約不要<br>広告1件の入稿＋45分の操作説明</div></div><p class="note">全国オンライン対応 ／ 広告費別途・素材はお客様にご用意いただきます。</p></html>`);
  await og.evaluate(()=>document.fonts.ready);await og.screenshot({path:new URL('../public/meta-ads-setup/og.png',import.meta.url).pathname});
 }catch(error){console.log('BROWSER DEBUG',JSON.stringify({errors,invalid:await page.locator(':invalid').evaluateAll(els=>els.map(e=>({tag:e.tagName,name:e.name,message:e.validationMessage}))),state:await page.locator('#setupStatus').textContent()}));throw error;}finally{await browser.close();}

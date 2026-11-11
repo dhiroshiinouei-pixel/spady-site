@@ -68,4 +68,4 @@ node scripts/render-social.mjs
 
 ## Meta広告 初期設定サポート LP
 
-`/meta-ads-setup/` に買い切り33,000円・60分の操作説明付きの初期設定LPを追加しました。公開承認により canonical・検索登録・相談受付を有効にしています。設定は `src/data/meta-ads-setup.ts`、提供範囲・実装一覧・検証方法・公開前条件は [LP確認資料](docs/meta-ads-setup-review.md) を参照してください。既存の法的文書は変更していません。既存Lark基盤のHTTP・アプリ応答が成功した場合のみ受付完了となります。実通知による受信確認は未実施です。
+`/meta-ads-setup/` に買い切り33,000円・45分の操作説明付きの初期設定LPを追加しました。公開承認により canonical・検索登録・相談受付を有効にしています。設定は `src/data/meta-ads-setup.ts`、提供範囲・実装一覧・検証方法・公開前条件は [LP確認資料](docs/meta-ads-setup-review.md) を参照してください。既存の法的文書は変更していません。専用受付APIが既存予約サービスのD1へ受付と通知ジョブを保存した場合のみ受付完了となります。Lark・Google Sheetsへ非同期で通知・記録します。Googleの再認可・受付シートの設定と、実通知・実記録の確認は未完了です。

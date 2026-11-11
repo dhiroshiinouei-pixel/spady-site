@@ -3,10 +3,10 @@ import {metaAdsSetup as service, industries, restrictions} from '../../data/meta
 const acceptingInquiries = service.form.acceptingInquiries && !import.meta.env.DEV;
 ---
 <div class="consultation-form">
-  <div class="form-heading"><span class="eyebrow">ご相談・対応可否の確認</span><h3>現在の状況をお聞かせください。</h3><p>詳しい権限・素材・予算などは、受付後に確認します。</p></div>
+  <div class="form-heading"><span class="eyebrow">ご相談・対応可否の確認</span><h3>現在の状況をお聞かせください。</h3><p>詳しい権限・素材・予算などは、受付後に確認します。</p><p>オンライン相談の対応時間：平日10:00〜17:00（日本時間）<br/>フォームは時間外も送信いただけます。</p></div>
   {!acceptingInquiries&&<aside class="preview-notice"><strong>開発プレビュー：フォーム受付は停止中です。</strong><p>入力・確認操作をお試しいただけますが、相談内容は送信されません。公開前に送信先との接続確認が必要です。</p></aside>}
   <form id="setupForm" method="POST" action={service.form.endpoint} data-accepting={String(acceptingInquiries)}>
-    <input type="hidden" name="form_version" value={service.form.version}/><input type="hidden" name="topic" value={service.name}/><input type="hidden" name="form_started_at" value=""/>
+    <input type="hidden" name="form_version" value={service.form.version}/><input type="hidden" name="topic" value={service.name}/><input type="hidden" name="form_started_at" value=""/><input type="hidden" name="id" value=""/>
     <div class="honeypot" aria-hidden="true"><label>この項目は空のままにしてください<input name="website" tabindex="-1" autocomplete="off"/></label></div>
     <p class="form-required-note"><span class="required">必須</span> の項目をご入力ください。</p>
     <fieldset id="setupFields"><legend class="sr-only">ご相談内容</legend>
@@ -29,4 +29,17 @@ const acceptingInquiries = service.form.acceptingInquiries && !import.meta.env.D
     <noscript><p class="preview-notice">このフォームにはJavaScriptが必要です。入力内容は送信されていません。JavaScriptを有効にしてご利用ください。</p></noscript>
     <div id="setupStatus" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></div>
   </form>
+  <div id="setupBooking" class="setup-booking" hidden>
+    <h3>事前相談の日程について</h3>
+    <p id="setupBookingStatus" role="status">空き状況を確認しています…</p>
+    <a id="setupBookingLink" class="secondary-cta" href="/book/" hidden>カレンダーから相談日時を選ぶ <span aria-hidden="true">→</span></a>
+    <p class="field-help">初期設定前の30分の相談枠です。サービスに含まれる45分の操作説明とは別に、希望される方がご利用いただけます。予約画面でお名前・メールアドレス等を再入力いただきます。</p>
+  </div>
 </div>
+<style>
+  .setup-booking{margin-top:24px;border-top:2px solid #2157be;padding:24px 0 0}
+  .setup-booking h3{font-size:1.2rem;margin:0 0 12px}
+  .setup-booking p{margin:12px 0;line-height:1.9}
+  .setup-booking .field-help{font-size:.875rem;color:#536174}
+  .setup-booking a[hidden]{display:none}
+</style>

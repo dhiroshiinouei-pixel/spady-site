@@ -16,3 +16,21 @@
 .skip-link{top:-100px;transform:none}.skip-link:focus{top:8px}
 
 .brand-line{display:inline-block;max-width:100%}@media(min-width:901px) and (max-width:1190px){.lp-brand>span{max-width:160px}.brand-line+.brand-line{margin-left:0}}@media(max-width:600px){.brand-line{display:block}}
+
+/* Credentials describe the representative's experience, without implying Meta endorsement. */
+.hero-credentials{display:grid;grid-template-columns:1fr 1fr;list-style:none;padding:17px 0;margin:-13px 0 28px;border-top:1px solid #bfccdd;border-bottom:1px solid #bfccdd;gap:24px}
+.hero-credentials li{display:flex;align-items:center;gap:10px;line-height:1.6;font-size:.875rem}
+.hero-credentials li+li{border-left:1px solid #bfccdd;padding-left:24px}
+.hero-credentials svg{width:18px;height:18px;color:var(--blue)}
+.hero-credentials li>span{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .3em}
+.hero-credentials strong{font-size:1.05rem;color:var(--blue-dark);font-weight:750}
+.credential-prefix,.credential-suffix,.hero-credentials strong{display:inline-block;max-width:100%}
+.credentials-note{font-size:.875rem;color:var(--muted);line-height:1.8;margin-top:8px}
+@media(max-width:900px){.hero-credentials{gap:18px}.hero-credentials li+li{padding-left:18px}.hero-credentials li{gap:8px}.hero-credentials strong{font-size:.95rem}}
+@media(max-width:600px){.hero-credentials{grid-template-columns:1fr;gap:6px;padding:12px 0;margin:-6px 0 22px}.hero-credentials li{gap:8px;font-size:.875rem}.hero-credentials li+li{border:0;padding-left:0}.hero-credentials strong{font-size:.9375rem}.hero-credentials svg{width:16px;height:16px}.credentials-note{margin-top:12px}}
+
+.profile-credential{display:flex;align-items:center;gap:10px;margin:20px 0 22px;padding:12px 0;border-top:1px solid #bfccdd;border-bottom:1px solid #bfccdd;color:var(--blue-dark);font-weight:700}
+.profile-credential svg{width:19px;height:19px}
+.profile-expertise{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:13px;font-size:.875rem;font-weight:700}
+.profile-expertise li{border-bottom:2px solid #b4c7e4;padding-bottom:3px}
+.about-grid>div>p.profile-scope-note{font-size:.875rem;line-height:1.8}

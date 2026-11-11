@@ -1,10 +1,19 @@
 /** LP固有の確定情報と公開設定。未確定の条件をここで補わないこと。 */
 export const metaAdsSetup = {
   name: 'Meta広告 初期設定サポート',
-  price: '33,000', tax: '税込', lectureMinutes: 60,
+  price: '33,000', tax: '税込', lectureMinutes: 45,
   contract: '買い切り・月額契約不要', delivery: '全国オンライン対応',
-  title: 'Meta広告 初期設定サポート｜33,000円・60分レクチャー付き｜Spady',
-  description: '学習塾・スクール・ジムなどの事業者様へ。買い切り33,000円でMeta広告の初期設定・広告1件入稿・60分の操作説明をサポート。操作ガイド付き。広告費は別途必要です。',
+  title: 'Meta広告 初期設定サポート｜33,000円・45分レクチャー付き｜Spady',
+  description: '学習塾・スクール・ジムなどの事業者様へ。買い切り33,000円でMeta広告の初期設定・広告1件入稿・45分の操作説明をサポート。操作ガイド付き。広告費は別途必要です。',
+  credentials: [
+    { prefix: '元Meta', emphasis: 'マーケティングプロ', suffix: '' },
+    { prefix: '広告代理店', emphasis: '80社以上', suffix: 'のサポート経験' },
+  ],
+  credentialsNote: 'Metaでの支援経験は、代表・井上博史の過去の職務経験です。本サービスはMeta社の公式サービスではありません。',
+  profileCredential: 'L Message（LINE拡張ツール）認定代理店',
+  profileExpertise: ['Meta広告', 'LINE公式・エルメ', 'Web・LP制作'],
+  profileDescription: 'Meta広告の初期設定に加え、LINE公式アカウント・エルメの構築、Web・LP制作まで。広告・LINE・Webの実務経験をもとに、事業の課題に合わせた支援をご相談いただけます。',
+  profileScopeNote: 'LINE構築・Web・LP制作は別途お見積もりです。初期設定サービスだけのご利用も可能です。',
   // 公開承認済みのURL。相談受付は既存Cloudflare Pagesの通知基盤を再利用。
   canonical: 'https://spady.net/meta-ads-setup/' as string | null,
   noindex: false,
@@ -12,7 +21,7 @@ export const metaAdsSetup = {
   ctaNote: '送信時点で、ご契約・お支払いは発生しません。',
   ctaNoteParts: ['送信時点で、', 'ご契約・お支払いは', '発生しません。'],
   contactEmail: 'info@spady.net',
-  form: { endpoint: '/api/contact?lang=ja', version: 'meta-ads-setup-v1', acceptingInquiries: true },
+  form: { endpoint: '/api/meta-ads-setup', version: 'meta-ads-setup-v1', acceptingInquiries: true },
   // 既存SiteConsentのGTMのみ利用。新しい計測ID・UTM保存は追加しない。
   tracking: { enabled: true, events: { cta: 'meta_setup_cta_click', start: 'meta_setup_form_start', success: 'meta_setup_inquiry_success', failure: 'meta_setup_inquiry_failure' } },
   links: [
@@ -25,7 +34,7 @@ export const supports = [
   { number:'01', icon:'settings', title:'Meta広告の初期環境設定', summary:'アカウントと連携を、広告を始められる状態へ。', text:'ビジネスポートフォリオ・広告アカウントの作成または基本設定、用意済みのFacebookページとの連携、必要に応じたInstagram連携、広告費の支払い方法の設定を支援します。', note:'既存設定を確認し、不要なアカウントの重複作成は行いません。Facebook個人アカウント・Facebookページは事前にご用意ください。' },
   { number:'02', icon:'ad', title:'最初の広告の設定・入稿', summary:'1事業・1広告アカウントの、最初の1件。', text:'1キャンペーン・1広告セット・1広告。目的、配信地域、予算、リンク先などを基本設定します。画像または動画1点と広告文は、お客様にご用意いただきます。', note:'詳細な広告戦略・複数案の制作・A/Bテスト・継続改善は含みません。公開や費用が発生する操作はお客様の承認後に行います。審査承認・配信開始は保証していません。' },
   { number:'03', icon:'code', title:'Meta Pixelの作成・基本コードのお渡し', summary:'標準範囲は、Pixelの作成とコードの提供まで。', text:'Webサイトへの設置に使用する基本コードをお渡しします。コードのお渡しだけでは、Webサイト上の計測は始まりません。', note:'サイトへの設置・イベント設定・動作確認は別料金。GTMへの実装も標準範囲外です。', caution:true },
-  { number:'04', icon:'screen', title:'広告管理画面の操作説明：60分', summary:'実際の画面を共有しながら、基本操作を確認。', text:'管理画面の基本構成、配信状況、広告費・クリック等の見方、予算変更、停止・再開をオンラインでご説明します。基本操作の確認と質疑応答も含みます。', note:'運用戦略全体のコンサルティングや成果保証は含みません。' },
+  { number:'04', icon:'screen', title:'広告管理画面の操作説明：45分', summary:'実際の画面を共有しながら、基本操作を確認。', text:'管理画面の基本構成、配信状況、広告費・クリック等の見方、予算変更、停止・再開をオンラインでご説明します。基本操作の確認と質疑応答も含みます。', note:'運用戦略全体のコンサルティングや成果保証は含みません。' },
   { number:'05', icon:'check', title:'配信前の設定チェック', summary:'今回設定した範囲を、一つずつ確認。', text:'予算、配信地域、リンク先、入稿内容などを確認します。計測については、何を設定したか・何が未設定かをご説明します。', note:'Pixelの実装テストやコンバージョン計測の検証は含みません。' },
   { number:'06', icon:'guide', title:'共通の操作ガイド提供', summary:'後から、基本操作を振り返るために。', text:'予算変更、停止・再開、基本的な数字の確認などをまとめた共通ガイドをお渡しします。', note:'顧客ごとの専用マニュアル制作や、無期限の更新対応は含みません。' },
 ];
@@ -42,7 +51,7 @@ export const steps = [
   ['アカウントとご依頼内容を事前確認','現在の設定・権限、過去と現在の制限状況、ご希望の内容を確認します。'],
   ['正式なお手続きのご案内','対応可能な場合に、正式な申込み・支払い・準備事項をご案内します。'],
   ['初期設定・広告1件の入稿','初期環境と最初の広告を設定し、今回の設定範囲をチェックします。'],
-  ['60分の操作説明・納品','共通ガイドをお渡しし、納品内容を一緒に確認して完了です。'],
+  ['45分の操作説明・納品','共通ガイドをお渡しし、納品内容を一緒に確認して完了です。'],
 ];
 export const preparation = [
   'ご本人が利用しているFacebook個人アカウント',
