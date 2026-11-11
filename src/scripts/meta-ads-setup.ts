@@ -1,3 +1,4 @@
+import { startSetupBooking } from './meta-ads-booking';
 import { metaAdsSetup as service } from '../data/meta-ads-setup';
 
 type SetupWindow = Window & {dataLayer?: Record<string,unknown>[]; __spadyGtmLoaded?: boolean};
@@ -43,22 +44,6 @@ const showStatus = (state:string, message:string) => {
   status.focus({preventScroll:true});
   status.scrollIntoView({behavior:'auto',block:'center'});
 };
-async function showBooking() {
-  const panel = document.querySelector<HTMLElement>('#setupBooking');
-  const message = document.querySelector<HTMLElement>('#setupBookingStatus');
-  const link = document.querySelector<HTMLAnchorElement>('#setupBookingLink');
-  if (!panel || !message || !link) return;
-  panel.hidden = false;
-  try {
-    const response = await fetch('/api/booking/availability', { signal: AbortSignal.timeout(10000) });
-    const result = await response.json();
-    if (!response.ok || !Array.isArray(result.days)) throw new Error('unavailable');
-    if (result.days.some((day:{slots?:unknown[]}) => Array.isArray(day.slots) && day.slots.length)) {
-      link.hidden = false;
-      message.textContent = 'ご希望の方は、Googleカレンダーの空き状況に合わせて、平日10:00〜17:00の相談日時をお選びいただけます。';
-    } else message.textContent = '現在、予約できる空き枠はありません。ご相談内容を確認し、日程はメールで調整します。';
-  } catch { message.textContent = '現在、カレンダーの空き状況を確認できません。ご相談の受付は完了しています。日程はメールで調整します。'; }
-}
 form?.addEventListener('submit', async event => {
   event.preventDefault();
   if (pending || accepted || !submit || !fields || !status || !form.reportValidity()) return;
@@ -83,16 +68,18 @@ form?.addEventListener('submit', async event => {
     const response = await fetch(form.action,{method:'POST',body,headers:{Accept:'application/json'},signal:controller.signal});
     const result: {ok?: boolean; request_id?: string; message?: string} = await response.json().catch(()=>({}));
     // Success requires durable acceptance; notification jobs may still be processing.
-    if (!response.ok || result.ok !== true || typeof result.request_id !== 'string' || !result.request_id) {
+    if (response.status !== 200 || result.ok !== true || result.request_id !== receiptId) {
       if (response.status === 400 && typeof result.message === 'string') validationMessage = result.message.slice(0, 300);
       throw new Error(response.status === 503 ? 'unavailable' : 'unconfirmed');
     }
     accepted = true;
     form.reset();
+    fields.hidden = true;
+    form.querySelector<HTMLElement>('.form-required-note')?.setAttribute('hidden', '');
     if (buttonLabel) buttonLabel.textContent = '受付が完了しました';
     showStatus('success','ご相談を受け付けました。\nアカウントの状況と対応範囲を確認し、ご入力のメールアドレスへご連絡します。送信時点で、ご契約・お支払いは発生していません。');
     track(service.tracking.events.success);
-    void showBooking();
+    void startSetupBooking(receiptId);
   } catch (error) {
     const unavailable = error instanceof Error && error.message === 'unavailable';
     const outcome = unavailable ? 'unavailable' : 'unconfirmed';

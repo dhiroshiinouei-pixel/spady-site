@@ -20,32 +20,45 @@ import '../styles/meta-ads-setup.css';
   <meta name="twitter:card" content="summary_large_image"/><meta name="theme-color" content="#f8f7f3"/><link rel="icon" href="/favicon.png"/>
 </head><body class="meta-setup-page">
   <a class="skip-link" href="#main">本文へ移動</a>
-  <header class="lp-header"><a href="/" class="lp-brand" aria-label="Spady ホーム"><img src="/logo.png" width="50" height="50" alt="Spady"/><span><span class="brand-line">Meta広告</span><span class="brand-line">初期設定サポート</span></span></a>
+  <header class="lp-header"><a href="/" class="lp-brand" aria-label="Spady ホーム"><span class="lp-wordmark">Spady</span><span class="lp-service-name"><span class="brand-line">Meta広告</span><span class="brand-line">初期設定サポート</span></span></a>
     <nav aria-label="ページ内ナビゲーション"><a href="#service">サービス内容</a><a href="#pricing">料金</a><a href="#flow">ご利用の流れ</a><a href="#faq">よくある質問</a></nav><Cta placement="header" compact/>
   </header>
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title"><div class="wrap">
-      <p class="audience-label"><span class="label-dot" aria-hidden="true"></span><span><span class="phrase">学習塾・スクール・ジムなど、</span><span class="phrase">自社で広告を始めたい事業者様へ</span></span></p>
-      <ul class="hero-credentials" aria-label="Spady代表の広告支援経験">{service.credentials.map(credential=><li><Icon name="check"/><span><span class="credential-prefix">{credential.prefix}</span><strong>{credential.emphasis}</strong>{credential.suffix&&<span class="credential-suffix">{credential.suffix}</span>}</span></li>)}</ul>
-      <div class="hero-grid"><div class="hero-copy"><p class="eyebrow">META ADS SETUP SUPPORT</p>
-        <h1 id="hero-title"><span>Meta広告の初期設定は、<em>専門家に。</em></span><span>その後の基本操作は、<em>自社で。</em></span></h1>
-        <p class="hero-description"><span class="phrase">Instagram・Facebook広告の初期設定と、</span><span class="phrase">最初の広告1件の入稿をサポート。</span><span class="hero-description-end">管理画面の{service.lectureMinutes}分レクチャーと操作ガイドで、自社運用の第一歩をお手伝いします。</span></p>
-        <div class="hero-price"><div><span class="price-number">{service.price}</span><span class="yen">円<span>（{service.tax}）</span></span></div><p>買い切り<br/><strong>月額契約不要</strong></p></div>
-        <div class="hero-actions"><Cta placement="hero"/><a href="#service" class="secondary-cta">{service.secondaryCta}<span aria-hidden="true">↓</span></a></div>
-        <p class="cta-note"><span class="phrase">事前にアカウントの状況と</span><span class="phrase">対応可否を確認します。</span><br/>{service.ctaNoteParts.map(part=><span class="phrase">{part}</span>)}</p>
+    <section class="hero hero-reference" aria-labelledby="hero-title"><div class="wrap hero-composition">
+      <p class="hero-audience"><span>学習塾・スクール・ジム向け</span></p>
+      <div class="hero-heading">
+        <h1 id="hero-title"><span>はじめの設定、</span><em>プロにお任せ。</em></h1>
+        <p class="hero-promise"><span class="phrase">Meta広告の初期設定から、</span><span class="phrase">自社での基本操作まで。</span></p>
       </div>
-      <div class="hero-visual"><div class="visual-heading"><span>はじめの設定から、<wbr/>自分で使う準備まで。</span><span class="online-label">ONLINE</span></div>
-        <div class="setup-road"><div><span>01</span><strong>設定</strong></div><span aria-hidden="true">→</span><div><span>02</span><strong>広告入稿</strong></div><span aria-hidden="true">→</span><div><span>03</span><strong>操作説明</strong></div></div>
-        <div class="dashboard" role="img" aria-label="操作画面のイメージ。最初の広告の予算・配信地域・リンク先を確認し、予算変更や停止・再開の操作を説明します。実際のMeta管理画面ではありません。">
-          <div class="dashboard-top"><span class="window-dots" aria-hidden="true">● ● ●</span><span>広告の管理</span><span class="draft-label">下書き</span></div>
-          <div class="dashboard-body"><div class="dashboard-sidebar" aria-hidden="true"><Icon name="ad"/><Icon name="sliders"/><Icon name="settings"/></div><div class="dashboard-content"><p class="mock-eyebrow">最初の広告</p><div class="mock-title">配信前の設定を確認<span>✓</span></div><div class="mock-row"><span>予算</span><b>設定内容を確認</b></div><div class="mock-row"><span>配信地域</span><b>設定内容を確認</b></div><div class="mock-row"><span>リンク先</span><b>設定内容を確認</b></div><div class="mock-control"><span>予算を変更</span><span>停止・再開</span></div></div></div>
+      <aside class="hero-experience" aria-label="Spady代表の広告支援経験">
+        <p class="experience-career"><span>{service.credentials[0].prefix}</span><strong>{service.credentials[0].emphasis}</strong></p>
+        <p class="experience-agencies"><span>{service.credentials[1].prefix}</span><strong>{service.credentials[1].emphasis}</strong><span>サポート経験</span></p>
+      </aside>
+      <ul class="hero-service-list" aria-label="料金に含まれる主なサポート">
+        <li><Icon name="settings"/><strong><span class="phrase">初期設定＋</span><span class="phrase">広告1件の入稿</span></strong></li>
+        <li><Icon name="screen"/><strong><span class="phrase">管理画面の操作説明</span><span class="hero-minutes">{service.lectureMinutes}<span>分</span></span></strong></li>
+        <li><Icon name="guide"/><strong><span class="phrase">振り返りに使える</span><span class="phrase">共通の操作ガイド</span></strong></li>
+      </ul>
+      <figure class="hero-laptop" aria-label="広告管理画面を使った操作説明のイメージ">
+        <div class="laptop-screen" role="img" aria-label="操作画面のイメージ。最初の広告の予算・配信地域・リンク先を確認し、予算変更や停止・再開の操作を説明します。実際のMeta管理画面ではありません。">
+          <div class="laptop-bar"><span class="mock-app-symbol" aria-hidden="true"><Icon name="ad"/></span><strong>広告の管理</strong><span class="laptop-draft">下書き</span></div>
+          <div class="laptop-body"><div class="laptop-sidebar" aria-hidden="true"><Icon name="settings"/><Icon name="ad"/><Icon name="sliders"/></div><div class="laptop-content">
+            <div class="laptop-tabs"><span>キャンペーン</span><span>広告セット</span><span>広告</span></div>
+            <p class="laptop-title">配信前の設定を確認<span aria-hidden="true">✓</span></p>
+            <div class="laptop-row"><span>予算</span><b>設定内容を確認</b><i aria-hidden="true"></i></div>
+            <div class="laptop-row"><span>配信地域</span><b>設定内容を確認</b><i aria-hidden="true"></i></div>
+            <div class="laptop-row"><span>リンク先</span><b>設定内容を確認</b><i aria-hidden="true"></i></div>
+            <div class="laptop-controls"><span>予算を変更</span><span>停止・再開</span></div>
+          </div></div>
         </div>
-        <div class="lecture-tag"><span class="lecture-icon"><Icon name="screen"/></span><div><small>画面共有で、一緒に確認。</small><strong><b>{service.lectureMinutes}</b>分の操作レクチャー</strong></div></div>
-        <p class="illustration-note">操作画面のイメージです。実際のMeta管理画面とは異なります。</p>
-      </div></div>
-      <div class="hero-benefits">{[['01','初期設定・広告1件の入稿'],['02',`${service.lectureMinutes}分の操作レクチャー`],['03','振り返りに使える操作ガイド']].map(([n,title])=><div><span>{n}</span><strong>{title}</strong><Icon name="check"/></div>)}</div>
-      <p class="hero-footnote">広告費は別途必要です。広告素材はお客様にご用意いただきます。Pixelのサイト設置・イベント計測は別料金です。</p>
-      <p class="credentials-note"><ReadableText text={service.credentialsNote}/></p>
+        <div class="laptop-base" aria-hidden="true"></div>
+        <figcaption>操作画面のイメージです。<wbr/>実際のMeta管理画面とは異なります。</figcaption>
+      </figure>
+      <div class="hero-offer">
+        <div class="hero-price"><div><span class="price-number">{service.price}</span><span class="yen">円<span>（{service.tax}）</span></span></div><p>買い切り・<br/><strong>月額契約不要</strong></p></div>
+        <div class="hero-actions"><Cta placement="hero"/><p class="cta-note">{service.ctaNoteParts.map(part=><span class="phrase">{part}</span>)}</p></div>
+      </div>
+      <div class="hero-details"><p class="hero-footnote"><span>広告費は別途必要です。</span><span>広告素材はお客様にご用意いただきます。</span><span>Pixelのサイト設置・イベント計測は別料金です。</span></p><p class="credentials-note"><ReadableText text={service.credentialsNote}/></p><a href="#service" class="secondary-cta">{service.secondaryCta}<span aria-hidden="true">↓</span></a></div>
     </div></section>
 
     <section class="section concerns"><div class="wrap concerns-grid"><div><p class="section-label">01 <span>こんなお悩みに</span></p><h2><span>「広告を始めたい」が、</span><span>設定で止まって<wbr/>いませんか？</span></h2><p class="section-intro">最初の設定を整え、<wbr/>基本操作を一緒に確認する。<br/>Spadyは、広告を自社で始めるための準備を支援します。</p><div class="audience-examples"><small>対象となる事業の例</small><span>学習塾</span><span>各種スクール</span><span>ジム・フィットネス</span></div><p class="small-note">その他の業種もご相談いただけます。対応可否は個別に確認します。</p></div><ul class="concern-list">{['アカウントの作成や連携が複雑で、先に進めない','毎月の運用代行ではなく、最初だけ専門家に任せたい','設定後に、予算変更や停止の操作で迷いたくない','何ができて、何が別料金なのかを先に知りたい'].map(text=><li><span aria-hidden="true"><Icon name="check"/></span>{text}</li>)}</ul></div></section>
