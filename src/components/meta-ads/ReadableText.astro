@@ -1,0 +1,8 @@
+---
+interface Props { text: string }
+const {text}=Astro.props;
+// Keep short semantic endings together; longer prose remains naturally responsive.
+const phrases=['追加レクチャー','含まれません。','含みません。','保証していません。','対応していません。','ではありません。','お見積もりします。','問い合わせ完了','予約完了','異議申し立て代行'];
+const parts=text.split(/(追加レクチャー|含まれません。|含みません。|保証していません。|対応していません。|ではありません。|お見積もりします。|問い合わせ完了|予約完了|異議申し立て代行)/g);
+---
+{parts.map(part=>phrases.includes(part)?<span class="phrase">{part}</span>:part)}

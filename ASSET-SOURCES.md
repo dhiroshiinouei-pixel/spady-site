@@ -65,3 +65,10 @@
 - 原寸PNG、正確な生成プロンプト、生成方法・用途は [制作記録](docs/kaigyo-image-prompts.md) に保存。
 - `PreparationSketch.astro`、`ToolGlyph.astro`、`BusinessFlow.astro`：このサービスのために実装したオリジナルSVG・HTML図解。FAVTOWNの素材・装飾の転用なし。
 - 既存の実際の勉強会写真 `seminar.webp` は引き続き「AKINDO Labの思想」で使用。
+
+## Meta広告 初期設定サポート LP（2026-11-11）
+
+- `public/meta-ads-setup/og.png`: Spady向けに独自制作した文字主体のOGP。`scripts/verify-meta-ads.mjs` 内のHTMLをローカルChromeで画像化。既存 `public/logo.png` を使用。
+- LP本人写真: 既存 `public/profile.jpg` を継続使用。`/about/` と同じ代表者本人素材。
+- 初期設定・広告入稿・操作説明の画面図: `src/pages/meta-ads-setup.astro` の独自HTML/CSS/SVG。実際のMeta管理画面や実績ではなく、画面イメージと可視表示。
+- 参考2サイトの文章・画像・ロゴ・ソースコードは使用していません。

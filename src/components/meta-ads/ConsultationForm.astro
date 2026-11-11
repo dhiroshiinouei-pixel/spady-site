@@ -1,0 +1,32 @@
+---
+import {metaAdsSetup as service, industries, restrictions} from '../../data/meta-ads-setup';
+const acceptingInquiries = service.form.acceptingInquiries && !import.meta.env.DEV;
+---
+<div class="consultation-form">
+  <div class="form-heading"><span class="eyebrow">ご相談・対応可否の確認</span><h3>現在の状況をお聞かせください。</h3><p>詳しい権限・素材・予算などは、受付後に確認します。</p></div>
+  {!acceptingInquiries&&<aside class="preview-notice"><strong>開発プレビュー：フォーム受付は停止中です。</strong><p>入力・確認操作をお試しいただけますが、相談内容は送信されません。公開前に送信先との接続確認が必要です。</p></aside>}
+  <form id="setupForm" method="POST" action={service.form.endpoint} data-accepting={String(acceptingInquiries)}>
+    <input type="hidden" name="form_version" value={service.form.version}/><input type="hidden" name="topic" value={service.name}/><input type="hidden" name="form_started_at" value=""/>
+    <div class="honeypot" aria-hidden="true"><label>この項目は空のままにしてください<input name="website" tabindex="-1" autocomplete="off"/></label></div>
+    <p class="form-required-note"><span class="required">必須</span> の項目をご入力ください。</p>
+    <fieldset id="setupFields"><legend class="sr-only">ご相談内容</legend>
+      <div class="field"><label for="setup-company">会社名・屋号・教室名・店舗名 <span class="required">必須</span></label><input id="setup-company" name="company" autocomplete="organization" maxlength="100" required/></div>
+      <div class="form-pair"><div class="field"><label for="setup-name">お名前 <span class="required">必須</span></label><input id="setup-name" name="name" autocomplete="name" maxlength="100" required/></div><div class="field"><label for="setup-email">メールアドレス <span class="required">必須</span></label><input id="setup-email" name="email" type="email" autocomplete="email" maxlength="200" required placeholder="example@company.jp"/></div></div>
+      <div class="field"><label for="setup-industry">業種 <span class="required">必須</span></label><select name="industry" id="setup-industry" required><option value="">選択してください</option>{industries.map(item=><option>{item}</option>)}</select></div>
+      <div class="restriction-fields"><p>アカウントの状態について</p><p class="field-help">「あり」の回答だけでお断りすることはありません。過去の経緯と現在の状態を個別に確認します。</p>
+      {[['restriction_current','現在の広告アカウント等の制限'],['restriction_history','過去の停止・制限・ペナルティ']].map(([name,label])=><fieldset class="choice-field"><legend>{label} <span class="required">必須</span></legend><div class="radio-options">{restrictions.map((item,index)=><label><input type="radio" name={name} value={item} required/><span>{item}</span></label>)}</div></fieldset>)}
+      </div>
+      <div class="field"><label for="setup-url">WebサイトまたはLPのURL <span class="optional">任意</span></label><input type="url" name="site_url" id="setup-url" inputmode="url" maxlength="2000" placeholder="https://" aria-describedby="urlHelp"/><p class="field-help" id="urlHelp">URLは https:// または http:// からご入力ください。</p></div>
+      <div class="field"><label for="setup-message">ご相談内容 <span class="optional">任意</span></label><textarea name="message" id="setup-message" rows="4" maxlength="4000" aria-describedby="sensitiveHelp" placeholder="現在お困りのことや、ご希望があればお知らせください。"></textarea><p class="field-help" id="sensitiveHelp">パスワード、二段階認証コード、カード番号・セキュリティコードは入力しないでください。</p></div>
+      <fieldset class="agreement-fields"><legend>送信前のご確認 <span class="required">すべて必須</span></legend>
+        <label><input type="checkbox" name="pixel_scope" value="yes" required/><span>Pixelは作成・基本コード提供までで、サイト設置・イベント計測・動作確認は別料金であることを確認しました。</span></label>
+        <label><input type="checkbox" name="no_recovery" value="yes" required/><span>アカウント制限の復旧や異議申し立てには対応していないことを確認しました。</span></label>
+        <label><input type="checkbox" name="consent" value="yes" required/><span><a href="/privacy/" target="_blank" rel="noopener">プライバシーポリシー<span class="sr-only">（新しいタブで開きます）</span></a>に同意します。</span></label>
+      </fieldset>
+      <button type="submit" class="primary-cta form-submit" disabled={!acceptingInquiries}><span>相談内容を送信する</span><span aria-hidden="true">→</span></button>
+      <p class="cta-note">{service.ctaNoteParts.map(part=><span class="phrase">{part}</span>)}</p>
+    </fieldset>
+    <noscript><p class="preview-notice">このフォームにはJavaScriptが必要です。入力内容は送信されていません。JavaScriptを有効にしてご利用ください。</p></noscript>
+    <div id="setupStatus" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></div>
+  </form>
+</div>
