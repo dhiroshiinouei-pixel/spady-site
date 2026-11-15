@@ -4,7 +4,7 @@ export const metaAdsSetup = {
   price: '33,000', tax: '税込', lectureMinutes: 45,
   contract: '買い切り・月額契約不要', delivery: '全国オンライン対応',
   title: 'Meta広告 初期設定サポート｜33,000円・45分レクチャー付き｜Spady',
-  description: '学習塾・スクール・ジムなどの事業者様へ。買い切り33,000円でMeta広告の初期設定・広告1件入稿・45分の操作説明をサポート。操作ガイド付き。広告費は別途必要です。',
+  description: '自社でInstagram・Facebook広告を始めたい事業者様へ。買い切り33,000円でMeta広告の初期設定・広告1件入稿・45分の操作説明をサポート。操作ガイド付き。広告費は別途必要です。',
   credentials: [
     { prefix: '元Meta', emphasis: 'マーケティングプロ', suffix: '' },
     { prefix: '広告代理店', emphasis: '80社以上', suffix: 'のサポート経験' },

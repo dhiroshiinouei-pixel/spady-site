@@ -4,5 +4,5 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"], "strict": true,
     "noEmit": true, "skipLibCheck": true, "types": []
   },
-  "include": ["src/data/meta-ads-setup.ts", "src/data/meta-ads-results.ts", "src/scripts/meta-ads-setup.ts"]
+  "include": ["src/data/meta-ads-setup.ts", "src/data/meta-ads-results.ts", "src/data/meta-ads-activity.ts", "src/scripts/meta-ads-setup.ts"]
 }

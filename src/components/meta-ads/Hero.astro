@@ -6,7 +6,6 @@ import Icon from './Icon.astro';
 <section class="hero hero-reference" aria-labelledby="hero-title">
   <div class="wrap reference-layout">
     <div class="reference-message">
-      <p class="reference-target">学習塾・スクール・ジム向け</p>
       <h1 id="hero-title"><span>はじめの設定、</span><strong>プロにお任せ。</strong></h1>
       <p class="reference-intro"><span>Instagram・Facebook広告を、</span><span>自社で始めるための初期設定サポート。</span></p>
     </div>
@@ -50,7 +49,6 @@ import Icon from './Icon.astro';
   .hero-reference{background:#fff;padding:42px 0 28px;border-bottom:1px solid #dce4ee}
   .reference-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-areas:"message authority" "offer photo" "notes notes";gap:26px 54px;align-items:start}
   .reference-message{grid-area:message;min-width:0}
-  .reference-target{display:inline-block;color:#164699;border:1px solid #b8cce9;background:#f2f6fc;padding:6px 17px;font-size:1rem;font-weight:700;line-height:1.7;letter-spacing:.04em;margin-bottom:20px}
   .hero-reference h1{font-size:clamp(2.4rem,4.25vw,3.7rem);font-weight:800;line-height:1.22;letter-spacing:-.045em;margin:0;overflow-wrap:normal}
   .hero-reference h1>span{display:block}
   .hero-reference h1>strong{display:inline-block;font-size:1.12em;font-weight:800;line-height:1.4;color:#0754c7;text-decoration-line:underline;text-decoration-color:#f2d564;text-decoration-thickness:.11em;text-underline-offset:.04em;text-decoration-skip-ink:none}
@@ -104,19 +102,19 @@ import Icon from './Icon.astro';
   }
   @media(max-width:900px){
     .reference-layout{gap:24px;grid-template-columns:minmax(0,1fr) minmax(0,.95fr)}
-    .hero-reference{padding-top:32px}.hero-reference h1{font-size:clamp(1.8rem,4.2vw,2.5rem)}.reference-target{font-size:.8125rem;padding:5px 12px;margin-bottom:16px}.reference-intro{font-size:.875rem}
+    .hero-reference{padding-top:32px}.hero-reference h1{font-size:clamp(1.8rem,4.2vw,2.5rem)}.reference-intro{font-size:.875rem}
     .reference-authority{padding:15px 14px}.authority-eyebrow{font-size:.6875rem;letter-spacing:0}.authority-facts{grid-template-columns:1.2fr 1fr}.authority-meta{padding-right:9px}.authority-meta>span{font-size:1.4rem}.authority-meta>strong{font-size:.9rem}.authority-agencies{padding-left:9px}.authority-agencies b{font-size:2.85rem}.authority-agencies>span{font-size:.75rem}.authority-agencies>strong{font-size:.85rem}.authority-person{font-size:.6875rem}
     .reference-benefits>li{font-size:.8125rem;padding:9px 10px;gap:8px}.reference-benefits :global(svg){width:21px;height:21px}.reference-price{gap:12px;margin-block:20px}.reference-price strong{font-size:2.8rem}.reference-price>p>span{font-size:.95rem}.reference-contract{padding-left:12px}.reference-price small{font-size:.7rem}.reference-action :global(.primary-cta){font-size:.9375rem;padding-inline:20px}.reference-photo figcaption p{font-size:.9375rem}
   }
   @media(max-width:700px){
     .reference-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"message" "authority" "offer" "photo" "notes";gap:20px}
     .hero-reference{padding-top:26px}.hero-reference h1{font-size:clamp(2.05rem,8.8vw,3.5rem);line-height:1.18}.hero-reference h1>strong{font-size:1.12em;line-height:1.35}
-    .reference-target{font-size:.875rem;letter-spacing:.02em;margin-bottom:17px}.reference-intro{font-size:.875rem;line-height:1.8;margin-top:13px}
+    .reference-intro{font-size:.875rem;line-height:1.8;margin-top:13px}
     .reference-authority{padding:15px 17px 12px}.authority-eyebrow{display:none}.authority-meta>span{font-size:1.55rem}.authority-meta>strong{font-size:1rem}.authority-facts{grid-template-columns:1.1fr 1fr}.authority-agencies>strong{font-size:1rem}.authority-agencies b{font-size:3.1rem}.authority-agencies>span{font-size:.8125rem}.authority-person{margin-top:10px;padding-top:8px;font-size:.6875rem}
     .reference-benefits{gap:7px}.reference-benefits>li{font-size:.9375rem;padding:8px 12px;gap:12px}.reference-benefits :global(svg){width:22px;height:22px}.reference-price{margin:20px 0 18px;gap:16px}.reference-price strong{font-size:3.2rem}.reference-price>p>span{font-size:1rem}.reference-price small{font-size:.75rem}.reference-contract{padding-left:16px}.reference-contract>span{font-size:.75rem!important}.reference-action :global(.primary-cta){font-size:1rem;min-height:60px;padding-inline:22px}.hero-reference .cta-note{font-size:.8125rem}
     .reference-photo{margin-top:3px}.reference-photo figcaption p{font-size:1.05rem}.reference-notes{font-size:.8125rem;padding-top:16px}.reference-notes>p+p{display:block}.reference-notes>p+p>span{display:block}
   }
   @media(max-width:359px){
-    .reference-target{font-size:.8125rem;padding-inline:10px}.hero-reference h1{font-size:2rem}.reference-intro{font-size:.8125rem}.reference-authority{padding-inline:12px}.authority-meta>span{font-size:1.35rem}.authority-meta>strong{font-size:.875rem}.authority-agencies b{font-size:2.8rem}.authority-agencies>strong{font-size:.875rem}.authority-agencies>span{font-size:.75rem}.reference-benefits>li{font-size:.8125rem;gap:8px}.reference-price strong{font-size:2.75rem}.reference-price{gap:11px}.reference-price>p>span{font-size:.9375rem}.reference-price small{font-size:.6875rem}.reference-contract{padding-left:11px}.reference-contract>span{font-size:.6875rem!important}.reference-action :global(.primary-cta){font-size:.9375rem}
+    .hero-reference h1{font-size:2rem}.reference-intro{font-size:.8125rem}.reference-authority{padding-inline:12px}.authority-meta>span{font-size:1.35rem}.authority-meta>strong{font-size:.875rem}.authority-agencies b{font-size:2.8rem}.authority-agencies>strong{font-size:.875rem}.authority-agencies>span{font-size:.75rem}.reference-benefits>li{font-size:.8125rem;gap:8px}.reference-price strong{font-size:2.75rem}.reference-price{gap:11px}.reference-price>p>span{font-size:.9375rem}.reference-price small{font-size:.6875rem}.reference-contract{padding-left:11px}.reference-contract>span{font-size:.6875rem!important}.reference-action :global(.primary-cta){font-size:.9375rem}
   }
 </style>
