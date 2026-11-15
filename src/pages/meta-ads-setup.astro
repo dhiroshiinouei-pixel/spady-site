@@ -5,6 +5,8 @@ import Cta from '../components/meta-ads/Cta.astro';
 import ReadableText from '../components/meta-ads/ReadableText.astro';
 import Icon from '../components/meta-ads/Icon.astro';
 import ConsultationBooking from '../components/meta-ads/ConsultationBooking.astro';
+import Hero from '../components/meta-ads/Hero.astro';
+import PastResults from '../components/meta-ads/PastResults.astro';
 import '../styles/meta-ads-setup.css';
 ---
 <!doctype html>
@@ -24,37 +26,8 @@ import '../styles/meta-ads-setup.css';
     <nav aria-label="ページ内ナビゲーション"><a href="#service">サービス内容</a><a href="#pricing">料金</a><a href="#flow">ご利用の流れ</a><a href="#faq">よくある質問</a></nav><Cta placement="header" compact/>
   </header>
   <main id="main">
-    <section class="hero hero-refined" aria-labelledby="hero-title">
-      <div class="wrap hero-layout">
-        <div class="hero-copy">
-          <p class="hero-target"><span class="phrase">学習塾・スクール・ジムなど、</span><span class="phrase">自社で広告を始めたい事業者様へ</span></p>
-          <h1 id="hero-title"><span class="phrase">Meta広告の初期設定は、</span><span class="hero-keyword">専門家に。</span></h1>
-          <p class="hero-subheading"><span class="phrase">その後の基本操作は、</span><span class="phrase">自社で。</span></p>
-          <p class="hero-description">Instagram・Facebook広告の初期設定と、最初の広告1件の入稿をサポート。{service.lectureMinutes}分の操作説明と共通ガイドで、自社運用の第一歩をお手伝いします。</p>
-          <div class="hero-purchase">
-            <p class="hero-contract">買い切り・月額契約不要</p>
-            <p class="hero-amount"><strong>{service.price}</strong><span>円（税込）</span></p>
-          </div>
-          <div class="hero-actions"><Cta placement="hero"/><p class="cta-note">{service.ctaNoteParts.map(part=><span class="phrase">{part}</span>)}</p></div>
-          <a href="#service" class="secondary-cta">{service.secondaryCta}<span aria-hidden="true">↓</span></a>
-        </div>
-        <figure class="setup-journey" aria-labelledby="journey-title">
-          <div class="journey-heading"><span class="journey-eyebrow">SETUP &amp; HANDOVER</span><p id="journey-title"><span class="phrase">設定から、</span><span class="phrase">基本操作まで。</span></p><span class="journey-method">オンラインでサポート</span></div>
-          <ol class="journey-list">
-            <li><span class="journey-number" aria-hidden="true">01</span><div class="journey-content"><span class="journey-icon"><Icon name="settings"/></span><h2>初期環境を整える</h2><p>広告アカウント・ページの連携など、<wbr/>広告を始めるための基本設定。</p></div></li>
-            <li><span class="journey-number" aria-hidden="true">02</span><div class="journey-content"><span class="journey-icon"><Icon name="ad"/></span><h2>最初の広告を入稿</h2><p>お客様の素材を使って、<wbr/>広告1件を設定。配信前の内容も確認。</p></div></li>
-            <li><span class="journey-number" aria-hidden="true">03</span><div class="journey-content"><span class="journey-icon"><Icon name="screen"/></span><h2>基本操作を一緒に</h2><p><strong>{service.lectureMinutes}分の画面共有</strong>で、<wbr/>数字の確認・予算変更・停止と再開を説明。</p></div></li>
-          </ol>
-          <figcaption><Icon name="guide"/><span><strong>振り返りに使える共通ガイド付き</strong><span>説明の後も、基本操作を確認できます。</span></span></figcaption>
-        </figure>
-        <aside class="hero-proof" aria-label="Spady代表の過去の職務経験">
-          <p class="proof-label">代表・井上博史の<br class="desktop-break"/>実務経験</p>
-          <div class="proof-facts"><p><span>元Meta</span><strong>マーケティングプロ</strong></p><p><span>広告代理店</span><strong>80社以上<span>のサポート経験</span></strong></p></div>
-          <p class="credentials-note"><ReadableText text={service.credentialsNote}/></p>
-        </aside>
-        <p class="hero-conditions"><span>広告費は別途必要です。</span><span>広告素材はお客様にご用意いただきます。</span><span>Pixelのサイト設置・イベント計測は別料金です。</span></p>
-      </div>
-    </section>
+    <Hero/>
+    <PastResults/>
 
     <section class="section concerns"><div class="wrap concerns-grid"><div><p class="section-label">01 <span>こんなお悩みに</span></p><h2><span>「広告を始めたい」が、</span><span>設定で止まって<wbr/>いませんか？</span></h2><p class="section-intro">最初の設定を整え、<wbr/>基本操作を一緒に確認する。<br/>Spadyは、広告を自社で始めるための準備を支援します。</p><div class="audience-examples"><small>対象となる事業の例</small><span>学習塾</span><span>各種スクール</span><span>ジム・フィットネス</span></div><p class="small-note">その他の業種もご相談いただけます。対応可否は個別に確認します。</p></div><ul class="concern-list">{['アカウントの作成や連携が複雑で、先に進めない','毎月の運用代行ではなく、最初だけ専門家に任せたい','設定後に、予算変更や停止の操作で迷いたくない','何ができて、何が別料金なのかを先に知りたい'].map(text=><li><span aria-hidden="true"><Icon name="check"/></span>{text}</li>)}</ul></div></section>
 
