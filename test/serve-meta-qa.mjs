@@ -14,6 +14,7 @@ const unavailable = new Map();
 const types = { '.html':'text/html; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.css':'text/css; charset=utf-8', '.svg':'image/svg+xml', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.webp':'image/webp', '.ico':'image/x-icon', '.woff2':'font/woff2', '.json':'application/json' };
 const headers = { 'Cache-Control':'no-store', 'X-Content-Type-Options':'nosniff', 'X-Spady-QA':'local-mock-only', 'Content-Security-Policy':"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; form-action 'self'; object-src 'none'; base-uri 'self'" };
 function reply(res, status, body) { res.writeHead(status, { ...headers, 'Content-Type':'application/json; charset=utf-8' }); res.end(JSON.stringify(body)); }
+const fixtureBooking = (id,start) => ({ok:true,request_id:id,start,end:new Date(Date.parse(start)+30*60000).toISOString(),meeting_url:'https://vc.larksuite.com/j/local-qa-not-a-real-meeting'});
 function fixtureDays() {
   const day = new Date(); day.setUTCDate(day.getUTCDate() + 2); day.setUTCHours(0,0,0,0);
   const days = [];
@@ -43,29 +44,35 @@ const server=http.createServer(async(req,res)=>{
       const form=await webRequest.formData();
       const id=form.get('id');
       if (typeof id!=='string'||!/^[a-f0-9]{32}$/.test(id)) return reply(res,400,{ok:false});
+      if(scenario==='intake_failure') return reply(res,503,{ok:false});
       receipts.add(id);
       return reply(res,200,{ok:true,request_id:id});
+    }
+    if(url.pathname==='/api/meta-ads-booking-info' && req.method==='GET') {
+      return reply(res,200,{calendar:scenario!=='unavailable',duration:30,timezone:'Asia/Tokyo',meetingProvider:'lark',meetingReady:scenario!=='lark_unavailable'});
     }
     if(url.pathname==='/api/booking/availability' && req.method==='GET') {
       if(scenario==='unavailable') return reply(res,503,{ok:false,message:'Local mock: calendar disconnected'});
       const days=fixtureDays().map(day=>({...day,slots:day.slots.filter(start=>![...unavailable.values()].includes(start))}));
-      return reply(res,200,{days,timezone:'Asia/Tokyo',durationMinutes:30});
+      return reply(res,200,{days:scenario==='empty'?[]:days});
     }
     if(url.pathname==='/api/meta-ads-booking' && req.method==='POST') {
       const body=JSON.parse((await bodyBuffer(req)).toString());
       if(!body || Object.keys(body).sort().join(',')!=='receipt_id,start' || !receipts.has(body.receipt_id) || typeof body.start!=='string') return reply(res,400,{ok:false});
       const id=body.receipt_id, start=body.start;
-      if(confirmed.has(id)) return confirmed.get(id)===start ? reply(res,200,{ok:true,request_id:id,start,meeting_url:''}) : reply(res,409,{ok:false});
+      if(confirmed.has(id)) return confirmed.get(id)===start ? reply(res,200,fixtureBooking(id,start)) : reply(res,409,{ok:false});
       if(scenario==='retry' && !attempted.has(id)) { attempted.set(id,start); return reply(res,503,{ok:false,message:'Local mock: outcome not confirmed'}); }
       if(attempted.has(id) && attempted.get(id)!==start) return reply(res,409,{ok:false});
       if(scenario==='conflict' && !unavailable.has(id)) { unavailable.set(id,start); return reply(res,409,{ok:false,code:'slot_unavailable'}); }
       if(unavailable.get(id)===start) return reply(res,409,{ok:false,code:'slot_unavailable'});
-      confirmed.set(id,start); return reply(res,200,{ok:true,request_id:id,start,meeting_url:''});
+      if(scenario==='manual_review') return reply(res,503,{ok:false,code:'manual_review_required'});
+      if(scenario==='missing_meeting') return reply(res,200,{...fixtureBooking(id,start),meeting_url:''});
+      confirmed.set(id,start); return reply(res,200,fixtureBooking(id,start));
     }
     if (url.pathname === '/__responsive.html' && ['GET','HEAD'].includes(req.method)) {
       const width=Number(url.searchParams.get('width'));
       if (![320,360,375,390,768,1024,1440].includes(width)) return reply(res,400,{ok:false,message:'Choose a supported QA viewport width'});
-      const html=`<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LP responsive preview — ${width}px</title><style>html,body{margin:0;padding:0;width:${width}px;min-width:${width}px;background:#fff}iframe{display:block;border:0;width:${width}px;height:1500px}</style></head><body><iframe title="LP responsive preview" width="${width}" height="1500" src="/meta-ads-setup/?qa_case=success"></iframe></body></html>`;
+      const html=`<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LP responsive preview — ${width}px</title><style>html,body{margin:0;padding:0;width:${width}px;min-width:${width}px;background:#fff}iframe{display:block;border:0;width:${width}px;height:1500px}</style></head><body><iframe title="LP responsive preview" width="${width}" height="1500" src="/meta-ads-setup/?qa_case=${['success','retry','conflict','unavailable','lark_unavailable','missing_meeting','empty','intake_failure','manual_review'].includes(url.searchParams.get('qa_case'))?url.searchParams.get('qa_case'):'success'}"></iframe></body></html>`;
       res.writeHead(200,{...headers,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':headers['Content-Security-Policy'].replace("frame-src 'none'","frame-src 'self'")});
       res.end(req.method==='HEAD'?undefined:html);return;
     }
@@ -80,5 +87,5 @@ const server=http.createServer(async(req,res)=>{
     res.end(req.method==='HEAD' ? undefined : bytes);
   } catch(error) { reply(res,error?.message==='too_large' ? 413 : 404,{ok:false,message:'Local QA request failed'}); }
 });
-server.listen(port,host,()=>console.log(`Local mock QA: http://${host}:${port}/meta-ads-setup/?qa_case=success (also retry, conflict, unavailable). No external network or personal-data logs.`));
+server.listen(port,host,()=>console.log(`Local mock QA: http://${host}:${port}/meta-ads-setup/?qa_case=success (also retry, conflict, unavailable, lark_unavailable, missing_meeting, empty, intake_failure, manual_review). No external network or personal-data logs.`));
 for (const signal of ['SIGINT','SIGTERM']) process.on(signal,()=>server.close(()=>process.exit(0)));

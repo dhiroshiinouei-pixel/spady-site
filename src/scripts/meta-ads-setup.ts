@@ -1,3 +1,4 @@
+import { initSetupBooking } from './meta-ads-booking';
 import { metaAdsSetup as service } from '../data/meta-ads-setup';
 
 type SetupWindow = Window & {dataLayer?: Record<string,unknown>[]; __spadyGtmLoaded?: boolean};
@@ -12,10 +13,11 @@ function track(event: string, detail: Record<string,string> = {}) {
 document.querySelectorAll<HTMLAnchorElement>('[data-setup-cta]').forEach(link => {
   link.addEventListener('click', () => {
     const placement=link.dataset.setupCta;
-    if (placement && ['header','hero','pricing','final','sticky'].includes(placement)) track(service.tracking.events.cta,{placement,destination:'line'});
+    if (placement && ['header','hero','pricing','final','sticky'].includes(placement)) track(service.tracking.events.cta,{placement,destination:'calendar'});
   });
 });
-// A LINE link click is an outbound click, never a confirmed inquiry or booking.
+initSetupBooking(track);
+// CTA clicks and data entry never count as a confirmed booking.
 // Hide the mobile bar while consent or the final reservation section is visible.
 const sticky = document.querySelector<HTMLElement>('#setupSticky');
 const consent = document.querySelector<HTMLElement>('#siteConsent');
@@ -25,7 +27,8 @@ let heroVisible = true;
 let reservationVisible = false;
 const updateSticky = () => {
   if (!sticky) return;
-  sticky.hidden = heroVisible || reservationVisible || (!!consent && !consent.hidden);
+  const focused = document.activeElement instanceof Element && !!document.activeElement.closest('input,textarea,select');
+  sticky.hidden = focused || heroVisible || reservationVisible || (!!consent && !consent.hidden);
 };
 const observer = new IntersectionObserver(entries=>{
   for (const entry of entries) {
@@ -38,3 +41,6 @@ if (hero) observer.observe(hero);
 if (consultation) observer.observe(consultation);
 if (consent) new MutationObserver(updateSticky).observe(consent,{attributes:true,attributeFilter:['hidden']});
 updateSticky();
+
+document.addEventListener('focusin',updateSticky);
+document.addEventListener('focusout',()=>requestAnimationFrame(updateSticky));

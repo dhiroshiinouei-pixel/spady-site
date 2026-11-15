@@ -1,5 +1,66 @@
 # Meta広告 初期設定サポート LP 確認資料
 
+## 現行作業：ページ内予約・Spadyロゴ・ファーストビュー更新（2026-11-15）
+
+最新依頼は「Spadyのロゴを使用」「傾いたPCを外してデザインを見直す」「LINEへ移動せず、その場でカレンダー予約」「予約完了後に日時とLarkミーティングを生成」です。**以下が現行の情報です。後半のLINE導線・旧フォーム導線の記録は履歴であり、現行版の仕様・検証結果ではありません。**
+
+### 今回の変更
+
+- 既存 `/logo.png` を使用。傾斜したPCモックを外してファーストビューを整理。過去の職務経験の注記、45分の操作説明、33,000円（税込）、サービス範囲は維持。
+- 主CTAを「相談日時を予約する」とし、すべて `#consultation` へ接続。LINEへの予約リンクと案内を撤去。
+- 日付・空き時間を選択してから、会社名・氏名・メール・業種・現在と過去の制限・必要な同意を入力。Webサイトと相談内容は任意。
+- 相談枠は平日10:00〜17:00・30分（日本時間）。有料サービスに含まれる45分の操作説明とは別。実空き枠をGoogleカレンダーから取得し、予約確定時にも空き状況を確認。
+- 相談情報を既存受付APIで保存した後、受付IDと日時で予約。相談情報の受付だけを「予約完了」と表示・計測しない。
+- Googleカレンダー登録と予約ごとのLark会議生成が両方確認された場合だけ成功。LPもHTTP 200・受付ID・開始/終了日時・Lark参加URLを検証し、確定日時と参加リンクを表示。
+- 二重送信を防止し、結果不明時は同一ID・日時で再確認。409 `slot_unavailable` の場合だけ日時を選び直す。503 `manual_review_required` は自動再試行・日時変更を停止し、受付IDを画面に表示して `info@spady.net` への確認を案内。
+- 個人情報・受付ID・選択日時をアクセス解析やブラウザーの永続ストレージへ保存しない。既存Cookie同意後のGTMのみ再利用し、クリック・操作開始・失敗・実予約成功を分離。
+
+### 主な関連ファイル
+
+- `src/pages/meta-ads-setup.astro` / `src/styles/meta-ads-setup.css`：ロゴ、ファーストビュー、最終予約セクション。
+- `src/data/meta-ads-setup.ts`：価格、45分、相談時間、CTA、APIパス、計測名。
+- `src/components/meta-ads/Cta.astro` / `ConsultationBooking.astro`：ページ内CTA、カレンダー、入力・確認・確定結果。旧 `LineReservation.astro` は削除。
+- `src/scripts/meta-ads-setup.ts` / `meta-ads-booking.ts`：同意付き計測、追従CTA制御、予約操作と状態管理。
+- `functions/api/meta-ads-booking-info.js`：Meta相談専用の接続状態。認証情報・アカウントIDは返さない。
+- `functions/api/meta-ads-booking.js`：開始・終了日時、Lark参加URL、再選択・手動確認コードの検証。
+- `functions/api/meta-ads-setup.js` / `functions/api/booking/[action].js`：既存の相談受付・空き枠取得を再利用。
+- `test/meta-ads-booking-info.test.mjs` / `meta-ads-booking-proxy.test.mjs` / `meta-ads-proxy.test.mjs`：接続・受付・予約の成功条件と情報境界。
+- `test/serve-meta-qa.mjs`：localhost限定の模擬受付・模擬予約。`success` / `retry` / `conflict` / `unavailable` / `lark_unavailable` / `missing_meeting` / `empty` / `intake_failure` / `manual_review`。実通知・実会議・実予定は作成しない。
+- `scripts/verify-meta-ads.mjs`：上記のローカル模擬環境専用のブラウザーQA手順。今回実行していない。
+
+連携バックエンドは隣接する `spady-sales` 側で変更。一般予約の固定Lark URL方式は維持し、Meta相談に予約ごとの会議生成を追加。
+
+### 実施済みと未実施の検証
+
+- LP TypeScript型チェック：成功。
+- 受付・予約・接続状態proxyのNodeテスト：42件成功。不正・未確認応答、URL/日時不一致、HTTP 202、手動確認コードの境界を確認。
+- `git diff --check`、ローカル模擬サーバーの構文チェック：成功。
+- Astroビルド：成功（49ページ）。SEO・内部リンク等の静的検証も成功。
+- Googleの実availability API：**「Googleカレンダーに再接続してください」** の応答を確認。本人に再接続を依頼済み。
+- ブラウザーの目視・操作・レスポンシブ確認：**未実施**。CUA操作エラーで開始できず。旧版の画像・検証結果を今回の確認済み証拠にしない。
+- 本番の実予約、Google予定、予約ごとのLark会議、招待、Sheets記録とLark通知の一連の確認：**未実施**。
+- 更新した `scripts/verify-meta-ads.mjs` のブラウザー実行：**未実施**。
+
+### 公開前・予約受付開始前の必須作業
+
+- [ ] **Googleカレンダー再接続**：本人認可後、実空き枠取得・平日10〜17時・競合チェックを確認。
+- [ ] **Lark会議生成の接続**：アプリ認証情報と主催者をサーバー側へ設定。実行時の値は未設定・未検証。必要権限を確認し予約ごとの会議生成を実検証。秘密値はチャットに貼らず、設定UIで扱う。
+- [ ] **本番結合確認**：Googleの日時・Lark参加URL・招待・Sheets記録・Lark通知を実予約で確認。未接続・競合・結果不明時の挙動も確認。
+- [ ] **表示確認**：320・360・390・768・1024・1440px等で、ロゴ、見出し、CTA、カレンダー、入力・エラー・完了表示、固定UIとCookie表示を確認。
+- [ ] **計測設定**：`meta_setup_cta_click` / `meta_setup_booking_start` / `meta_setup_booking_success` / `meta_setup_booking_failure` の集計先を確認。成功は実予約完了のみ。
+- [x] **公開URL**：既存 `https://spady.net/meta-ads-setup/` を継続。本資料作成時点で今回の変更を公開済みとする証拠はない。
+- [ ] **操作ガイドの準備**：共通ガイドは別タスクで制作・確認。
+- [ ] **正式申込・支払い方法、納期、キャンセル・返金・作業中断時の条件、規約との整合**：未確定条件を事業者が確定。今回の制作で法的文書を改変していない。
+
+実接続・実予約を確認するまでは、予約可能な完成品として扱わない。未接続時は架空枠を表示せず、予約未完了を案内する。
+
+---
+
+## 以下は2026-11-11のLINE導線と、それ以前のフォーム導線の履歴
+
+**以下の「現在」「今回」は記録当時の状態です。2026-11-15の仕様・実接続・公開・ブラウザー確認の根拠として使わないでください。**
+
+
 ## 現在の導線：LINEで予約する
 
 公開URLは `https://spady.net/meta-ads-setup/`。最新の依頼「フォーム送信ではなく、LINEで予約する」に合わせ、ヘッダー・ファーストビュー・料金・最終案内・スマホ追従の主CTAを **「LINEで予約する」** に統一しました。既存GitHub main → Cloudflare Pagesの公開経路を使用します。

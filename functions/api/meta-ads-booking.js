@@ -1,6 +1,10 @@
 const serviceOrigin = 'https://spady-sales.dhiroshi-inouei.chatgpt.site';
 const reply = (body, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } });
 const fail = (status, message, code) => reply({ ok: false, message, ...(code ? { code } : {}) }, status);
+const larkUrl = value => {
+  if (typeof value !== 'string') return null;
+  try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password && !url.port && /(^|\.)(larksuite\.com|feishu\.cn)$/.test(url.hostname) && /meeting|vc|video|\/j\//i.test(url.pathname) ? url.href : null; } catch { return null; }
+};
 
 export async function onRequest({ request, env }) {
   if (request.method !== 'POST') return fail(405, 'フォームから予約してください。');
@@ -22,8 +26,11 @@ export async function onRequest({ request, env }) {
     const data = await response.json();
     if (response.status !== 200 || data.ok !== true || data.request_id !== body.receipt_id || data.start !== body.start) {
       const status = [400,403,404,409,413,429,503].includes(response.status) ? response.status : 503;
-      return fail(status, '予約の確定を確認できませんでした。', status === 409 && data.code === 'slot_unavailable' ? 'slot_unavailable' : undefined);
+      return fail(status, '予約の確定を確認できませんでした。', status === 409 && data.code === 'slot_unavailable' ? 'slot_unavailable' : status === 503 && data.code === 'manual_review_required' ? 'manual_review_required' : undefined);
     }
-    return reply({ ok: true, request_id: data.request_id, start: data.start, meeting_url: typeof data.meeting_url === 'string' ? data.meeting_url : '' });
+    const meeting = larkUrl(data.meeting_url);
+    const end = new Date(Date.parse(body.start) + 30 * 60000).toISOString();
+    if (!meeting || data.end !== end) return fail(503, '予約日時とLarkミーティングの確定を確認できませんでした。');
+    return reply({ ok: true, request_id: data.request_id, start: data.start, end, meeting_url: meeting });
   } catch { return fail(503, '予約の確定を確認できませんでした。同じ日時で再確認してください。'); }
 }

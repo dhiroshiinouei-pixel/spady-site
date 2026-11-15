@@ -6,7 +6,9 @@ const env = { SALES_SITES_ACCESS_TOKEN:'server-only-site-token', BOOKING_PROXY_K
 const receipt = 'a'.repeat(32);
 const start = '2026-11-17T01:00:00.000Z';
 const valid = { receipt_id:receipt, start };
-const accepted = (extra={}) => ({ok:true,request_id:receipt,start,...extra});
+const end = '2026-11-17T01:30:00.000Z';
+const meeting = 'https://vc.larksuite.com/j/123456789';
+const accepted = (extra={}) => ({ok:true,request_id:receipt,start,end,meeting_url:meeting,...extra});
 function request(body=valid, headers={}, method='POST') {
   return new Request('https://spady.net/api/meta-ads-booking',{method,headers:{Origin:'https://spady.net','Content-Type':'application/json',...headers},...(['GET','HEAD'].includes(method)?{}:{body:typeof body==='string'?body:JSON.stringify(body)})});
 }
@@ -62,11 +64,11 @@ test('uses only fixed upstream route, server credentials, and opaque booking ide
   assert.deepEqual(options.headers,{'Content-Type':'application/json',Origin:'https://spady-sales.dhiroshi-inouei.chatgpt.site','OAI-Sites-Authorization':`Bearer ${env.SALES_SITES_ACCESS_TOKEN}`,'X-Spady-Booking-Key':env.BOOKING_PROXY_KEY,'X-Spady-Visitor-IP':'192.0.2.1'});
   assert.deepEqual(JSON.parse(options.body),valid);
   assert(!options.body.includes('private@example.test'));
-  return Response.json(accepted({meeting_url:'https://meet.google.com/example',email:'upstream-private@example.test',token:env.SALES_SITES_ACCESS_TOKEN,private_data:'not for browser'}));
+  return Response.json(accepted({meeting_url:meeting,email:'upstream-private@example.test',token:env.SALES_SITES_ACCESS_TOKEN,private_data:'not for browser'}));
 },async()=>{
   const response=await call(request(valid,{'cf-connecting-ip':'192.0.2.1',Authorization:'client-private-token','X-Email':'private@example.test',Cookie:'private=session','X-Spady-Booking-Key':'client-cannot-override'}));
   assert.equal(response.status,200);assert.equal(response.headers.get('Cache-Control'),'no-store');assert.equal(response.headers.get('X-Content-Type-Options'),'nosniff');
-  assert.deepEqual(await response.json(),{ok:true,request_id:receipt,start,meeting_url:'https://meet.google.com/example'});
+  assert.deepEqual(await response.json(),{ok:true,request_id:receipt,start,end,meeting_url:meeting});
 }));
 test('HTML/login redirects and malformed JSON do not appear confirmed',async()=>{
   for(const response of [new Response('<html>private login</html>',{headers:{'Content-Type':'text/html'}}),new Response('',{status:302,headers:{Location:'https://login.example','Content-Type':'text/html'}}),new Response('{broken',{headers:{'Content-Type':'application/json'}})]) {
@@ -78,10 +80,13 @@ test('requires explicit ok=true, matching receipt and exact selected start',asyn
     await mockFetch(async()=>Response.json(body),async()=>{const result=await call();assert.equal(result.status,503);assert.equal((await result.json()).ok,false);});
   }
 });
-test('absent/non-string meeting link returns an empty link instead of private response data',async()=>{
-  for(const meeting_url of [undefined,null,1,{url:'https://private.example'}]) await mockFetch(async()=>Response.json(accepted({meeting_url})),async()=>{
-    assert.deepEqual(await(await call()).json(),{ok:true,request_id:receipt,start,meeting_url:''});
+test('missing or untrusted Lark meeting links never appear confirmed',async()=>{
+  for(const meeting_url of [undefined,null,1,{url:'https://private.example'},'https://meet.google.com/example','https://larksuite.com.attacker.example/j/1','http://vc.larksuite.com/j/1','https://user:pass@vc.larksuite.com/j/1','https://vc.larksuite.com:8443/j/1','https://www.larksuite.com/']) await mockFetch(async()=>Response.json(accepted({meeting_url})),async()=>{
+    const response=await call();assert.equal(response.status,503);assert.equal((await response.json()).ok,false);
   });
+});
+test('both the booked end time and Lark meeting must be confirmed',async()=>{
+  for(const end of [undefined,null,'2026-11-17T01:45:00.000Z','2026-11-17T10:30:00+09:00']) await mockFetch(async()=>Response.json(accepted({end})),async()=>{const response=await call();assert.equal(response.status,503);assert.equal((await response.json()).ok,false);});
 });
 test('upstream error statuses are allowlisted and upstream messages are never reflected',async()=>{
   for(const [status,expected] of [[400,400],[401,503],[403,403],[404,404],[409,409],[413,413],[415,503],[429,429],[500,503],[502,503],[503,503],[504,503]]) {
@@ -107,3 +112,9 @@ for (const status of [201,202,203,206,207]) {
     const response=await call();assert.equal(response.status,503);assert.equal((await response.json()).ok,false);
   }));
 }
+
+test('only explicit HTTP 503 manual_review_required tells the client to stop retries',async()=>{
+  for(const [status,code,expected] of [[503,'manual_review_required','manual_review_required'],[409,'manual_review_required',undefined],[400,'manual_review_required',undefined],[503,'MANUAL_REVIEW_REQUIRED',undefined],[503,'other_private_reason',undefined]]) {
+    await mockFetch(async()=>Response.json({ok:false,code},{status}),async()=>{const response=await call();assert.equal(response.status,status);assert.equal((await response.json()).code,expected);});
+  }
+});
