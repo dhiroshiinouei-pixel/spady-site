@@ -3,118 +3,121 @@ import { metaAdsSetup as service } from '../../data/meta-ads-setup';
 import Cta from './Cta.astro';
 import Icon from './Icon.astro';
 ---
-<section class="hero hero-reference" aria-labelledby="hero-title">
-  <div class="wrap reference-layout">
-    <div class="reference-message">
+<section class="hero seminar-hero" aria-labelledby="hero-title">
+  <div class="seminar-background">
+    <img src={service.heroMedia.src} width={service.heroMedia.width} height={service.heroMedia.height} alt={service.heroMedia.alt} fetchpriority="high" decoding="async"/>
+  </div>
+  <div class="wrap seminar-hero-layout">
+    <div class="seminar-hero-copy">
+      <p class="seminar-hero-label">Meta広告 初期設定サポート</p>
       <h1 id="hero-title"><span>はじめの設定、</span><strong>プロにお任せ。</strong></h1>
-      <p class="reference-intro"><span>Instagram・Facebook広告を、</span><span>自社で始めるための初期設定サポート。</span></p>
-    </div>
-
-    <aside class="reference-authority" aria-label="代表・井上博史の過去の職務経験">
-      <p class="authority-eyebrow">初期設定に活かす、広告支援の経験</p>
-      <div class="authority-facts">
-        <p class="authority-meta"><span>元Meta</span><strong><span>マーケティング</span><span>プロ</span></strong></p>
-        <p class="authority-agencies"><span>広告代理店</span><strong><b>80</b><span>社以上</span></strong><span>のサポート経験</span></p>
-      </div>
-      <p class="authority-person">Spady 代表 井上 博史</p>
-    </aside>
-
-    <div class="reference-offer">
-      <ul class="reference-benefits" aria-label="サービスの主な内容">
+      <p class="seminar-hero-intro"><span>Instagram・Facebook広告を、</span><span>自社で始めるための初期設定サポート。</span></p>
+      <ul class="seminar-hero-benefits" aria-label="サービスの主な内容">
         <li><Icon name="settings"/><span>初期設定 ＋ 広告1件の入稿</span></li>
         <li><Icon name="screen"/><span>管理画面の操作説明 <strong>{service.lectureMinutes}分</strong></span></li>
         <li><Icon name="guide"/><span>振り返りに使える操作ガイド</span></li>
       </ul>
-      <div class="reference-price">
+      <div class="seminar-hero-price">
         <p><strong>{service.price}</strong><span>円<small>（税込）</small></span></p>
-        <p class="reference-contract"><span>買い切り</span><span>月額契約不要</span></p>
+        <p class="seminar-hero-contract"><span>買い切り</span><span>月額契約不要</span></p>
       </div>
-      <div class="reference-action"><Cta placement="hero"/><p class="cta-note">{service.ctaNoteParts.map(part => <span class="phrase">{part}</span>)}</p></div>
+      <div class="seminar-hero-action"><Cta placement="hero"/><p class="cta-note">{service.ctaNoteParts.map(part => <span class="phrase">{part}</span>)}</p></div>
       <a href="#service" class="secondary-cta">{service.secondaryCta}<span aria-hidden="true">↓</span></a>
     </div>
 
-    <figure class="reference-photo">
-      <img src="/meta-ads-setup/seminar-marketing.jpg" width="1280" height="959" alt="マーケティングの仕組みを、画面を使って参加者に説明するセミナーの様子" fetchpriority="high"/>
-      <figcaption><span class="photo-caption-label">Spadyの活動風景</span><p><span>設定も、基本操作も。</span><span>画面を見ながら、わかりやすく。</span></p><small>写真はセミナーの様子です。本サービスはオンラインで提供します。</small></figcaption>
-    </figure>
-
-    <div class="reference-notes">
-      <p>{service.credentialsNote}</p>
-      <p><span>※広告費は別途</span><span>※広告素材はお客様がご用意</span><span>※Pixelのサイト設置・イベント設定・動作確認は別料金</span></p>
-    </div>
+    <aside class="seminar-hero-experience" aria-label="代表・井上博史の広告支援経験">
+      <p class="seminar-photo-caption">{service.heroMedia.caption}</p>
+      <div class="seminar-experience-panel">
+        <div class="seminar-experience-facts">
+          <p class="seminar-meta"><span>元Meta</span><strong><span>マーケティング</span><span>プロ</span></strong></p>
+          <p class="seminar-agencies"><span>広告代理店</span><strong><b>80</b><span>社以上</span></strong><span>のサポート経験</span></p>
+        </div>
+        <p class="seminar-person">Spady 代表 井上 博史</p>
+      </div>
+    </aside>
   </div>
+  <div class="seminar-hero-footnotes"><div class="wrap">
+    <p>本サービスはオンラインで提供します。</p>
+    <p><span>広告費は別途必要です。</span><span>広告素材はお客様にご用意いただきます。</span><span>Pixelのサイト設置・イベント設定・動作確認は別料金です。</span></p>
+  </div></div>
 </section>
 
 <style>
-  .hero-reference{background:#fff;padding:42px 0 28px;border-bottom:1px solid #dce4ee}
-  .reference-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-areas:"message authority" "offer photo" "notes notes";gap:26px 54px;align-items:start}
-  .reference-message{grid-area:message;min-width:0}
-  .hero-reference h1{font-size:clamp(2.4rem,4.25vw,3.7rem);font-weight:800;line-height:1.22;letter-spacing:-.045em;margin:0;overflow-wrap:normal}
-  .hero-reference h1>span{display:block}
-  .hero-reference h1>strong{display:inline-block;font-size:1.12em;font-weight:800;line-height:1.4;color:#0754c7;text-decoration-line:underline;text-decoration-color:#f2d564;text-decoration-thickness:.11em;text-underline-offset:.04em;text-decoration-skip-ink:none}
-  .reference-intro{font-size:.9375rem;line-height:1.9;margin-top:14px;color:#536174}
-  .reference-intro>span{display:inline-block}
-  .reference-authority{grid-area:authority;min-width:0;background:#112f62;color:#fff;padding:19px 24px 15px;border-top:4px solid #d0b366;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
-  .authority-eyebrow{font-size:.75rem;letter-spacing:.07em;color:#dce7fa;text-align:center;margin-bottom:12px}
-  .authority-facts{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;text-align:center}
-  .authority-facts>p{min-width:0;line-height:1.5}
-  .authority-meta{padding-right:18px;border-right:1px solid #5d7499}
-  .authority-meta>span{font-size:1.8rem;font-weight:750;display:block;letter-spacing:.01em}
-  .authority-meta>strong{display:block;font-size:1.12rem;font-weight:650;line-height:1.6}
-  .authority-meta>strong>span{display:inline-block}
-  .authority-agencies{padding-left:18px}
-  .authority-agencies>span{display:block;font-size:.875rem}
-  .authority-agencies>strong{display:flex;gap:4px;justify-content:center;align-items:baseline;font-size:1.05rem;font-weight:700;line-height:1.1;margin:2px 0 7px}
-  .authority-agencies b{font-size:3.7rem;color:#f5da78;font-weight:750;letter-spacing:-.045em}
-  .authority-person{font-size:.75rem;text-align:center;color:#dce7fa;border-top:1px solid #5d7499;padding-top:11px;margin-top:15px}
-  .reference-offer{grid-area:offer;min-width:0}
-  .reference-benefits{list-style:none;padding:0;display:grid;gap:9px}
-  .reference-benefits>li{display:flex;gap:13px;align-items:center;font-size:1rem;font-weight:650;line-height:1.7;background:#f0f5fd;padding:9px 14px;border-radius:4px}
-  .reference-benefits :global(svg){width:25px;height:25px;color:#0754c7}
-  .reference-benefits strong{font-size:1.15em;color:#0754c7;white-space:nowrap}
-  .reference-price{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px;margin:23px 0 20px}
-  .reference-price>p:first-child{display:flex;align-items:baseline;gap:6px;line-height:1;color:#09264c}
-  .reference-price strong{font-size:3.65rem;font-weight:800;letter-spacing:-.06em;font-variant-numeric:lining-nums}
-  .reference-price>p>span{font-size:1.1rem;font-weight:700}
-  .reference-price small{font-size:.8rem;font-weight:600}
-  .reference-contract{border-left:1px solid #a6bad4;padding-left:20px;line-height:1.7}
-  .reference-contract>span{display:block;font-size:.82rem!important;font-weight:650!important}
-  .reference-action :global(.primary-cta){width:100%;justify-content:space-between;min-height:62px;padding:17px 25px;font-size:1.06rem;background:#0754c7;border-color:#0754c7;border-radius:5px}
-  .reference-action :global(.primary-cta:hover){background:#103e8b;border-color:#103e8b}
-  .hero-reference .cta-note{margin-top:10px;font-size:.8125rem;line-height:1.8}
-  .reference-offer>.secondary-cta{font-size:.8125rem;min-height:38px;margin-top:5px;gap:24px;color:#536174;border-color:#a6bad4}
-  .reference-photo{grid-area:photo;min-width:0;margin:0;align-self:stretch;background:#f2f5fa;display:flex;flex-direction:column}
-  .reference-photo>img{width:100%;height:auto;aspect-ratio:1280/959;object-fit:cover;object-position:center;border:1px solid #d4dce8}
-  .reference-photo figcaption{padding:16px 22px 19px}
-  .photo-caption-label{font-size:.6875rem;color:#536174;letter-spacing:.08em}
-  .reference-photo figcaption p{font-size:1.1rem;font-weight:700;line-height:1.7;margin-top:3px;letter-spacing:.01em}
-  .reference-photo figcaption p>span{display:inline-block}
-  .reference-photo figcaption small{display:block;font-size:.75rem;color:#536174;line-height:1.8;margin-top:7px}
-  .reference-notes{grid-area:notes;border-top:1px solid #dce4ee;padding-top:17px;color:#536174;font-size:.8125rem;line-height:1.9}
-  .reference-notes>p+p{margin-top:5px;display:flex;flex-wrap:wrap;gap:0 14px}
+  .seminar-hero{position:relative;isolation:isolate;padding:0;background:#10263e;color:#fff}
+  .seminar-background{position:absolute;inset:0 0 0;z-index:-1}
+  .seminar-background>img{width:100%;height:100%;object-fit:cover;object-position:38% 38%}
+  .seminar-background:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,29,47,.1) 0%,rgba(12,29,47,.24) 31%,rgba(12,29,47,.9) 57%,#10263ef5 100%),linear-gradient(0deg,rgba(12,29,47,.85),transparent 48%)}
+  .seminar-hero-layout{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);grid-template-areas:"experience copy";gap:56px;align-items:end;padding-top:56px;padding-bottom:38px}
+  .seminar-hero-copy{grid-area:copy;min-width:0}
+  .seminar-hero-label{font-size:.8125rem;font-weight:700;letter-spacing:.1em;color:#d3e3fa;margin-bottom:15px}
+  .seminar-hero h1{font-size:clamp(2.4rem,4.1vw,3.65rem);font-weight:800;line-height:1.3;letter-spacing:-.045em;margin:0;overflow-wrap:normal}
+  .seminar-hero h1>span{display:block}
+  .seminar-hero h1>strong{display:inline-block;max-width:100%;font-weight:800;font-size:1.08em;line-height:1.45;color:#fff;text-decoration-line:underline;text-decoration-color:#f2d564;text-decoration-thickness:.08em;text-underline-offset:.09em;text-decoration-skip-ink:none}
+  .seminar-hero-intro{font-size:.9375rem;line-height:1.9;margin-top:19px;color:#edf2f9}
+  .seminar-hero-intro>span{display:inline-block;max-width:100%}
+  .seminar-hero-benefits{list-style:none;padding:0;margin:23px 0 0;border-top:1px solid #ffffff40}
+  .seminar-hero-benefits>li{display:flex;gap:13px;align-items:center;font-size:1rem;font-weight:600;line-height:1.7;padding:9px 0;border-bottom:1px solid #ffffff40}
+  .seminar-hero-benefits :global(svg){width:23px;height:23px;color:#b9d5ff}
+  .seminar-hero-benefits strong{font-size:1.12em;color:#f5da78;white-space:nowrap}
+  .seminar-hero-price{display:flex;align-items:center;flex-wrap:wrap;gap:13px 22px;margin:23px 0 22px}
+  .seminar-hero-price>p:first-child{display:flex;align-items:baseline;gap:5px;line-height:1}
+  .seminar-hero-price strong{font-size:3.65rem;font-weight:800;letter-spacing:-.05em;font-variant-numeric:lining-nums}
+  .seminar-hero-price>p>span{font-size:1.1rem;font-weight:700}
+  .seminar-hero-price small{font-size:.875rem;font-weight:500}
+  .seminar-hero-contract{border-left:1px solid #ffffff66;padding-left:20px;line-height:1.7}
+  .seminar-hero-contract>span{display:block;font-size:.875rem!important;font-weight:600!important}
+  .seminar-hero-action :global(.primary-cta){width:100%;justify-content:space-between;min-height:62px;padding:17px 25px;font-size:1.06rem;background:#0754c7;border-color:#84b4ff;border-radius:5px}
+  .seminar-hero-action :global(.primary-cta:hover){background:#164699}
+  .seminar-hero .cta-note{margin-top:10px;font-size:.875rem;line-height:1.8;color:#e0e9f6}
+  .seminar-hero-copy>.secondary-cta{font-size:.875rem;min-height:38px;margin-top:7px;gap:24px;color:#e0e9f6;border-color:#8fa7c3}
+  .seminar-hero-experience{grid-area:experience;min-width:0;max-width:440px;width:100%;align-self:end;margin-bottom:11px}
+  .seminar-photo-caption{font-size:.8125rem;line-height:1.8;letter-spacing:.02em;margin-bottom:11px;color:#fff;text-shadow:0 1px 5px #0c1d2f}
+  .seminar-experience-panel{background:rgba(12,32,57,.92);border-top:3px solid #d5b867;padding:22px 22px 15px}
+  .seminar-experience-facts{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;text-align:center}
+  .seminar-experience-facts>p{min-width:0;line-height:1.5}
+  .seminar-meta{padding-right:15px;border-right:1px solid #6580a1}
+  .seminar-meta>span{font-size:1.65rem;font-weight:750;display:block;letter-spacing:.01em}
+  .seminar-meta>strong{display:block;font-size:1rem;font-weight:650;line-height:1.6}
+  .seminar-meta>strong>span{display:inline-block;max-width:100%}
+  .seminar-agencies{padding-left:15px}
+  .seminar-agencies>span{display:block;font-size:.875rem}
+  .seminar-agencies>strong{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:baseline;font-size:1rem;font-weight:700;line-height:1.1;margin:2px 0 7px}
+  .seminar-agencies b{font-size:3.4rem;color:#f5da78;font-weight:750;letter-spacing:-.045em}
+  .seminar-person{font-size:.8125rem;text-align:center;color:#e0e9f6;border-top:1px solid #6580a1;padding-top:11px;margin-top:15px}
+  .seminar-hero-footnotes{background:rgba(11,27,45,.86);border-top:1px solid #ffffff2e;padding:17px 0;color:#dfe9f6;font-size:.875rem;line-height:1.9}
+  .seminar-hero-footnotes p+p{display:flex;flex-wrap:wrap;gap:0 12px;margin-top:3px}
   @media(max-width:1190px){
-    .reference-layout{column-gap:34px}
-    .hero-reference h1{font-size:clamp(2.1rem,4.3vw,3.2rem)}
-    .reference-authority{padding-inline:18px}.authority-meta{padding-right:12px}.authority-agencies{padding-left:12px}.authority-meta>span{font-size:1.65rem}.authority-meta>strong{font-size:1rem}.authority-agencies b{font-size:3.25rem}
-    .reference-price{column-gap:16px}.reference-price strong{font-size:3.1rem}.reference-contract{padding-left:16px}.reference-contract>span{font-size:.75rem!important}
-    .reference-benefits>li{font-size:.9375rem;padding-inline:12px;gap:10px}
-    .reference-photo figcaption{padding-inline:17px}.reference-photo figcaption p{font-size:1rem}
+    .seminar-hero-layout{column-gap:32px;padding-top:45px}
+    .seminar-hero h1{font-size:clamp(2.1rem,4.1vw,3rem)}
+    .seminar-hero-price strong{font-size:3.1rem}.seminar-hero-price{column-gap:15px}.seminar-hero-contract{padding-left:15px}
+    .seminar-experience-panel{padding-inline:16px}.seminar-meta{padding-right:10px}.seminar-meta>strong{font-size:.9375rem}.seminar-agencies{padding-left:10px}
   }
-  @media(max-width:900px){
-    .reference-layout{gap:24px;grid-template-columns:minmax(0,1fr) minmax(0,.95fr)}
-    .hero-reference{padding-top:32px}.hero-reference h1{font-size:clamp(1.8rem,4.2vw,2.5rem)}.reference-intro{font-size:.875rem}
-    .reference-authority{padding:15px 14px}.authority-eyebrow{font-size:.6875rem;letter-spacing:0}.authority-facts{grid-template-columns:1.2fr 1fr}.authority-meta{padding-right:9px}.authority-meta>span{font-size:1.4rem}.authority-meta>strong{font-size:.9rem}.authority-agencies{padding-left:9px}.authority-agencies b{font-size:2.85rem}.authority-agencies>span{font-size:.75rem}.authority-agencies>strong{font-size:.85rem}.authority-person{font-size:.6875rem}
-    .reference-benefits>li{font-size:.8125rem;padding:9px 10px;gap:8px}.reference-benefits :global(svg){width:21px;height:21px}.reference-price{gap:12px;margin-block:20px}.reference-price strong{font-size:2.8rem}.reference-price>p>span{font-size:.95rem}.reference-contract{padding-left:12px}.reference-price small{font-size:.7rem}.reference-action :global(.primary-cta){font-size:.9375rem;padding-inline:20px}.reference-photo figcaption p{font-size:.9375rem}
+  @media(min-width:701px) and (max-width:900px){
+    .seminar-hero-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px}
+    .seminar-background:after{background:linear-gradient(90deg,rgba(12,29,47,.12),rgba(12,29,47,.35) 25%,rgba(12,29,47,.93) 52%,#10263ef5),linear-gradient(0deg,#10263e,transparent 55%)}
+    .seminar-hero h1{font-size:clamp(2rem,4.1vw,2.5rem)}.seminar-hero-price strong{font-size:2.9rem}
+    .seminar-hero-benefits>li{font-size:.9375rem;gap:10px}
+    .seminar-experience-facts{grid-template-columns:1fr;gap:15px}.seminar-meta{border-right:0;border-bottom:1px solid #6580a1;padding:0 0 15px}.seminar-agencies{padding:0}.seminar-agencies b{font-size:3.2rem}
+    .seminar-photo-caption{font-size:.8125rem}.seminar-hero-experience{margin-bottom:0}
   }
   @media(max-width:700px){
-    .reference-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"message" "authority" "offer" "photo" "notes";gap:20px}
-    .hero-reference{padding-top:26px}.hero-reference h1{font-size:clamp(2.05rem,8.8vw,3.5rem);line-height:1.18}.hero-reference h1>strong{font-size:1.12em;line-height:1.35}
-    .reference-intro{font-size:.875rem;line-height:1.8;margin-top:13px}
-    .reference-authority{padding:15px 17px 12px}.authority-eyebrow{display:none}.authority-meta>span{font-size:1.55rem}.authority-meta>strong{font-size:1rem}.authority-facts{grid-template-columns:1.1fr 1fr}.authority-agencies>strong{font-size:1rem}.authority-agencies b{font-size:3.1rem}.authority-agencies>span{font-size:.8125rem}.authority-person{margin-top:10px;padding-top:8px;font-size:.6875rem}
-    .reference-benefits{gap:7px}.reference-benefits>li{font-size:.9375rem;padding:8px 12px;gap:12px}.reference-benefits :global(svg){width:22px;height:22px}.reference-price{margin:20px 0 18px;gap:16px}.reference-price strong{font-size:3.2rem}.reference-price>p>span{font-size:1rem}.reference-price small{font-size:.75rem}.reference-contract{padding-left:16px}.reference-contract>span{font-size:.75rem!important}.reference-action :global(.primary-cta){font-size:1rem;min-height:60px;padding-inline:22px}.hero-reference .cta-note{font-size:.8125rem}
-    .reference-photo{margin-top:3px}.reference-photo figcaption p{font-size:1.05rem}.reference-notes{font-size:.8125rem;padding-top:16px}.reference-notes>p+p{display:block}.reference-notes>p+p>span{display:block}
+    .seminar-background{bottom:auto;height:410px}
+    .seminar-background>img{object-position:36% 30%}
+    .seminar-background:after{background:linear-gradient(180deg,rgba(12,29,47,.03) 0%,rgba(12,29,47,.06) 28%,rgba(16,38,62,.62) 58%,#10263e 96%)}
+    .seminar-hero-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "experience";gap:28px;padding-top:245px;padding-bottom:25px}
+    .seminar-hero h1{font-size:clamp(2.1rem,8.8vw,3.5rem);line-height:1.25}.seminar-hero h1>strong{font-size:1.08em}
+    .seminar-hero-label{font-size:.8125rem;letter-spacing:.06em;margin-bottom:11px}.seminar-hero-intro{font-size:.9375rem;margin-top:17px}
+    .seminar-hero-benefits{margin-top:21px}.seminar-hero-benefits>li{font-size:.9375rem;padding-block:9px;gap:11px}
+    .seminar-hero-price{margin:23px 0 20px;gap:14px 18px}.seminar-hero-price strong{font-size:3.4rem}.seminar-hero-contract{padding-left:17px}.seminar-hero-price>p>span{font-size:1rem}
+    .seminar-hero-action :global(.primary-cta){font-size:1rem;min-height:60px;padding-inline:22px}
+    .seminar-hero-experience{max-width:none;margin-bottom:0}.seminar-experience-panel{padding:19px 18px 13px}.seminar-meta>strong{font-size:1rem}.seminar-agencies b{font-size:3.1rem}
+    .seminar-photo-caption{margin-bottom:9px;color:#dfe9f6;text-shadow:none;font-size:.875rem}
+    .seminar-hero-footnotes{padding-block:17px;background:#0c1f34}.seminar-hero-footnotes p+p{display:block}.seminar-hero-footnotes p+p>span{display:block}
   }
   @media(max-width:359px){
-    .hero-reference h1{font-size:2rem}.reference-intro{font-size:.8125rem}.reference-authority{padding-inline:12px}.authority-meta>span{font-size:1.35rem}.authority-meta>strong{font-size:.875rem}.authority-agencies b{font-size:2.8rem}.authority-agencies>strong{font-size:.875rem}.authority-agencies>span{font-size:.75rem}.reference-benefits>li{font-size:.8125rem;gap:8px}.reference-price strong{font-size:2.75rem}.reference-price{gap:11px}.reference-price>p>span{font-size:.9375rem}.reference-price small{font-size:.6875rem}.reference-contract{padding-left:11px}.reference-contract>span{font-size:.6875rem!important}.reference-action :global(.primary-cta){font-size:.9375rem}
+    .seminar-hero-layout{padding-top:230px}.seminar-background{height:390px}
+    .seminar-hero h1{font-size:2rem}.seminar-hero-benefits>li{font-size:.875rem;gap:8px}.seminar-hero-benefits :global(svg){width:21px;height:21px}
+    .seminar-hero-price strong{font-size:3rem}.seminar-hero-price{gap:12px}.seminar-hero-contract{padding-left:12px}.seminar-hero-contract>span{font-size:.8125rem!important}
+    .seminar-experience-panel{padding-inline:12px}.seminar-meta>span{font-size:1.4rem}.seminar-meta>strong{font-size:.875rem}.seminar-agencies>span{font-size:.8125rem}.seminar-agencies b{font-size:2.8rem}
   }
 </style>

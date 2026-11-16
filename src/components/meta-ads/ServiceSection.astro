@@ -18,7 +18,7 @@ import ServiceVisual from './ServiceVisual.astro';
       {supports.map((item, index) => {
         const visual = supportVisuals[index];
         return <article class:list={['support-explainer', { 'support-explainer-pixel': item.caution }]}>
-          <div class="support-explainer-heading"><span>{item.number}</span><p>{visual.title}</p></div>
+          <div class="support-explainer-heading"><span>{item.number}</span>{visual.title && <p>{visual.title}</p>}</div>
           <ServiceVisual kind={visual.kind}/>
           <div class="support-explainer-copy">
             <h3>{item.title}</h3>

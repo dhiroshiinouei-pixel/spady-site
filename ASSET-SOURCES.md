@@ -91,3 +91,10 @@
 - `LessonSection.astro`：管理画面の説明イメージ。数字の実績やMeta公式UIを再現しておらず、「操作画面のイメージ」と明示。
 - `ProcessSection.astro`、`PreparationItems.astro`、`Icon.astro`：カレンダー、人物、書類、素材、コード、カード等の一般的な独自ピクトグラム。第三者サービスの認定マークや公式ロゴとして制作したものではありません。
 - この改訂で新たな写真や生成人物を追加していません。本人提供のセミナー写真と既存本人写真を継続使用。参考サイトの画像・文章・コードの転用なし。
+
+## Meta広告 LP：公式サービスアイコン・背景写真（2026-11-16）
+
+- Facebook： [Meta Brand Resource Center — Facebook logo](https://www.meta.com/brand/resources/facebook/logo/) の現行配布 `Facebook-Brand-Asset-Pack.zip` → `Facebook Brand Asset Pack/Logo/Primary Logo/Facebook_Logo_Primary.png` を取得。原本は `design/meta-ads/brand-sources/facebook-logo-primary.png`（2084×2084、SHA-256 `2adfd474d91fd20c51084309ed000c1ae6cc7f5f70af14d375930f5a71301308`）。配信用 `public/meta-ads-setup/brands/facebook-logo-primary-160.png` は160×160へ等比縮小したものです。
+- Instagram： [Meta Brand Resource Center — Instagram](https://www.meta.com/brand/resources/instagram/instagram-brand/) の公式 `IG_brand_asset_pack_2023.zip` に由来する既存 `public/akindo/kaigyo-assets/brands/instagram-glyph-gradient-160.png` を、`public/meta-ads-setup/brands/instagram-glyph-gradient-160.png` へ同一内容で配置。原本と取得履歴は [公式ブランド素材の記録](docs/akindo-brand-assets.md) を参照。
+- `ServiceVisual.astro` と `PreparationItems.astro` のFacebookページ・Instagramの説明に上記原本由来の画像を使用。表示サイズは図内32×32px、準備物一覧28～32px、周囲16px以上の余白を確保し、色変更・変形・影・描き直しはしていません。サービス識別用であり、Spadyの認定・提携を示すマークではありません。
+- ファーストビューの背景は既存 `public/meta-ads-setup/akindo-lab-seminar.jpg` を再配置。画像そのものの新たな加工はせず、CSSの `object-fit` / `object-position` と、文字を読みやすくするオーバーレイのみ使用。写真の原本・出典は前節のAKINDO Lab活動紹介と同じです。

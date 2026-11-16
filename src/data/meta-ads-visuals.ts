@@ -12,7 +12,7 @@ export const supportVisuals = [
   },
   {
     kind: 'pixel',
-    title: 'コードのお渡しまで',
+    title: '',
     notes: ['コードのお渡しだけでは、Webサイト上の計測は始まりません。', 'サイトへの設置・イベント設定・動作確認は別料金です。GTMへの実装も標準範囲外です。'],
   },
   {

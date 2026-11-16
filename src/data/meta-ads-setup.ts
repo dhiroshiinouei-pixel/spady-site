@@ -9,7 +9,11 @@ export const metaAdsSetup = {
     { prefix: '元Meta', emphasis: 'マーケティングプロ', suffix: '' },
     { prefix: '広告代理店', emphasis: '80社以上', suffix: 'のサポート経験' },
   ],
-  credentialsNote: 'Metaでの支援経験は、代表・井上博史の過去の職務経験です。本サービスはMeta社の公式サービスではありません。',
+  heroMedia: {
+    src: '/meta-ads-setup/akindo-lab-seminar.jpg', width: 1280, height: 960,
+    alt: '小樽で自主開催するAKINDO Labで、参加者に説明するSpady代表・井上博史',
+    caption: '小樽で自主開催する AKINDO Lab の講義風景',
+  },
   profileCredential: 'L Message（LINE拡張ツール）認定代理店',
   profileExpertise: ['Meta広告', 'LINE公式・エルメ', 'Web・LP制作'],
   profileDescription: 'Meta広告の初期設定に加え、LINE公式アカウント・エルメの構築、Web・LP制作まで。広告・LINE・Webの実務経験をもとに、事業の課題に合わせた支援をご相談いただけます。',
