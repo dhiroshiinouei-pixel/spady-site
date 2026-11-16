@@ -7,7 +7,7 @@ export const metaAdsSetup = {
   description: '自社でInstagram・Facebook広告を始めたい事業者様へ。買い切り33,000円でMeta広告の初期設定・広告1件入稿・45分の操作説明をサポート。操作ガイド付き。広告費は別途必要です。',
   credentials: [
     { prefix: '元Meta', emphasis: 'マーケティングプロ', suffix: '' },
-    { prefix: '広告代理店', emphasis: '80社以上', suffix: 'のサポート経験' },
+    { prefix: '広告代理店', emphasis: '80社以上', suffix: 'サポート経験' },
   ],
   heroMedia: {
     src: '/meta-ads-setup/akindo-lab-seminar.jpg', width: 1280, height: 960,
