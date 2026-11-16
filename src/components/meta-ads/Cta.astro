@@ -3,4 +3,4 @@ import {metaAdsSetup as service} from '../../data/meta-ads-setup';
 import Icon from './Icon.astro';
 const {placement='body',compact=false}=Astro.props;
 ---
-<a href="#consultation" class:list={['primary-cta',{'compact':compact}]} data-setup-cta={placement}><span>{service.cta}</span><Icon name="arrow"/></a>
+<a href="#consultation" class:list={['primary-cta',{'compact':compact}]} data-setup-cta={placement}><span class="cta-label">{service.cta}</span><span class="cta-arrow" aria-hidden="true"><Icon name="arrow"/></span></a>

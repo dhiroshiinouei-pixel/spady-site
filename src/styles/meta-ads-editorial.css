@@ -195,3 +195,156 @@
   .meta-setup-page .profile-visual img { width: 116px; height: 145px; }
   .meta-setup-page .restriction-note { padding-inline: 20px; }
 }
+
+/* Small moments of colour and feedback, with no looping or flashing motion. */
+.meta-setup-page {
+  --action-blue: #075bce;
+  --action-deep: #1443b7;
+  --action-shadow: #075bce30;
+}
+.meta-setup-page .primary-cta,
+.meta-setup-page .seminar-hero-action .primary-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(110deg, var(--action-deep), var(--action-blue) 62%, #08769a);
+  border: 1px solid #5c94ee;
+  border-radius: 8px;
+  box-shadow: 0 6px 22px var(--action-shadow), inset 0 1px 0 #ffffff40;
+  transition: background-color .2s, box-shadow .2s, border-color .2s;
+}
+.meta-setup-page .primary-cta .cta-label,
+.meta-setup-page .primary-cta .cta-arrow { position: relative; z-index: 1; }
+.meta-setup-page .primary-cta .cta-arrow {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border: 1px solid #ffffff70;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.meta-setup-page .primary-cta .cta-arrow svg { width: 19px; height: 19px; transition: transform .2s; }
+.meta-setup-page .primary-cta.compact .cta-arrow { width: 27px; height: 27px; flex-basis: 27px; }
+.meta-setup-page .primary-cta::before,
+.meta-setup-page .primary-cta::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  inset: -40% auto -40% -70%;
+  width: 58%;
+  background: linear-gradient(90deg, transparent, #ffffff10, transparent);
+  transform: translateX(0) skewX(-18deg);
+  opacity: 0;
+}
+.meta-setup-page .seminar-hero-action .primary-cta::before { animation: spady-cta-welcome 1.4s ease-out .4s 1; }
+.meta-setup-page .primary-cta:hover,
+.meta-setup-page .seminar-hero-action .primary-cta:hover,
+.meta-setup-page .primary-cta:focus-visible {
+  background: linear-gradient(110deg, #103ba8, #0754bd 62%, #066987);
+  border-color: #8bb9ff;
+  box-shadow: 0 8px 28px #075bce45, inset 0 1px 0 #ffffff55;
+  color: #fff;
+  transform: none;
+}
+.meta-setup-page .primary-cta:focus-visible { outline: 3px solid #2a89df; outline-offset: 4px; }
+.meta-setup-page .primary-cta:focus-visible::after {
+  opacity: 1;
+  transform: translateX(400%) skewX(-18deg);
+  transition: transform .8s ease-out, opacity .15s;
+}
+.meta-setup-page .primary-cta:focus-visible .cta-arrow svg { transform: translateX(2px); }
+.meta-setup-page .reservation-submit:not(:disabled) {
+  color: #fff;
+  border-color: #5c94ee;
+  border-radius: 8px;
+  background: linear-gradient(110deg, var(--action-deep), var(--action-blue) 62%, #08769a);
+  box-shadow: 0 6px 22px var(--action-shadow);
+}
+.meta-setup-page .reservation-submit:not(:disabled):hover { background: #084cb7; box-shadow: 0 8px 26px #075bce40; }
+.meta-setup-page .reservation-submit:disabled { box-shadow: none; }
+.meta-setup-page .seminar-hero h1 > strong { position: relative; width: fit-content; padding-bottom: 5px; }
+.meta-setup-page .seminar-hero h1 > strong::after {
+  content: '';
+  position: absolute;
+  left: 1%;
+  right: 8%;
+  bottom: 0;
+  height: 8px;
+  border-top: 3px solid #79cde9;
+  border-radius: 50%;
+  transform: rotate(-1.5deg);
+  pointer-events: none;
+}
+.meta-setup-page .section-label { color: #356b9b; }
+.meta-setup-page .section-label > span { display: inline-flex; align-items: center; gap: 11px; }
+.meta-setup-page .section-label > span::before { content: ''; width: 6px; height: 6px; border-radius: 2px; background: #df815b; transform: rotate(45deg); flex-shrink: 0; }
+.meta-setup-page .seminar-hero-benefits svg { transition: transform .25s; }
+.meta-setup-page .seminar-hero-benefits > li:nth-child(2) svg { color: #167c7b; }
+.meta-setup-page .seminar-hero-benefits > li:nth-child(3) svg { color: #95603c; }
+.meta-setup-page .support-explainer { --step-ink: #1a63aa; --step-tint: #e6effa; }
+.meta-setup-page .support-explainer:nth-child(3n+2) { --step-ink: #11646b; --step-tint: #e0f1ed; }
+.meta-setup-page .support-explainer:nth-child(3n) { --step-ink: #795b9c; --step-tint: #eee8f5; }
+.meta-setup-page .support-explainer-number {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--step-ink);
+  background: var(--step-tint);
+  border-radius: 10px 10px 10px 2px;
+}
+.meta-setup-page .support-explainer-figure { transition: transform .25s; }
+.meta-setup-page .result-pictogram { color: #286ca8; }
+.meta-setup-page .results-list > li:nth-child(2) .result-pictogram { color: #247870; }
+.meta-setup-page .results-list > li:nth-child(3) .result-pictogram { color: #a36b36; }
+.meta-setup-page .results-list > li:nth-child(4) .result-pictogram { color: #7e639d; }
+.meta-setup-page .result-pictogram svg, .meta-setup-page .process-picture svg { transition: transform .25s; }
+.meta-setup-page .activity-photo { position: relative; }
+.meta-setup-page .activity-photo::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  width: 64px;
+  height: 23px;
+  z-index: 1;
+  background: #ecd5a6d9;
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+.meta-setup-page .faq-list summary { transition: color .18s; }
+.meta-setup-page .faq-list details[open] .question-mark { color: #075bce; }
+.meta-setup-page .faq-toggle { transition: transform .2s; }
+@keyframes spady-cta-welcome {
+  0% { opacity: 0; transform: translateX(0) skewX(-18deg); }
+  12%, 70% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(400%) skewX(-18deg); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .meta-setup-page .primary-cta:hover::after { opacity: 1; transform: translateX(400%) skewX(-18deg); transition: transform .8s ease-out, opacity .15s; }
+  .meta-setup-page .primary-cta:hover .cta-arrow svg { transform: translateX(2px); }
+  .meta-setup-page .seminar-hero-benefits > li:hover svg { transform: translateY(-3px); }
+  .meta-setup-page .support-explainer:hover .support-explainer-figure { transform: translateY(-3px); }
+  .meta-setup-page .results-list > li:hover .result-pictogram svg { transform: translateY(-3px) rotate(-5deg); }
+  .meta-setup-page .process-stage:hover .process-picture svg { transform: translateY(-3px); }
+  .meta-setup-page .faq-list summary:hover { color: #075bce; }
+  .meta-setup-page .faq-list summary:hover .faq-toggle { transform: rotate(90deg); }
+}
+@media (max-width: 480px) {
+  .meta-setup-page .support-explainer-number { width: 28px; height: 30px; font-size: .875rem; border-radius: 8px 8px 8px 2px; }
+  .meta-setup-page .primary-cta .cta-arrow { width: 28px; height: 28px; flex-basis: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .meta-setup-page .primary-cta::before, .meta-setup-page .primary-cta::after { display: none; animation: none; transition: none; }
+  .meta-setup-page .primary-cta .cta-arrow svg,
+  .meta-setup-page .seminar-hero-benefits svg,
+  .meta-setup-page .support-explainer-figure,
+  .meta-setup-page .result-pictogram svg,
+  .meta-setup-page .process-picture svg,
+  .meta-setup-page .faq-toggle { transform: none !important; transition: none; }
+}

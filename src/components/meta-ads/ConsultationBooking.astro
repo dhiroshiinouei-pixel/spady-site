@@ -28,7 +28,7 @@ const acceptingBookings = service.booking.enabled && !import.meta.env.DEV;
       </div>
       <details class="reservation-optional"><summary>Webサイト・ご相談内容を追加する <span>任意</span></summary><div class="reservation-field"><label for="setup-url">WebサイトまたはLPのURL</label><input id="setup-url" name="site_url" type="url" inputmode="url" maxlength="2000" placeholder="https://"/></div><div class="reservation-field"><label for="setup-message">ご相談内容</label><textarea id="setup-message" name="message" rows="3" maxlength="4000" placeholder="お困りのことやご希望があれば、お知らせください。"></textarea></div></details>
       <fieldset class="reservation-agreements"><legend>ご予約前の確認 <span class="reservation-required">すべて必須</span></legend>
-        <label><input type="checkbox" name="pixel_scope" value="yes" required/><span>Pixelは作成・基本コード提供までです。サイト設置・イベント計測・動作確認は別料金となることを確認しました。</span></label>
+        <label><input type="checkbox" name="pixel_scope" value="yes" required/><span>{service.pixelScopeConfirmation}</span></label>
         <label><input type="checkbox" name="no_recovery" value="yes" required/><span>アカウント制限の復旧や異議申し立てには対応していないことを確認しました。</span></label>
         <label><input type="checkbox" name="consent" value="yes" required/><span><a href="/privacy/" target="_blank" rel="noopener">プライバシーポリシー<span class="sr-only">（新しいタブで開きます）</span></a>に同意します。</span></label>
       </fieldset>

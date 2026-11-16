@@ -1,4 +1,6 @@
 /** 説明図の補助コピー。提供範囲の詳細は meta-ads-setup.ts の supports を参照。 */
+import { metaAdsSetup as service } from './meta-ads-setup';
+
 export const supportVisuals = [
   {
     kind: 'accounts',
@@ -13,7 +15,7 @@ export const supportVisuals = [
   {
     kind: 'pixel',
     title: '',
-    notes: ['コードのお渡しだけでは、Webサイト上の計測は始まりません。', 'サイトへの設置・イベント設定・動作確認は別料金です。GTMへの実装も標準範囲外です。'],
+    notes: ['コードのお渡しだけでは、Webサイト上の計測は始まりません。', `${service.pixelLectureNote}${service.pixelLectureCondition}`],
   },
   {
     kind: 'lesson',
@@ -23,7 +25,7 @@ export const supportVisuals = [
   {
     kind: 'check',
     title: '配信前に、一つずつ確認',
-    notes: ['計測は、設定済み・未設定の範囲をご説明します。Pixel実装テスト・コンバージョン計測の検証は含みません。'],
+    notes: ['計測は、設定済み・未設定の範囲をご説明します。標準の配信前チェックに、Pixel実装テスト・コンバージョン計測の検証は含みません。レクチャーで行う作業・確認の範囲は事前にご案内します。'],
   },
   {
     kind: 'guide',
