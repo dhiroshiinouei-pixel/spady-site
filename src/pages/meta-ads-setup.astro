@@ -1,5 +1,5 @@
 ---
-import {metaAdsSetup as service,supports,extras,steps,preparation,faqs} from '../data/meta-ads-setup';
+import {metaAdsSetup as service,supports,extras,faqs} from '../data/meta-ads-setup';
 import SiteConsent from '../components/SiteConsent.astro';
 import Cta from '../components/meta-ads/Cta.astro';
 import ReadableText from '../components/meta-ads/ReadableText.astro';
@@ -8,6 +8,10 @@ import ConsultationBooking from '../components/meta-ads/ConsultationBooking.astr
 import Hero from '../components/meta-ads/Hero.astro';
 import PastResults from '../components/meta-ads/PastResults.astro';
 import CommunityActivity from '../components/meta-ads/CommunityActivity.astro';
+import ServiceSection from '../components/meta-ads/ServiceSection.astro';
+import LessonSection from '../components/meta-ads/LessonSection.astro';
+import ProcessSection from '../components/meta-ads/ProcessSection.astro';
+import PreparationItems from '../components/meta-ads/PreparationItems.astro';
 import '../styles/meta-ads-setup.css';
 ---
 <!doctype html>
@@ -30,14 +34,10 @@ import '../styles/meta-ads-setup.css';
     <Hero/>
     <PastResults/>
 
-    <section class="section concerns"><div class="wrap concerns-grid"><div><p class="section-label">01 <span>こんなお悩みに</span></p><h2><span>「広告を始めたい」が、</span><span>設定で止まって<wbr/>いませんか？</span></h2><p class="section-intro">最初の設定を整え、<wbr/>基本操作を一緒に確認する。<br/>Spadyは、広告を自社で始めるための準備を支援します。</p><div class="audience-examples"><small>対象となる事業の例</small><span>学習塾</span><span>各種スクール</span><span>ジム・フィットネス</span></div><p class="small-note">その他の業種もご相談いただけます。対応可否は個別に確認します。</p></div><ul class="concern-list">{['アカウントの作成や連携が複雑で、先に進めない','毎月の運用代行ではなく、最初だけ専門家に任せたい','設定後に、予算変更や停止の操作で迷いたくない','何ができて、何が別料金なのかを先に知りたい'].map(text=><li><span aria-hidden="true"><Icon name="check"/></span>{text}</li>)}</ul></div></section>
+    <section class="section concerns"><div class="wrap concerns-grid"><div><p class="section-label">01 <span>こんなお悩みに</span></p><h2><span>「広告を始めたい」が、</span><span>設定で止まって<wbr/>いませんか？</span></h2><p class="section-intro">最初の設定を整え、<wbr/>基本操作を一緒に確認する。<br/>Spadyは、広告を自社で始めるための準備を支援します。</p><div class="audience-examples"><small>対象となる事業の例</small><span>学習塾</span><span>各種スクール</span><span>ジム・フィットネス</span></div><p class="small-note">その他の業種もご相談いただけます。対応可否は個別に確認します。</p></div><ul class="concern-list">{['アカウントの作成や連携が複雑で、先に進めない','毎月の運用代行ではなく、最初だけ専門家に任せたい','設定後に、予算変更や停止の操作で迷いたくない','何ができて、何が別料金なのかを先に知りたい'].map((text,index)=><li><span aria-hidden="true"><Icon name={['link','people','sliders','question'][index]}/></span>{text}</li>)}</ul></div></section>
 
-    <section id="service" class="section support-section"><div class="wrap"><header class="section-heading"><p class="section-label">02 <span>サービス内容</span></p><h2><span>{service.price}円に含まれる、</span><span>6つのサポート。</span></h2><p>初期環境の設定から、最初の広告入稿、操作説明まで。<br class="desktop-break"/>ご相談時に状況を確認し、対応範囲をご案内します。</p></header>
-      <div class="support-grid">{supports.map(item=><article class:list={['support-item',{'pixel-item':item.caution}]}><div class="support-top"><span>{item.number}</span><Icon name={item.icon}/></div><h3>{item.title}</h3><p class="support-summary">{item.summary}</p><p>{item.text}</p><p class="support-note"><ReadableText text={item.note}/></p></article>)}</div>
-      <div class="ownership-note"><Icon name="shield"/><p>アカウント・広告資産はお客様が所有し、必要な権限だけを共有いただきます。<br class="desktop-break"/>決済情報の入力は、お客様ご自身でMetaの画面から行っていただきます。</p></div>
-    </div></section>
-
-    <section class="section lesson-section"><div class="wrap lesson-grid"><div><p class="section-label">03 <span>操作説明とガイド</span></p><h2><span>設定内容を確認して</span><span>終わりではなく、</span><span>基本操作を一緒に。</span></h2><p class="section-intro">実際の管理画面を見ながら、広告の状況の確認、予算変更、停止・再開などをご説明します。後から確認できる共通の操作ガイドもお渡しします。</p><div class="lesson-duration"><strong>{service.lectureMinutes}<span>分</span></strong><p>オンライン・画面共有<br/>基本操作の確認と質疑応答</p></div><p class="small-note">納品後の継続サポートは含まれません。</p></div><div class="lesson-actions">{[['eye','見る','配信状況、広告費・クリック等を確認。'],['sliders','変更する','予算を変更する手順を確認。'],['pause','止める・再開する','配信の停止と再開の操作を確認。']].map(([icon,title,text],i)=><div><span class="lesson-step">0{i+1}</span><Icon name={icon}/><div><h3>{title}</h3><p>{text}</p></div></div>)}<p class="guide-note"><Icon name="guide"/><span>説明の後も、共通ガイドで振り返れます。</span></p></div></div></section>
+    <ServiceSection/>
+    <LessonSection/>
 
     <section id="pricing" class="section pricing-section"><div class="wrap"><header class="section-heading"><p class="section-label">04 <span>料金・対応範囲</span></p><h2><span>料金と対応範囲を、</span><span>先に明確に。</span></h2></header><div class="pricing-layout"><div class="price-panel"><span class="plan-label">A. 料金に含まれる内容</span><p class="contract-label">{service.contract}</p><p class="plan-price"><strong>{service.price}</strong><span>円（税込）</span></p><p class="plan-unit">1事業・1広告アカウント ／ オンライン</p><ul>{supports.map(item=><li><Icon name="check"/><span>{item.title}</span></li>)}</ul><Cta placement="pricing"/><p class="cta-note">{service.ctaNoteParts.map(part=><span class="phrase">{part}</span>)}</p><p class="plan-disclaimer"><ReadableText text="初期設定・説明・所定の納品物の提供をもって完了します。納品後の継続サポートは含みません。"/></p></div><div class="scope-panel"><div class="scope-group"><div class="scope-title"><span>B</span><h3>別料金でご相談いただけること</h3></div><p class="estimate-label">別途お見積もり</p><ul>{extras.map(item=><li><ReadableText text={item}/></li>)}</ul></div><div class="scope-group unavailable"><div class="scope-title"><span>C</span><h3>対応していないこと</h3></div><p><ReadableText text="広告アカウント等の停止・制限の解除、復旧作業、異議申し立て代行"/></p></div><div class="price-notes"><p><strong>広告費はMetaへ直接お支払いいただきます。</strong></p><p><ReadableText text="追加サービスの契約は必須ではありません。標準範囲外のご依頼は、事前にお見積もりします。"/></p></div></div></div></div></section>
 
@@ -45,9 +45,9 @@ import '../styles/meta-ads-setup.css';
 
     <CommunityActivity/>
 
-    <section id="flow" class="section flow-section"><div class="wrap flow-grid"><header><p class="section-label">06 <span>ご利用の流れ</span></p><h2><span>まずは状況を確認。</span><span>その後に、正式なお申込み。</span></h2><p class="section-intro">事前確認を行ってから、<wbr/>正式なお手続きをご案内します。</p><p class="small-note">事前相談のご予約は、サービスの契約やお支払いのお手続きではありません。</p></header><ol class="flow-list">{steps.map(([title,text],i)=><li><span class="flow-number">0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></div></section>
+    <ProcessSection/>
 
-    <section class="section preparation-section"><div class="wrap"><header class="section-heading align-left"><p class="section-label">07 <span>ご相談前に</span></p><h2><span>ご準備いただくものと、</span><span>アカウントの確認について。</span></h2></header><div class="preparation-grid"><div><h3>お客様にご用意いただくもの</h3><ul class="preparation-list">{preparation.map(item=><li><Icon name="check"/><span>{item}</span></li>)}</ul><div class="security-note"><Icon name="shield"/><p>Facebookのパスワードやクレジットカード情報を、Spadyにお渡しいただく必要はありません。</p></div></div><div class="restriction-note"><h3>過去・現在の制限状況を確認します</h3><p>過去のポリシー違反・ペナルティや、現在のアカウント制限などにより、初期設定や広告の配信準備を完了できない場合があります。過去の制限歴と現在の状態を確認したうえで、対応可否をご案内します。</p><p class="restriction-emphasis">広告アカウント等の停止・制限の解除、復旧作業、異議申し立て代行には対応していません。</p><p>事前確認後であっても、Meta側の審査・制限によって作業や配信が進まない場合があります。広告審査の承認、配信開始、集客成果は保証していません。</p></div></div>
+    <section class="section preparation-section"><div class="wrap"><header class="section-heading align-left"><p class="section-label">07 <span>ご相談前に</span></p><h2><span>ご準備いただくものと、</span><span>アカウントの確認について。</span></h2></header><div class="preparation-grid"><div><h3>お客様にご用意いただくもの</h3><PreparationItems/><div class="security-note"><Icon name="shield"/><p>Facebookのパスワードやクレジットカード情報を、Spadyにお渡しいただく必要はありません。</p></div></div><div class="restriction-note"><h3>過去・現在の制限状況を確認します</h3><p>過去のポリシー違反・ペナルティや、現在のアカウント制限などにより、初期設定や広告の配信準備を完了できない場合があります。過去の制限歴と現在の状態を確認したうえで、対応可否をご案内します。</p><p class="restriction-emphasis">広告アカウント等の停止・制限の解除、復旧作業、異議申し立て代行には対応していません。</p><p>事前確認後であっても、Meta側の審査・制限によって作業や配信が進まない場合があります。広告審査の承認、配信開始、集客成果は保証していません。</p></div></div>
       <aside class="additional-consultation"><div><p class="eyebrow">必要な場合だけ、追加のご相談も</p><h3>広告の受け皿や、<wbr/>その後のフォローも。</h3></div><p>必要に応じて、LP制作やLINE公式アカウント・エルメの構築についても、別料金でご相談いただけます。<strong>初期設定サービスだけのご利用も可能です。</strong></p></aside>
     </div></section>
 

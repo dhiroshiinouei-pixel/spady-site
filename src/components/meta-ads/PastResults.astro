@@ -1,5 +1,6 @@
 ---
 import { metaAdsResults as results } from '../../data/meta-ads-results';
+import Icon from './Icon.astro';
 ---
 <section id="past-results" class="past-results" aria-labelledby="past-results-title">
   <div class="wrap">
@@ -11,8 +12,7 @@ import { metaAdsResults as results } from '../../data/meta-ads-results';
       {results.cases.map((item, index) => (
         <li>
           <div class="result-context">
-            <p class="result-index" aria-hidden="true">CASE {String(index + 1).padStart(2, '0')}</p>
-            <h3>{item.industry}</h3>
+            <div class="result-industry"><span class="result-pictogram"><Icon name={item.icon}/></span><div><p class="result-index" aria-hidden="true">CASE {String(index + 1).padStart(2, '0')}</p><h3>{item.industry}</h3></div></div>
             <p class="result-metric" aria-hidden="true">{item.metric}</p>
           </div>
           <p class="result-value">
@@ -40,6 +40,9 @@ import { metaAdsResults as results } from '../../data/meta-ads-results';
   .results-list>li:first-child{padding-left:0}
   .results-list>li:last-child{padding-right:0}
   .result-index{font-size:.6875rem;letter-spacing:.12em;font-weight:600;color:#5f728d;margin-bottom:7px}
+  .result-industry{display:flex;align-items:center;gap:12px}
+  .result-pictogram{color:#2157be;display:grid;place-items:center;flex:0 0 35px}
+  .result-pictogram :global(svg){width:35px;height:35px;stroke-width:1.5}
   .result-context h3{font-size:1rem;font-weight:700;line-height:1.7;letter-spacing:.025em;overflow-wrap:normal}
   .result-metric{font-size:.875rem;line-height:1.7;color:#536174;margin-top:13px}
   .result-value{display:flex;align-items:baseline;gap:5px;color:#0754c7;line-height:1.2;margin-top:5px;white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -57,6 +60,7 @@ import { metaAdsResults as results } from '../../data/meta-ads-results';
     .result-context h3{font-size:1rem}.result-value strong{font-size:3.5rem}.result-unit{font-size:1rem}.result-before{font-size:1.625rem;gap:8px}.result-arrow{font-size:1.25rem}
   }
   @media(max-width:600px){
+    .result-industry{display:block}.result-pictogram{display:block;margin-bottom:9px}.result-pictogram :global(svg){width:30px;height:30px}.result-index{display:none}
     .past-results{padding:42px 0 38px}.results-heading{margin-bottom:23px}.results-eyebrow{font-size:.8125rem;letter-spacing:.02em}.results-heading h2{font-size:1.5rem;line-height:1.6}
     .results-list{grid-template-columns:minmax(0,1fr)}.results-list>li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:20px 0!important;border-left:0!important}.results-list>li+li{border-top:1px solid #c5d2e3}
     .result-index{font-size:.625rem;margin-bottom:4px}.result-context h3{font-size:.9375rem;letter-spacing:0}.result-metric{font-size:.8125rem;margin-top:3px}.result-value{margin:0;gap:4px}.result-value strong{font-size:3rem}.result-unit{font-size:.9375rem}.result-before{font-size:1.5rem;gap:6px}.result-arrow{font-size:1.125rem}

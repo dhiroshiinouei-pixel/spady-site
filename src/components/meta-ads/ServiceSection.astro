@@ -1,0 +1,76 @@
+---
+import { metaAdsSetup as service, supports } from '../../data/meta-ads-setup';
+import { supportVisuals } from '../../data/meta-ads-visuals';
+import Icon from './Icon.astro';
+import ReadableText from './ReadableText.astro';
+import ServiceVisual from './ServiceVisual.astro';
+---
+
+<section id="service" class="section visual-service">
+  <div class="wrap">
+    <header class="section-heading">
+      <p class="section-label">02 <span>サービス内容</span></p>
+      <h2><span>{service.price}円に含まれる、</span><span>6つのサポート。</span></h2>
+      <p>設定を整える。最初の広告を用意する。<wbr/>基本操作を一緒に確認する。<br class="desktop-break"/>広告を自社で始めるための準備を、順を追ってサポートします。</p>
+    </header>
+
+    <div class="support-explainers">
+      {supports.map((item, index) => {
+        const visual = supportVisuals[index];
+        return <article class:list={['support-explainer', { 'support-explainer-pixel': item.caution }]}>
+          <div class="support-explainer-heading"><span>{item.number}</span><p>{visual.title}</p></div>
+          <ServiceVisual kind={visual.kind}/>
+          <div class="support-explainer-copy">
+            <h3>{item.title}</h3>
+            <p class="support-explainer-summary">{item.summary}</p>
+            <div class="support-explainer-notes">{visual.notes.map(note => <p><ReadableText text={note}/></p>)}</div>
+            <details class="support-explainer-details">
+              <summary>詳しい対応範囲<span aria-hidden="true"></span></summary>
+              <div><p>{item.text}</p><p class="support-explainer-detail-note"><ReadableText text={item.note}/></p></div>
+            </details>
+          </div>
+        </article>;
+      })}
+    </div>
+
+    <div class="support-ownership"><span><Icon name="shield"/></span><div><h3>アカウントも広告資産も、お客様のもの。</h3><p>必要な権限だけを共有いただきます。決済情報は、お客様ご自身でMetaの画面に入力していただきます。</p></div></div>
+    <p class="service-diagram-note">図は作業内容・提供物のイメージです。実際の管理画面・ガイドとは異なります。</p>
+  </div>
+</section>
+
+<style>
+  .visual-service{background:#f8f7f3}
+  .visual-service .section-heading>p:last-child{max-width:760px;margin-inline:auto}
+  .support-explainers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:42px 42px}
+  .support-explainer{min-width:0;border-top:2px solid var(--blue);padding-top:16px}
+  .support-explainer-heading{display:flex;align-items:center;gap:14px;margin-bottom:15px}
+  .support-explainer-heading>span{font-size:1.65rem;font-weight:400;line-height:1;color:var(--blue);letter-spacing:-.03em}
+  .support-explainer-heading>p{font-size:.95rem;font-weight:700;line-height:1.7}
+  .support-explainer-copy{padding-top:22px}
+  .support-explainer h3{font-size:1.2rem;line-height:1.65;letter-spacing:.01em}
+  .support-explainer-summary{font-size:.95rem;line-height:1.9;margin-top:9px;font-weight:600}
+  .support-explainer-notes{margin-top:12px;border-left:2px solid #bbcbe1;padding-left:12px;color:var(--muted)}
+  .support-explainer-notes p{font-size:.875rem;line-height:1.85}
+  .support-explainer-notes p+p{margin-top:7px}
+  .support-explainer-pixel .support-explainer-notes{border-left-color:var(--blue);color:var(--blue-dark)}
+  .support-explainer-pixel .support-explainer-notes p:last-child{font-weight:700}
+  .support-explainer-details{margin-top:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .support-explainer-details summary{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:48px;padding:10px 0;cursor:pointer;list-style:none;font-size:.875rem;font-weight:600;color:var(--blue-dark)}
+  .support-explainer-details summary::-webkit-details-marker{display:none}
+  .support-explainer-details summary>span{position:relative;flex-shrink:0;width:18px;height:18px}
+  .support-explainer-details summary>span:before,.support-explainer-details summary>span:after{content:'';position:absolute;left:3px;top:8px;width:12px;height:1px;background:currentColor}
+  .support-explainer-details summary>span:after{transform:rotate(90deg)}
+  .support-explainer-details[open] summary>span:after{display:none}
+  .support-explainer-details summary:hover{color:var(--blue)}
+  .support-explainer-details>div{padding:3px 0 18px;font-size:.9rem;line-height:1.95}
+  .support-explainer-detail-note{margin-top:12px;color:var(--muted);font-size:.875rem}
+  .support-ownership{display:flex;align-items:center;gap:22px;margin-top:42px;padding:27px 30px;background:#fff;border:1px solid var(--line)}
+  .support-ownership>span{display:grid;place-items:center;flex-shrink:0;width:60px;height:60px;background:var(--soft-blue);border-radius:50%;color:var(--blue)}
+  .support-ownership :global(svg){width:30px;height:30px}
+  .support-ownership h3{font-size:1rem;margin-bottom:5px;line-height:1.7}
+  .support-ownership p{font-size:.875rem;color:var(--muted);line-height:1.9}
+  .service-diagram-note{font-size:.875rem;line-height:1.8;color:var(--muted);margin-top:15px;text-align:right}
+  @media(max-width:1000px){.support-explainers{gap:35px 26px}.support-explainer h3{font-size:1.1rem}.support-explainer-heading>p{font-size:.85rem}}
+  @media(max-width:700px){.support-explainers{grid-template-columns:1fr;gap:34px}.support-explainer-heading{gap:13px;margin-bottom:14px}.support-explainer-heading>p{font-size:.9375rem}.support-explainer-copy{padding-top:19px}.support-explainer h3{font-size:1.17rem}.support-explainer-summary{font-size:.9375rem}.support-explainer-details{margin-top:17px}.support-ownership{align-items:flex-start;gap:14px;padding:22px 18px;margin-top:32px}.support-ownership>span{width:40px;height:40px}.support-ownership :global(svg){width:23px;height:23px}.support-ownership h3{font-size:.95rem}.service-diagram-note{text-align:left}}
+  @media(max-width:359px){.support-explainer-heading>p{font-size:.875rem}.support-explainer h3{font-size:1.08rem}.support-ownership{gap:10px;padding-inline:14px}.support-ownership>span{width:32px;height:32px}.support-ownership :global(svg){width:20px;height:20px}}
+</style>

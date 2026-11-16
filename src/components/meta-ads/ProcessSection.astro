@@ -1,0 +1,124 @@
+---
+import { metaAdsSetup as service, steps } from '../../data/meta-ads-setup';
+---
+
+<section id="flow" class="section process-section" aria-labelledby="process-heading">
+  <div class="wrap">
+    <header class="process-heading">
+      <div>
+        <p class="section-label">06 <span>ご利用の流れ</span></p>
+        <h2 id="process-heading"><span>まずは状況を確認。</span><span>その後に、正式なお申込み。</span></h2>
+      </div>
+      <p class="process-intro">事前確認を行ってから、正式なお手続きをご案内します。<span>事前相談のご予約は、サービスの契約やお支払いのお手続きではありません。</span></p>
+    </header>
+
+    <ol class="process-road">
+      {steps.map(([title, text], index) => (
+        <li class="process-stage">
+          <div class="process-picture" aria-hidden="true">
+            <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              {index === 0 && <>
+                <rect x="16" y="22" width="62" height="57" rx="5" fill="#fff"/>
+                <path d="M16 37h62M31 16v13m32-13v13"/>
+                <path d="M29 48h7m10 0h7m10 0h3M29 61h7m10 0h7" stroke="#9ab5db"/>
+                <circle cx="69" cy="71" r="16" fill="#0754c7" stroke="#0754c7"/>
+                <path d="m62 71 5 5 9-11" stroke="#fff" stroke-width="3"/>
+              </>}
+              {index === 1 && <>
+                <rect x="13" y="20" width="65" height="49" rx="4" fill="#fff"/>
+                <path d="M13 31h65M36 69v10m-10 0h35"/>
+                <circle cx="32" cy="45" r="6" fill="#dce9fb"/>
+                <path d="M23 60c1-10 17-10 18 0M49 43h15m-15 8h8" stroke="#688fbe"/>
+                <circle cx="68" cy="63" r="13" fill="#e9f2ff" stroke="#0754c7" stroke-width="3"/>
+                <path d="m78 73 9 9" stroke="#0754c7" stroke-width="4"/>
+              </>}
+              {index === 2 && <>
+                <path d="M27 16h30l15 15v50H27z" fill="#fff"/>
+                <path d="M57 16v16h15M37 43h23m-23 11h17m-17 11h10" stroke="#688fbe"/>
+                <path d="m58 65 18-23 8 7-18 23-12 4z" fill="#dce9fb" stroke="#0754c7"/>
+                <path d="m74 45 8 7m-24 13 8 7" stroke="#0754c7"/>
+                <circle cx="24" cy="27" r="11" fill="#0754c7" stroke="#0754c7"/>
+                <path d="m19 27 4 4 7-8" stroke="#fff" stroke-width="2.5"/>
+              </>}
+              {index === 3 && <>
+                <rect x="13" y="21" width="66" height="58" rx="5" fill="#fff"/>
+                <path d="M13 33h66M23 27h2m5 0h2" stroke="#688fbe"/>
+                <rect x="23" y="43" width="25" height="24" rx="2" fill="#dce9fb" stroke="#0754c7"/>
+                <path d="m24 62 8-8 6 6 5-4 5 5M56 46h13m-13 9h10m-10 9h7" stroke="#688fbe"/>
+                <circle cx="74" cy="72" r="15" fill="#0754c7" stroke="#0754c7"/>
+                <path d="M67 72h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2.7"/>
+              </>}
+              {index === 4 && <>
+                <rect x="10" y="19" width="62" height="44" rx="4" fill="#fff"/>
+                <path d="M34 63v11m-12 0h27"/>
+                <circle cx="41" cy="34" r="7" fill="#dce9fb" stroke="#0754c7"/>
+                <path d="M29 54c1-15 23-15 24 0" fill="#dce9fb" stroke="#0754c7"/>
+                <path d="M56 47c9-3 19-3 28 1v33c-9-4-19-4-28-1z" fill="#e9f2ff" stroke="#0754c7"/>
+                <path d="M63 54h13m-13 8h13m-13 8h8" stroke="#0754c7"/>
+              </>}
+            </svg>
+            <span class="process-number">0{index + 1}</span>
+          </div>
+          <div class="process-copy">
+            <h3>{title}</h3>
+            <p class="process-description">{text}</p>
+            {index === 4 && <span class="process-duration">画面共有で {service.lectureMinutes}分</span>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process-section{background:#f4f7fc;border-block:1px solid #dce5f0}
+  .process-heading{display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:40px;margin-bottom:46px}
+  .process-heading h2{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.65;letter-spacing:.01em}
+  .process-heading h2>span{display:inline-block;max-width:100%}
+  .process-intro{color:#536174;font-size:.9375rem;line-height:1.9;max-width:440px}
+  .process-intro>span{display:block;margin-top:8px;font-size:.875rem}
+  .process-road{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;position:relative}
+  .process-road::before{content:"";position:absolute;top:57px;left:10%;right:10%;height:3px;background:#b7cbe7}
+  .process-stage{position:relative;min-width:0}
+  .process-stage:not(:last-child)::after{content:"";position:absolute;top:52px;right:-18px;width:11px;height:11px;border-top:3px solid #0754c7;border-right:3px solid #0754c7;transform:rotate(45deg)}
+  .process-picture{width:116px;height:116px;margin:0 auto 24px;position:relative;border-radius:50%;background:#e4eefb;color:#16345c;display:grid;place-items:center;border:5px solid #f4f7fc}
+  .process-picture svg{width:90px;height:90px;max-width:100%;flex-shrink:0}
+  .process-number{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:#0754c7;color:#fff;border:3px solid #f4f7fc;min-width:35px;height:29px;display:grid;place-items:center;font-size:.75rem;font-weight:750;line-height:1;letter-spacing:.03em;border-radius:15px}
+  .process-copy h3{font-size:1.0625rem;font-weight:750;line-height:1.75;margin:0 0 11px;letter-spacing:0;overflow-wrap:anywhere}
+  .process-description{font-size:.875rem;line-height:1.9;color:#536174;overflow-wrap:anywhere}
+  .process-duration{display:inline-block;border-top:1px solid #b7cbe7;padding-top:9px;margin-top:13px;font-size:.875rem;font-weight:700;color:#0754c7}
+  @media(min-width:701px) and (max-width:1099px){
+    .process-heading{grid-template-columns:1fr;gap:18px;margin-bottom:34px}.process-intro{max-width:650px}
+    .process-road{grid-template-columns:repeat(6,minmax(0,1fr));gap:30px 26px}
+    .process-road::before{display:none}
+    .process-stage{grid-column:span 2;border-top:2px solid #b7cbe7;padding-top:15px}
+    .process-stage:nth-child(n+4){grid-column:span 3;display:grid;grid-template-columns:116px minmax(0,1fr);gap:15px}
+    .process-stage:nth-child(n+4) .process-picture{margin-bottom:0}
+    .process-stage::after{display:none}
+    .process-copy h3{font-size:1rem}
+    .process-picture{margin-bottom:22px}
+  }
+  @media(max-width:700px){
+    .process-heading{grid-template-columns:1fr;gap:17px;margin-bottom:32px}
+    .process-heading h2{font-size:1.6rem}
+    .process-road{display:block}
+    .process-road::before{top:44px;bottom:80px;height:auto;width:3px;left:44px;right:auto}
+    .process-stage{display:grid;grid-template-columns:90px minmax(0,1fr);gap:18px;padding-bottom:28px}
+    .process-stage:last-child{padding-bottom:0}
+    .process-stage:not(:last-child)::after{top:auto;bottom:16px;left:40px;right:auto;width:9px;height:9px;transform:rotate(135deg);border-color:#0754c7}
+    .process-picture{width:90px;height:90px;margin:0;border-width:4px}
+    .process-picture svg{width:70px;height:70px}
+    .process-number{bottom:-6px;font-size:.6875rem;min-width:32px;height:27px}
+    .process-copy h3{font-size:1rem;margin-bottom:8px;line-height:1.7}
+    .process-description{font-size:.875rem;line-height:1.9}
+    .process-duration{margin-top:10px;padding-top:7px}
+  }
+  @media(max-width:389px){
+    .process-stage{grid-template-columns:72px minmax(0,1fr);gap:14px}
+    .process-picture{width:72px;height:78px;border-radius:40px}
+    .process-picture svg{width:62px;height:62px}
+    .process-road::before{left:35px;top:38px}
+    .process-stage:not(:last-child)::after{left:31px}
+    .process-heading h2{font-size:1.5rem}
+  }
+</style>

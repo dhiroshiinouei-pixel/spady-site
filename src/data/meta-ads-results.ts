@@ -10,6 +10,7 @@ export const metaAdsResults = {
   cases: [
     {
       industry: '飲食店',
+      icon: 'restaurant',
       metric: '予約満席',
       value: '2',
       unit: 'か月先まで',
@@ -18,6 +19,7 @@ export const metaAdsResults = {
     },
     {
       industry: 'SaaS',
+      icon: 'software',
       metric: 'リード獲得',
       value: '7',
       unit: '倍',
@@ -26,6 +28,7 @@ export const metaAdsResults = {
     },
     {
       industry: '食品サブスク',
+      icon: 'package',
       metric: '登録',
       value: '2.5',
       unit: '倍',
@@ -34,6 +37,7 @@ export const metaAdsResults = {
     },
     {
       industry: '人材系サービス',
+      icon: 'people',
       metric: '月間問い合わせ',
       value: '3',
       unit: '件',
