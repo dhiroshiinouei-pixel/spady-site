@@ -14,27 +14,27 @@ const labels = ['個人アカウント', '事業のFacebookページ', 'お支�
         /> : <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           {index === 0 && <>
             <rect x="11" y="9" width="50" height="54" rx="5" fill="#fff"/>
-            <circle cx="36" cy="28" r="9" fill="#dce9fb" stroke="#0754c7"/>
-            <path d="M21 53c0-17 30-17 30 0" fill="#dce9fb" stroke="#0754c7"/>
-            <path d="M28 58h16" stroke="#8ca9cf"/>
+            <circle cx="36" cy="28" r="9" fill="#e7ecef" stroke="#235c91"/>
+            <path d="M21 53c0-17 30-17 30 0" fill="#e7ecef" stroke="#235c91"/>
+            <path d="M28 58h16" stroke="#9aadb9"/>
           </>}
           {index === 2 && <>
             <rect x="7" y="17" width="58" height="39" rx="5" fill="#fff"/>
-            <path d="M7 27h58v8H7z" fill="#dce9fb" stroke="none"/>
-            <path d="M16 46h13m7 0h7" stroke="#0754c7" stroke-width="3"/>
-            <path d="M52 44h5v5h-5z" fill="#dce9fb" stroke="#8ca9cf"/>
+            <path d="M7 27h58v8H7z" fill="#e7ecef" stroke="none"/>
+            <path d="M16 46h13m7 0h7" stroke="#235c91" stroke-width="3"/>
+            <path d="M52 44h5v5h-5z" fill="#e7ecef" stroke="#9aadb9"/>
           </>}
           {index === 3 && <>
             <rect x="8" y="12" width="41" height="34" rx="4" fill="#fff"/>
-            <circle cx="20" cy="23" r="4" fill="#dce9fb" stroke="#0754c7"/>
-            <path d="m10 41 12-11 9 7 7-6 10 10" fill="#dce9fb" stroke="#0754c7"/>
+            <circle cx="20" cy="23" r="4" fill="#e7ecef" stroke="#235c91"/>
+            <path d="m10 41 12-11 9 7 7-6 10 10" fill="#e7ecef" stroke="#235c91"/>
             <rect x="29" y="35" width="34" height="27" rx="4" fill="#fff"/>
-            <path d="M37 43h18m-18 7h18m-18 6h11" stroke="#0754c7"/>
+            <path d="M37 43h18m-18 7h18m-18 6h11" stroke="#235c91"/>
           </>}
           {index === 4 && <>
             <rect x="8" y="12" width="56" height="46" rx="4" fill="#fff"/>
-            <path d="M8 23h56M15 17h2m5 0h2" stroke="#8ca9cf"/>
-            <path d="m33 43 8-8m-15 4-3 3a7 7 0 0 0 10 10l7-7a7 7 0 0 0 0-10m6 8 3-3a7 7 0 0 0-10-10l-7 7a7 7 0 0 0 0 10" stroke="#0754c7" stroke-width="2.5"/>
+            <path d="M8 23h56M15 17h2m5 0h2" stroke="#9aadb9"/>
+            <path d="m33 43 8-8m-15 4-3 3a7 7 0 0 0 10 10l7-7a7 7 0 0 0 0-10m6 8 3-3a7 7 0 0 0-10-10l-7 7a7 7 0 0 0 0 10" stroke="#235c91" stroke-width="2.5"/>
           </>}
         </svg>}
       </div>
@@ -47,33 +47,23 @@ const labels = ['個人アカウント', '事業のFacebookページ', 'お支�
 </ul>
 
 <style>
-  .preparation-visuals{list-style:none;margin:24px 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 25px}
-  .preparation-visuals>li{display:grid;grid-template-columns:60px minmax(0,1fr);gap:13px;align-items:start;padding:20px 0;border-top:1px solid #d5e0ee;min-width:0}
-  .preparation-picture{width:60px;height:66px;display:grid;place-items:center;background:#edf4fe;border-radius:5px;color:#16345c}
-  .preparation-picture svg{width:58px;height:58px;max-width:100%;flex-shrink:0}
-  .preparation-brand{background:#fff}.preparation-brand img{display:block;width:28px;height:28px;object-fit:contain}
+  .preparation-visuals{list-style:none;margin:26px 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+  .preparation-visuals>li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:start;padding:23px 0;border-top:1px solid #dde0df;min-width:0}
+  .preparation-picture{width:40px;height:44px;display:grid;place-items:center;color:#152536}
+  .preparation-picture svg{width:40px;height:40px;max-width:100%;flex-shrink:0}
+  .preparation-brand img{display:block;width:26px;height:26px;object-fit:contain}
   .preparation-copy{min-width:0;padding-top:2px}
-  .preparation-copy h4{font-size:.9375rem;font-weight:750;line-height:1.65;color:#16345c;margin:0 0 6px;overflow-wrap:anywhere}
-  .preparation-copy p{font-size:.875rem;line-height:1.85;color:#536174;margin:0;overflow-wrap:anywhere}
+  .preparation-copy h4{font-size:.9375rem;font-weight:650;line-height:1.7;color:#152536;margin:0 0 6px;overflow-wrap:break-word}
+  .preparation-copy p{font-size:.875rem;line-height:1.9;color:#56636b;margin:0;overflow-wrap:break-word}
   @media(min-width:901px) and (max-width:1099px){
-    .preparation-visuals{gap:0 20px}
-    .preparation-visuals>li{display:block}
-    .preparation-picture{margin-bottom:10px}
+    .preparation-visuals{grid-template-columns:minmax(0,1fr)}
   }
   @media(max-width:600px){
-    .preparation-visuals{grid-template-columns:minmax(0,1fr);margin:20px 0}
-    .preparation-visuals>li{grid-template-columns:70px minmax(0,1fr);gap:17px;padding:17px 0}
-    .preparation-picture{width:70px;height:72px}
-    .preparation-picture svg{width:64px;height:64px}
-    .preparation-brand img{width:32px;height:32px}
-    .preparation-copy{padding-top:7px}
-    .preparation-copy h4{font-size:1rem;margin-bottom:4px}
-  }
-  @media(max-width:359px){
-    .preparation-visuals>li{grid-template-columns:62px minmax(0,1fr);gap:14px}
-    .preparation-picture{width:62px;height:68px}
-    .preparation-picture svg{width:58px;height:58px}
+    .preparation-visuals{grid-template-columns:minmax(0,1fr);margin:24px 0}
+    .preparation-visuals>li{grid-template-columns:42px minmax(0,1fr);gap:16px;padding:20px 0}
+    .preparation-picture{width:42px;height:46px}
+    .preparation-picture svg{width:42px;height:42px}
     .preparation-brand img{width:28px;height:28px}
-    .preparation-copy h4{font-size:.9375rem}
+    .preparation-copy h4{font-size:1rem;margin-bottom:5px}
   }
 </style>

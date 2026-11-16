@@ -2,93 +2,107 @@
 import Icon from './Icon.astro';
 import { metaAdsSetup as service } from '../../data/meta-ads-setup';
 import type { SupportVisualKind } from '../../data/meta-ads-visuals';
-
 interface Props { kind: SupportVisualKind }
 const { kind } = Astro.props;
 ---
 
-<!-- 図内の内容は、親セクションの本文・詳細でも説明しています。 -->
+<!-- 本文と重複する説明図。公式素材以外はSpady独自のイメージです。 -->
 <div class:list={['service-visual', `service-visual-${kind}`]} aria-hidden="true">
-  {kind === 'accounts' && <div class="sv-account-map">
-    <div class="sv-account-main">
-      <svg viewBox="0 0 64 54" fill="none"><path d="M9 17h46v29H9z" fill="#fff" stroke="currentColor" stroke-width="2"/><path d="M22 17V9h20v8M9 27h46M27 24v7h10v-7" stroke="currentColor" stroke-width="2"/><path d="M19 37h10m7 0h9" stroke="#a5b9d5" stroke-width="2"/></svg>
-      <strong>ビジネス環境</strong><span>必要な設定と連携</span>
-    </div>
-    <div class="sv-connection"><span></span><Icon name="arrow"/></div>
-    <div class="sv-account-links">
+  {kind === 'accounts' && <div class="account-diagram">
+    <div class="diagram-origin"><Icon name="settings"/><strong>広告の環境</strong></div>
+    <span class="diagram-arrow"><Icon name="arrow"/></span>
+    <div class="account-destinations">
       <span><Icon name="ad"/><b>広告アカウント</b></span>
-      <span class="sv-platform"><img src="/meta-ads-setup/brands/facebook-logo-primary-160.png" alt="" width="32" height="32" loading="lazy" decoding="async"/><b>Facebook<wbr/>ページ</b></span>
-      <span class="sv-optional sv-platform"><img src="/meta-ads-setup/brands/instagram-glyph-gradient-160.png" alt="" width="32" height="32" loading="lazy" decoding="async"/><b>Instagram<small>必要に応じて</small></b></span>
+      <span><img src="/meta-ads-setup/brands/facebook-logo-primary-160.png" alt="" width="32" height="32" loading="lazy" decoding="async"/><b>Facebook<wbr/>ページ</b></span>
+      <span><img src="/meta-ads-setup/brands/instagram-glyph-gradient-160.png" alt="" width="32" height="32" loading="lazy" decoding="async"/><b>Instagram<small>必要に応じて</small></b></span>
     </div>
   </div>}
 
-  {kind === 'ad' && <div class="sv-ad-process">
-    <div class="sv-materials"><span class="sv-overline">お客様がご用意</span><div class="sv-material-photo"><svg viewBox="0 0 100 55" fill="none"><rect x="1" y="1" width="98" height="53" rx="2" fill="#e4edf9" stroke="#a5b9d5"/><circle cx="71" cy="16" r="7" fill="#fff"/><path d="m8 46 24-28 20 24 15-16 25 20" stroke="#5a7fab" stroke-width="2" stroke-linejoin="round"/></svg><span>画像・動画1点</span></div><div class="sv-material-copy"><i></i><i></i><span>広告文</span></div></div>
-    <span class="sv-process-arrow"><Icon name="arrow"/></span>
-    <div class="sv-ad-draft"><div class="sv-ad-top"><span></span><b>最初の広告</b><small>1件</small></div><div class="sv-ad-image"><svg viewBox="0 0 100 55" fill="none"><path d="m4 51 28-32 20 24 15-16 29 24" stroke="#5a7fab" stroke-width="2"/><circle cx="72" cy="15" r="7" fill="#fff"/></svg></div><div class="sv-ad-copy"><i></i><i></i></div><span class="sv-ad-bottom">目的・地域・予算を設定</span></div>
+  {kind === 'ad' && <div class="ad-diagram">
+    <div class="ad-material">
+      <svg class="material-picture" viewBox="0 0 96 60" fill="none"><rect x="1" y="1" width="94" height="58" stroke="currentColor"/><circle cx="71" cy="18" r="6" stroke="currentColor"/><path d="m7 53 24-29 22 25 13-15 24 19" stroke="currentColor" stroke-linejoin="round"/></svg>
+      <span>画像・動画1点<br/>＋広告文</span>
+      <small>お客様がご用意</small>
+    </div>
+    <span class="diagram-arrow"><Icon name="arrow"/></span>
+    <div class="ad-document"><div class="ad-document-title">最初の広告 <b>1件</b></div><div class="ad-image" role="presentation"><Icon name="ad"/></div><i></i><i></i><span>目的・地域・予算</span></div>
   </div>}
 
-  {kind === 'pixel' && <div class="sv-pixel-process">
-    <div class="sv-code-window"><div class="sv-window-bar"><span></span><span></span><span></span></div><div class="sv-code-body"><Icon name="code"/><div><i></i><i></i><i></i></div></div><strong>Meta Pixelを作成</strong></div>
-    <span class="sv-process-arrow"><Icon name="arrow"/></span>
-    <div class="sv-code-delivery"><span class="sv-code-sheet"><Icon name="code"/></span><strong>基本コードを<br/>お渡し</strong></div>
-    <div class="sv-separate-scope"><span>別料金</span><strong>サイト設置・イベント設定・動作確認</strong></div>
+  {kind === 'pixel' && <div class="pixel-diagram">
+    <div class="pixel-step"><div class="code-window"><Icon name="code"/></div><strong>Meta Pixel<br/>作成</strong></div>
+    <span class="diagram-arrow"><Icon name="arrow"/></span>
+    <div class="pixel-step"><div class="code-sheet"><Icon name="code"/></div><strong>基本コード<br/>お渡し</strong></div>
+    <p class="pixel-extra">サイト設置・イベント設定・動作確認は別料金</p>
   </div>}
 
-  {kind === 'lesson' && <div class="sv-screen-share">
-    <div class="sv-person"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="10" fill="#fff" stroke="currentColor" stroke-width="2"/><path d="M12 55c0-13 9-20 20-20s20 7 20 20" fill="#fff" stroke="currentColor" stroke-width="2"/></svg><span>Spady</span></div>
-    <div class="sv-monitor"><div class="sv-monitor-screen"><span class="sv-window-caption">画面共有</span><div class="sv-control-row"><Icon name="eye"/><i></i><span>見る</span></div><div class="sv-control-row"><Icon name="sliders"/><i></i><span>変更する</span></div><div class="sv-control-row"><Icon name="pause"/><i></i><span>停止・再開</span></div></div><div class="sv-monitor-base"></div></div>
-    <div class="sv-person"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="10" fill="#fff" stroke="currentColor" stroke-width="2"/><path d="M12 55c0-13 9-20 20-20s20 7 20 20" fill="#fff" stroke="currentColor" stroke-width="2"/></svg><span>お客様</span></div>
-    <div class="sv-lesson-label"><strong>{service.lectureMinutes}<span>分</span></strong><span>オンラインで操作説明</span></div>
+  {kind === 'lesson' && <div class="share-diagram">
+    <div class="share-heading"><span>オンラインの画面共有</span><b>{service.lectureMinutes}<small>分</small></b></div>
+    <div class="share-screen"><div><Icon name="eye"/><span>見る</span></div><div><Icon name="sliders"/><span>変更する</span></div><div><Icon name="pause"/><span>停止・再開</span></div></div>
+    <div class="screen-base"></div>
   </div>}
 
-  {kind === 'check' && <div class="sv-check-scene">
-    <div class="sv-check-board"><div class="sv-clipboard"></div><strong>配信前チェック</strong><div><Icon name="check"/><span>予算・配信地域</span></div><div><Icon name="check"/><span>リンク先</span></div><div><Icon name="check"/><span>入稿内容</span></div></div>
-    <div class="sv-check-result"><span class="sv-check-seal"><Icon name="check"/></span><strong>今回設定した<br/>範囲を確認</strong></div>
-  </div>}
+  {kind === 'check' && <div class="check-diagram"><span class="check-heading">配信前の確認項目</span><div><Icon name="check"/><span>予算・配信地域</span></div><div><Icon name="check"/><span>リンク先</span></div><div><Icon name="check"/><span>入稿内容</span></div></div>}
 
-  {kind === 'guide' && <div class="sv-guide-scene">
-    <div class="sv-guide-book"><div class="sv-book-spine"></div><span class="sv-guide-type">共通ガイド</span><Icon name="guide"/><strong>基本操作を<br/>いつでも確認</strong><span class="sv-book-rule"></span></div>
-    <div class="sv-guide-topics"><span><Icon name="sliders"/>予算変更</span><span><Icon name="pause"/>停止・再開</span><span><Icon name="eye"/>数字の見方</span><small>説明の後も、振り返りに。</small></div>
-  </div>}
+  {kind === 'guide' && <div class="guide-diagram"><div class="guide-cover"><span>Spady</span><Icon name="guide"/><strong>共通の<br/>操作ガイド</strong></div><div class="guide-contents"><span>予算変更</span><span>停止・再開</span><span>数字の確認</span><small>後から振り返るために</small></div></div>}
 </div>
 
 <style>
-  .service-visual{display:grid;place-items:center;min-height:260px;padding:26px;background:#edf3fc;color:var(--blue);line-height:1.6}
-  .service-visual :global(svg){display:block;width:24px;height:24px;flex-shrink:0}
-  .service-visual strong,.service-visual b{font-weight:700}
-  .sv-account-map{display:grid;grid-template-columns:minmax(0,.9fr) 34px minmax(0,1.2fr);align-items:center;max-width:420px;width:100%;gap:9px}
-  .sv-account-main{display:flex;align-items:center;flex-direction:column;text-align:center;color:var(--ink)}
-  .sv-account-main svg{width:75px;height:64px;color:var(--blue);margin-bottom:5px}
-  .sv-account-main strong{font-size:.95rem}.sv-account-main>span{font-size:.75rem;color:var(--muted);margin-top:4px}
-  .sv-connection{display:flex;align-items:center}.sv-connection>span{width:100%;border-top:2px solid #9bb4d4}.sv-connection :global(svg){margin-left:-6px;width:22px;color:#7091bc}
-  .sv-account-links{display:grid;gap:9px}.sv-account-links>span{background:#fff;border:1px solid #bccde4;display:flex;align-items:center;gap:10px;padding:9px 11px;min-height:43px}
-  .sv-account-links b{font-size:.8125rem;color:var(--ink)}.sv-account-links small{display:block;font-size:.75rem;color:var(--muted);font-weight:400}
-  .sv-account-links .sv-optional{border-style:dashed}.sv-account-links :global(svg){width:22px;height:22px}
-  .sv-account-links .sv-platform{gap:16px;padding:16px}.sv-platform img{display:block;width:32px;height:32px;object-fit:contain;flex-shrink:0}
-  @media(max-width:1000px){.sv-account-links .sv-platform{flex-direction:column;gap:16px;padding:16px;text-align:center}}
-  .sv-ad-process{width:100%;max-width:410px;display:grid;grid-template-columns:minmax(0,.85fr) 33px minmax(0,1fr);gap:14px;align-items:center}
-  .sv-overline{display:block;font-size:.75rem;color:var(--ink);text-align:center;margin-bottom:9px;font-weight:700}
-  .sv-material-photo{border:1px solid #bdcee4;background:#fff;padding:7px}.sv-material-photo svg{height:51px;width:100%}.sv-material-photo>span{display:block;text-align:center;font-size:.75rem;margin-top:4px;color:var(--ink)}
-  .sv-material-copy{padding:9px 10px 7px;margin-top:7px;background:#fff;border:1px solid #bdcee4}.sv-material-copy i,.sv-ad-copy i{display:block;border-top:3px solid #aabed8;width:100%;margin-bottom:5px}.sv-material-copy i:nth-child(2){width:70%}.sv-material-copy>span{display:block;text-align:center;font-size:.75rem;color:var(--ink)}
-  .sv-process-arrow{display:grid;place-items:center;color:#7091bc}.sv-process-arrow :global(svg){width:29px;height:29px}
-  .sv-ad-draft{border:2px solid var(--blue);background:#fff}.sv-ad-top{display:flex;gap:6px;align-items:center;padding:8px;color:var(--ink);font-size:.75rem}.sv-ad-top>span{width:13px;height:13px;background:#dce8fa;border-radius:50%}.sv-ad-top b{font-size:.8125rem}.sv-ad-top small{margin-left:auto;background:var(--blue);color:#fff;padding:1px 5px;font-size:.75rem;white-space:nowrap}
-  .sv-ad-image{margin:0 8px;background:#dce8fa}.sv-ad-image svg{width:100%;height:65px}.sv-ad-copy{padding:11px 10px 4px}.sv-ad-copy i{border-width:3px;margin-bottom:5px}.sv-ad-copy i:last-child{width:72%}.sv-ad-bottom{display:block;font-size:.75rem;text-align:center;background:#eaf1fb;padding:7px 2px;color:var(--ink)}
-  .sv-pixel-process{display:grid;grid-template-columns:minmax(0,1.15fr) 31px minmax(0,.85fr);width:100%;max-width:410px;gap:16px;align-items:center}
-  .sv-code-window{background:var(--ink);color:#fff;border-radius:4px;padding-bottom:13px}.sv-window-bar{display:flex;gap:4px;padding:9px 10px;border-bottom:1px solid #ffffff3b}.sv-window-bar>span{width:4px;height:4px;border-radius:50%;background:#96b4e1}
-  .sv-code-body{display:flex;align-items:center;gap:12px;padding:17px 14px 11px}.sv-code-body :global(svg){width:36px;height:36px;color:#a9c9ff}.sv-code-body>div{flex:1}.sv-code-body i{display:block;border-top:3px solid #9cbbeb;margin:6px 0}.sv-code-body i:nth-child(2){width:60%;border-color:#d7b45d}.sv-code-window>strong{display:block;font-size:.75rem;text-align:center}
-  .sv-code-delivery{text-align:center;color:var(--ink)}.sv-code-sheet{display:grid;place-items:center;margin:0 auto 9px;background:#fff;border:2px solid #7a9cc8;width:55px;height:66px}.sv-code-sheet :global(svg){width:30px;height:30px;color:var(--blue)}.sv-code-delivery strong{font-size:.83rem}
-  .sv-separate-scope{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:9px;border-top:1px dashed #a6bad4;padding-top:12px;color:var(--muted)}.sv-separate-scope>span{font-size:.75rem;white-space:nowrap;border:1px solid #a6bad4;padding:2px 5px}.sv-separate-scope strong{font-size:.75rem;line-height:1.6}
-  .sv-screen-share{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:14px;width:100%;max-width:410px}
-  .sv-person{display:flex;flex-direction:column;align-items:center;font-size:.75rem;color:var(--ink)}.sv-person svg{width:52px;height:52px;color:#6b8fbf}.sv-person>span{margin-top:3px}
-  .sv-monitor-screen{background:#fff;border:2px solid var(--blue);padding:9px 12px 11px;border-radius:4px}.sv-window-caption{display:block;font-size:.75rem;font-weight:700;color:var(--ink);padding-bottom:6px;border-bottom:1px solid #dbe5f2;margin-bottom:5px}
-  .sv-control-row{display:flex;align-items:center;gap:8px;margin-top:7px}.sv-control-row :global(svg){width:18px;height:18px}.sv-control-row i{border-top:3px solid #c7d7ec;flex:1}.sv-control-row>span{font-size:.75rem;color:var(--ink);min-width:5em}
-  .sv-monitor-base{border-bottom:4px solid #8eabd0;width:85%;height:10px;margin:auto;position:relative}.sv-monitor-base:before{content:'';position:absolute;left:46%;top:0;width:8%;height:8px;background:#8eabd0}
-  .sv-lesson-label{grid-column:1/-1;display:flex;gap:15px;align-items:center;justify-content:center;margin-top:5px;color:var(--ink)}.sv-lesson-label>strong{font-size:2.1rem;line-height:1;letter-spacing:-.04em;color:var(--blue)}.sv-lesson-label>strong>span{font-size:.85rem;letter-spacing:0;margin-left:4px}.sv-lesson-label>span{font-size:.8125rem}
-  .sv-check-scene{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:24px;align-items:center;max-width:375px;width:100%}.sv-check-board{position:relative;border:1px solid #9ab4d6;background:#fff;padding:21px 17px 12px}.sv-clipboard{position:absolute;top:-7px;left:calc(50% - 24px);width:48px;height:14px;border:2px solid #789ac5;background:#dce7f6;border-radius:3px}.sv-check-board>strong{font-size:.82rem;color:var(--ink);display:block;padding-bottom:8px}.sv-check-board>div:not(.sv-clipboard){display:flex;align-items:center;gap:9px;font-size:.75rem;color:var(--ink);padding:7px 0;border-top:1px solid #e2eaf5}.sv-check-board :global(svg){width:17px;height:17px;color:var(--blue)}
-  .sv-check-result{display:flex;align-items:center;flex-direction:column;text-align:center}.sv-check-seal{border:2px solid #98b5db;border-radius:50%;width:60px;height:60px;display:grid;place-items:center;background:#fff;margin-bottom:10px}.sv-check-seal :global(svg){width:35px;height:35px}.sv-check-result>strong{font-size:.83rem;color:var(--ink)}
-  .sv-guide-scene{width:100%;max-width:380px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;gap:25px}.sv-guide-book{position:relative;background:var(--blue);color:#fff;padding:15px 17px 15px 23px;border:1px solid #18499f;border-radius:2px 6px 6px 2px;box-shadow:5px 3px 0 #b8cce7}.sv-book-spine{position:absolute;left:8px;top:0;bottom:0;border-right:1px solid #ffffff4f}.sv-guide-type{font-size:.75rem;letter-spacing:.08em;display:block;margin-bottom:10px}.sv-guide-book :global(svg){width:35px;height:35px;margin-bottom:12px}.sv-guide-book>strong{display:block;font-size:.81rem;line-height:1.7}.sv-book-rule{border-top:2px solid #ffffff65;display:block;width:70%;margin-top:13px}
-  .sv-guide-topics{display:grid;gap:11px;color:var(--ink)}.sv-guide-topics>span{display:flex;align-items:center;gap:10px;font-size:.84rem;padding-bottom:8px;border-bottom:1px solid #bccde4}.sv-guide-topics :global(svg){width:21px;height:21px;color:var(--blue)}.sv-guide-topics>small{font-size:.75rem;line-height:1.6;color:var(--muted)}
-  @media(min-width:701px) and (max-width:1000px){.service-visual{padding:23px 17px;min-height:260px}.sv-account-map{gap:5px;grid-template-columns:minmax(0,.85fr) 20px minmax(0,1.2fr)}.sv-account-links>span{gap:7px;padding:8px 7px}.sv-account-links b{font-size:.8125rem}.sv-account-main strong{font-size:.875rem}.sv-account-main>span{font-size:.75rem}.sv-ad-process,.sv-pixel-process{gap:8px;grid-template-columns:minmax(0,1fr) 23px minmax(0,1fr)}.sv-process-arrow :global(svg){width:23px}.sv-ad-top>span{display:none}.sv-ad-top{flex-wrap:wrap}.sv-screen-share{grid-template-columns:42px minmax(0,1fr) 42px;gap:8px}.sv-person svg{width:34px;height:38px}.sv-monitor-screen{padding-inline:9px}.sv-check-scene{gap:14px}.sv-check-board{padding-inline:12px}.sv-check-board>div:not(.sv-clipboard){gap:6px;font-size:.8125rem}.sv-guide-scene{gap:19px}.sv-guide-book{padding-left:20px;padding-right:12px}.sv-guide-topics>span{font-size:.8125rem}}
-  @media(max-width:400px){.service-visual{min-height:260px;padding:23px 16px}.sv-account-map{gap:5px;grid-template-columns:minmax(0,.85fr) 20px minmax(0,1.2fr)}.sv-account-links>span{gap:7px;padding:8px 7px}.sv-account-links b{font-size:.8125rem}.sv-account-main strong{font-size:.875rem}.sv-account-main>span{font-size:.75rem}.sv-ad-process,.sv-pixel-process{gap:8px;grid-template-columns:minmax(0,1fr) 23px minmax(0,1fr)}.sv-process-arrow :global(svg){width:23px}.sv-ad-top>span{display:none}.sv-ad-top{flex-wrap:wrap}.sv-screen-share{grid-template-columns:42px minmax(0,1fr) 42px;gap:8px}.sv-person svg{width:32px;height:38px}.sv-person>span{font-size:.75rem}.sv-monitor-screen{padding-inline:8px}.sv-control-row{gap:5px}.sv-check-scene{gap:14px}.sv-check-board{padding-inline:12px}.sv-check-board>div:not(.sv-clipboard){gap:6px;font-size:.8125rem}.sv-guide-scene{gap:19px}.sv-guide-book{padding-left:20px;padding-right:12px}.sv-guide-topics>span{font-size:.8125rem}}
+  .service-visual{display:grid;place-items:center;min-height:215px;padding:24px 18px;color:#235c91;line-height:1.7;width:100%;background:#edeeeb}
+  .service-visual :global(svg){display:block;width:25px;height:25px;flex-shrink:0;stroke-width:1.4}
+  .service-visual strong,.service-visual b{font-weight:550;color:#152536}
+  .diagram-arrow{display:grid;place-items:center;color:#87949e}
+  .diagram-arrow :global(svg){width:20px;height:20px;stroke-width:1}
+  .account-diagram{display:grid;grid-template-columns:minmax(70px,.8fr) 22px minmax(0,1.4fr);gap:10px;align-items:center;width:100%;max-width:350px}
+  .diagram-origin{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+  .diagram-origin :global(svg){width:37px;height:37px;stroke-width:1.2}
+  .diagram-origin strong{font-size:.875rem}
+  .account-destinations{display:grid;gap:12px;min-width:0}
+  .account-destinations>span{display:flex;align-items:center;gap:12px;padding-block:4px;min-width:0}
+  .account-destinations img{width:28px;height:28px;flex:0 0 28px;object-fit:contain}
+  .account-destinations>span>:global(svg){width:28px;height:28px;flex:0 0 28px}
+  .account-destinations b{font-size:.875rem;line-height:1.6}
+  .account-destinations small{display:block;color:#596570;font-size:.875rem;font-weight:400}
+  .ad-diagram{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1.1fr);gap:14px;align-items:center;width:100%;max-width:330px}
+  .ad-material{text-align:center;min-width:0}
+  .ad-material .material-picture{width:92px;max-width:100%;height:auto;margin:0 auto 9px;color:#8094a3}
+  .ad-material>span{font-size:.875rem;display:block;color:#152536}
+  .ad-material>small{font-size:.875rem;color:#596570;display:block;margin-top:6px}
+  .ad-document{border:1px solid #aebbc2;background:#f9f9f7;padding:12px;min-width:0}
+  .ad-document-title{font-size:.875rem;color:#152536;line-height:1.5}
+  .ad-document-title b{display:inline-block;margin-left:4px;color:#235c91}
+  .ad-image{display:grid;place-items:center;background:#e1e7e9;min-height:62px;margin-top:9px;color:#7b91a1}
+  .ad-document>i{display:block;height:3px;background:#bdc8cd;margin-top:9px;width:90%}
+  .ad-document>i+i{margin-top:5px;width:65%}
+  .ad-document>span{font-size:.875rem;display:block;margin-top:9px;color:#596570;line-height:1.6}
+  .pixel-diagram{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);gap:16px;align-items:center;max-width:315px;width:100%}
+  .pixel-step{text-align:center;min-width:0}
+  .pixel-step strong{font-size:.875rem;display:block;margin-top:10px}
+  .code-window,.code-sheet{display:grid;place-items:center;margin-inline:auto;border:1px solid #95a8b4;background:#f9f9f7}
+  .code-window{width:88px;max-width:100%;height:62px;border-top-width:6px}
+  .code-sheet{width:48px;height:62px}
+  .code-window :global(svg),.code-sheet :global(svg){width:28px;height:28px}
+  .pixel-extra{grid-column:1/-1;border-top:1px solid #c5ced2;padding-top:11px;margin-top:2px;color:#596570;font-size:.875rem;text-align:center;line-height:1.8}
+  .share-diagram{width:100%;max-width:340px}
+  .share-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:13px;color:#596570;font-size:.875rem}
+  .share-heading b{font-size:1.8rem;font-weight:450;color:#235c91;line-height:1;flex-shrink:0;letter-spacing:-.03em}
+  .share-heading small{font-size:.875rem;margin-left:4px;letter-spacing:0}
+  .share-screen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #a9b8c0;background:#f9f9f7;padding:23px 7px 21px;gap:4px}
+  .share-screen>div{display:flex;flex-direction:column;align-items:center;gap:13px;min-width:0}
+  .share-screen>div+div{border-left:1px solid #d3dadd}
+  .share-screen span{font-size:.875rem;color:#152536;text-align:center}
+  .share-screen :global(svg){width:24px;height:24px}
+  .screen-base{height:13px;width:35%;border-bottom:1px solid #a9b8c0;margin-inline:auto;position:relative}
+  .screen-base:before{content:'';height:12px;width:1px;background:#a9b8c0;position:absolute;left:50%;top:0}
+  .check-diagram{width:100%;max-width:280px;border:1px solid #b9c4c9;background:#f9f9f7;padding:19px 22px}
+  .check-heading{display:block;font-size:.875rem;font-weight:550;color:#152536;margin-bottom:10px}
+  .check-diagram>div{display:flex;align-items:center;gap:13px;border-top:1px solid #d9dfe1;padding:9px 0;font-size:.875rem;color:#596570}
+  .check-diagram>div :global(svg){width:17px;height:17px;stroke-width:1.5;color:#235c91}
+  .guide-diagram{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:26px;align-items:center;width:100%;max-width:320px}
+  .guide-cover{border:1px solid #9bafb9;border-left:4px solid #235c91;padding:14px 12px;background:#f9f9f7;min-width:0}
+  .guide-cover>span{font-size:.875rem;color:#596570;letter-spacing:.04em}
+  .guide-cover :global(svg){width:30px;height:30px;margin:15px 0}
+  .guide-cover strong{font-size:.875rem;line-height:1.8;display:block}
+  .guide-contents>span{display:block;font-size:.875rem;padding:7px 0;border-bottom:1px solid #c5ced2;color:#152536}
+  .guide-contents>small{display:block;font-size:.875rem;color:#596570;margin-top:12px;line-height:1.8}
+  @media(max-width:480px){.service-visual{min-height:205px;padding:22px 16px}.account-diagram{gap:8px;grid-template-columns:minmax(65px,.7fr) 18px minmax(0,1.4fr)}.account-destinations>span{gap:10px}.ad-diagram{gap:10px}.ad-document{padding:10px}.guide-diagram{gap:22px}}
 </style>

@@ -1,0 +1,197 @@
+/* Shared layout for the Meta setup LP. Component diagrams retain scoped styles. */
+.meta-setup-page {
+  --ink: #152536;
+  --muted: #59636b;
+  --blue: #235c91;
+  --blue-dark: #19466f;
+  --line: #dfe3e5;
+  --paper: #f5f5f2;
+  --soft-blue: #edf2f5;
+  background: #fff;
+  color: var(--ink);
+  line-height: 1.9;
+}
+.meta-setup-page .wrap { max-width: 1248px; padding-inline: 48px; }
+.meta-setup-page .section { padding-block: 108px; }
+.meta-setup-page h2 { font-weight: 600; letter-spacing: .01em; line-height: 1.6; }
+.meta-setup-page h3 { font-weight: 600; letter-spacing: .01em; }
+.meta-setup-page .section-label { font-size: .875rem; font-weight: 500; letter-spacing: .04em; color: var(--muted); gap: 15px; margin-bottom: 22px; }
+.meta-setup-page .section-label > span { letter-spacing: .04em; }
+.meta-setup-page .section-heading { text-align: left; margin-bottom: 48px; }
+.meta-setup-page .section-heading .section-label { justify-content: flex-start; }
+.meta-setup-page .section-intro { margin-top: 24px; color: var(--muted); line-height: 2; }
+.meta-setup-page .eyebrow { color: var(--muted); font-size: .875rem; font-weight: 500; letter-spacing: .03em; }
+.meta-setup-page .small-note, .meta-setup-page .cta-note { font-size: .875rem; }
+.meta-setup-page .lp-header { height: 84px; padding-inline: max(32px, calc((100vw - 1260px) / 2)); gap: 28px; background: #fff; }
+.meta-setup-page .lp-brand { gap: 16px; }
+.meta-setup-page .lp-brand .lp-logo { width: 48px; height: 48px; }
+.meta-setup-page .lp-brand .lp-service-name { font-size: .8125rem; font-weight: 500; padding-left: 16px; line-height: 1.65; }
+.meta-setup-page .lp-header nav { font-size: .8125rem; font-weight: 500; gap: 26px; }
+.meta-setup-page .primary-cta { background: var(--blue); border-color: var(--blue); border-radius: 2px; box-shadow: none; min-height: 60px; font-size: 1rem; font-weight: 600; transition: background .18s, border-color .18s; }
+.meta-setup-page .primary-cta:hover { background: var(--blue-dark); border-color: var(--blue-dark); box-shadow: none; transform: none; }
+.meta-setup-page .primary-cta.compact { min-height: 48px; font-size: .875rem; padding: 12px 18px; }
+.meta-setup-page .text-link { color: var(--blue); border-color: #a9bac6; font-size: .9375rem; font-weight: 500; }
+
+/* The first-view action stays white on its photographic background. */
+.meta-setup-page .seminar-hero-action .primary-cta { background: #fff; border-color: #fff; color: #152536; }
+.meta-setup-page .seminar-hero-action .primary-cta:hover { background: #e6edf1; border-color: #e6edf1; }
+.meta-setup-page .concerns { background: #fff; }
+.meta-setup-page .concerns-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 80px; align-items: start; }
+.meta-setup-page .concerns h2 { font-size: clamp(1.625rem,2.3vw,2.125rem); }
+.meta-setup-page .concern-list li { padding-block: 24px; gap: 19px; font-size: 1rem; font-weight: 400; line-height: 1.9; }
+.meta-setup-page .concern-list li > span { width: 26px; height: 30px; border-radius: 0; background: none; color: #6d8293; }
+.meta-setup-page .concern-list svg { width: 24px; height: 24px; stroke-width: 1.35; }
+
+.meta-setup-page .pricing-section { border-top: 1px solid var(--line); }
+.meta-setup-page .pricing-layout { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 72px; }
+.meta-setup-page .price-panel { border: 0; border-top: 2px solid var(--ink); border-radius: 0; background: var(--paper); padding: 36px 38px; }
+.meta-setup-page .plan-label { font-size: .9375rem; color: var(--ink); font-weight: 500; letter-spacing: .02em; }
+.meta-setup-page .contract-label { font-size: .9375rem; margin-top: 20px; }
+.meta-setup-page .plan-price { margin: 16px 0 18px; gap: 9px; }
+.meta-setup-page .plan-price strong { font-size: 3.5rem; font-weight: 500; letter-spacing: -.045em; }
+.meta-setup-page .plan-price > span, .meta-setup-page .plan-unit { font-size: .875rem; }
+.meta-setup-page .price-panel ul { grid-template-columns: minmax(0,1fr); padding-block: 25px; gap: 14px; margin-top: 26px; }
+.meta-setup-page .price-panel li { font-size: .9375rem; gap: 13px; }
+.meta-setup-page .price-panel li svg { width: 17px; height: 26px; stroke-width: 1.5; }
+.meta-setup-page .price-panel .primary-cta { max-width: none; gap: 16px; }
+.meta-setup-page .price-panel .cta-note { font-size: .875rem; text-align: left; margin-top: 15px; }
+.meta-setup-page .plan-disclaimer { font-size: .875rem; padding-top: 22px; margin-top: 24px; }
+.meta-setup-page .scope-title { gap: 16px; }
+.meta-setup-page .scope-title > span { border: 0; padding: 0; font-size: .8125rem; color: var(--muted); }
+.meta-setup-page .scope-title h3 { font-size: 1.125rem; }
+.meta-setup-page .scope-group { padding-bottom: 30px; }
+.meta-setup-page .estimate-label { background: none; color: var(--muted); padding: 0; font-size: .875rem; margin: 14px 0 22px; }
+.meta-setup-page .scope-group ul { font-size: .9375rem; gap: 13px; }
+.meta-setup-page .scope-group li::marker { color: #8696a0; }
+.meta-setup-page .scope-group.unavailable { padding-top: 28px; }
+.meta-setup-page .unavailable > p { font-size: .9375rem; margin-top: 15px; }
+.meta-setup-page .price-notes { background: none; padding: 0; font-size: .9375rem; margin-top: 25px; }
+.meta-setup-page .price-notes strong { font-weight: 600; }
+
+.meta-setup-page .about-section { background: var(--paper); }
+.meta-setup-page .about-grid { grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); max-width: 1160px; gap: 88px; }
+.meta-setup-page .profile-visual { align-items: flex-start; }
+.meta-setup-page .profile-visual img { width: 268px; height: 320px; border-radius: 0; filter: none; object-position: center; }
+.meta-setup-page .profile-visual > p { margin-top: 22px; text-align: left; font-size: .875rem; }
+.meta-setup-page .profile-visual strong { font-weight: 500; font-size: 1.625rem; letter-spacing: .12em; margin-top: 3px; }
+.meta-setup-page .profile-visual p > span { font-size: .75rem; letter-spacing: .13em; color: var(--muted); }
+.meta-setup-page .about-grid h2 { font-size: clamp(1.625rem,2.4vw,2.125rem); }
+.meta-setup-page .profile-lead { font-weight: 500; font-size: 1.0625rem; margin: 28px 0 20px; line-height: 2; }
+.meta-setup-page .about-grid > div > p:not(.profile-lead):not(.section-label) { font-size: .9375rem; }
+.meta-setup-page .profile-credential { padding: 16px 0; margin: 23px 0; border-color: #d3d9dc; color: var(--ink); font-weight: 500; gap: 12px; }
+.meta-setup-page .profile-credential svg { width: 18px; height: 18px; stroke-width: 1.5; color: var(--blue); }
+.meta-setup-page .profile-expertise { gap: 10px 22px; margin-bottom: 17px; font-weight: 500; font-size: .9375rem; }
+.meta-setup-page .profile-expertise li { border: 0; padding-bottom: 0; }
+.meta-setup-page .profile-expertise li + li { border-left: 1px solid #bfc8cc; padding-left: 22px; }
+.meta-setup-page .about-grid > div > p.profile-scope-note { font-size: .875rem; }
+
+.meta-setup-page .preparation-section { background: var(--paper); }
+.meta-setup-page .preparation-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 64px; }
+.meta-setup-page .preparation-grid h3 { font-size: 1.125rem; margin-bottom: 25px; }
+.meta-setup-page .security-note { font-size: .875rem; gap: 14px; line-height: 1.9; }
+.meta-setup-page .security-note svg { width: 20px; stroke-width: 1.4; }
+.meta-setup-page .restriction-note { background: #fff; border: 1px solid #dfe3e5; padding: 32px; }
+.meta-setup-page .restriction-note p { font-size: .9375rem; line-height: 1.95; }
+.meta-setup-page .restriction-emphasis { font-weight: 600; padding-block: 20px; margin-block: 22px; }
+.meta-setup-page .additional-consultation { gap: 64px; margin-top: 66px; padding-top: 35px; border-color: #d0d7da; }
+.meta-setup-page .additional-consultation h3 { font-size: 1.25rem; }
+.meta-setup-page .additional-consultation > p { font-size: .9375rem; }
+.meta-setup-page .additional-consultation strong { font-weight: 500; margin-top: 10px; }
+.meta-setup-page .faq-grid { grid-template-columns: minmax(0,.65fr) minmax(0,1.35fr); gap: 72px; }
+.meta-setup-page .faq-grid h2 { font-size: clamp(1.625rem,2.3vw,2.125rem); }
+.meta-setup-page .faq-list summary { padding-block: 25px; font-size: 1rem; font-weight: 500; gap: 18px; line-height: 1.9; }
+.meta-setup-page .question-mark { font-size: .875rem; font-weight: 400; color: #768994; }
+.meta-setup-page .faq-answer { padding: 0 32px 26px 39px; font-size: .9375rem; }
+.meta-setup-page .consultation-section { background: var(--paper); border-top: 1px solid var(--line); }
+.meta-setup-page .consultation-booking-layout { max-width: 1040px; }
+.meta-setup-page .reservation-intro { max-width: 780px; margin-bottom: 48px; }
+.meta-setup-page .reservation-intro .section-label { justify-content: center; }
+.meta-setup-page .reservation-service-price { margin-top: 28px; gap: 10px 24px; }
+.meta-setup-page .reservation-service-price > strong { font-size: 2.5rem; font-weight: 500; }
+.meta-setup-page .reservation-service-price > p { font-size: .9375rem; }
+.meta-setup-page .lp-footer { background: #fff; border-top: 1px solid var(--line); padding: 48px 0 22px; }
+.meta-setup-page .footer-brand { gap: 18px; }
+.meta-setup-page .footer-brand img { width: 48px; height: 48px; }
+.meta-setup-page .footer-brand > span { font-weight: 500; font-size: .875rem; }
+.meta-setup-page .footer-top > p { font-size: .875rem; }
+.meta-setup-page .lp-footer nav a, .meta-setup-page .lp-footer nav button { font-size: .875rem; min-height: 44px; }
+.meta-setup-page .footer-bottom { font-size: .8125rem; }
+.meta-setup-page .sticky-cta { background: #fff; box-shadow: none; }
+.meta-setup-page .site-consent { border-radius: 2px; font-size: .875rem; }
+
+@media (max-width: 1100px) {
+  .meta-setup-page .wrap { padding-inline: 36px; }
+  .meta-setup-page .lp-header { gap: 22px; padding-inline: 28px; }
+  .meta-setup-page .lp-header nav { gap: 20px; }
+  .meta-setup-page .concerns-grid, .meta-setup-page .pricing-layout, .meta-setup-page .about-grid, .meta-setup-page .preparation-grid, .meta-setup-page .faq-grid { gap: 44px; }
+  .meta-setup-page .price-panel { padding: 30px; }
+  .meta-setup-page .profile-visual img { height: 300px; }
+}
+@media (max-width: 900px) {
+  .meta-setup-page .section { padding-block: 80px; }
+  .meta-setup-page .wrap { padding-inline: 32px; }
+  .meta-setup-page .lp-header { height: 76px; }
+  .meta-setup-page .pricing-layout { grid-template-columns: minmax(0,1fr); gap: 42px; }
+  .meta-setup-page .price-panel { padding: 36px; }
+  .meta-setup-page .price-panel ul { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 18px 28px; }
+  .meta-setup-page .price-panel .primary-cta { max-width: 440px; }
+  .meta-setup-page .price-panel .cta-note { text-align: center; }
+  .meta-setup-page .plan-disclaimer { text-align: center; }
+  .meta-setup-page .about-grid { grid-template-columns: minmax(0,.65fr) minmax(0,1fr); gap: 36px; }
+  .meta-setup-page .profile-visual img { height: 270px; }
+  .meta-setup-page .preparation-grid, .meta-setup-page .faq-grid { grid-template-columns: minmax(0,1fr); gap: 36px; }
+  .meta-setup-page .additional-consultation { gap: 36px; }
+}
+@media (max-width: 700px) {
+  .meta-setup-page .concerns-grid { grid-template-columns: minmax(0,1fr); gap: 32px; }
+  .meta-setup-page .about-grid { display: flex; flex-direction: column-reverse; gap: 34px; align-items: stretch; }
+  .meta-setup-page .profile-visual { flex-direction: row; align-items: center; justify-content: flex-start; gap: 26px; }
+  .meta-setup-page .profile-visual img { width: 156px; height: 186px; }
+  .meta-setup-page .profile-visual > p { margin-top: 0; }
+}
+@media (max-width: 600px) {
+  .meta-setup-page .wrap { padding-inline: 24px; }
+  .meta-setup-page .section { padding-block: 64px; }
+  .meta-setup-page .section-heading { margin-bottom: 32px; }
+  .meta-setup-page .section-label { font-size: .875rem; margin-bottom: 18px; gap: 12px; }
+  .meta-setup-page .section-intro { font-size: .9375rem; margin-top: 20px; }
+  .meta-setup-page .lp-header { height: 68px; padding-inline: 24px; }
+  .meta-setup-page .lp-brand { gap: 13px; }
+  .meta-setup-page .lp-brand .lp-logo { width: 42px; height: 42px; }
+  .meta-setup-page .lp-brand .lp-service-name { font-size: .75rem; padding-left: 13px; }
+  .meta-setup-page .primary-cta { font-size: .9375rem; padding: 17px 19px; gap: 16px; }
+  .meta-setup-page .concern-list li { font-size: .9375rem; padding-block: 21px; gap: 17px; }
+  .meta-setup-page .price-panel { padding: 27px 24px; }
+  .meta-setup-page .plan-price strong { font-size: 3.1rem; }
+  .meta-setup-page .price-panel ul { grid-template-columns: minmax(0,1fr); gap: 14px; }
+  .meta-setup-page .price-panel .primary-cta { font-size: .9375rem; padding-inline: 15px; }
+  .meta-setup-page .price-panel .cta-note, .meta-setup-page .plan-disclaimer { text-align: left; }
+  .meta-setup-page .scope-title { gap: 12px; }
+  .meta-setup-page .scope-title h3 { font-size: 1.0625rem; }
+  .meta-setup-page .profile-visual img { width: 132px; height: 165px; }
+  .meta-setup-page .profile-visual strong { font-size: 1.375rem; }
+  .meta-setup-page .profile-visual p > span { font-size: .6875rem; }
+  .meta-setup-page .profile-expertise { gap: 9px 14px; font-size: .875rem; }
+  .meta-setup-page .profile-expertise li + li { padding-left: 14px; }
+  .meta-setup-page .restriction-note { padding: 24px; }
+  .meta-setup-page .additional-consultation { grid-template-columns: minmax(0,1fr); gap: 19px; margin-top: 44px; padding-top: 28px; }
+  .meta-setup-page .faq-list summary { gap: 13px; font-size: .9375rem; padding-block: 22px; }
+  .meta-setup-page .faq-answer { padding: 0 15px 24px 32px; }
+  .meta-setup-page .reservation-intro { text-align: left; margin-bottom: 32px; }
+  .meta-setup-page .reservation-intro h2 { font-size: 1.625rem; }
+  .meta-setup-page .reservation-intro .section-label, .meta-setup-page .reservation-service-price { justify-content: flex-start; }
+  .meta-setup-page .reservation-service-price > strong { font-size: 2.3rem; }
+  .meta-setup-page .lp-footer { padding-top: 36px; padding-bottom: 96px; }
+  .meta-setup-page .lp-footer nav { gap: 4px 22px; }
+  .meta-setup-page .sticky-cta { padding-inline: 18px; }
+  .meta-setup-page .sticky-cta .primary-cta { min-height: 48px; padding-block: 11px; }
+}
+@media (max-width: 359px) {
+  .meta-setup-page .wrap { padding-inline: 20px; }
+  .meta-setup-page .lp-header { padding-inline: 20px; }
+  .meta-setup-page .price-panel { padding-inline: 20px; }
+  .meta-setup-page .price-panel .primary-cta { font-size: .875rem; gap: 10px; padding-inline: 10px; }
+  .meta-setup-page .profile-visual { gap: 20px; }
+  .meta-setup-page .profile-visual img { width: 116px; height: 145px; }
+  .meta-setup-page .restriction-note { padding-inline: 20px; }
+}
