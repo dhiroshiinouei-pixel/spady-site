@@ -7,7 +7,10 @@ import type { Locale } from '../../i18n';
 const {lang='ja'}=Astro.props as {lang?:Locale};
 const t=messages(lang);
 const topicValues=messages('ja').topicOptions;
-const topicKeys=['gbp','mini-app','marketing','billing','other'];
+const topicKeys=['gbp','mini-app','marketing','billing','other','ai-training','ai-implementation'];
+const aiTopics = lang==='ja' ? ['AI研修・講演会について','AI導入・伴走支援について'] : [];
+const topicLabels=[...t.topicOptions,...aiTopics];
+const canonicalTopics=[...topicValues,...aiTopics];
 const Layout=lang==='ja'?CorporateLayout:HomeLayout;
 ---
 <Layout lang={lang} page="contact/" title={`${t.contact}｜Spady`} description={t.contactDescription}>
@@ -31,7 +34,7 @@ const Layout=lang==='ja'?CorporateLayout:HomeLayout;
           <div class="field"><label for="name">{t.name} <b class="required">{t.required}</b></label><input id="name" name="name" autocomplete="name" required maxlength="100" placeholder={t.namePlaceholder} /></div>
           <div class="field"><label for="company">{t.company} <span class="optional">{t.optional}</span></label><input id="company" name="company" autocomplete="organization" maxlength="100" placeholder={t.companyPlaceholder} /></div>
           <div class="field"><label for="email">{t.email} <b class="required">{t.required}</b></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="example@company.jp" /><p class="field-help">{t.emailHelp}</p></div>
-          <div class="field"><label for="topic">{t.topic} <b class="required">{t.required}</b></label><select id="topic" name="topic" required><option value="">{t.select}</option>{t.topicOptions.map((label,i)=><option value={topicValues[i]} data-topic={topicKeys[i]}>{label}</option>)}</select></div>
+          <div class="field"><label for="topic">{t.topic} <b class="required">{t.required}</b></label><select id="topic" name="topic" required><option value="">{t.select}</option>{topicLabels.map((label,i)=><option value={canonicalTopics[i]} data-topic={topicKeys[i]}>{label}</option>)}</select></div>
           <div class="field"><label for="message">{t.message} <b class="required">{t.required}</b></label><textarea id="message" name="message" rows="6" required maxlength="4000" placeholder={t.messagePlaceholder} aria-describedby="messageSecurity"></textarea><p id="messageSecurity" class="field-help">{t.contactSecurityNote}</p></div>
           <details class="meeting-options"><summary>{t.meeting} <span>{t.optional}</span></summary>{t.preferences.map((label,i)=><div class="field"><label for={`pref${i+1}`}>{label}</label><input id={`pref${i+1}`} name={`pref${i+1}`} maxlength="200" placeholder={i===0?t.meetingPlaceholder:undefined} /></div>)}</details>
           <label class="consent-field"><input type="checkbox" name="consent" value="yes" required /><span>{t.agreeBefore}<a href={pathFor(lang,'privacy/')} target="_blank" rel="noopener">{t.privacy}</a>{t.agreeAfter}<b class="required">{t.required}</b></span></label>
@@ -51,7 +54,7 @@ const Layout=lang==='ja'?CorporateLayout:HomeLayout;
     const topicKey=query.get('topic');
     const topicField=form?.querySelector<HTMLSelectElement>('#topic');
     const messageField=form?.querySelector<HTMLTextAreaElement>('#message');
-    if(topicKey&&['gbp','mini-app','marketing','billing','other'].includes(topicKey)&&topicField){
+    if(topicKey&&['gbp','mini-app','marketing','billing','other','ai-training','ai-implementation'].includes(topicKey)&&topicField){
       const option=Array.from(topicField.options).find(item=>item.dataset.topic===topicKey);
       if(option&&!topicField.value)topicField.value=option.value;
       if(option&&topicField.value===option.value&&query.get('intent')==='release'&&['gbp','mini-app'].includes(topicKey)&&messageField&&!messageField.value){

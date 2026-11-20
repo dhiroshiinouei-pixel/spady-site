@@ -1,0 +1,57 @@
+---
+const { training=false } = Astro.props;
+const content = training ? {
+  label:'ご依頼の形', title:'「聞いて知る」と「手を動かして覚える」を分ける。',
+  cards:[
+    ['講演会・セミナー','商工会や業界団体、社内イベント向け。生成AIが得意なことと苦手なこと、身近な使い方、入力時の注意点をデモで紹介します。'],
+    ['少人数の社内研修','スタッフが実際に指示文を書き、AIの回答を直します。部署やチームが同じ確認手順を使えるよう、演習結果を持ち帰ります。']
+  ],
+  demoTitle:'研修のサンプル：予約変更メールをつくる',
+  demoLead:'架空の例です。正しい返信を暗記するのではなく、AIの案をどこで疑い、何を直すかを練習します。',
+  steps:[
+    ['条件を書き出す','「変更を希望している」「空き状況は未確認」のように、分かっている事実と分からないことを分けます。'],
+    ['返信案を作って確認する','AIに下書きを依頼し、空き枠を勝手に確約していないか、日時や案内が漏れていないかを確認します。'],
+    ['現場で使う型にする','固有名詞を入れない指示文と、担当者が送る前に見るチェック項目を持ち帰ります。']
+  ],
+  outputTitle:'研修後に使えるもの',
+  output:['復習用の資料','架空の例題と指示文サンプル','自社で試すときの確認ポイント'],
+  note:'時間・人数・配布資料・オンライン／対面の可否は、開催条件に応じて事前にご案内します。ご相談時は、対象者・人数・希望時期・扱いたい業務をお知らせください。'
+} : {
+  label:'支援の範囲', title:'ツールを決める前に、仕事の流れを決める。',
+  cards:[
+    ['最初の業務を選ぶ','問い合わせ返信、SNSのお知らせ、社内文書の下書きなど、繰り返しが多く、人が確認できる業務を選びます。'],
+    ['担当者が使い続ける形にする','AIへの指示だけでなく、誰が入力し、どこを確認し、例外は誰が判断するかまで決めます。初回から顧客データ連携や自動送信を前提にしません。']
+  ],
+  demoTitle:'導入のサンプル：問い合わせ返信をチームでそろえる',
+  demoLead:'架空の例です。「予約は確定していないのに、担当者によって案内が違う」という場面を想定します。',
+  steps:[
+    ['今のやり方を比較する','返信作成、確認、送信の順番を図にします。最初に、作成と確認にかかる時間や、案内漏れの有無を記録します。'],
+    ['ひな形を試す','お客さまの情報を入力せず、よくある問い合わせを架空の例で再現。条件が不明なときは確認を求めるルールを入れます。'],
+    ['担当者へ引き継ぐ','担当者自身が下書きから確認まで行い、同種の例で作業時間と確認漏れを見直します。試行で分かった使える範囲を記録します。']
+  ],
+  outputTitle:'支援で整えるもの',
+  output:['対象業務の流れと、担当者の役割','再利用できる指示文・返信のひな形','入力・確認ルールと、引き継ぎ手順'],
+  note:'納品物や支援期間は個別に決めます。ツール利用料・システム連携・自動化開発は、必要性と実現可能性を確認してから別途ご案内します。'
+};
+---
+<section class="section ai-detail wrap" aria-label="具体的なサービス内容">
+ <div class="section-head"><div><p class="kicker">{content.label}</p><h2>{content.title}</h2></div></div>
+ <div class="ai-pair">{content.cards.map(([title,copy])=><article><h3>{title}</h3><p>{copy}</p></article>)}</div>
+</section>
+<section class="section ai-sample"><div class="wrap">
+ <p class="kicker">内容が分かる例</p><h2>{content.demoTitle}</h2><p class="lead">{content.demoLead}</p>
+ <ol class="ai-steps">{content.steps.map(([title,copy], i)=><li><span class="ai-step" aria-hidden="true">{String(i+1).padStart(2,'0')}</span><div><h3>{title}</h3><p>{copy}</p></div></li>)}</ol>
+</div></section>
+<section class="section wrap"><div class="split"><div><p class="kicker">実施後・納品物</p><h2>{content.outputTitle}</h2></div><div><ul class="rule-list">{content.output.map(item=><li>{item}</li>)}</ul><p class="fine-print">{content.note}</p></div></div></section>
+<style>
+.ai-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ai-pair article{background:#fff;border:1px solid var(--line);border-top:3px solid #497d63;padding:24px;border-radius:14px}
+.ai-pair h3,.ai-steps h3{margin:0 0 8px;font-size:clamp(17px,3vw,22px)}
+.ai-pair p,.ai-steps p{margin:0;line-height:1.9}
+.ai-sample{background:#edf4ee}
+.ai-sample .lead{max-width:40em;font-size:16px}
+.ai-steps{padding:0;max-width:58rem;margin:32px 0 0;list-style:none}
+.ai-steps li{display:grid;grid-template-columns:42px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.ai-step{font:600 16px/38px system-ui;width:38px;height:38px;text-align:center;border-radius:50%;color:#fff;background:#285942}
+@media(max-width:640px){.ai-pair{grid-template-columns:1fr;gap:12px}.ai-pair article{padding:18px}.ai-steps li{gap:10px}}
+</style>

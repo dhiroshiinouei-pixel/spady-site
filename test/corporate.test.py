@@ -36,7 +36,7 @@ CORE_ROUTES = (
     "/news/", "/news/saas-development/", "/contact/", "/privacy/",
     "/legal/", "/terms/", "/cancellation/",
 )
-TOPICS = {"gbp", "mini-app", "marketing", "billing", "other"}
+TOPICS = {"gbp", "mini-app", "marketing", "billing", "other", "ai-training", "ai-implementation"}
 STATUS_LABELS = {
     "planning": "企画中", "developing": "開発中", "preparing": "公開準備中",
     "available": "提供中", "ended": "提供終了",
@@ -348,6 +348,25 @@ class CorporateSiteTests(unittest.TestCase):
                 else:
                     self.assertIn(ORIGIN + route, urls)
         self.assertIn("Sitemap: https://spady.net/sitemap.xml", (DIST / "robots.txt").read_text())
+
+    def test_both_ai_services_can_be_found_and_contacted(self):
+        routes = {"ai-training": "AI研修・講演会", "ai-implementation": "AI導入・伴走支援"}
+        for slug, name in routes.items():
+            route = f"/services/{slug}/"
+            page = document(route)
+            self.assertIn(name, page.title)
+            self.assertIn("小樽", page.title)
+            self.assertNotIn("noindex", page.meta.get("robots", ""))
+            self.assertEqual(page.meta["og:url"], ORIGIN + route)
+            self.assertEqual(page.h1_count, 1)
+            self.assertIn(f"/contact/?topic={slug}", [a.get("href") for a in page.anchors])
+            for source in ("/", "/services/", "/about/"):
+                self.assertIn(route, [a.get("href") for a in document(source).anchors])
+            other = next(key for key in routes if key != slug)
+            self.assertIn(f"/services/{other}/", [a.get("href") for a in page.anchors])
+            graphs = [json.loads(s["text"]) for s in page.scripts if s["attrs"].get("type") == "application/ld+json"]
+            types = {node["@type"] for graph in graphs for node in graph.get("@graph", [])}
+            self.assertTrue({"Service", "BreadcrumbList"}.issubset(types))
 
     def test_actual_inquiry_routes_and_known_operator_information(self):
         contact = document("/contact/")

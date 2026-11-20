@@ -54,7 +54,7 @@ const productVisuals: Record<string, { alt: string; copy: string[] }> = {
   </section>
 
   <section class="h-section h-wrap h-support" id="services" aria-labelledby="h-support-title">
-    <div class="h-support-heading"><p class="h-section-label"><span aria-hidden="true"></span>現在提供している支援</p><h2 id="h-support-title"><span>いま必要なことも、</span><span>一緒に整えます。</span></h2><p>集客の設計から、制作、運用まで。<br class="h-desktop-break"/>事業に合った取り組みを、<br class="h-desktop-break"/>全国へオンラインで。</p><a class="h-link" href="/services/#current">支援サービスの一覧<span class="h-arrow" aria-hidden="true">↗</span></a></div>
+    <div class="h-support-heading"><p class="h-section-label"><span aria-hidden="true"></span>現在提供している支援</p><h2 id="h-support-title"><span>いま必要なことも、</span><span>一緒に整えます。</span></h2><p>集客の設計から、制作、運用まで。<br class="h-desktop-break"/>事業に合った取り組みを、<br class="h-desktop-break"/>全国へオンラインで。</p><a class="h-link" href="/services/#current">支援サービスの一覧<span class="h-arrow" aria-hidden="true">↗</span></a> <a class="h-link" href="/ai-guides/">生成AIの実践記事<span class="h-arrow" aria-hidden="true">↗</span></a></div>
     <div class="h-service-list">{currentServices.map((service, index) => <a class="h-service" href={service.detailUrl}><span class="h-service-index">0{index + 1}</span><span class="h-service-icon"><Icon name={service.icon} size={29}/></span><div><h3>{service.name}</h3><p>{service.summary}</p></div><span class="h-arrow" aria-hidden="true">↗</span></a>)}</div>
   </section>
 

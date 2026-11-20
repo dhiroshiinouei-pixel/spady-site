@@ -8,8 +8,8 @@ import SceneBoot from '../components/SceneBoot.astro';
 import SiteScene from '../components/SiteScene.astro';
 import { locales, absolute, pathFor } from '../i18n';
 import type { Page } from '../i18n';
-interface Props {title?:string;description?:string;page?:string;noindex?:boolean}
-const {title='Spady｜店舗の集客と運営を支えるSaaS・デジタルサービス',description='店舗や小規模事業者の集客と運営を、もっとシンプルに。Spadyはマーケティング支援の経験を土台に、店舗向けSaaSを企画・開発する個人事業です。広告・LINE・Web制作の支援は全国オンライン対応。',page='',noindex=false}=Astro.props;
+interface Props {title?:string;description?:string;page?:string;noindex?:boolean; serviceName?:string; article?:{author:string}}
+const {title='Spady｜店舗の集客と運営を支えるSaaS・デジタルサービス',description='店舗や小規模事業者の集客と運営を、もっとシンプルに。Spadyはマーケティング支援の経験を土台に、店舗向けSaaSを企画・開発する個人事業です。広告・LINE・Web制作の支援は全国オンライン対応。',page='',noindex=false,serviceName,article}=Astro.props;
 const canonical=absolute('/'+page);
 const translated=['','contact/','privacy/','contact/thanks/'].includes(page);
 const ogImage=absolute('/home/spady-social.png');
@@ -17,7 +17,12 @@ const nav=[['サービス','/services/'],['Spadyについて','/about/'],['実�
 const schema={'@context':'https://schema.org','@graph':[
  {'@type':'Organization','@id':'https://spady.net/#organization',name:'Spady',url:'https://spady.net/',logo:'https://spady.net/logo.png',description:'井上博史が運営する個人事業。店舗向けSaaSの企画・開発、デジタルマーケティング支援、Web制作。',founder:{'@type':'Person',name:'井上 博史'},email:'info@spady.net',sameAs:['https://www.threads.com/@hiroshiinoue.spady']},
  {'@type':'WebSite','@id':'https://spady.net/#website',url:'https://spady.net/',name:'Spady',publisher:{'@id':'https://spady.net/#organization'},inLanguage:locales.map(l=>l.tag)},
- {'@type':page==='contact/'?'ContactPage':page==='about/'?'AboutPage':'WebPage','@id':canonical,url:canonical,name:title,description,inLanguage:'ja',isPartOf:{'@id':'https://spady.net/#website'}}
+ {'@type':page==='contact/'?'ContactPage':page==='about/'?'AboutPage':'WebPage','@id':canonical,url:canonical,name:title,description,inLanguage:'ja',isPartOf:{'@id':'https://spady.net/#website'},...(serviceName ? {mainEntity:{'@id':canonical+'#service'},breadcrumb:{'@id':canonical+'#breadcrumbs'}} : article ? {mainEntity:{'@id':canonical+'#article'}} : {})},
+ ...(article ? [{'@type':'Article','@id':canonical+'#article',headline:title.replace(/｜Spady$/,''),description,author:article.author==='Spady'?{'@id':'https://spady.net/#organization'}:{'@type':'Person',name:article.author},publisher:{'@id':'https://spady.net/#organization'},mainEntityOfPage:{'@id':canonical},inLanguage:'ja'}] : []),
+ ...(serviceName ? [
+  {'@type':'Service','@id':canonical+'#service',name:serviceName,description,url:canonical,provider:{'@id':'https://spady.net/#organization'}},
+  {'@type':'BreadcrumbList','@id':canonical+'#breadcrumbs',itemListElement:[['ホーム','/'],['サービス一覧','/services/'],[serviceName,'/'+page]].map(([name,path],i)=>({'@type':'ListItem',position:i+1,name,item:absolute(path)}))}
+ ] : [])
 ]};
 ---
 <!doctype html><html lang="ja"><head>
@@ -26,7 +31,7 @@ const schema={'@context':'https://schema.org','@graph':[
  <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
  {noindex&&<meta name="robots" content="noindex, follow"/>}
  {translated&&<>{locales.map(l=><link rel="alternate" hreflang={l.tag} href={absolute(pathFor(l.id,page as Page))}/>)}<link rel="alternate" hreflang="x-default" href={canonical}/></>}
- <meta property="og:type" content="website"/><meta property="og:site_name" content="Spady"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ja_JP"/>
+ <meta property="og:type" content={article ? "article" : "website"}/><meta property="og:site_name" content="Spady"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ja_JP"/>
  <meta property="og:image" content={ogImage}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:type" content="image/png"/><meta property="og:image:alt" content="Spady — お店の集客と運営を、もっとシンプルに。"/>
  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={ogImage}/><meta name="twitter:image:alt" content="Spady — お店の集客と運営を、もっとシンプルに。"/>
  <link rel="icon" href="/favicon.png" type="image/png"/><link rel="apple-touch-icon" href="/favicon.png"/><meta name="theme-color" content="#f8f7f3"/>
