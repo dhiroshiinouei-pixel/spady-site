@@ -1,0 +1,115 @@
+---
+import CorporateLayout from '../../layouts/CorporateLayout.astro';
+import { aiRoomArticles } from '../../data/ai-room';
+const item = aiRoomArticles[0];
+const releaseNotes = 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes';
+const faq = 'https://help.openai.com/en/articles/12168547-voice-dictation-faq';
+const demo = 'https://x.com/ChatGPT/status/2123114715257946334';
+const demoStillSource = 'https://www.ithinkdiff.com/chatgpt-live-dictation-no-10-minute-limit/';
+---
+<CorporateLayout page="ai/live-dictation/" title={`${item.title}｜Spady`} description={item.description} socialImage={{path:item.image,alt:item.imageAlt,width:1440,height:810,mime:"image/webp"}} article={{ author: '井上 博史' }}>
+  <main id="main">
+    <header class="page-hero"><div class="wrap">
+      <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/ai/">SpadyのAI部屋</a><span aria-hidden="true">/</span><span aria-current="page">ライブ音声入力</span></nav>
+      <p class="kicker">AIの新機能</p><h1>{item.title}</h1>
+      <p class="lead">ChatGPTのライブ音声入力は、話しながら入力中の文字を確認できる機能です。メッセージ欄のマイクで録音し、波形を押すと文字が表示されます。送信前に誤字や数字を直せるので、予約件数や引き継ぎメモの入力にも使えます。</p>
+      <p class="fine-print">文：<a href="/about/">井上 博史（Spady）</a></p>
+    </div></header>
+    <figure class="wrap room-cover">
+      <img src={item.image} alt={item.imageAlt} width="1440" height="810" fetchpriority="high" decoding="async" />
+      <figcaption>音声から文字への変換を表現したイメージ。実際の画面ではありません。</figcaption>
+    </figure>
+    <article class="section wrap room-article">
+      <div class="prose">
+        <nav class="article-index" aria-label="この記事の目次"><a href="#what">何が変わった？</a><a href="#how">実画面と使い方</a><a href="#example">予約件数の整理例</a><a href="#other">ほかの使い道</a><a href="#faq">よくある質問</a></nav>
+        <section id="what">
+          <h2>ライブ音声入力と音声会話は何が違う？</h2>
+          <p>ライブ音声入力（Live Dictation）は、<strong>話した内容を、自分で直せるメッセージに変える機能</strong>です。ChatGPTが声で返す「音声会話」とは違い、録音中に文字を見て、送る前に整えられます。日時・金額・店名など、間違うと困る情報を確認しながら文章にしたいときに向いています。</p>
+          <p><a href={releaseNotes}>OpenAIの2026年11月18日の発表</a>では、録音中に文字が見えることに加え、従来の10分の録音上限がなくなったと案内されています。ただ、数字を続けて読むなら、私は「何月・何件」を区切って、短く試す方が確認しやすいと思います。</p>
+        </section>
+        <section id="how">
+          <h2>ChatGPTのライブ音声入力の使い方</h2>
+          <ol class="guide-steps">
+            <li><strong>入力欄のマイクを押す。</strong> ChatGPTと声で会話するモードではなく、メッセージを入力するためのマイクを選びます。</li>
+            <li><strong>録音中の波形を押す。</strong> 初期状態で波形だけが見えていても、押すと話した内容が文字で表示されます。また押すと表示を切り替えられます。</li>
+            <li><strong>録音を止めて、文章を直す。</strong> 人名・日付・数字は、元の情報と見比べてから送ります。聞き間違いがあれば、文章を編集するか、その箇所だけ短く読み直します。</li>
+          </ol>
+          <figure class="demo-still">
+            <img src="/ai-media/live-dictation-demo.webp" alt="ChatGPT公式デモの画面。スマートフォンの入力欄に英語の文字起こし、その下に波形と録音停止ボタンが表示されている" width="1280" height="719" loading="lazy" decoding="async" />
+            <figcaption><strong>公式デモの実画面：</strong>録音中の波形の上に、話した内容が文字で表示されています。画像は <a href={demo}>ChatGPT公式のデモ動画（X）</a>の一場面。<a href={demoStillSource}>掲載元</a>。Spadyの端末画面ではありません。</figcaption>
+          </figure>
+          <p class="notice"><strong>録音前に決めておくこと：</strong>最初は、お客様の氏名や電話番号、未公開の情報を入れずに試します。文字のメッセージを送る前でも、文字起こしのために録音音声は処理されます。<a href={faq}>OpenAIの音声入力FAQ</a></p>
+        </section>
+        <section id="example">
+          <h2>店舗での使い方：月別の予約件数を表にする</h2>
+          <p>予約数をグラフにしたい。けど、管理画面を見ながら一つずつ打ち直したくない。私も以前、ChatGPTに月別の予約件数を読み上げ、ある月の数字を元の画面で確かめて伝え直しました。これは今回の新機能を試した記録ではありませんが、音声入力でも数字の照合は省けないと感じた場面です。</p>
+          <h3>練習：数字は3つだけ、1か月わざと抜いて試す</h3>
+          <div class="example-panel">
+            <p class="example-label">読み上げ例（架空の予約件数）</p>
+            <p>「2026年4月、120件。5月、135件。7月、128件。」</p>
+          </div>
+          <h3>そのまま使える指示文</h3>
+          <blockquote><p>読み上げた予約件数を、2026年4月から7月までの「年月」「件数」の2列にまとめてください。抜けた月は飛ばさず、件数は推測せず「要確認」としてください。私が元データと照合するまで、グラフは作らないでください。</p></blockquote>
+          <div class="example-panel">
+            <p class="example-label">表にした結果（架空の入力でテキスト処理を検証・表記を整形）</p>
+            <table class="example-table"><thead><tr><th scope="col">年月</th><th scope="col">件数</th></tr></thead><tbody>
+              <tr><th scope="row">2026年4月</th><td>120件</td></tr>
+              <tr><th scope="row">2026年5月</th><td>135件</td></tr>
+              <tr><th scope="row">2026年6月</th><td class="check-cell">要確認（入力に記載なし）</td></tr>
+              <tr><th scope="row">2026年7月</th><td>128件</td></tr>
+            </tbody></table>
+            <p>架空の文字起こしをChatGPTに渡して整理した例です。新機能で録音した結果ではありません。</p>
+          </div>
+          <p><strong>最後に、元の管理画面で3点を確認します。</strong> ①年月が合っているか、②件数が合っているか、③抜けた月が本当に0件なのか、それとも読み上げていなかっただけなのか。数字が確かめられたら、初めてグラフの作成を頼みます。</p>
+        </section>
+        <section id="other">
+          <h2>予約の集計以外なら、何に使う？</h2>
+          <ul>
+            <li><strong>閉店後の引き継ぎ：</strong>「明日やること」「注意点」の2項目で整理するよう頼む。個人名は読み上げず、担当や期限が不明なら空けてもらう。</li>
+            <li><strong>SNS投稿の下書き：</strong>新商品について「どんな人に、何を知ってほしいか」を声で伝える。営業時間・販売日・価格は元の情報と照合する。</li>
+          </ul>
+          <p>いきなり自動化しなくても、入力と整理だけ任せるところから始められます。<a href="/ai-guides/first-workflow/">店舗で生成AIに任せる最初の仕事の選び方</a>も参考にしてください。</p>
+        </section>
+        <section id="faq">
+          <h2>よくある質問</h2>
+          <h3>無料プランやAndroidでも使えますか？</h3>
+          <p>OpenAIは、無料プランを含む全プランに、iOS・Android・Web・デスクトップアプリで順次提供すると案内しています。全員に同時に表示されるわけではありません。</p>
+          <h3>録音中に文字が出ないときは？</h3>
+          <p>まず、メッセージ欄のマイクから録音を始め、録音中の波形を押したか確認します。録音できるのに文字が出なければ、まだ新表示が使える状態でない可能性があります。録音自体が始まらないときは、端末やブラウザでChatGPTにマイクの使用が許可されているか確認します。</p>
+          <h3>音声入力だけで、勝手に予約表はできる？</h3>
+          <p>いいえ。音声入力は、話した内容をメッセージの文字にする機能です。表への整理は、文字を確認したあとに「年月・件数の2列にして」などの指示と合わせてChatGPTに送ります。</p>
+        </section>
+        <footer class="article-sources"><h2>参考資料</h2><ul><li><a class="text-link" href={releaseNotes}>OpenAI公式リリースノート（2026年11月18日）</a></li><li><a class="text-link" href={faq}>OpenAI公式：音声入力の使い方</a></li></ul></footer>
+        <p><a class="text-link" href="/ai/">SpadyのAI部屋に戻る</a></p>
+      </div>
+    </article>
+  </main>
+</CorporateLayout>
+<style>
+  .room-cover { max-width:1050px; margin:0 auto; }
+  .room-cover img { display:block; width:100%; height:auto; border-radius:14px; background:#11172d; }
+  .room-cover figcaption { margin-top:10px; font-size:.875rem; color:#544d61; }
+  .room-article { max-width:800px; }
+  .room-article h2 { font-size:clamp(1.35rem,3vw,1.9rem); margin:0 0 16px; }
+  .room-article h3 { font-size:1.1rem; margin:24px 0 8px; }
+  .room-article section + section, .article-sources { margin-top:40px; }
+  .room-article section { scroll-margin-top:118px; }
+  .article-index { display:flex; flex-wrap:wrap; gap:8px 18px; padding:0 0 14px; margin:0 0 25px; border-bottom:1px solid var(--line); font-size:.9rem; }
+  .article-index a { text-underline-offset:4px; }
+  .room-article li + li { margin-top:8px; }
+  .room-article ol { padding-inline-start:1.6em; margin-block:12px 22px; }
+  .room-article blockquote { margin:0 0 22px; padding:16px 22px; border-inline-start:3px solid #6757a9; background:#f0edf9; }
+  .room-article blockquote p { margin:0; }
+  .fine-print a { text-underline-offset:4px; }
+  .demo-still { margin:25px 0 20px; }
+  .demo-still img { display:block; width:100%; height:auto; border-radius:12px; background:#11172d; }
+  .demo-still figcaption { margin-top:10px; color:#544d61; font-size:.9rem; line-height:1.65; }
+  .example-panel { margin:14px 0 24px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:clamp(14px,3vw,22px); }
+  .example-panel .example-label { margin:0 0 10px; color:#574783; font-weight:700; font-size:.9rem; }
+  .example-panel p:last-child { margin:0; }
+  .example-table { border-collapse:collapse; width:100%; margin:0 0 12px; line-height:1.55; text-align:left; }
+  .example-table th,.example-table td { padding:9px 8px; border-bottom:1px solid var(--line); }
+  .example-table th { font-weight:600; }
+  .check-cell { color:#493773; font-weight:700; }
+  .guide-steps li { padding-left:3px; }
+</style>

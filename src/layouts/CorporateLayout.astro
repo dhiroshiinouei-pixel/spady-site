@@ -8,11 +8,12 @@ import SceneBoot from '../components/SceneBoot.astro';
 import SiteScene from '../components/SiteScene.astro';
 import { locales, absolute, pathFor } from '../i18n';
 import type { Page } from '../i18n';
-interface Props {title?:string;description?:string;page?:string;noindex?:boolean; serviceName?:string; article?:{author:string}}
-const {title='Spady｜店舗の集客と運営を支えるSaaS・デジタルサービス',description='店舗や小規模事業者の集客と運営を、もっとシンプルに。Spadyはマーケティング支援の経験を土台に、店舗向けSaaSを企画・開発する個人事業です。広告・LINE・Web制作の支援は全国オンライン対応。',page='',noindex=false,serviceName,article}=Astro.props;
+interface Props {title?:string;description?:string;page?:string;noindex?:boolean; serviceName?:string; article?:{author:string};socialImage?:{path:string;alt:string;width:number;height:number;mime:string}}
+const {title='Spady｜店舗の集客と運営を支えるSaaS・デジタルサービス',description='店舗や小規模事業者の集客と運営を、もっとシンプルに。Spadyはマーケティング支援の経験を土台に、店舗向けSaaSを企画・開発する個人事業です。広告・LINE・Web制作の支援は全国オンライン対応。',page='',noindex=false,serviceName,article,socialImage}=Astro.props;
 const canonical=absolute('/'+page);
 const translated=['','contact/','privacy/','contact/thanks/'].includes(page);
-const ogImage=absolute('/home/spady-social.png');
+const ogImage=absolute(socialImage?.path||'/home/spady-social.png');
+const ogAlt=socialImage?.alt||'Spady — お店の集客と運営を、もっとシンプルに。';
 const nav=[['サービス','/services/'],['Spadyについて','/about/'],['実績・プロジェクト','/projects/']];
 const schema={'@context':'https://schema.org','@graph':[
  {'@type':'Organization','@id':'https://spady.net/#organization',name:'Spady',url:'https://spady.net/',logo:'https://spady.net/logo.png',description:'井上博史が運営する個人事業。店舗向けSaaSの企画・開発、デジタルマーケティング支援、Web制作。',founder:{'@type':'Person',name:'井上 博史'},email:'info@spady.net',sameAs:['https://www.threads.com/@hiroshiinoue.spady']},
@@ -32,8 +33,8 @@ const schema={'@context':'https://schema.org','@graph':[
  {noindex&&<meta name="robots" content="noindex, follow"/>}
  {translated&&<>{locales.map(l=><link rel="alternate" hreflang={l.tag} href={absolute(pathFor(l.id,page as Page))}/>)}<link rel="alternate" hreflang="x-default" href={canonical}/></>}
  <meta property="og:type" content={article ? "article" : "website"}/><meta property="og:site_name" content="Spady"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:locale" content="ja_JP"/>
- <meta property="og:image" content={ogImage}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:type" content="image/png"/><meta property="og:image:alt" content="Spady — お店の集客と運営を、もっとシンプルに。"/>
- <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={ogImage}/><meta name="twitter:image:alt" content="Spady — お店の集客と運営を、もっとシンプルに。"/>
+ <meta property="og:image" content={ogImage}/><meta property="og:image:width" content={socialImage?.width||1200}/><meta property="og:image:height" content={socialImage?.height||630}/><meta property="og:image:type" content={socialImage?.mime||"image/png"}/><meta property="og:image:alt" content={ogAlt}/>
+ <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={ogImage}/><meta name="twitter:image:alt" content={ogAlt}/>
  <link rel="icon" href="/favicon.png" type="image/png"/><link rel="apple-touch-icon" href="/favicon.png"/><meta name="theme-color" content="#f8f7f3"/>
  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
  <SceneBoot isHome={page===''} />

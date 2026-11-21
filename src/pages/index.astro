@@ -20,6 +20,7 @@ import '../styles/home-play.css';
             <a class="h-primary" href="/services/"><span>サービスを知る</span><span class="h-arrow" aria-hidden="true">↗</span></a>
             <a class="h-simple-link" href="/about/">Spadyについて <span aria-hidden="true">↗</span></a>
           </div>
+          <a class="home-ai-room-btn" href="/ai/">SpadyのAI部屋</a>
         </div>
         <div class="h-hero-visual" data-hero-visual>
           <CrystalScene/>
@@ -36,3 +37,8 @@ import '../styles/home-play.css';
   </main>
   <script>import '../scripts/crystal-scene';import '../scripts/home-play';</script>
 </CorporateLayout>
+
+<style>
+  .home-ai-room-btn { display:inline-flex; align-items:center; min-height:44px; padding:8px 18px; margin-top:14px; border:1px solid #6757a9; border-radius:99px; background:#f0edf9; color:#493773; text-decoration:none; font-size:.9375rem; font-weight:700; }
+  .home-ai-room-btn:hover,.home-ai-room-btn:focus-visible { background:#6757a9; color:white; }
+</style>
