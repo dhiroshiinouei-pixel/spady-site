@@ -50,7 +50,7 @@
 .story-status{position:absolute;display:grid;bottom:13px;left:15px;right:15px;z-index:3}
 .story-status span{grid-area:1/1;display:none;justify-self:start;padding:7px 15px;background:#fffdf5;border:1px solid #603b9866;border-radius:999px;color:#352153;font-size:14px;font-weight:800}
 .story-status span:first-child,.story-status span[data-active]{display:block}
-.story-section:not([data-current="0"]) .story-status span:first-child:not([data-active]){display:none}
+.story-section[data-current]:not([data-current="0"]) .story-status span:first-child:not([data-active]){display:none}
 .story-status b{margin-right:6px;color:#7842b1}
 .story-progress{height:5px;margin:9px 7px 0;background:#ead8f4;border-radius:99px;overflow:hidden}
 .story-progress span{display:block;background:linear-gradient(90deg,#fe9b51,#9d5afe,#52bc98,#517eef);height:100%;width:100%;transform-origin:left;transform:scaleX(var(--story-p,.02))}
