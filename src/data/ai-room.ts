@@ -17,4 +17,18 @@ export const aiRoomArticles = [
     imageAlt: 'ノートパソコンの隣に、作業を表す半透明のプレートが並ぶイメージ',
     featured: false,
   },
+  {
+    category: 'はじめてのAI',
+    title: 'MetaのMuseの使い方｜近くのお出かけ先を探してみよう',
+    description: 'MetaのAI「Muse」の使い方を初心者向けに解説。「近くで雨の日も楽しめる場所」を探す指示文と、営業時間・料金・予約の要否を確かめるコツを、公式の画面例付きで紹介します。',
+    href: '/ai/muse-beginners-guide/',
+    image: 'https://about.fb.com/ja/wp-content/uploads/sites/15/2026/10/3_Muse_in-app.jpg?w=960',
+    imageAlt: 'Meta公式のMuseのアプリ画面。初回設定、機能紹介、献立を頼んだ会話が並ぶ',
+    featured: false,
+  },
 ];
+export function getAiRoomArticle(href: string) {
+  const matches = aiRoomArticles.filter(article => article.href === href);
+  if (matches.length !== 1) throw new Error(`Expected exactly one AI Room article for ${href}`);
+  return matches[0];
+}

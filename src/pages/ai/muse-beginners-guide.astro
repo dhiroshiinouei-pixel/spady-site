@@ -1,0 +1,83 @@
+---
+import CorporateLayout from '../../layouts/CorporateLayout.astro';
+import { getAiRoomArticle } from '../../data/ai-room';
+const item = getAiRoomArticle('/ai/muse-beginners-guide/');
+---
+<CorporateLayout page="ai/muse-beginners-guide/" title={`${item.title}｜Spady`} description={item.description} socialImage={{path:item.image,alt:item.imageAlt,width:891,height:499,mime:"image/jpeg"}} article={{ author: '井上 博史' }}>
+<main id="main">
+<header class="page-hero"><div class="wrap">
+<nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/ai/">SpadyのAI部屋</a><span aria-hidden="true">/</span><span aria-current="page">Museの使い方</span></nav>
+<p class="kicker">はじめてのAI</p><h1>{item.title}</h1>
+<p class="lead">「今度の休み、どこに行こう。雨でも楽しめて、あまりお金をかけたくない」。そんなときは、MetaのAI「Muse」に候補を3つ調べてもらうところから。公式のアプリ画面を見ながら、近場のお出かけ先を比べる頼み方を紹介します。</p>
+<p class="fine-print">文：<a href="/about/">井上 博史（Spady）</a>｜情報確認：<time datetime="2026-11-22">2026年11月22日</time></p>
+</div></header>
+<figure class="wrap room-cover"><a href={item.image}><img src={item.image} alt="Meta公式のMuseの画面。左に初回設定、中央に機能紹介、右に献立を頼んだ会話が並ぶ" width="891" height="499" fetchpriority="high" decoding="async"></a>
+<figcaption>出典：<a href="https://about.fb.com/ja/news/2026/10/muse-personal-ai-agent-launches-in-japan/">Metaの日本向け発表</a>。左から、初回の設定、Museの機能紹介、依頼への回答。右の画面は献立相談の例で、この記事のお出かけ先を調べた結果ではありません。画像をタップすると拡大して読めます。</figcaption></figure>
+<article class="section wrap room-article"><div class="prose">
+<nav class="article-index" aria-label="この記事の目次"><a href="#start">実画面と使い方</a><a href="#prompt">そのまま使える指示文</a><a href="#verify">調査結果の確かめ方</a><a href="#activity">操作履歴と許可</a><a href="#faq">よくある質問</a></nav>
+<section id="start"><h2>Museを開き、チャットを始める</h2><p>Museは、目的を伝えるとWebで調べるなどの作業を進められる、MetaのパーソナルAIエージェントです。Metaは2026年10月23日、日本でiOS・Android・Webへの提供を開始しました。</p><p>ブラウザなら <a href="https://muse.ai/">muse.ai</a> を開いて、Metaアカウントで始めます。起動したら「チャット」タブを開き、メッセージを入力します。まずは公式紹介素材で、指示をチャットで伝えるイメージをつかみましょう。</p>
+<details class="demo-still"><summary>Metaの公式機能紹介（動く画面例）を開く</summary><figure style="margin-top:12px"><a href="https://about.fb.com/ja/wp-content/uploads/sites/15/2026/10/2_Jolly_landscape.gif?w=960"><img src="https://about.fb.com/ja/wp-content/uploads/sites/15/2026/10/2_Jolly_landscape.gif?w=960" alt="Metaの公式発表に掲載されたMuseの機能紹介アニメーション" loading="lazy" decoding="async"></a><figcaption>出典：Metaの日本向け発表。機能紹介用のデモで、端末やアカウントによって画面や機能は異なる場合があります。<a href="https://about.fb.com/ja/wp-content/uploads/sites/15/2026/10/1_Meta_Muse-Campaign_JP_16x9_30sec-2.mp4">公式30秒動画を見る</a></figcaption></figure></details>
+<p class="fine"><a href="https://www.meta.com/ja-jp/help/superintelligence/1331373868832401/">Metaヘルプ：利用を始める方法</a> ・ <a href="https://apps.apple.com/jp/app/muse-from-meta/id6760173601">App Store：公式画面を見る</a></p></section><section id="prompt"><h2>休日のお出かけ先を3つ調べてもらう</h2><p>「おすすめの場所を教えて」より、<b>件数・欲しい出力・やらないこと</b>を先に指定すると、あとで答え合わせしやすくなります。</p>
+<div class="example-panel muse-prompt"><div class="panel-caption"><p class="example-label">チャットに入れる指示文</p><button id="copy" type="button" hidden>コピー</button><span id="copy-status" class="sr-only" role="status"></span></div><blockquote id="prompt-text" class="muse-prompt-text">今度の休みに、近くで雨でも楽しめる場所を探して。屋内で過ごせて、入場料が大人1人2,000円以内のところを、3つまで教えて。
+
+私がいるエリアや出かける日が分からなければ、先に聞いてください。エリアは市区町村やよく行く街など、大まかな場所で調べてください。
+
+場所の名前、その日の営業時間、入場料、行き方、予約が必要か、公式ページのURLを表にしてください。公式ページで分からないことは「要確認」としてください。公開Webページだけを使い、メール・SNS・カレンダーの利用、問い合わせや予約はしないでください。</blockquote></div><p class="fine">まずは「近くで、雨でも楽しめる場所を探して」で十分です。Museが出発エリアを知らないときは、聞かれてから「小樽市内」「渋谷周辺」くらいで答えれば始められます。正確な住所や現在地の共有は不要です。</p></section><section id="verify"><h2>結果が出たら、公式ページを3件とも確認する</h2><div class="example-panel"><ol><li><b>施設名と住所：</b>同名の別施設や移転前の情報ではないか。</li><li><b>条件に合うか：</b>屋内で過ごせるか。大人1人の入場料か、別料金があるか。</li><li><b>日程と条件：</b>行く日の営業・開館時間、臨時休業の案内、予約の要否が確認できるか。移動時間は自分の地図アプリでも見ておくと安心です。</li></ol></div><p>情報が食い違うときは「公式ページの更新日と該当箇所を並べ、どちらが有効か分からなければ要確認に戻して」と頼みましょう。臨時休業や当日の空きが確認できなければ、出発前に公式案内をもう一度見ましょう。</p></section><section id="activity"><h2>操作履歴とアクセス許可を確認する</h2><p>Metaのガイドでは、アシスタントのアイコンから実行した操作と自分が付与した許可を確認できます。最初は「アクセス許可」のウェブアクセスの初期設定を「常に確認」にして、閲覧先と目的を見て必要なものだけ許可するのがおすすめです。</p><p>今回の調査にGmailやカレンダーの新規連携や、顧客名簿・予約履歴は必要ありません。同じMetaアカウントセンターのFacebook・Instagram・Threadsは、自動でリンクされる場合があります。「設定」の「コネクター」や「アクセス許可」で、つながっているサービスと範囲を確認してください。</p><p class="fine"><a href="https://www.meta.com/ja-jp/help/superintelligence/1385290430137537/">Metaヘルプ：アクセス許可と操作履歴</a> ・ <a href="https://www.meta.com/ja-jp/help/superintelligence/1687253048996149/">Metaヘルプ：コネクターの連携</a></p></section><section id="next"><h2>最後は、自分で行きたい場所を一つ選ぶ</h2><p>候補が出そろったら、全部を回る必要はありません。料金と行きやすさで一つ選べたら十分です。同じ頼み方は、無料の週末イベントを探すときや、美術館を比べるときにも使えます。</p></section>
+<section id="faq"><h2>よくある質問</h2>
+<h3>Museを使うためにGmailやカレンダーの連携は必要ですか？</h3>
+<p>今回のように公開ページを調べるだけなら、新しく連携する必要はありません。すでにつながっているサービスは設定のコネクターで確認してください。</p>
+<h3>画像はお出かけ先を調べた画面ですか？</h3>
+<p>いいえ。画像と動画はMetaが公開した公式デモです。お出かけの指示文は、エリアや日付を必要なときだけ伝えて試せる例です。</p></section>
+<footer class="article-sources"><h2>参考資料</h2>
+<ul><li><a class="text-link" href="https://about.fb.com/ja/news/2026/10/muse-personal-ai-agent-launches-in-japan/">Meta公式：Museの日本提供開始</a></li><li><a class="text-link" href="https://about.fb.com/ja/wp-content/uploads/sites/15/2026/10/1_Meta_Muse-Campaign_JP_16x9_30sec-2.mp4">Meta公式：日本向けデモ動画（30秒）</a></li><li><a class="text-link" href="https://www.meta.com/ja-jp/help/superintelligence/1331373868832401/">Meta公式：Museの利用を始める方法</a></li></ul></footer>
+<p><a class="text-link" href="/ai/">SpadyのAI部屋に戻る</a></p>
+</div></article>
+</main>
+</CorporateLayout>
+<script>
+  const copyButton = document.querySelector<HTMLButtonElement>('#copy');
+  const promptText = document.getElementById('prompt-text');
+  const copyStatus = document.getElementById('copy-status');
+  if (copyButton && promptText && navigator.clipboard) {
+    copyButton.hidden = false;
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(promptText.textContent?.trim() ?? '');
+        if (copyStatus) copyStatus.textContent = '指示文をコピーしました';
+        copyButton.textContent = 'コピーしました';
+      } catch {
+        copyButton.textContent = '選択してコピーしてください';
+      }
+    });
+  }
+</script>
+<style>
+  .room-cover { max-width:1050px; margin:0 auto; }
+  .room-cover img { display:block; width:100%; height:auto; border-radius:14px; background:#11172d; }
+  .room-cover figcaption { margin-top:10px; font-size:.875rem; color:#544d61; }
+  .room-article { max-width:800px; }
+  .room-article h2 { font-size:clamp(1.35rem,3vw,1.9rem); margin:0 0 16px; }
+  .room-article h3 { font-size:1.1rem; margin:24px 0 8px; }
+  .room-article section + section, .article-sources { margin-top:40px; }
+  .room-article section { scroll-margin-top:118px; }
+  .article-index { display:flex; flex-wrap:wrap; gap:8px 18px; padding:0 0 14px; margin:0 0 25px; border-bottom:1px solid var(--line); font-size:.9rem; }
+  .article-index a { text-underline-offset:4px; }
+  .room-article li + li { margin-top:8px; }
+  .room-article ol { padding-inline-start:1.6em; margin-block:12px 22px; }
+  .room-article blockquote { margin:0 0 22px; padding:16px 22px; border-inline-start:3px solid #6757a9; background:#f0edf9; }
+  .room-article blockquote p { margin:0; }
+  .fine-print a { text-underline-offset:4px; }
+  .demo-still { margin:25px 0 20px; }
+  .demo-still img { display:block; width:100%; height:auto; border-radius:12px; background:#11172d; }
+  .demo-still figcaption { margin-top:10px; color:#544d61; font-size:.9rem; line-height:1.65; }
+  .example-panel { margin:14px 0 24px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:clamp(14px,3vw,22px); }
+  .example-panel .example-label { margin:0 0 10px; color:#574783; font-weight:700; font-size:.9rem; }
+  .example-panel p:last-child { margin:0; }
+  .example-table { border-collapse:collapse; width:100%; margin:0 0 12px; line-height:1.55; text-align:left; }
+  .example-table th,.example-table td { padding:9px 8px; border-bottom:1px solid var(--line); }
+  .example-table th { font-weight:600; }
+  .check-cell { color:#493773; font-weight:700; }
+  .guide-steps li { padding-left:3px; }
+
+.room-cover a{text-decoration:underline;text-underline-offset:.2em}.room-cover img{aspect-ratio:16/9;object-fit:contain;background:#eef1f3}.room-article .fine{font-size:.875rem;color:var(--muted)}.room-article summary{font-weight:700;color:var(--blue);cursor:pointer}.muse-prompt .panel-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.muse-prompt .panel-caption p{margin:0}.room-article .muse-prompt-text{white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.muse-prompt button{min-height:44px;padding:6px 12px;background:#fff;border:1px solid var(--blue);border-radius:8px;color:var(--blue);font-size:.875rem}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+</style>

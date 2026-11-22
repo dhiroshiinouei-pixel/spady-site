@@ -1,7 +1,7 @@
 ---
 import CorporateLayout from '../../layouts/CorporateLayout.astro';
-import { aiRoomArticles } from '../../data/ai-room';
-const item = aiRoomArticles[0];
+import { getAiRoomArticle } from '../../data/ai-room';
+const item = getAiRoomArticle('/ai/live-dictation/');
 const releaseNotes = 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes';
 const faq = 'https://help.openai.com/en/articles/12168547-voice-dictation-faq';
 const demo = 'https://x.com/ChatGPT/status/2123114715257946334';

@@ -1,8 +1,9 @@
 ---
 import CorporateLayout from '../../layouts/CorporateLayout.astro';
 import { aiRoomArticles } from '../../data/ai-room';
-const featured = aiRoomArticles.find(article => article.featured)!;
-const more = aiRoomArticles.filter(article => !article.featured);
+const [featured, ...extraFeatured] = aiRoomArticles.filter(article => article.featured);
+if (!featured || extraFeatured.length) throw new Error("Expected exactly one featured AI Room article");
+const more = aiRoomArticles.filter(article => article.href !== featured.href);
 ---
 <CorporateLayout page="ai/" title="SpadyのAI部屋｜店舗・中小企業のための生成AI活用ガイド" description="小樽のSpadyが、店舗・中小企業向けにChatGPTなどの生成AIを解説。新機能の使い方と、予約集計や問い合わせ対応など日々の仕事で試せる手順を紹介します。">
   <main id="main">
