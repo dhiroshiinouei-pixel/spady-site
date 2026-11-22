@@ -1,44 +1,105 @@
 ---
 import CorporateLayout from '../layouts/CorporateLayout.astro';
-import ContactBand from '../components/corporate/ContactBand.astro';
-import HomeSections from '../components/corporate/HomeSections.astro';
-import CrystalScene from '../components/corporate/CrystalScene.astro';
-import '../styles/home-renewal.css';
-import '../styles/home-sections.css';
-import '../styles/crystal.css';
-import '../styles/home-play.css';
+import Icon from '../components/corporate/Icon.astro';
+import { currentServices, products } from '../data/services';
+import '../styles/spady-editorial.css';
+import '../styles/spady-story.css';
+import '../styles/spady-felt.css';
+const review = process.env.SPAdY_HOME_REVIEW === '1';
+const services = [
+  { id:'meta-ads', label:'見つけてもらう', text:'届けたい相手と広告の目的を整理し、配信から問い合わせまでの流れを整えます。', color:'iris' },
+  { id:'line-official-account', label:'次の来店につなげる', text:'案内・予約・再来店を、スタッフが運用しやすいLINEの仕組みにします。', color:'mint' },
+  { id:'web-design', label:'選ぶ理由を伝える', text:'お店や事業の魅力を、スマホで読みやすく、相談や予約に進みやすいページへ。', color:'peach' },
+  { id:'ai-training', label:'チームで使えるようにする', text:'返信やSNS投稿など、普段の仕事を題材に、生成AIの使い方と出力の確かめ方を学びます。', color:'iris' },
+  { id:'ai-implementation', label:'毎日の仕事に取り入れる', text:'一つの業務から、AIに任せることと、人が確認することを分けて運用に落とし込みます。', color:'mint' },
+  { id:'digital-marketing', label:'どこから始めるか決める', text:'広告・SNS・Web・LINEを個別に足す前に、集客の詰まりと優先順位を整理します。', color:'peach' },
+].map(item => ({...currentServices.find(s=>s.id===item.id)!,...item}));
+const crew = [
+  {id:'pika', name:'ピカ', latin:'PIKA', job:'広告', art:'radar', line:'まだ知らない人に、お店を見つけてもらう。', chapter:'お店を知ってもらう。', example:'たとえば、まだお店を知らない近隣の人へ。Instagram広告で、初めて来る理由を届ける。', cue:'見つける', detail:'Meta・Instagram広告', href:'/services/meta-ads/'},
+  {id:'koto', name:'コト', latin:'KOTO', job:'Web', art:'frame', line:'お店ならではの魅力を、選びやすく伝える。', chapter:'行きたい理由をつくる。', example:'気になってページを見た人が、写真・料金・アクセスをすぐ確認できる。そのまま予約に進める。', cue:'選ぶ', detail:'Webサイト・LP制作', href:'/services/web-design/'},
+  {id:'musu', name:'ムス', latin:'MUSU', job:'LINE', art:'chat', line:'予約や案内を、次の来店につなげる。', chapter:'一度の来店を、次へつなぐ。', example:'来店後もLINEでつながり、必要な案内を必要なときに。次に来たいと思ったとき、迷わず予約できる。', cue:'また来る', detail:'LINE公式アカウント構築', href:'/services/line-official-account/'},
+  {id:'toto', name:'トト', latin:'TOTO', job:'生成AI', art:'spark', line:'繰り返しの作業を減らし、人に向き合う時間をつくる。', chapter:'お客さまに向き合う時間を。', example:'よくある質問への返信案は生成AIに。最終確認はスタッフが行い、お客さまに向き合う時間をつくる。', cue:'運営を軽くする', detail:'AI導入・伴走支援', href:'/services/ai-implementation/'},
+];
+const work = [
+ { tag:'LINE公式アカウント構築', title:'QQEnglish 様', description:'留学とオンライン英会話。2つの事業のLINE公式アカウントを構築。', image:'/logo-qqenglish.png', alt:'QQEnglish', href:'/fullfunnelmarketing/', width:244,height:87,variant:'qq' },
+ { tag:'地域事業者向け勉強会', title:'AKINDO Lab', description:'小樽で、地域の事業者が広告やLINEを学び、現場で試す勉強会。', image:'/akindo/assets/akindo-venue-20260722.jpg', alt:'AKINDO Labの勉強会の様子', href:'/akindo/', width:1456,height:1092,variant:'lab' },
+ { tag:'Web制作・地域メディア', title:'LOCAL PAGES.', description:'お店の空気や、店主が大切にしていることを伝えるWebサイト。', image:'/akindo/assets/local-pages.jpg', alt:'LOCAL PAGES.のブランドビジュアル', href:'https://localpages.spady.net/#works', width:1280,height:720,variant:'local' }
+];
 ---
-<CorporateLayout description="北海道小樽のSpadyは、店舗や中小企業の集客・運営を支援。生成AI研修・講演会、AI導入・伴走支援、広告・LINE・Web制作を提供し、店舗向けSaaSの開発にも取り組んでいます。">
-  <main id="main">
-    <section class="h-hero" aria-labelledby="hero-title">
-      <div class="wrap h-hero-stage">
-        <div class="h-hero-copy">
-          <p class="h-hero-eyebrow"><span aria-hidden="true"></span>集客から、店舗運営まで。</p>
-          <h1 id="hero-title"><span>お店の毎日を、</span><span class="h-red">シンプルに。</span></h1>
-          <div class="h-hero-description"><p class="h-hero-promise">難しいデジタルを、現場で使える形に。</p><p>広告・LINE・Web制作の経験から、<br/><span>お店の集客と運営を支える</span><span>ソフトウェアへ。</span></p></div>
-          <div class="h-hero-actions">
-            <a class="h-primary" href="/services/"><span>サービスを知る</span><span class="h-arrow" aria-hidden="true">↗</span></a>
-            <a class="h-simple-link" href="/about/">Spadyについて <span aria-hidden="true">↗</span></a>
-          </div>
-          <a class="home-ai-room-btn" href="/ai/">SpadyのAI部屋</a>
+<CorporateLayout title="Spady｜広告・LINE・Web制作・生成AI支援｜北海道・小樽" description="北海道小樽のSpadyは、お店や中小企業の集客と運営を支援。Meta・Instagram広告、LINE公式アカウント構築、Web・LP制作、生成AI研修と導入支援。全国オンライン対応。" editorialHome noindex={review} review={review}>
+  <main id="main" class="ed-home felt-home">
+    {review&&<div class="ed-review">デザイン確認用プレビュー <span>下層ページへのリンクは現行サイトに移動します。</span></div>}
+    <section class="ed-hero" aria-labelledby="ed-title">
+      <div class="ed-wrap ed-hero-grid">
+        <div class="ed-hero-copy">
+          <p class="ed-kicker ed-kicker-light"><span></span>北海道・小樽｜お店と中小企業のデジタル支援</p>
+          <h1 id="ed-title"><span>お店の集客と運営を、</span><span><em>もっと、うまく。</em><i aria-hidden="true">✦</i></span></h1>
+          <p class="ed-hero-lead">Meta広告・Web制作・LINE構築・生成AI。<br class="crew-desktop"/>お店を見つけてもらうところから、予約と再来店まで整えます。</p>
+          <div class="ed-actions"><a class="ed-btn ed-btn-glow" href="/contact/">集客・運営を相談する <span aria-hidden="true">↗</span></a><a class="ed-btn ed-btn-outline" href="#services">できることを見る <span aria-hidden="true">↓</span></a></div>
         </div>
-        <div class="h-hero-visual" data-hero-visual>
-          <CrystalScene/>
-          <button class="motion-control h-motion" type="button" aria-pressed="false" data-pause="演出を停止" data-play="演出を再開" data-reduced="演出を停止中"><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">演出を停止</span></button>
+        <div class="crew-stage" data-crew-stage>
+          <svg class="crew-decoration" viewBox="0 0 1160 310" aria-hidden="true" preserveAspectRatio="none"><path d="M-30 219C128 56 231 284 370 150S553 22 687 132 903 248 1199 60" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" opacity=".66"/><path d="M-30 219C128 56 231 284 370 150S553 22 687 132 903 248 1199 60" fill="none" stroke="#8e80ce" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 12" opacity=".66"/></svg>
+          <span class="crew-spark crew-spark-a" aria-hidden="true">✦</span><span class="crew-spark crew-spark-b" aria-hidden="true">✷</span><span class="crew-spark crew-spark-c" aria-hidden="true">✧</span><span class="crew-spark crew-spark-d" aria-hidden="true">✦</span>
+          <div class="crew-toolbar"><span class="crew-wordmark">SPADY CREW</span><span class="crew-classification">4つの支援を案内する仲間たち</span></div>
+          <div class="crew-grid">{crew.map((c,i)=><button type="button" class={`crew-member crew-${c.id}`} data-member={i} data-name={c.name} data-line={c.line} data-href={c.href} data-detail={c.detail} aria-pressed={i===0?'true':'false'} aria-controls="crew-info"><span class="crew-portrait"><span class={`felt-sprite felt-${c.id}`} aria-hidden="true"></span></span><span class="crew-shadow" aria-hidden="true"></span><span class="crew-tag"><strong>{c.name}</strong><span>{c.job}</span></span></button>)}</div>
+          <div class="crew-info" id="crew-info"><p aria-live="polite"><b data-crew-name>ピカ</b><span data-crew-line>{crew[0].line}</span></p><a data-crew-link href={crew[0].href}>{crew[0].detail} <span aria-hidden="true">↗</span></a></div>
+          <div class="crew-confetti" aria-hidden="true">{Array.from({length:14},(_,i)=><i style={`--i:${i};--x:${(i*17)%100}%;--turn:${(i*47)%360}deg`}></i>)}</div>
         </div>
-      </div>
-      <div class="wrap h-hero-bottom">
-        <p><span class="h-state-dot" aria-hidden="true"></span><span>自社SaaSは企画・開発準備中。<br class="h-mobile-break"/>広告・Web・LINEに加え、AI研修・導入もご相談いただけます。</span></p>
-        <a href="#about" class="h-scroll" aria-label="Spadyが目指すことへスクロール"><span>Spadyが目指すこと</span><span aria-hidden="true">↓</span></a>
+        <div class="crew-stage-foot"><span>キャラクターを押して、得意な仕事を見てみよう。</span><button type="button" data-crew-cheer hidden>全員集合！ <span aria-hidden="true">✦</span></button></div>
       </div>
     </section>
-    <HomeSections/>
-    <div id="contact"><ContactBand/></div>
+    <aside class="ed-proof" aria-label="Spadyの経験と活動"><div class="ed-wrap ed-proof-inner">
+      <div><span>01 / EXPERIENCE</span><strong>元Meta Marketing Pro</strong><small>前職で国内80社以上の広告代理店を支援</small></div>
+      <div><span>02 / PROJECT</span><strong>QQEnglish 様</strong><small>独立後、2事業のLINE公式アカウントを構築</small></div>
+      <div><span>03 / COMMUNITY</span><strong>AKINDO Lab</strong><small>小樽で地域の事業者向け勉強会を主催</small></div>
+    </div></aside>
+    <section class="story-section" id="journey" aria-labelledby="story-title" data-story data-current="0">
+      <div class="ed-wrap story-intro"><p class="ed-kicker"><span></span>THE CUSTOMER JOURNEY</p><h2 id="story-title">「見つけた」から、<br/>「また行こう」まで。</h2><p>たとえば、ひとつのお店で。4つの支援をどう使うか、順に見てみましょう。</p></div>
+      <div class="ed-wrap story-layout">
+        <div class="story-sticky">
+          <div class="story-screen" aria-hidden="true">
+            <div class="story-topline"><span>SPADY / STORY MODE</span><span class="story-register"><i></i><i></i><i></i></span></div>
+            <svg class="story-orbit" viewBox="0 0 640 370" preserveAspectRatio="none"><path class="story-track" d="M-50 258C34 129 150 333 259 198S452 73 506 200S615 178 685 89" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".55"/><path class="story-line" pathLength="1" d="M-50 258C34 129 150 333 259 198S452 73 506 200S615 178 685 89" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+            {crew.map((c,i)=><div class={`story-toy story-toy-${c.id}`} data-story-art={i}><span class={`felt-sprite felt-${c.id}`}></span></div>)}
+            <div class="story-status">{crew.map((c,i)=><span data-story-active={i}><b>0{i+1}</b> {c.cue}</span>)}</div>
+          </div>
+          <div class="story-progress" aria-hidden="true"><span data-story-progress></span></div>
+        </div>
+        <div class="story-steps">{crew.map((c,i)=><article class={`story-card story-reveal story-card-${c.id}`} data-story-step={i}>
+          <div class="story-card-kicker"><span>0{i+1} / {c.job}</span><span class={`story-mobile-toy felt-sprite felt-${c.id}`} aria-hidden="true"></span></div>
+          <h3>{c.chapter}</h3><p>{c.example}</p><a class="ed-text-link" href={c.href}>{c.detail}を詳しく <span aria-hidden="true">↗</span></a>
+        </article>)}</div>
+      </div>
+    </section>
+    <section class="ed-services-section" id="services" aria-labelledby="ed-services-title"><div class="ed-panel ed-wrap">
+      <div class="ed-section-head"><div><p class="ed-kicker"><span></span>01 / SERVICES</p><h2 id="ed-services-title">何から始めたいですか？</h2></div><div><p>「何を頼むべきか決まっていない」段階から。必要なものだけを選び、現場で無理なく続く形に整えます。</p><a class="ed-text-link" href="/services/">サービス一覧 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="ed-service-grid">
+      {services.map((service,i)=><a href={service.detailUrl} class:list={['ed-service',`ed-${service.color}`]}><div class="ed-service-top"><div class="ed-icon"><Icon name={service.icon} size={26}/></div><span class="ed-num">0{i+1}</span></div><span class="ed-service-benefit">{service.label}</span><h3>{service.name}</h3><p>{service.text}</p><span class="ed-service-go" aria-hidden="true">↗</span></a>)}
+      </div>
+    </div></section>
+    <section class="ed-work-section" id="work" aria-labelledby="ed-work-title"><div class="ed-wrap ed-panel">
+      <div class="ed-section-head"><div><p class="ed-kicker ed-kicker-light"><span></span>02 / SELECTED WORK</p><h2 id="ed-work-title">Spadyが手がけた仕事。</h2></div><div><p>海外事業のLINE構築から、小樽での勉強会まで。現場で使われるものをつくってきました。</p><a class="ed-text-link" href="/projects/">実績・プロジェクト一覧 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="ed-work-grid" id="projects">{work.map(w=><a class:list={['ed-work',`ed-work-${w.variant}`]} href={w.href}><div class="ed-work-image"><img src={w.image} width={w.width} height={w.height} alt={w.alt} loading="lazy" decoding="async"/></div><div class="ed-work-body"><p class="ed-work-tag">{w.tag}</p><h3>{w.title}</h3><p>{w.description}</p><span aria-hidden="true">↗</span></div></a>)}</div>
+      <a class="ed-text-link ed-local-calendar" href="https://otaru.spady.net/">地域の自主プロジェクト：小樽暮らしカレンダー <span aria-hidden="true">↗</span></a>
+    </div></section>
+    <section class="ed-wrap ed-panel" id="profile" aria-labelledby="ed-profile-title">
+      <div class="ed-profile" id="about"><div class="ed-portrait"><img src="/profile.jpg" alt="Spady代表の井上博史" width="320" height="320" loading="lazy" decoding="async"/><div><strong>井上 博史</strong><span>Spady代表 / 元Meta Marketing Pro</span></div></div>
+      <div class="ed-profile-copy"><p class="ed-kicker"><span></span>03 / ABOUT SPADY</p><h2 id="ed-profile-title">難しいデジタルを、<br/>現場で使える形に。</h2><p>広告、Web、LINEは別々の道具ですが、お客さまにとっては、見つけてから予約するまで一つの体験です。事業の話を聞き、どこを直すと使いやすくなるか、一緒に考えます。</p><a class="ed-text-link" href="/about/#profile">Spadyと代表について <span aria-hidden="true">↗</span></a></div></div>
+      <div class="ed-flow" aria-label="ご相談の流れ"><div><b>01</b><strong>いま困っていることを聞く</strong><p>まず、集客や日々の運営の現状を伺います。</p></div><div><b>02</b><strong>やることと費用を整理</strong><p>支援の範囲、進め方、お見積もりをお伝えします。</p></div><div><b>03</b><strong>合意した内容から始める</strong><p>内容に納得いただいてから、制作や支援に進みます。</p></div></div>
+    </section>
+    <section id="stories" class="ed-wrap ed-resources" aria-label="読みものと開発情報">
+      <a class="ed-editorial" href="/ai/"><p class="ed-kicker ed-kicker-light"><span></span>EDITORIAL</p><h2>SpadyのAI部屋</h2><p>難しそうなAIの話を、毎日の仕事に引き寄せて。</p><span class="ed-text-link">記事を読む <span aria-hidden="true">↗</span></span></a>
+      <div class="ed-lab" id="products"><p class="ed-kicker"><span></span>IN DEVELOPMENT</p><h2>店舗向けソフトウェア</h2><p>以下の2サービスは企画・開発準備中です。提供時期・仕様・料金は未定で、利用申込みは受け付けていません。</p><ul>{products.slice(0,2).map(p=><li><a href={p.detailUrl}>{p.name} <span aria-hidden="true">↗</span></a></li>)}</ul><a class="ed-text-link" href="/news/">お知らせ・開発情報 <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section class="ed-wrap ed-faq" aria-labelledby="faq-title"><div><p class="ed-kicker"><span></span>04 / FAQ</p><h2 id="faq-title">よくあるご質問</h2></div><div>{[
+      ['何を依頼するか、まだ決まっていません。','「広告を出しても予約につながらない」など、今困っていることからご相談ください。すでに使っているツールも確認し、優先して取り組むことを整理します。'],
+      ['今あるWebサイトやLINEを活かせますか？','はい。今のサイトやアカウントを確認し、作り直す必要があるのか、一部の改善で十分かを整理します。'],
+      ['小樽以外からも依頼できますか？','全国からオンラインでご相談いただけます。支援内容とお見積もりをご確認いただいてから開始します。']
+    ].map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+    <section class="ed-close" id="contact" aria-labelledby="ed-contact-title"><div class="ed-wrap ed-close-inner">
+      <div><p class="ed-kicker ed-kicker-light"><span></span>CONTACT</p><h2 id="ed-contact-title">まず、困りごとを<br/>聞かせてください。</h2><p>頼む内容がまだ決まっていなくても大丈夫です。北海道・小樽から、全国へオンラインで対応します。</p></div>
+      <div class="ed-close-actions"><a class="ed-btn ed-btn-glow" href="/contact/">お問い合わせ <span aria-hidden="true">↗</span></a><a class="ed-text-link" href="https://s.lmes.jp/landing-qr/2002523511-OZpWpGdr?uLand=O4rFry">LINEで相談する <span aria-hidden="true">↗</span></a></div>
+    </div></section>
   </main>
-  <script>import '../scripts/crystal-scene';import '../scripts/home-play';</script>
+  <script>import '../scripts/spady-crew.js';import '../scripts/spady-story.js';</script>
 </CorporateLayout>
-
-<style>
-  .home-ai-room-btn { display:inline-flex; align-items:center; min-height:44px; padding:8px 18px; margin-top:14px; border:1px solid #6757a9; border-radius:99px; background:#f0edf9; color:#493773; text-decoration:none; font-size:.9375rem; font-weight:700; }
-  .home-ai-room-btn:hover,.home-ai-room-btn:focus-visible { background:#6757a9; color:white; }
-</style>

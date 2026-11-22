@@ -1,0 +1,28 @@
+---
+interface Props { member: 'pika' | 'koto' | 'musu' | 'toto' | 'team'; compact?: boolean }
+const {member, compact=false} = Astro.props;
+const names = {pika:'ピカ',koto:'コト',musu:'ムス',toto:'トト',team:'4人のチーム'};
+---
+<div class:list={['felt-guide', member, {compact}]} data-felt-guide={member}>
+  <span class="felt-guide-star" aria-hidden="true">✦</span>
+  {member === 'team' ? <div class="felt-guide-team" aria-hidden="true">{['pika','koto','musu','toto'].map(toy => <span class:list={['felt-guide-toy',toy]}></span>)}</div> : <span class="felt-guide-toy" aria-hidden="true"></span>}
+  <span class="felt-guide-label"><small>SPADY CREW</small> {names[member]}</span>
+</div>
+<style>
+  .felt-guide{--color:#ffcf85;--glow:#fff1ac;--ink:#603410;--edge:#ca8e56;--pos:0 0;position:relative;isolation:isolate;width:100%;max-width:440px;min-width:0;aspect-ratio:1.32;margin-inline:auto;display:grid;place-items:center;overflow:hidden;border:1px solid var(--edge);border-radius:25px;background:radial-gradient(ellipse at 33% 18%,var(--glow),transparent 74%),var(--color);box-shadow:0 9px 0 -5px var(--edge)}
+  .koto{--color:#d3b9ff;--glow:#f9dcff;--ink:#4e2573;--edge:#a181c3;--pos:100% 0}
+  .musu{--color:#a8ead3;--glow:#efffb8;--ink:#194a40;--edge:#70ac99;--pos:0 100%}
+  .toto{--color:#abbfff;--glow:#cff8ff;--ink:#253b76;--edge:#8397cc;--pos:100% 100%;--size:191% 200%}
+  .felt-guide-toy{width:75%;aspect-ratio:1.04;background:url('/home/spady-crew-felt.webp') var(--pos)/var(--size,200% 200%) no-repeat;filter:drop-shadow(0 7px 9px #36204438);transform-origin:50% 75%}
+  .musu.felt-guide-toy,.musu>.felt-guide-toy{clip-path:inset(0 4.5% 0 0)}
+  .felt-guide-star{position:absolute;left:9%;top:9%;font-size:clamp(19px,4vw,38px);line-height:1;color:var(--ink);opacity:.68}
+  .felt-guide-label{position:absolute;right:12px;bottom:12px;padding:4px 9px;border:1px solid var(--edge);border-radius:99px;background:#fffdf5;color:var(--ink);font:800 12px/1.3 system-ui,sans-serif}
+  .felt-guide-label small{font-size:9px;letter-spacing:.09em;margin-right:3px}
+  .team{--edge:#ab8fb9;--ink:#492968;background:linear-gradient(145deg,#fff0c2,#ead6fb 52%,#c7edff)}
+  .felt-guide-team{width:84%;max-width:300px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:-5%;gap:0}
+  .felt-guide-team .felt-guide-toy{width:100%}
+  .compact{max-width:245px}
+  @media(prefers-reduced-motion:no-preference){.felt-guide-toy{animation:felt-guide-enter .54s cubic-bezier(.17,.8,.25,1.13) both}}
+  @keyframes felt-guide-enter{from{opacity:.5;transform:translateY(11px) rotate(-4deg) scale(.92)}to{opacity:1;transform:none}}
+  @media(max-width:650px){.felt-guide{max-width:340px}.compact{max-width:210px}}
+</style>

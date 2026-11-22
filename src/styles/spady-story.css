@@ -1,0 +1,21 @@
+/* Keep all copy readable before JS, on slow devices and under reduced motion. */
+.ed-home [data-crew-stage] :is(.crew-portrait,.crew-spark){animation-iteration-count:1}
+.ed-home [data-story-progress]{transform-origin:left center}
+@media(prefers-reduced-motion:no-preference){
+  .ed-home .ed-hero-copy h1{animation:spady-type-lift .68s cubic-bezier(.17,.76,.22,1) both}
+  @keyframes spady-type-lift{from{clip-path:inset(0 0 95%);translate:0 .24em}to{clip-path:inset(0);translate:0 0}}
+  .ed-home .story-entered{animation:spady-reveal .58s cubic-bezier(.18,.8,.21,1) var(--reveal-delay,0ms) backwards}
+  @keyframes spady-reveal{from{opacity:.65;translate:0 19px}to{opacity:1;translate:0 0}}
+  .ed-home .crew-decoration{translate:0 var(--crew-shift,0px)}
+  .ed-home [data-story][data-motion] [data-story-progress]{transform:scaleX(var(--story-p,0))}
+  .ed-home [data-story][data-motion] .story-line{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--story-p,0))}
+  .ed-home [data-story][data-motion] [data-story-art]{opacity:0;visibility:hidden;transform:translateY(14px) scale(.93) rotate(-4deg);transition:opacity .25s,visibility .25s,transform .45s cubic-bezier(.2,.95,.35,1.18);pointer-events:none}
+  .ed-home [data-story][data-motion] [data-story-art][data-active]{opacity:1;visibility:visible;transform:translateY(calc((.5 - var(--story-p,0))*11px)) scale(1) rotate(0)}
+  .ed-home [data-story][data-motion] [data-story-active]{transition:opacity .25s}
+  .ed-home [data-story][data-motion] [data-story-active]:not([data-active]){opacity:.55}
+  @media(hover:hover){.ed-home .crew-member:hover .crew-portrait img{animation:spady-boop .38s ease-out}}
+  @keyframes spady-boop{0%,100%{transform:scale(1)}25%{transform:scale(1.06,.93)}65%{transform:scale(.97,1.04)}}
+}
+@media(prefers-reduced-motion:reduce){
+ .ed-home :is(.crew-portrait,.crew-spark,.crew-confetti i,.story-entered,[data-story-art]){animation:none!important;transition:none!important}
+}

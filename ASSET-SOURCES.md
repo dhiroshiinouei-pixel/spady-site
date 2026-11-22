@@ -98,3 +98,7 @@
 - Instagram： [Meta Brand Resource Center — Instagram](https://www.meta.com/brand/resources/instagram/instagram-brand/) の公式 `IG_brand_asset_pack_2023.zip` に由来する既存 `public/akindo/kaigyo-assets/brands/instagram-glyph-gradient-160.png` を、`public/meta-ads-setup/brands/instagram-glyph-gradient-160.png` へ同一内容で配置。原本と取得履歴は [公式ブランド素材の記録](docs/akindo-brand-assets.md) を参照。
 - `ServiceVisual.astro` と `PreparationItems.astro` のFacebookページ・Instagramの説明に上記原本由来の画像を使用。表示サイズは図内32×32px、準備物一覧28～32px、周囲16px以上の余白を確保し、色変更・変形・影・描き直しはしていません。サービス識別用であり、Spadyの認定・提携を示すマークではありません。
 - ファーストビューの背景は既存 `public/meta-ads-setup/akindo-lab-seminar.jpg` を再配置。画像そのものの新たな加工はせず、CSSの `object-fit` / `object-position` と、文字を読みやすくするオーバーレイのみ使用。写真の原本・出典は前節のAKINDO Lab活動紹介と同じです。
+
+## Spady Crew（トップ・サービス詳細）
+
+- `/home/spady-crew-felt.webp`：Spady向けに生成した4体のキャラクターイラスト。ピカ、コト、ムス、トトのスプライトをWebPに最適化。参考画像そのものは掲載していません。

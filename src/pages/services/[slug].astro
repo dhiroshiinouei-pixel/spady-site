@@ -3,19 +3,26 @@ import CorporateLayout from '../../layouts/CorporateLayout.astro';
 import ContactBand from '../../components/corporate/ContactBand.astro';
 import ProductArt from '../../components/corporate/ProductArt.astro';
 import AiServiceDetails from '../../components/corporate/AiServiceDetails.astro';
+import FeltServiceGuide from '../../components/corporate/FeltServiceGuide.astro';
 import Icon from '../../components/corporate/Icon.astro';
 import { services,statusLabels,inquiryUrl } from '../../data/services';
 import type {Service} from '../../data/services';
 export function getStaticPaths(){return services.map(service=>({params:{slug:service.id},props:{service}}));}
 const {service:s}=Astro.props as {service:Service};
+const review = process.env.SPAdY_HOME_REVIEW === '1';
+const guides: Partial<Record<string, 'pika' | 'koto' | 'musu' | 'toto' | 'team'>> = {
+  'meta-ads':'pika', 'web-design':'koto', 'line-official-account':'musu',
+  'ai-training':'toto', 'ai-implementation':'toto', 'digital-marketing':'team',
+};
+const guide = guides[s.id];
 const related=services.filter(item=>s.relatedIds?.includes(item.id));
 const product=s.category==='product';
 const planned=product&&['planning','developing','preparing'].includes(s.status);
 const ended=s.status==='ended';
 const external=s.externalUrl?.startsWith('https://')?s.externalUrl:undefined;
 ---
-<CorporateLayout page={`services/${s.id}/`} title={s.seoTitle ?? `${s.name}${product?`（${statusLabels[s.status]}）`:''}｜Spady`} description={s.summary} serviceName={s.seoTitle ? s.name : undefined}>
-<main id="main"><header class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a><span>/</span><a href="/services/">サービス一覧</a><span>/</span><span>{s.name}</span></nav><div class="detail-hero-grid"><div><span class={`status ${s.status}`}>{statusLabels[s.status]}</span><p class="kicker">{product?'Spadyの自社サービス':'支援サービス'}</p><h1 class="service-title">{s.nameParts?s.nameParts.map(part=><span>{part}</span>):s.name}</h1><p class="lead">{s.tagline}</p><p style="font-size:14px;line-height:2">{s.summary}</p></div>{s.image?<img class="service-detail-image" src={s.image} alt={s.imageAlt||`${s.name}のイメージ`} width="800" height="600"/>:product?<ProductArt type={s.icon}/>:<div class="detail-hero-icon"><Icon name={s.icon} size={100}/></div>}</div></div></header>
+<CorporateLayout noindex={review} review={review} hideMotionControl={review || Boolean(guide)} page={`services/${s.id}/`} title={s.seoTitle ?? `${s.name}${product?`（${statusLabels[s.status]}）`:''}｜Spady`} description={s.summary} serviceName={s.seoTitle ? s.name : undefined}>
+<main id="main"><header class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a><span>/</span><a href="/services/">サービス一覧</a><span>/</span><span>{s.name}</span></nav><div class="detail-hero-grid"><div><span class={`status ${s.status}`}>{statusLabels[s.status]}</span><p class="kicker">{product?'Spadyの自社サービス':'支援サービス'}</p><h1 class="service-title">{s.nameParts?s.nameParts.map(part=><span>{part}</span>):s.name}</h1><p class="lead">{s.tagline}</p><p style="font-size:14px;line-height:2">{s.summary}</p></div>{guide?<FeltServiceGuide member={guide}/>:s.image?<img class="service-detail-image" src={s.image} alt={s.imageAlt||`${s.name}のイメージ`} width="800" height="600"/>:product?<ProductArt type={s.icon}/>:<div class="detail-hero-icon"><Icon name={s.icon} size={100}/></div>}</div></div></header>
 <section class="section wrap"><div class="split"><div><p class="kicker">{product?'こんな方に届けたい':'こんな方を支援します'}</p><h2>{s.shortName}</h2><ul class="tag-list">{s.audience.map(a=><li>{a}</li>)}</ul></div><div><p class="lead" style="font-size:16px">{s.summary}</p>{planned?<div class="notice"><strong>現在は企画・開発準備段階です。</strong><p>掲載している機能・利用の流れは構想であり、提供を確約するものではありません。正式な仕様・料金・開始時期は未定です。</p></div>:<div class="notice">{ended?'このサービスの提供は終了しています。ご契約に関するお問い合わせはサポート窓口へご連絡ください。':product?'現在提供中のサービスです。対応範囲・料金・利用条件を各サービスの案内でご確認ください。':'ご相談から支援範囲を整理し、個別にお見積もりします。現在提供中の受託支援です。'}</div>}{s.id==='line-mini-app'&&<p class="fine-print">LINE公式アカウントの構築をご希望の方は、現在提供中の<a href="/services/line-official-account/" style="text-decoration:underline;color:var(--blue)">構築支援サービス</a>をご覧ください。</p>}{s.id==='line-official-account'&&<p class="fine-print">こちらは受託構築のご案内です。企画中の<a href="/services/line-mini-app/" style="text-decoration:underline;color:var(--blue)">LINEミニアプリを活用した自社サービス</a>とは異なります。</p>}</div></div></section>
 {product&&<section class="section" style="background:white"><div class="wrap split"><div><p class="kicker">解決したい課題</p><h2>忙しい毎日の、<br/>こんな負担を軽くしたい。</h2></div><ul class="rule-list">{s.problems.map(p=><li>{p}</li>)}</ul></div></section>}
 <section class="section wrap"><div class="section-head"><div><p class="kicker">{planned?'開発を検討している機能':product?'主な機能':'主な支援内容'}</p><h2>{product?'必要なことを、使いやすく。':'目的から、具体的な形へ。'}</h2></div>{planned&&<p>以下は検討中の内容です。技術検証や外部サービスの仕様により、変更する可能性があります。</p>}</div><div class="feature-list">{s.features.map((f,i)=><article><span class="feature-number">{String(i+1).padStart(2,'0')}</span><h3>{f.title}</h3><p>{f.text}</p></article>)}</div></section>
