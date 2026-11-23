@@ -6,7 +6,7 @@ export const prerender = true;
 export function GET() {
  const localized = locales.flatMap(l => ['', 'contact/', 'privacy/'].map(page => `/${l.id === 'ja' ? '' : `${l.id}/`}${page}`));
  // Legal is excluded until its visible publication review has been approved (noindex).
- const paths = [...localized, '/services/', '/ai/', '/ai/live-dictation/', '/ai/muse-beginners-guide/', '/ai-guides/', '/ai-guides/first-workflow/', ...services.map(s=>s.detailUrl), '/about/', '/projects/', '/support/', '/terms/', '/cancellation/', '/news/', '/news/saas-development/', '/fullfunnelmarketing/', '/en/fullfunnelmarketing/', '/akindo/', '/ryugaku/', '/ryugaku/en/', '/ryugaku/privacy/', '/ryugaku/en/privacy/', '/book/'];
+ const paths = [...localized, '/services/', '/ai/', '/ai/live-dictation/', '/ai/muse-beginners-guide/', '/ai/chatgpt-space/', '/ai-guides/', '/ai-guides/first-workflow/', ...services.map(s=>s.detailUrl), '/about/', '/projects/', '/support/', '/terms/', '/cancellation/', '/news/', '/news/saas-development/', '/fullfunnelmarketing/', '/en/fullfunnelmarketing/', '/akindo/', '/ryugaku/', '/ryugaku/en/', '/ryugaku/privacy/', '/ryugaku/en/privacy/', '/book/'];
  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[...new Set([...paths, ...(!metaAdsSetup.noindex && metaAdsSetup.canonical ? [new URL(metaAdsSetup.canonical).pathname] : []), ...(kaigyoTestRelease ? [] : kaigyoPaths)])].map(path=>`\n  <url><loc>https://spady.net${path}</loc></url>`).join('')}\n</urlset>\n`;
  return new Response(xml, {headers:{'Content-Type':'application/xml; charset=utf-8'}});
 }

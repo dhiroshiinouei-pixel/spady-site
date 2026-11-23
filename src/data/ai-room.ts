@@ -1,6 +1,15 @@
 export const aiRoomArticles = [
   {
     category: 'AIの新機能',
+    title: 'ChatGPT Spaceとは？Plusで始める使い方と共有の注意点',
+    description: 'ChatGPT Spaceとは？Plusへの提供開始をきっかけに、通常のチャットやProjectsとの違い、最初のページの作り方、無料プランへの共有制限を初心者向けに解説。すぐ使える指示文付き。',
+    href: '/ai/chatgpt-space/',
+    image: '/ai-media/chatgpt-space.webp',
+    imageAlt: '青紫の光でつながる左のチャットと右の文書を描いたChatGPT Spaceのイメージ',
+    featured: false,
+  },
+  {
+    category: 'AIの新機能',
     title: 'ChatGPTのライブ音声入力とは？使い方と、予約件数を整理するコツ',
     description: 'ChatGPTで話しながら文字を確認する「ライブ音声入力」の使い方を解説。音声会話との違い、対応端末、店舗の予約件数を表にまとめる指示文の例を紹介します。',
     href: '/ai/live-dictation/',

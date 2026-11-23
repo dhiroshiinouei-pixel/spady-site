@@ -1,0 +1,202 @@
+---
+import CorporateLayout from '../../layouts/CorporateLayout.astro';
+import { getAiRoomArticle } from '../../data/ai-room';
+const item = getAiRoomArticle('/ai/chatgpt-space/');
+---
+<CorporateLayout page="ai/chatgpt-space/" title={`${item.title}｜Spady`} description={item.description} socialImage={{path:item.image,alt:item.imageAlt,width:1440,height:810,mime:'image/webp'}} article={{author:'井上 博史'}}>
+<main id="main">
+  <header class="page-hero"><div class="wrap">
+    <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/ai/">SpadyのAI部屋</a><span aria-hidden="true">/</span><span aria-current="page">ChatGPT Space</span></nav>
+    <p class="kicker">AIの新機能</p><h1>{item.title}</h1>
+    <p class="lead">ChatGPT Space（スペース）は、チャットで作った文書や資料を、あとから開いて直せる場所です。2026年11月20日から18歳以上のPlusユーザーにも世界で順次提供。この記事では、いつものチャットとの違いから、最初のページを作る手順、共有前に見るべき設定までを解説します。</p>
+    <p class="fine-print">文：<a href="/about/">井上 博史（Spady）</a> ｜ 情報確認：<time datetime="2026-11-23">2026年11月23日</time></p>
+  </div></header>
+<section class="wrap compare-section" id="compare" aria-labelledby="compare-title">
+ <span class="compare-label">図解　同じ仕事、違う使い方</span>
+ <h2 id="compare-title">セミナー準備なら、どこを使う？</h2>
+ <p class="compare-lead"><strong>チャットは「会話」、Projectsは「仕事の箱」、Spaceのページは「直し続ける文書」</strong>です。</p>
+ <figure class="compare-figure">
+  <div class="compare-grid">
+   <div class="compare-card chat-card">
+    <div class="compare-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 11.5a7.8 7.8 0 0 1-8 7.5 8.6 8.6 0 0 1-2.7-.4L5 20l1-4.2a7.2 7.2 0 0 1-2-4.3A7.8 7.8 0 0 1 12 4a7.8 7.8 0 0 1 8 7.5Z"/><path d="M8 11h8m-8 3h4"/></svg></div>
+    <h3>チャット</h3><p class="compare-verb">まず相談する</p>
+    <div class="compare-demo chat-demo"><span>「セミナーのタイトルを3案出して」</span><span>「初心者向けなら、この3案です」</span></div>
+    <p class="compare-result"><b>残るのは、質問と回答のやり取り。</b></p>
+   </div>
+   <div class="compare-card projects-card">
+    <div class="compare-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 10h18"/></svg></div>
+    <h3>Projects</h3><p class="compare-verb">同じ仕事をまとめる</p>
+    <div class="compare-demo folder-demo"><b>セミナー準備</b><ul><li>タイトル相談のチャット</li><li>告知文のチャット</li><li>会場資料・共通の指示</li></ul></div>
+    <p class="compare-result"><b>関連する会話や資料を一か所に。</b><br>別のチャットでも同じ前提を使えます。</p>
+   </div>
+   <div class="compare-card page-card">
+    <div class="compare-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v5h5M8 12h8m-8 4h6"/></svg></div>
+    <h3>Spaceのページ</h3><p class="compare-verb">同じ文書を更新する</p>
+    <div class="compare-demo paper-demo"><b>当日の進行表</b><dl><div><dt>13:00</dt><dd>受付</dd></div><div><dt>13:30</dt><dd>開始</dd></div></dl><span>開始時刻が変わったら、この1行を直す</span></div>
+    <p class="compare-result"><b>開いてすぐ直せる文書が残る。</b><br>閲覧権限があり、Spaceを使える人も同じページを開けます。</p>
+   </div>
+  </div>
+  <figcaption>セミナー準備での使い分けを表した図です。実際の操作画面ではありません。</figcaption>
+ </figure>
+ <div class="compare-note"><b>一番の違いは「次に何を開くか」。</b> 相談の流れを見たいならチャット、別の作業でも同じ資料を使いたいならProjects、最新版の進行表だけ見たいならSpaceのページ。<strong>Projectsでは回答を資料として保存し、次のチャットで再利用できます。Spaceでは文書そのものを開いて、手で編集したりAIに修正を頼んだりできます。</strong> 3つ全部を使う必要はなく、Spaceを使い始めてもProjectsはそのままです。<span class="compare-sources"><a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt">公式：Projects</a> ・ <a href="https://help.openai.com/ja-jp/articles/20001549-getting-started-with-space-in-chatgpt">公式：Space</a></span></div>
+</section>
+  <figure class="wrap room-cover">
+    <img src={item.image} alt={item.imageAlt} width="1440" height="810" fetchpriority="high" decoding="async" />
+    <figcaption>会話やメモから、繰り返し使える1枚の文書を作るイメージ。実際の画面ではありません。</figcaption>
+  </figure>
+  <article class="section wrap room-article"><div class="prose">
+    <nav class="article-index" aria-label="この記事の目次"><a href="#what">Spaceとは？</a><a href="#compare">3つの違いを図解</a><a href="#how">最初の1ページ</a><a href="#examples">使い道</a><a href="#sharing">共有の注意点</a><a href="#faq">よくある質問</a><a href="#next">まず試すこと</a></nav>
+    <aside class="example-panel quick-summary" aria-label="この記事の要点"><p class="example-label">先に3つだけ</p><ul><li><strong>チャットは相談、Spaceは残して編集する文書。</strong></li><li>Plusへの提供は順次。サイドバーに「Space」があれば、まず1ページ作れます。</li><li>共有は招待制。無料プランでは開けず、誰でも読める公開リンクは作れません。</li></ul></aside>
+<section id="what"><h2>ChatGPT Spaceとは？「Space」「スペース」「ページ」の違い</h2>
+<p>画面に出てくる言葉を、書類棚に置き換えると分かりやすくなります。</p>
+<ul>
+<li>
+<p><strong>画面の「Space」</strong>：ChatGPTで作ったページ、スライド、画像やアップロードしたファイルを探す場所。利用できるアカウントでは、従来の「Library（ライブラリ）」に代わります。</p>
+</li>
+<li>
+<p><strong>個別のスペース</strong>：「店舗運営」「新サービス準備」など、テーマごとに関連資料をまとめる入れ物。</p>
+</li>
+<li>
+<p><strong>ページ</strong>：中に入れる文書1枚。自分で直接編集できるほか、ChatGPTに文章の追記や書き直しを頼めます。資料が増えたら、親ページの下に子ページを置くこともできます。</p>
+</li>
+</ul>
+<p>たとえば「店舗運営」の中に「予約変更の返信ルール」を置き、その下に「返信例」「よくある例外」を置くイメージです。最初から全部整理する必要はありません。<strong>まずは1ページで十分</strong>です。<a href="https://learn.chatgpt.com/docs/space">Spaceの公式概要</a></p></section>
+<section id="how"><h2>最初の1ページを作ってみる</h2>
+<p>初回はPCのブラウザ版ChatGPTを使うと、サイドバーと編集画面を見ながら進められます。</p>
+<ol>
+<li>
+<p><strong>ChatGPTのサイドバーから「Space」を開く。</strong> 見当たらなければ、Plusを契約しているアカウントでログインしているか確認します。デスクトップアプリの場合は最新版に更新し、それでも表示されなければ提供待ちの可能性があります。</p>
+</li>
+<li>
+<p><strong>「New page（新規ページ）」を選ぶ。</strong> 「予約変更の返信ルール」など、あとで検索しやすいタイトルをつけます。</p>
+</li>
+<li>
+<p><strong>箇条書きでメモを入れる。</strong> たとえば「空き枠は台帳で確認」「変更を確約する前に担当者が確認」の2行だけで始められます。</p>
+</li>
+<li>
+<p><strong>ページ上でChatGPTに整理を頼む。</strong> 下の例を使い、できた文書で間違いがないかを確認します。文章は直接編集できます。</p>
+</li>
+<li>
+<p><strong>次に使うときはSpaceから同じページを開く。</strong> 新しいチャットで作り直す代わりに、変更になった箇所だけを書き換えます。</p>
+</li>
+</ol><figure class="space-flow"><div class="flow-steps"><div><span>01</span><strong>Spaceを開く</strong><small>ChatGPTのサイドバー</small></div><div><span>02</span><strong>新規ページを作る</strong><small>タイトルとメモを入力</small></div><div><span>03</span><strong>AIと整えて見直す</strong><small>確認して、同じページを更新</small></div></div><figcaption>操作の流れをまとめた図です。実際の画面ではありません。<a href="https://learn.chatgpt.com/docs/space/getting-started">OpenAI公式の画面イメージと手順</a></figcaption></figure>
+<p><a href="https://learn.chatgpt.com/docs/space/getting-started">公式のステップガイド</a>では、新規ページの作成に加え、WorkやCodexでの会話をもとにページを作る手順も案内しています。iOS・Androidでは、ページを探す・読む・編集する・共有することができます。以下の新規作成手順はPCのブラウザ版を基準にしています。<a href="https://help.openai.com/en/articles/20001549-getting-started-with-space-in-chatgpt">モバイル対応の案内</a></p>
+<h3>コピーして使える指示文</h3>
+<div class="example-panel"><div class="prompt-head"><span>店舗で試す例</span><button type="button" id="copy-prompt" hidden>指示文をコピー</button></div><blockquote><p id="prompt-text">このページのメモをもとに、店舗スタッフ向けの「予約変更の返信ルール」を作ってください。①返信前の確認、②空き枠を確認できていないときの返信例、③担当者に引き継ぐ条件、の順に整理してください。例文は架空の場面だけにしてください。実在するお客様の名前や連絡先は使わず、私が書いていない店のルールは作らずに「要確認」としてください。</p></blockquote><p role="status" id="copy-status"></p></div>
+<p>できた例文が「予約を変更しました」と言い切っていたら、台帳を確認する前に使う文章としてはNGです。「空き状況を確認してからご連絡します」と直し、<strong>AIが下書きするところと、人が確認・送信するところを分けます</strong>。この使い方なら、最初から予約システムやLINEを連携する必要もありません。</p></section>
+<section id="examples"><h2>Spaceが役立つ3つの場面</h2>
+<h3>1. 店舗のよくある返信を、スタッフ間でそろえる</h3>
+<p>予約変更、営業時間、持ち物など、何度も来る質問のひな形を作ります。はじめは架空の例文のみ。変更があれば1ページに反映し、全員が同じ文書を参照します。</p>
+<h3>2. 打ち合わせの「決まったこと」を1枚に残す</h3>
+<p>会話の全文を保管するより、「決定事項」「担当」「次回までにやること」に絞ってページにします。ChatGPTに整理を頼むときは、決まっていない締切や担当者を補わないよう指示すると、確認が楽になります。</p>
+<h3>3. セミナーや研修の資料を一緒に作る</h3>
+<p>Slidesが使えるアカウントなら、ページにまとめた研修の目的、対象者、演習をもとにスライドの下書きを作れます。対応するWeb環境ではPowerPointやPDFなどに書き出せます。Spaceが表示されても、Slidesも使えるとは限りません。<a href="https://learn.chatgpt.com/docs/space/getting-started">公式の作成・書き出しガイド</a>／<a href="https://help.openai.com/en/articles/20001549-getting-started-with-space-in-chatgpt">提供状況の案内</a></p></section>
+<section id="sharing"><h2>Plusで使う前に知っておきたい共有のルール</h2>
+<p><strong>Spaceの共有は、誰でも見られるWeb公開とは違います。</strong> ページの「Share（共有）」から招待する相手を選び、見るだけなら閲覧権限、一緒に直すなら編集権限を設定します。開く側にも閲覧権限と、Spaceが利用できるPlus・Pro・Business・Enterpriseのアカウントが必要です。<strong>無料プランの人は共有ページを開けず、一般公開リンクも作れません。</strong> チームの契約では管理者の共有設定も適用されます。<a href="https://help.openai.com/en/articles/20001549-getting-started-with-space-in-chatgpt">OpenAI公式の共有ガイド</a></p>
+<p>共有前には、次の3点を確認しましょう。</p>
+<ul>
+<li>
+<p><strong>1枚だけ見せたいなら、スペース全体でなくそのページを共有。</strong> 子ページには親ページのアクセス権が引き継がれます。</p>
+</li>
+<li>
+<p><strong>添付とリンクは別物。</strong> ページに直接添付したファイルはページの権限に従います。Google Driveなどの元ファイルへのリンクは、共有しても元の権限が変わりません。ただし<strong>本文にコピー・要約した内容</strong>は、元ファイルを開けない閲覧者にも見えます。</p>
+</li>
+<li>
+<p><strong>過去のチャットやメモリそのものは共有されませんが、そこから本文に入った情報は見えます。</strong> 個人アカウントでは、共有相手が自分のChatGPTでページを扱う際、相手側の学習設定も関わります。最初の練習には、公開情報か架空データだけを使うのがおすすめです。</p>
+</li>
+</ul>
+<p><a href="https://help.openai.com/en/articles/20001544-chatgpt-space-sharing-data-and-controls">OpenAI公式：共有・データ・設定</a></p></section>
+<section id="faq"><h2>よくある質問</h2>
+<h3>PlusなのにSpaceが表示されないのはなぜ？</h3>
+<p>2026年11月20日からの<strong>段階的な提供</strong>です。まず契約したアカウントでログインしているかと、アプリの更新を確認してください。表示されないことだけで、契約や設定の不具合とは判断できません。<a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI公式リリースノート</a></p>
+<h3>ページの内容は勝手に更新される？</h3>
+<p>作っただけで毎回自動更新されるわけではありません。公式発表では、ページやスライドに、連携したアプリやツールをもとにした自動更新を設定できると案内しています。<strong>最初は手動で更新し、どの情報を、誰が見える場所に載せるか決めてから</strong>連携を使うのがおすすめです。<a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI公式リリースノート</a></p>
+<h3>Googleドキュメントを全部移したほうがいい？</h3>
+<p>移す必要はありません。ChatGPTと一緒に作り直すページはSpace、無料アカウントの人や外部の取引先に広く配る文書は、今までの共有手段と、相手に合わせて使い分けるのが現実的です。</p><h3>AIへの依頼が利用上限に達したら、文書は編集できない？</h3><p>PlusでAIへのメッセージが上限に達しても、ページを自分で編集することはできます。AIに頼む操作と、手で書き換える操作は別です。<a href="https://help.openai.com/ja-jp/articles/20001549-getting-started-with-space-in-chatgpt">OpenAI公式ヘルプ</a></p></section>
+<section id="next"><h2>まずは来週も使う文書を1つ</h2>
+<p>初日から資料の置き場所をすべて変える必要はありません。<strong>来週も更新するものを1つだけ</strong>選び、Spaceにページを作ってみてください。開き直すときにチャット履歴を探さずに済み、必要な箇所だけ直せたら、それがSpaceを使ういちばん分かりやすい理由です。</p></section>
+  <footer class="article-sources"><h2>参考資料</h2><ul><li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI：ChatGPTリリースノート（11月20日）</a></li><li><a href="https://learn.chatgpt.com/docs/space/getting-started">ChatGPT Learn：最初のページを作る</a></li><li><a href="https://help.openai.com/ja-jp/articles/20001544-chatgpt-space-sharing-data-and-controls">OpenAI：共有・データ・管理設定（日本語）</a></li></ul></footer>
+  <p><a class="text-link" href="/ai/">SpadyのAI部屋に戻る</a></p>
+  </div></article>
+</main>
+</CorporateLayout>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('#copy-prompt');
+  const text = document.getElementById('prompt-text');
+  const status = document.getElementById('copy-status');
+  if (button && text && status && navigator.clipboard) {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(text.textContent?.trim() ?? ''); status.textContent = '指示文をコピーしました。'; }
+      catch { status.textContent = '自動コピーできませんでした。指示文を選択してコピーしてください。'; }
+    });
+  }
+</script>
+<style>
+  .room-cover { max-width:1050px; margin:0 auto; }
+  .room-cover img { display:block; width:100%; height:auto; border-radius:14px; background:#11172d; }
+  .room-cover figcaption { margin-top:10px; font-size:.875rem; color:#544d61; }
+  .room-article { max-width:800px; }
+  .room-article h2 { font-size:clamp(1.35rem,3vw,1.9rem); margin:0 0 16px; }
+  .room-article h3 { font-size:1.1rem; margin:24px 0 8px; }
+  .room-article section + section, .article-sources { margin-top:40px; }
+  .room-article section { scroll-margin-top:118px; }
+  .article-index { display:flex; flex-wrap:wrap; gap:8px 18px; padding:0 0 14px; margin:0 0 25px; border-bottom:1px solid var(--line); font-size:.9rem; }
+  .article-index a { text-underline-offset:4px; }
+  .room-article li + li { margin-top:8px; }
+  .room-article ol { padding-inline-start:1.6em; margin-block:12px 22px; }
+  .room-article blockquote { margin:0 0 22px; padding:16px 22px; border-inline-start:3px solid #6757a9; background:#f0edf9; }
+  .room-article blockquote p { margin:0; }
+  .fine-print a { text-underline-offset:4px; }
+  .demo-still { margin:25px 0 20px; }
+  .demo-still img { display:block; width:100%; height:auto; border-radius:12px; background:#11172d; }
+  .demo-still figcaption { margin-top:10px; color:#544d61; font-size:.9rem; line-height:1.65; }
+  .example-panel { margin:14px 0 24px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:clamp(14px,3vw,22px); }
+  .example-panel .example-label { margin:0 0 10px; color:#574783; font-weight:700; font-size:.9rem; }
+  .example-panel p:last-child { margin:0; }
+  .example-table { border-collapse:collapse; width:100%; margin:0 0 12px; line-height:1.55; text-align:left; }
+  .example-table th,.example-table td { padding:9px 8px; border-bottom:1px solid var(--line); }
+  .example-table th { font-weight:600; }
+  .check-cell { color:#493773; font-weight:700; }
+  .guide-steps li { padding-left:3px; }
+
+  .quick-summary ul { margin-block:0; }
+  .space-flow { margin:26px 0; }
+  .flow-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border:1px solid var(--line); background:#f0edf9; border-radius:14px; padding:14px; gap:10px; }
+  .flow-steps div { background:#fff; display:grid; gap:3px; padding:12px; border-radius:9px; }
+  .flow-steps div span { color:#574783; font-weight:750; font-size:.9rem; }
+  .flow-steps div small, .space-flow figcaption { color:#544d61; font-size:.875rem; line-height:1.65; }
+  .space-flow figcaption { margin-top:8px; }
+  .prompt-head { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; color:#574783; font-weight:700 }
+  .prompt-head button { min-height:44px; padding:6px 12px; background:#fff; color:#493773; border:1px solid currentColor; border-radius:8px; font:inherit; cursor:pointer; }
+  #copy-status:empty { display:none; }
+  @media(max-width:600px){ .flow-steps { grid-template-columns:1fr; } }
+  .compare-section { max-width:1050px; margin:0 auto; padding-block:clamp(26px,5vw,58px); scroll-margin-top:110px; }
+  .compare-label { color:#53417b; font-size:.875rem; font-weight:750; letter-spacing:.04em; }
+  .compare-section h2 { font-size:clamp(1.45rem,3.5vw,2.15rem); margin:6px 0 4px; }
+  .compare-lead { font-size:1rem; color:#3b354a; margin:0 0 18px; }
+  .compare-figure { margin:0; }
+  .compare-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+  .compare-card { display:grid; grid-template-rows:auto auto auto 1fr auto; border:1px solid var(--card-line); background:var(--card-tone); border-radius:14px; color:#24243a; padding:clamp(14px,2vw,20px); min-width:0; }
+  .chat-card { --card-line:#c6d9ee; --card-tone:#eff6fd; --accent:#214e80; --tint:#dfebfa; }
+  .projects-card { --card-line:#eadbb9; --card-tone:#fcf6e8; --accent:#694d1e; --tint:#f2e6cc; }
+  .page-card { --card-line:#d9cbea; --card-tone:#f5eefb; --accent:#553382; --tint:#e8dbf5; }
+  .compare-icon { width:42px;height:42px;border-radius:10px;background:var(--tint);color:var(--accent);display:grid;place-items:center; }
+  .compare-icon svg { width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round; }
+  .compare-card h3 { font-size:1.19rem;line-height:1.4;margin:9px 0 0; }
+  .compare-verb { color:var(--accent);font-weight:750;margin:2px 0 10px; }
+  .compare-demo { background:#fff;border:1px solid var(--card-line);border-radius:10px;padding:10px;font-size:.9rem;line-height:1.55; }
+  .chat-demo { display:flex;flex-direction:column;justify-content:center;gap:7px;align-items:flex-start; }
+  .chat-demo span { display:block;background:var(--tint);padding:6px 8px;border-radius:8px; }
+  .chat-demo span+span { align-self:flex-end;background:#edf1f5; }
+  .folder-demo ul { margin:4px 0 0;padding-left:1.35em; }
+  .paper-demo dl { margin:4px 0; }
+  .paper-demo dl div { display:flex;border-bottom:1px solid #ede9f0;gap:7px; }
+  .paper-demo dd { margin:0; }
+  .paper-demo span { display:block;color:var(--accent);font-weight:650;margin-top:4px; }
+  .compare-result { font-size:.875rem;line-height:1.6;margin:10px 0 0; }
+  .compare-figure figcaption,.compare-sources { font-size:.875rem;color:#544d61;margin-top:7px; }
+  .compare-note { margin-top:15px;padding:12px 15px;border-inline-start:3px solid #6757a9;background:#f0edf9;font-size:.95rem;line-height:1.75; }
+  .compare-sources { display:block; }
+  @media(max-width:760px) { .compare-grid { grid-template-columns:1fr; } .compare-card { grid-template-rows:auto; } }
+</style>
