@@ -1,5 +1,14 @@
 export const aiRoomArticles = [
   {
+    category: 'AIの使い方',
+    title: 'Chat・Work・Codexの違いは？ChatGPTの使い分けを図解',
+    description: 'ChatGPTのChat・Work・Codexの違いを図解。店舗の予約データを例に、相談、資料作成、既存サイトの修正をどう使い分けるか、指示文と切り替え方まで解説します。',
+    href: '/ai/chat-work-codex/',
+    image: '/ai-media/chat-work-codex.webp',
+    imageAlt: '吹き出し、資料、コードのアイコンでChat・Work・Codexを比較した図',
+    featured: false,
+  },
+  {
     category: 'AIの新機能',
     title: 'ChatGPTのGPT-6.2とは？通常チャット・Work・Codexの違い',
     description: '通常チャットに登場したGPT-6.2を初心者向けに図解。Chat・Work・CodexとSol・Astraの違い、公式比較テスト、画像を添付して試すための指示文を紹介します。',

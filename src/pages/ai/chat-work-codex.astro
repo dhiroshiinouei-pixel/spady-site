@@ -1,0 +1,103 @@
+---
+import CorporateLayout from '../../layouts/CorporateLayout.astro';
+import { getAiRoomArticle } from '../../data/ai-room';
+const item = getAiRoomArticle('/ai/chat-work-codex/');
+---
+<CorporateLayout page="ai/chat-work-codex/" title={`${item.title}｜Spady`} description={item.description} socialImage={{path:item.image,alt:item.imageAlt,width:1440,height:810,mime:"image/webp"}} article={{ author: '井上 博史' }}>
+<main id="main"> <header class="page-hero"><div class="wrap"> <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/ai/">SpadyのAI部屋</a><span aria-hidden="true">/</span><span aria-current="page">Chat・Work・Codex</span></nav> <p class="kicker">AIの使い方</p><h1>{item.title}</h1> <p class="lead">相談するならChat、資料を仕上げるならWork、既存のサイトやアプリを直すならCodex。同じ「予約件数をまとめたい」という仕事を例に、何を頼むと、何が手元に残るのかを比べます。</p> <p class="fine-print">文：<a href="/about/">井上 博史（Spady）</a> ／ 公式情報確認：<time datetime="2026-11-25">2026年11月25日</time></p> </div></header> <figure class="wrap room-cover"> <div class="art">
+<p class="eyebrow">CHATGPT GUIDE</p><p class="art-title">先に「何を受け取りたいか」を決める。</p>
+<div class="modes">
+<div class="mode"><svg viewBox="0 0 24 24" fill="none" stroke="#c9baff" stroke-width="1.7" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke-linejoin="round"></path><path d="M8 9h8m-8 3h5" stroke-linecap="round"></path></svg><strong>Chat</strong><small>会話で考える</small></div>
+<div class="mode"><svg viewBox="0 0 24 24" fill="none" stroke="#91e4da" stroke-width="1.7" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6" stroke-linejoin="round" stroke-linecap="round"></path></svg><strong>Work</strong><small>資料に仕上げる</small></div>
+<div class="mode"><svg viewBox="0 0 24 24" fill="none" stroke="#ffd29e" stroke-width="1.7" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke-linejoin="round" stroke-linecap="round"></path></svg><strong>Codex</strong><small>コードを変えて試す</small></div>
+</div></div><figcaption>相談・資料作成・コード変更の違いを示す図解です。実際のアプリ画面ではありません。</figcaption> </figure> <article class="section wrap room-article"> <div class="prose"> <nav class="article-index" aria-label="この記事の目次"><a href="#difference">3つの違い</a><a href="#example">予約データで比較</a><a href="#switch">切り替え方</a><a href="#faq">よくある質問</a><a href="#sources">公式資料</a></nav>
+<section id="difference">
+<h2>Chat・Work・Codexは何が違う？</h2>
+<table aria-label="Chat・Work・Codexの早見表"><thead><tr><th scope="col">入口</th><th scope="col">向いていること</th><th scope="col">確認するもの</th></tr></thead><tbody>
+<tr><th scope="row">Chat</th><td>質問、比較、文章の下書き。やり取りしながら考える</td><td>会話の回答、下書き、案</td></tr>
+<tr><th scope="row">Work</th><td>複数の資料を調べ、集計し、使える成果物にまとめる</td><td>資料、スライド、表など</td></tr>
+<tr><th scope="row">Codex</th><td>既存のコードを調べ、変更し、テストする</td><td>変更箇所、テスト結果、プレビュー</td></tr>
+</tbody></table>
+<p style="margin-top:10px">できることには重なりがあります。Chatでもファイルを分析でき、Workでも簡単なサイトを作れる場合があります。<strong>文章や比較が返れば十分か、会議で使うファイルまで欲しいか、既存の仕組みを変えたいか</strong>で選ぶのが近道です。 <a href="https://learn.chatgpt.com/docs/use-chatgpt">OpenAI公式：ChatGPTの使い方</a></p>
+</section>
+<section id="example">
+<p class="eyebrow">同じ仕事で比べる</p>
+<h2>「月別の予約件数をまとめたい」を3つに頼むと？</h2>
+<p>店舗の例で考えます。4月120件、5月135件、7月128件。6月だけ資料に記載がありません。以下は使い分けのための架空例です。実際の処理画面や実測結果ではありません。</p>
+<h3>① Chat：何を確認すべきか一緒に考える</h3>
+<p>6月をゼロとしてよいのか、グラフでどう見せるか。作業の方針がまだ決まっていないときに向いています。</p>
+<blockquote class="prompt"><span class="tag">そのまま使える指示文</span><p>4月120件、5月135件、7月128件です。6月は要確認とし、ゼロにしないでください。月別に見せるにはどんなグラフがよいか、理由と確認事項を教えてください。</p></blockquote>
+<p class="fine"><strong>受け取るもの：</strong>グラフ案と確認事項。答えを見てから、比較したい切り口を足せます。</p>
+<h3>② Work：店長に渡せる集計表を作る</h3>
+<p>渡す相手と成果物が決まっているなら、使う資料と仕上がりを最初に指定します。</p>
+<blockquote class="prompt"><span class="tag">そのまま使える指示文</span><p>添付した匿名化済みCSVを使い、店長会議用に月別予約件数の表とグラフを1ページにまとめてください。6月は空欄のまま「要確認」と注記し、元データのファイル名を記載してください。共有や送信はせず、確認用ファイルを作ってください。</p></blockquote>
+<p class="fine"><strong>受け取るもの：</strong>そのまま確認に回せる資料。元データと数字を照合してから共有します。</p>
+<h3>③ Codex：既存ダッシュボードの集計ルールを直す</h3>
+<p>毎月の手作業ではなく、既存のWebアプリで欠損月を誤表示する不具合を直したいときはこちらです。</p>
+<blockquote class="prompt"><span class="tag">そのまま使える指示文</span><p>この予約ダッシュボードで、データがない月は「未集計」、実際に0件の月は「0件」と表示してください。架空データで両方をテストし、変更箇所と確認手順を示してください。本番公開はしないでください。</p></blockquote>
+<p class="fine"><strong>受け取るもの：</strong>コード変更とテスト結果。公開の前に、差分（どこを変えたか）とプレビューを確認します。</p>
+<div class="box"><p><strong>最初に1つ試すなら：</strong>普段のChatで「何を見せたいか」を決め、会議に出す資料が必要になったところでWorkへ。既存の仕組み自体に手を入れる必要が出たらCodexを選びます。</p></div>
+</section>
+<section id="switch">
+<p class="eyebrow">WHERE TO START</p>
+<h2>どこで切り替える？デスクトップとスマホの違い</h2>
+<div class="path">
+<div><span class="tag">Mac・Windowsの新しいChatGPTアプリ</span><p>メニューで<strong>ChatGPT</strong>を選び、<strong>Chat</strong>か<strong>Work</strong>を選択。開発用の画面に切り替えるときは、同じメニューで<strong>Codex</strong>を選びます。</p></div>
+<div><span class="tag">Web・スマホ</span><p>通常のChatGPTでは<strong>Chat</strong>か<strong>Work</strong>を選択。スマホでは、新しいチャットの入力欄にあるモデル名から切り替える画面もあります。</p></div>
+</div>
+<p><strong>スマホでPCのCodexを操作する「Remote」と、クラウドで動く「Codex Cloud」は別物です。</strong> Remoteは対応するPC側の作業にアクセスする方法。Codex Cloudは、対応する設定でOpenAI側の環境に開発作業を任せる方法です。通常のChatGPTの切り替えにCodexが出ないことと、Codex Cloudが使えるかどうかは別の話です。</p>
+<p class="fine">表示や使える範囲は、アプリのバージョン、プラン、ワークスペースの設定で異なります。<a href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex">OpenAI公式：選び方と対応環境</a> ／ <a href="https://learn.chatgpt.com/docs/environments/modes">OpenAI公式：Codexの作業環境</a></p>
+</section>
+<section id="faq">
+<h2>よくある質問</h2>
+<h3>WorkはChatの上位版？ Astra 6.2は別のモード？</h3>
+<p>ChatとWorkは、進め方を選ぶための入口です。GPT-6.2 AstraはAIモデルの名前で、同じモデルが対応するWork・Codexに表示されることがあります。WorkでAstraを選んでも開発用画面には切り替わりません。 <a href="https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol">OpenAI公式：GPT-6.2</a> なお、通常のChatにも、会話向けに調整されたGPT-6.2 Solベースのモデルが対象プランへ順次提供されています。<a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI公式リリースノート</a></p>
+<h3>Chatで相談した内容はCodexに自動で引き継がれる？</h3>
+<p>Codexの開発チャット履歴は通常のChatGPT履歴とは別です。引き継ぐなら「決まったこと・触ってよいファイル・完了条件」の3点を新しい依頼に添えてください。ChatとWorkはデスクトップの履歴一覧に並びますが、一覧が同じでも、別チャットに会話全文が自動で移るという意味ではありません。</p>
+<h3>顧客データを入れたり、本番に反映したりしていい？</h3>
+<p>まずは架空のデータ、または名前・電話番号などを除いた必要最小限のデータで試します。仕事で使う場合は社内ルールと権限を確認し、依頼時に「送信しない」「本番公開しない」など、止める場所を先に指定しましょう。</p>
+</section>
+<footer id="sources" class="article-sources">
+<h2>参考資料</h2>
+<p><a href="https://learn.chatgpt.com/docs/use-chatgpt">Chatの使い方と3つの比較</a> ／ <a href="https://learn.chatgpt.com/docs/get-started-with-work">Work入門</a> ／ <a href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex">WorkとCodexの公式ヘルプ</a> ／ <a href="https://learn.chatgpt.com/docs/environments/modes">Codexの作業環境</a></p>
+<p>合わせて読む：<a href="/ai/live-dictation/">ChatGPTのライブ音声入力の使い方</a> ／ <a href="/ai/gpt-6-2/">ChatGPTのGPT-6.2、Sol・Astraの違い</a></p>
+</footer>
+<p><a href="/ai/" class="text-link">SpadyのAI部屋に戻る</a></p></div> </article> </main>
+</CorporateLayout>
+<style>
+
+  .room-cover { max-width:1050px; margin:0 auto; }
+  .room-cover img { display:block; width:100%; height:auto; border-radius:14px; background:#11172d; }
+  .room-cover figcaption { margin-top:10px; font-size:.875rem; color:#544d61; }
+  .room-article { max-width:800px; }
+  .room-article h2 { font-size:clamp(1.35rem,3vw,1.9rem); margin:0 0 16px; }
+  .room-article h3 { font-size:1.1rem; margin:24px 0 8px; }
+  .room-article section + section, .article-sources { margin-top:40px; }
+  .room-article section { scroll-margin-top:118px; }
+  .article-index { display:flex; flex-wrap:wrap; gap:8px 18px; padding:0 0 14px; margin:0 0 25px; border-bottom:1px solid var(--line); font-size:.9rem; }
+  .article-index a { text-underline-offset:4px; }
+  .room-article li + li { margin-top:8px; }
+  .room-article ol { padding-inline-start:1.6em; margin-block:12px 22px; }
+  .room-article blockquote { margin:0 0 22px; padding:16px 22px; border-inline-start:3px solid #6757a9; background:#f0edf9; }
+  .room-article blockquote p { margin:0; }
+  .fine-print a { text-underline-offset:4px; }
+  .demo-still { margin:25px 0 20px; }
+  .demo-still img { display:block; width:100%; height:auto; border-radius:12px; background:#11172d; }
+  .demo-still figcaption { margin-top:10px; color:#544d61; font-size:.9rem; line-height:1.65; }
+  .example-panel { margin:14px 0 24px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:clamp(14px,3vw,22px); }
+  .example-panel .example-label { margin:0 0 10px; color:#574783; font-weight:700; font-size:.9rem; }
+  .example-panel p:last-child { margin:0; }
+  .example-table { border-collapse:collapse; width:100%; margin:0 0 12px; line-height:1.55; text-align:left; }
+  .example-table th,.example-table td { padding:9px 8px; border-bottom:1px solid var(--line); }
+  .example-table th { font-weight:600; }
+  .check-cell { color:#493773; font-weight:700; }
+  .guide-steps li { padding-left:3px; }
+
+.room-cover .art{border-radius:14px;background:radial-gradient(ellipse at 15% 2%,#373166,transparent 70%),radial-gradient(ellipse at 95% 110%,#342155,transparent 70%),#18192f;color:#fff;padding:clamp(16px,4vw,38px);overflow:hidden}
+.room-cover .art .eyebrow{color:#d4c6ff;margin:0 0 5px;font-size:.78rem}.art-title{font-weight:800;font-size:clamp(1.14rem,3vw,1.78rem);line-height:1.4}
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:17px}.mode{min-width:0;padding:14px 13px;border:1px solid #534c72;background:#262641;border-radius:12px}.mode svg{width:27px;height:27px;display:block;margin-bottom:6px}.mode strong{font-size:1.13rem;display:block;line-height:1.3}.mode small{color:#f5eeff;font-size:.78rem;display:block;margin-top:4px;line-height:1.55}
+.room-article table{width:100%;border-collapse:collapse;font-size:.91rem;line-height:1.55}.room-article th,.room-article td{border-bottom:1px solid var(--line);text-align:left;vertical-align:top;padding:8px 9px}.room-article thead{background:#f0edf9}.room-article tbody th{white-space:nowrap}
+.room-article .box,.path>div{padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff}.room-article .box p,.path p{margin:0}.path{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.tag{font-size:.84rem;color:#574783;font-weight:700;display:block;margin-bottom:4px}.room-article .fine{font-size:.9rem;color:#544d61}.article-sources a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:530px){.modes{gap:6px}.mode{padding:9px 6px}.mode strong{font-size:1rem}.mode small{font-size:.7rem}.path{grid-template-columns:1fr}.room-article th,.room-article td{padding:7px 5px;font-size:.82rem}}
+
+</style>
