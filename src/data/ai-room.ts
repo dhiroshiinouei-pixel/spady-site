@@ -1,6 +1,15 @@
 export const aiRoomArticles = [
   {
     category: 'AIの新機能',
+    title: 'ChatGPTのGPT-6.2とは？通常チャット・Work・Codexの違い',
+    description: '通常チャットに登場したGPT-6.2を初心者向けに図解。Chat・Work・CodexとSol・Astraの違い、公式比較テスト、画像を添付して試すための指示文を紹介します。',
+    href: '/ai/gpt-6-2/',
+    image: '/ai-media/gpt-6-2.webp',
+    imageAlt: '画像を添付したチャットと確認項目のチェックを描いたGPT-6.2のイメージ',
+    featured: false,
+  },
+  {
+    category: 'AIの新機能',
     title: 'ChatGPT Spaceとは？Plusで始める使い方と共有の注意点',
     description: 'ChatGPT Spaceとは？Plusへの提供開始をきっかけに、通常のチャットやProjectsとの違い、最初のページの作り方、無料プランへの共有制限を初心者向けに解説。すぐ使える指示文付き。',
     href: '/ai/chatgpt-space/',

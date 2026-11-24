@@ -1,0 +1,138 @@
+---
+import CorporateLayout from '../../layouts/CorporateLayout.astro';
+import { getAiRoomArticle } from '../../data/ai-room';
+const item = getAiRoomArticle('/ai/gpt-6-2/');
+const releaseNotes = 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes';
+const faq = 'https://help.openai.com/en/articles/12168547-voice-dictation-faq';
+const demo = 'https://x.com/ChatGPT/status/2123114715257946334';
+const demoStillSource = 'https://www.ithinkdiff.com/chatgpt-gpt-6-2-no-10-minute-limit/';
+---
+<CorporateLayout page="ai/gpt-6-2/" title={`${item.title}｜Spady`} description={item.description} socialImage={{path:item.image,alt:item.imageAlt,width:1440,height:810,mime:"image/webp"}} article={{ author: '井上 博史' }}>
+  <main id="main">
+    <header class="page-hero"><div class="wrap">
+      <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/ai/">SpadyのAI部屋</a><span aria-hidden="true">/</span><span aria-current="page">GPT-6.2</span></nav>
+      <p class="kicker">AIの新機能</p><h1>{item.title}</h1>
+      <p class="lead">今回変わったのは、<strong>普段使う「チャット」</strong>です。スクリーンショットを見せたり、条件の多い調べものを相談したりするとき、何ができるようになったのかを図で整理します。</p>
+      <p class="fine-print">文：<a href="/about/">井上 博史（Spady）</a> ｜ 情報確認：<time datetime="2026-11-24">2026年11月24日</time></p>
+    </div></header>
+    <figure class="wrap room-cover">
+      <img src={item.image} alt={item.imageAlt} width="1440" height="810" fetchpriority="high" decoding="async" />
+      <figcaption>チャットに画像を渡し、回答を確認する流れを表したイメージ。実際の画面ではありません。</figcaption>
+    </figure>
+    <article class="section wrap room-article"><div class="prose">
+
+<nav class="article-index" aria-label="この記事の目次"><a href="#choose">3つの違い</a><a href="#change">何が変わった？</a><a href="#try">試し方・コピペ例</a><a href="#faq">よくある質問</a></nav>
+<section class="guide-section" id="choose"><div class="eyebrow">図解｜使い分け</div><h2>同じ「広告の相談」でも、何を頼むかで選ぶ</h2>
+<p class="explain"><strong>Chat・Work・Codexは「使う場所」。Sol・Astraは「AIモデルの名前」。</strong> まずはこの2つを分けて考えると分かりやすくなります。</p>
+<figure><div class="cards">
+<div class="card"><div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 7.5c-.9 0-1.8-.14-2.7-.4L5 20l1-4.2a7.2 7.2 0 0 1-2-4.3A7.8 7.8 0 0 1 12 4a7.8 7.8 0 0 1 8 7.5Z"/><path d="M8 11h8m-8 3h4"/></svg></div><h3>通常チャット</h3><p><b>見せて、まず相談する</b>広告のスクショを見せて、確認すべき数字を聞く。<span class="deliverable">残るもの：数字を確認する順番</span></p></div>
+<div class="card"><div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2m-11 5h16m-10 0v2h4v-2"/></svg></div><h3>ChatGPT Work</h3><p><b>資料をまとめて仕上げる</b>広告レポートと集計表から、会議用の資料を作る。<span class="deliverable">残るもの：会議用の資料</span></p></div>
+<div class="card"><div class="icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 6-5 6 5 6m8-12 5 6-5 6m-2-14-4 16"/></svg></div><h3>Codex</h3><p><b>コードを直して検証する</b>広告のリンク先ページを修正して、テストまで行う。<span class="deliverable">残るもの：コードの変更とテスト結果</span></p></div>
+</div><figcaption>用途の目安です。できることは一部重なります。Work・Codexで扱えるファイルや操作は接続・権限によります。</figcaption></figure>
+<div class="model-key"><p><strong>Sol：</strong>速さと性能のバランスを重視。今回の通常チャットには、日常の会話向けに調整したSol系のGPT-6.2が入ります。</p><p><strong>Astra：</strong>複雑な調査や開発など、難しい仕事向け。通常チャットにAstraが入った、という発表ではありません。</p></div>
+<div class="dates"><span><time datetime="2026-11-17">11月17日</time>　Work・CodexのデスクトップにGPT-6.2 AstraとGPT-6.2 Solがプレビュー登場。</span><span><time datetime="2026-11-23">11月23日</time>　通常チャットにGPT-6.2が順次提供。Work・Codexは今回の対象外。</span></div></section>
+<section class="guide-section" id="change"><div class="eyebrow">図解｜OpenAIの比較テスト</div><h2>画像を読み取る力と、条件に沿って答える力</h2>
+<figure><div class="charts">
+<div class="chart"><h3>画像についての質問</h3><div class="metric"><span>GPT-6</span><div class="track" aria-hidden="true"><span style="--pct:47.4%"></span></div><b>47.4%</b></div><div class="metric new"><span>GPT-6.2</span><div class="track" aria-hidden="true"><span style="--pct:71.7%"></span></div><b>71.7%</b></div></div>
+<div class="chart"><h3>特に難しい指示に従うテスト</h3><div class="metric"><span>GPT-6</span><div class="track" aria-hidden="true"><span style="--pct:62.5%"></span></div><b>62.5%</b></div><div class="metric new"><span>GPT-6.2</span><div class="track" aria-hidden="true"><span style="--pct:78.1%"></span></div><b>78.1%</b></div></div>
+</div><figcaption>各バーは0～100%の同一尺度。OpenAIによる通常チャットでの評価（2026年11月23日発表）であり、Spadyの実測や、実際の手元の画面を正しく読み取る確率ではありません。<a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI公式リリースノート</a></figcaption></figure>
+</section>
+<section class="guide-section" id="try"><div class="eyebrow">実践｜はじめの1回</div><h2>見慣れた画面を1枚だけ見せてみる</h2><p>ChatGPTで通常のチャットを開き、メッセージの入力欄から画像を添付します。Meta広告、予約管理、アクセス解析など、自分でも内容を確認できる画面が最初の題材に向いています。最初は公開情報や架空データを使い、業務上の画像は社内ルールに沿って必要な部分だけを渡してください。</p>
+<div class="flows"><div class="step"><span class="num">STEP 1</span><h3>必要な部分だけ切り出す</h3><p>集計期間と列名は残し、顧客情報やアカウントIDは隠す。</p></div><div class="step"><span class="num">STEP 2</span><h3>事実と不明点を分けて聞く</h3><p>読める数字と、別の画面で確認が必要な数字を分けてもらう。</p></div><div class="step"><span class="num">STEP 3</span><h3>元の画面で照合する</h3><p>期間・列名・数字を見比べてから、次に何を確認するか決める。</p></div></div>
+<div class="prompt"><div class="prompt-top"><strong>Meta広告：コピーして使える指示文</strong><button type="button" id="copy" hidden>指示文をコピー</button></div>
+<blockquote id="prompt">これはMeta広告マネージャの画面です。まず、画像で読める集計期間と列名を書いてください。次に、確認できる事実と、この画像だけでは分からないことを分けてください。「クリック」と「予約完了」は別です。予約が計測できているか判断できなければ、広告の設定を変える前に私が確認すべきことを、優先順に3つ挙げてください。見えない数値は推測しないでください。</blockquote><p id="copy-status" role="status"></p></div>
+<p class="example"><strong>答えの見極め方：</strong> 予約数の列が画像になければ、「予約は0件」ではなく「この画像だけでは確認できない」が正解です。</p>
+</section>
+<section class="guide-section" id="faq"><div class="eyebrow">FAQ</div><h2>Plusでも使える？ Astraに変える必要は？</h2>
+<div class="qa"><h3>Plusでも使えますか？</h3><p>Plus・Pro・Business・Enterpriseの通常チャットに順次提供されています。Enterpriseは管理者設定にも依存します。対象プランでも、一斉表示ではありません。</p></div>
+<div class="qa"><h3>いつもの相談でも、Astraを選ぶ必要がありますか？</h3><p>ありません。画面について質問したり、文章の下書きを頼んだりするなら通常チャットから。複数の資料やコードを扱う仕事を始めるときに、WorkやCodexを検討すれば十分です。</p></div>
+<div class="qa"><h3>「ChatGPT Space」とは同じですか？</h3><p>別です。GPT-6.2はAIモデルの名前。<a href="/ai/chatgpt-space/">ChatGPT Space</a>はページや資料を扱う場所です。</p></div>
+<p class="subtle">図は説明用で、実際の画面ではありません。</p>
+</section>
+
+        <footer class="article-sources">
+          <h2>参考資料</h2>
+          <ul>
+            <li><a class="text-link" href={releaseNotes}>OpenAI公式：ChatGPTリリースノート（2026年11月17日・23日）</a></li>
+            <li><a class="text-link" href={models}>OpenAI公式：GPT-6.2 AstraとSolの発表</a></li>
+          </ul>
+        </footer>
+        <p><a class="text-link" href="/ai/">SpadyのAI部屋に戻る</a></p>
+      </div>
+    </article>
+  </main>
+</CorporateLayout>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('#copy');
+  const text = document.getElementById('prompt');
+  const status = document.getElementById('copy-status');
+  if (button && text && status && navigator.clipboard) {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(text.textContent?.trim() ?? ''); status.textContent = '指示文をコピーしました。'; }
+      catch { status.textContent = '自動コピーできませんでした。指示文を選択してコピーしてください。'; }
+    });
+  }
+</script>
+<style>
+  .room-cover { max-width:1050px; margin:0 auto; }
+  .room-cover img { display:block; width:100%; height:auto; border-radius:14px; background:#11172d; }
+  .room-cover figcaption { margin-top:10px; font-size:.875rem; color:#544d61; }
+  .room-article { max-width:800px; }
+  .room-article h2 { font-size:clamp(1.35rem,3vw,1.9rem); margin:0 0 16px; }
+  .room-article h3 { font-size:1.1rem; margin:24px 0 8px; }
+  .room-article section + section, .article-sources { margin-top:40px; }
+  .room-article section { scroll-margin-top:118px; }
+  .article-index { display:flex; flex-wrap:wrap; gap:8px 18px; padding:0 0 14px; margin:0 0 25px; border-bottom:1px solid var(--line); font-size:.9rem; }
+  .article-index a { text-underline-offset:4px; }
+  .room-article li + li { margin-top:8px; }
+  .room-article ol { padding-inline-start:1.6em; margin-block:12px 22px; }
+  .fine-print a { text-underline-offset:4px; }
+
+  .room-article { --diagram-line:#e1d8ed; --diagram-purple:#563a86; }
+  .room-article section + section { margin-top:42px; }
+  .fine-print a { text-underline-offset:4px; }
+  .eyebrow { font-size:.85rem; font-weight:750; letter-spacing:.055em; color:var(--diagram-purple); margin-bottom:7px; }
+  .room-article figure { margin:15px 0 0; }
+  .room-article figcaption,.subtle { margin-top:9px; color:#544d61; font-size:.875rem; line-height:1.7; }
+  .cards,.flows,.charts { display:grid; gap:12px; }
+  .cards,.flows { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .charts,.dates { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .card,.step,.chart { border:1px solid var(--diagram-line); border-radius:12px; padding:16px; min-width:0; }
+  .card:nth-child(1) { background:#f1ebfb; }
+  .card:nth-child(2) { background:#eaf0ff; }
+  .card:nth-child(3) { background:#faeefa; }
+  .icon { display:grid; place-items:center; width:40px; height:40px; background:#fff; color:var(--diagram-purple); border:1px solid var(--diagram-line); border-radius:10px; margin-bottom:8px; }
+  .icon svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round; stroke-linejoin:round; }
+  .card h3,.chart h3,.step h3 { font-size:1rem; line-height:1.4; margin:0 0 5px; }
+  .card p,.step p { font-size:.9rem; line-height:1.65; margin:0; }
+  .card b,.deliverable { display:block; }
+  .deliverable { margin-top:8px; font-size:.84rem; font-weight:680; }
+  .model-key { margin-top:14px; padding:13px 16px; background:#f8f5fc; border-left:4px solid #8568b2; border-radius:0 10px 10px 0; }
+  .model-key p:last-child,.qa p:last-child { margin:0; }
+  .dates { display:grid; gap:8px 15px; margin-top:13px; color:#544d61; font-size:.9rem; }
+  .dates time { color:#332447; font-weight:750; }
+  .metric { display:grid; grid-template-columns:4.5rem minmax(18px,1fr) 3.7rem; align-items:center; gap:6px; font-size:.85rem; margin-top:9px; }
+  .metric b { text-align:right; font-variant-numeric:tabular-nums; }
+  .track { height:10px; background:#f1edf5; border-radius:99px; }
+  .track span { display:block; width:var(--pct); height:100%; border-radius:inherit; background:#a194b9; }
+  .metric.new .track span { background:#6844a0; }
+  .step { background:#faf8fe; }
+  .num { display:block; color:var(--diagram-purple); font-weight:750; font-size:.85rem; margin-bottom:5px; }
+  .prompt { margin:16px 0; background:#f1edf8; border-radius:10px; padding:clamp(12px,3vw,18px); border:1px solid var(--diagram-line); }
+  .prompt-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:9px; margin-bottom:8px; }
+  .prompt button { border:0; background:#563a86; color:#fff; border-radius:7px; font:inherit; font-size:.875rem; font-weight:700; padding:7px 12px; cursor:pointer; }
+  .prompt button[hidden] { display:none; }
+  .prompt blockquote { margin:0; font-size:.95rem; }
+  .prompt [role=status]:empty { display:none; }
+  .prompt [role=status] { margin:6px 0 0; font-size:.84rem; }
+  .example { padding:12px 14px; border:1px solid var(--diagram-line); border-radius:10px; }
+  .qa { margin-top:12px; border-top:1px solid var(--diagram-line); padding-top:10px; }
+  .qa h3 { margin:0 0 3px; }
+  @media (max-width:640px) {
+    .cards,.flows,.charts,.dates { grid-template-columns:minmax(0,1fr); }
+    .card { display:grid; grid-template-columns:40px minmax(0,1fr); column-gap:11px; }
+    .card .icon { grid-row:span 2; margin:0; }
+    .card h3,.card p { grid-column:2; }
+  }
+</style>
