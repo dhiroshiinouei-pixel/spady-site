@@ -10,9 +10,9 @@ import type {Service} from '../../data/services';
 export function getStaticPaths(){return services.map(service=>({params:{slug:service.id},props:{service}}));}
 const {service:s}=Astro.props as {service:Service};
 const review = process.env.SPAdY_HOME_REVIEW === '1';
-const guides: Partial<Record<string, 'pika' | 'koto' | 'musu' | 'toto' | 'team'>> = {
-  'meta-ads':'pika', 'web-design':'koto', 'line-official-account':'musu',
-  'ai-training':'toto', 'ai-implementation':'toto', 'digital-marketing':'team',
+const guides: Partial<Record<string, 'ado' | 'meme' | 'lala' | 'love' | 'team'>> = {
+  'meta-ads':'meme', 'web-design':'team', 'line-official-account':'lala',
+  'ai-training':'love', 'ai-implementation':'love', 'digital-marketing':'ado',
 };
 const guide = guides[s.id];
 const related=services.filter(item=>s.relatedIds?.includes(item.id));

@@ -1,28 +1,34 @@
 ---
-interface Props { member: 'pika' | 'koto' | 'musu' | 'toto' | 'team'; compact?: boolean }
-const {member, compact=false} = Astro.props;
-const names = {pika:'ピカ',koto:'コト',musu:'ムス',toto:'トト',team:'4人のチーム'};
+type GuideMember = 'ado' | 'meme' | 'lala' | 'love';
+interface Props { member: GuideMember | 'team'; compact?: boolean }
+const { member, compact = false } = Astro.props;
+const names = { ado:'アド', meme:'メメ', lala:'ララ', love:'ラヴ', team:'4人のチーム' };
+const roles = { ado:'広告', meme:'Meta', lala:'LINE', love:'AI' };
+const characterImage = (id: GuideMember) => '/home/crew/' + id + '.webp';
+const team: GuideMember[] = ['ado', 'meme', 'lala', 'love'];
 ---
-<div class:list={['felt-guide', member, {compact}]} data-felt-guide={member}>
+<div class:list={['felt-guide', member, { compact }]} data-felt-guide={member}>
   <span class="felt-guide-star" aria-hidden="true">✦</span>
-  {member === 'team' ? <div class="felt-guide-team" aria-hidden="true">{['pika','koto','musu','toto'].map(toy => <span class:list={['felt-guide-toy',toy]}></span>)}</div> : <span class="felt-guide-toy" aria-hidden="true"></span>}
-  <span class="felt-guide-label"><small>SPADY CREW</small> {names[member]}</span>
+  {member === 'team'
+    ? <div class="felt-guide-team" aria-hidden="true">{team.map(id => <img class="felt-guide-toy" src={characterImage(id)} alt="" width="658" height="652" decoding="async" />)}</div>
+    : <img class="felt-guide-toy felt-guide-solo" src={characterImage(member)} alt="" width="658" height="652" decoding="async" />}
+  <span class="felt-guide-label"><small>SPADY CREW</small> {names[member]}{member !== 'team' && <small class="felt-guide-role">{roles[member]}</small>}</span>
 </div>
 <style>
-  .felt-guide{--color:#ffcf85;--glow:#fff1ac;--ink:#603410;--edge:#ca8e56;--pos:0 0;position:relative;isolation:isolate;width:100%;max-width:440px;min-width:0;aspect-ratio:1.32;margin-inline:auto;display:grid;place-items:center;overflow:hidden;border:1px solid var(--edge);border-radius:25px;background:radial-gradient(ellipse at 33% 18%,var(--glow),transparent 74%),var(--color);box-shadow:0 9px 0 -5px var(--edge)}
-  .koto{--color:#d3b9ff;--glow:#f9dcff;--ink:#4e2573;--edge:#a181c3;--pos:100% 0}
-  .musu{--color:#a8ead3;--glow:#efffb8;--ink:#194a40;--edge:#70ac99;--pos:0 100%}
-  .toto{--color:#abbfff;--glow:#cff8ff;--ink:#253b76;--edge:#8397cc;--pos:100% 100%;--size:191% 200%}
-  .felt-guide-toy{width:75%;aspect-ratio:1.04;background:url('/home/spady-crew-felt.webp') var(--pos)/var(--size,200% 200%) no-repeat;filter:drop-shadow(0 7px 9px #36204438);transform-origin:50% 75%}
-  .musu.felt-guide-toy,.musu>.felt-guide-toy{clip-path:inset(0 4.5% 0 0)}
+  .felt-guide{--color:#ffcf85;--glow:#fff1ac;--ink:#603410;--edge:#ca8e56;position:relative;isolation:isolate;width:100%;max-width:440px;min-width:0;aspect-ratio:1.32;margin-inline:auto;display:grid;place-items:center;overflow:hidden;border:1px solid var(--edge);border-radius:25px;background:radial-gradient(ellipse at 33% 18%,var(--glow),transparent 74%),var(--color);box-shadow:0 9px 0 -5px var(--edge)}
+  .meme{--color:#a9ceff;--glow:#e0f5ff;--ink:#233664;--edge:#7b9dd1}
+  .lala{--color:#c5eb9b;--glow:#f4ffc1;--ink:#2a4929;--edge:#83a863}
+  .love{--color:#f8bfde;--glow:#fff1bd;--ink:#672b54;--edge:#bc7da8}
+  .felt-guide-toy{display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;filter:drop-shadow(0 5px 8px #36204432);transform-origin:50% 75%}
+  .felt-guide-solo{width:69%;height:76%;margin-bottom:3%}
   .felt-guide-star{position:absolute;left:9%;top:9%;font-size:clamp(19px,4vw,38px);line-height:1;color:var(--ink);opacity:.68}
   .felt-guide-label{position:absolute;right:12px;bottom:12px;padding:4px 9px;border:1px solid var(--edge);border-radius:99px;background:#fffdf5;color:var(--ink);font:800 12px/1.3 system-ui,sans-serif}
   .felt-guide-label small{font-size:9px;letter-spacing:.09em;margin-right:3px}
+  .felt-guide-label .felt-guide-role{font-size:10px;margin:0 0 0 4px;letter-spacing:0}
   .team{--edge:#ab8fb9;--ink:#492968;background:linear-gradient(145deg,#fff0c2,#ead6fb 52%,#c7edff)}
-  .felt-guide-team{width:70%;max-width:300px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:-5%;gap:0}
-  .felt-guide-team .felt-guide-toy{width:100%}
+  .felt-guide-team{width:67%;height:76%;max-width:300px;margin-bottom:5%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px 8px}
   .compact{max-width:245px}
   @media(prefers-reduced-motion:no-preference){.felt-guide-toy{animation:felt-guide-enter .54s cubic-bezier(.17,.8,.25,1.13) both}}
   @keyframes felt-guide-enter{from{opacity:.5;transform:translateY(11px) rotate(-4deg) scale(.92)}to{opacity:1;transform:none}}
-  @media(max-width:650px){.felt-guide{max-width:340px}.compact{max-width:210px}}
+  @media(max-width:650px){.felt-guide{max-width:340px}.felt-guide-solo{height:71%;margin-bottom:8%}.compact{max-width:210px}}
 </style>

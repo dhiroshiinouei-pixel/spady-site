@@ -15,10 +15,16 @@ const services = [
   { id:'digital-marketing', label:'どこから始めるか決める', text:'広告・SNS・Web・LINEを個別に足す前に、集客の詰まりと優先順位を整理します。', color:'peach' },
 ].map(item => ({...currentServices.find(s=>s.id===item.id)!,...item}));
 const crew = [
-  {id:'pika', name:'ピカ', latin:'PIKA', job:'広告', art:'radar', line:'まだ知らない人に、お店を見つけてもらう。', chapter:'お店を知ってもらう。', example:'たとえば、まだお店を知らない近隣の人へ。Instagram広告で、初めて来る理由を届ける。', cue:'見つける', detail:'Meta・Instagram広告', href:'/services/meta-ads/'},
-  {id:'koto', name:'コト', latin:'KOTO', job:'Web', art:'frame', line:'お店ならではの魅力を、選びやすく伝える。', chapter:'行きたい理由をつくる。', example:'気になってページを見た人が、写真・料金・アクセスをすぐ確認できる。そのまま予約に進める。', cue:'選ぶ', detail:'Webサイト・LP制作', href:'/services/web-design/'},
-  {id:'musu', name:'ムス', latin:'MUSU', job:'LINE', art:'chat', line:'予約や案内を、次の来店につなげる。', chapter:'一度の来店を、次へつなぐ。', example:'来店後もLINEでつながり、必要な案内を必要なときに。次に来たいと思ったとき、迷わず予約できる。', cue:'また来る', detail:'LINE公式アカウント構築', href:'/services/line-official-account/'},
-  {id:'toto', name:'トト', latin:'TOTO', job:'生成AI', art:'spark', line:'繰り返しの作業を減らし、人に向き合う時間をつくる。', chapter:'お客さまに向き合う時間を。', example:'よくある質問への返信案は生成AIに。最終確認はスタッフが行い、お客さまに向き合う時間をつくる。', cue:'運営を軽くする', detail:'AI導入・伴走支援', href:'/services/ai-implementation/'},
+  {id:'ado', name:'アド', job:'広告', line:'まだ知らない人に、お店を見つけてもらう。', detail:'広告・集客の支援', href:'/services/digital-marketing/'},
+  {id:'meme', name:'メメ', job:'Meta', line:'InstagramやFacebookで、届けたい人に広告を届ける。', detail:'Meta・Instagram広告', href:'/services/meta-ads/'},
+  {id:'lala', name:'ララ', job:'LINE', line:'予約や案内を、次の来店につなげる。', detail:'LINE公式アカウント構築', href:'/services/line-official-account/'},
+  {id:'love', name:'ラヴ', job:'AI', line:'繰り返しの作業を減らし、人に向き合う時間をつくる。', detail:'AI導入・伴走支援', href:'/services/ai-implementation/'},
+];
+const journey = [
+  {art:'ado', job:'広告', chapter:'お店を知ってもらう。', example:'たとえば、まだお店を知らない近隣の人へ。Instagram広告で、初めて来る理由を届ける。', cue:'見つける', detail:'Meta・Instagram広告', href:'/services/meta-ads/'},
+  {art:'meme', job:'Web', chapter:'行きたい理由をつくる。', example:'気になってページを見た人が、写真・料金・アクセスをすぐ確認できる。そのまま予約に進める。', cue:'選ぶ', detail:'Webサイト・LP制作', href:'/services/web-design/'},
+  {art:'lala', job:'LINE', chapter:'一度の来店を、次へつなぐ。', example:'来店後もLINEでつながり、必要な案内を必要なときに。次に来たいと思ったとき、迷わず予約できる。', cue:'また来る', detail:'LINE公式アカウント構築', href:'/services/line-official-account/'},
+  {art:'love', job:'生成AI', chapter:'お客さまに向き合う時間を。', example:'よくある質問への返信案は生成AIに。最終確認はスタッフが行い、お客さまに向き合う時間をつくる。', cue:'運営を軽くする', detail:'AI導入・伴走支援', href:'/services/ai-implementation/'},
 ];
 const work = [
  { tag:'LINE公式アカウント構築', title:'QQEnglish 様', description:'留学とオンライン英会話。2つの事業のLINE公式アカウントを構築。', image:'/logo-qqenglish.png', alt:'QQEnglish', href:'/fullfunnelmarketing/', width:244,height:87,variant:'qq' },
@@ -40,9 +46,9 @@ const work = [
         <div class="crew-stage" data-crew-stage>
           <svg class="crew-decoration" viewBox="0 0 1160 310" aria-hidden="true" preserveAspectRatio="none"><path d="M-30 219C128 56 231 284 370 150S553 22 687 132 903 248 1199 60" fill="none" stroke="#fff" stroke-width="32" stroke-linecap="round" opacity=".66"/><path d="M-30 219C128 56 231 284 370 150S553 22 687 132 903 248 1199 60" fill="none" stroke="#8e80ce" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 12" opacity=".66"/></svg>
           <span class="crew-spark crew-spark-a" aria-hidden="true">✦</span><span class="crew-spark crew-spark-b" aria-hidden="true">✷</span><span class="crew-spark crew-spark-c" aria-hidden="true">✧</span><span class="crew-spark crew-spark-d" aria-hidden="true">✦</span>
-          <div class="crew-toolbar"><span class="crew-wordmark">SPADY CREW</span><span class="crew-classification">4つの支援を案内する仲間たち</span></div>
+          <div class="crew-toolbar"><span class="crew-wordmark">SPADY CREW</span><span class="crew-classification">Spadyの仕事を案内する4人</span></div>
           <div class="crew-grid">{crew.map((c,i)=><button type="button" class={`crew-member crew-${c.id}`} data-member={i} data-name={c.name} data-line={c.line} data-href={c.href} data-detail={c.detail} aria-pressed={i===0?'true':'false'} aria-controls="crew-info"><span class="crew-portrait"><span class={`felt-sprite felt-${c.id}`} aria-hidden="true"></span></span><span class="crew-shadow" aria-hidden="true"></span><span class="crew-tag"><strong>{c.name}</strong><span>{c.job}</span></span></button>)}</div>
-          <div class="crew-info" id="crew-info"><p aria-live="polite"><b data-crew-name>ピカ</b><span data-crew-line>{crew[0].line}</span></p><a data-crew-link href={crew[0].href}>{crew[0].detail} <span aria-hidden="true">↗</span></a></div>
+          <div class="crew-info" id="crew-info"><p aria-live="polite"><b data-crew-name>{crew[0].name}</b><span data-crew-line>{crew[0].line}</span></p><a data-crew-link href={crew[0].href}>{crew[0].detail} <span aria-hidden="true">↗</span></a></div>
           <div class="crew-confetti" aria-hidden="true">{Array.from({length:14},(_,i)=><i style={`--i:${i};--x:${(i*17)%100}%;--turn:${(i*47)%360}deg`}></i>)}</div>
         </div>
         <div class="crew-stage-foot"><span>キャラクターを押して、得意な仕事を見てみよう。</span><button type="button" data-crew-cheer hidden>全員集合！ <span aria-hidden="true">✦</span></button></div>
@@ -60,13 +66,13 @@ const work = [
           <div class="story-screen" aria-hidden="true">
             <div class="story-topline"><span>SPADY / STORY MODE</span><span class="story-register"><i></i><i></i><i></i></span></div>
             <svg class="story-orbit" viewBox="0 0 640 370" preserveAspectRatio="none"><path class="story-track" d="M-50 258C34 129 150 333 259 198S452 73 506 200S615 178 685 89" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".55"/><path class="story-line" pathLength="1" d="M-50 258C34 129 150 333 259 198S452 73 506 200S615 178 685 89" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
-            {crew.map((c,i)=><div class={`story-toy story-toy-${c.id}`} data-story-art={i}><span class={`felt-sprite felt-${c.id}`}></span></div>)}
-            <div class="story-status">{crew.map((c,i)=><span data-story-active={i}><b>0{i+1}</b> {c.cue}</span>)}</div>
+            {journey.map((c,i)=><div class={`story-toy story-toy-${c.art}`} data-story-art={i}><span class={`felt-sprite felt-${c.art}`}></span></div>)}
+            <div class="story-status">{journey.map((c,i)=><span data-story-active={i}><b>0{i+1}</b> {c.cue}</span>)}</div>
           </div>
           <div class="story-progress" aria-hidden="true"><span data-story-progress></span></div>
         </div>
-        <div class="story-steps">{crew.map((c,i)=><article class={`story-card story-reveal story-card-${c.id}`} data-story-step={i}>
-          <div class="story-card-kicker"><span>0{i+1} / {c.job}</span><span class={`story-mobile-toy felt-sprite felt-${c.id}`} aria-hidden="true"></span></div>
+        <div class="story-steps">{journey.map((c,i)=><article class={`story-card story-reveal story-card-${c.art}`} data-story-step={i}>
+          <div class="story-card-kicker"><span>0{i+1} / {c.job}</span><span class={`story-mobile-toy felt-sprite felt-${c.art}`} aria-hidden="true"></span></div>
           <h3>{c.chapter}</h3><p>{c.example}</p><a class="ed-text-link" href={c.href}>{c.detail}を詳しく <span aria-hidden="true">↗</span></a>
         </article>)}</div>
       </div>

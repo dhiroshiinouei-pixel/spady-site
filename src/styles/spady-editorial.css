@@ -221,9 +221,9 @@
 .crew-toolbar button:disabled{cursor:default}
 .crew-grid{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end;max-width:930px;margin:0 auto;padding:0 25px 10px}
 .crew-member{position:relative;display:grid;justify-items:center;min-width:0;padding:0 0 5px;background:none;border:0;color:#211939;cursor:pointer;font:inherit;--lean:-5deg;--duration:3.75s;--delay:-.4s;--badge:#ffd37d}
-.crew-koto{--lean:5deg;--badge:#ebd8ff;--duration:4.4s;--delay:-1.2s}
-.crew-musu{--lean:-4deg;--badge:#b8f2d5;--duration:3.4s;--delay:-2.1s}
-.crew-toto{--lean:5deg;--badge:#bfe6ff;--duration:4.1s;--delay:-.85s}
+.crew-meme{--lean:5deg;--badge:#c4e5ff;--duration:4.4s;--delay:-1.2s}
+.crew-lala{--lean:-4deg;--badge:#e0f6ab;--duration:3.4s;--delay:-2.1s}
+.crew-love{--lean:5deg;--badge:#ffd3e7;--duration:4.1s;--delay:-.85s}
 .crew-portrait{position:relative;z-index:1;width:100%;max-width:211px;aspect-ratio:1;display:block;transform-origin:50% 75%;animation:crew-bob var(--duration) ease-in-out var(--delay) infinite;transition:scale .2s}
 .crew-portrait img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
 .crew-shadow{position:absolute;bottom:52px;width:60%;height:10px;border-radius:50%;background:#4a2f8044;filter:blur(4px);pointer-events:none}

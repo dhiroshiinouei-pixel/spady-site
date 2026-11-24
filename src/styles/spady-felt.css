@@ -1,4 +1,4 @@
-/* Art direction: four felt miniatures and a color-led, explorable retail journey. */
+/* Art direction: four fabric mascots and a color-led, explorable retail journey. */
 .editorial-home .corp-header{background:#fffef8;border-color:#d6cbe1}
 .felt-home .ed-review{background:#eee7ff;color:#49336a}
 .felt-home .ed-hero{background:radial-gradient(ellipse at 4% 10%,#ffe996 0,transparent 38%),radial-gradient(ellipse at 98% 36%,#fac2f1 0,transparent 40%),linear-gradient(150deg,#fffaf0 14%,#f5e8ff 83%,#e6eaff);overflow:hidden}
@@ -11,16 +11,16 @@
 .crew-classification{font-size:12px;color:#3e2d59;font-weight:700}
 .felt-home .crew-portrait{max-width:245px;aspect-ratio:1.04}
 .felt-home .crew-shadow{bottom:53px;height:17px;filter:blur(9px)}
-.felt-sprite{display:block;width:100%;height:100%;background-image:url('/home/spady-crew-felt.webp');background-repeat:no-repeat;background-size:200% 200%;pointer-events:none}
-.felt-pika{background-position:0 0}
-.felt-koto{background-position:100% 0}
-.felt-musu{background-position:0 100%}
-.felt-toto{background-position:100% 100%;background-size:191% 200%}
-.felt-home .crew-portrait .felt-sprite{filter:drop-shadow(0 9px 12px #52317721)}
+.felt-sprite{display:block;width:100%;height:100%;background-position:center 80%;background-repeat:no-repeat;background-size:93% auto;pointer-events:none}
+.felt-ado{background-image:url('/home/crew/ado.webp')}
+.felt-meme{background-image:url('/home/crew/meme.webp')}
+.felt-lala{background-image:url('/home/crew/lala.webp')}
+.felt-love{background-image:url('/home/crew/love.webp')}
+.felt-home .crew-portrait .felt-sprite{filter:drop-shadow(0 6px 9px #38203a23)}
 .felt-home .crew-tag{padding:6px 12px}
 .felt-home .crew-info{margin-top:3px;background:#fffcfc}
 .felt-home .crew-portrait{animation:felt-arrive .78s cubic-bezier(.17,.8,.25,1.25) both;animation-delay:calc(.11s * var(--order,0))}
-.felt-home .crew-koto{--order:1}.felt-home .crew-musu{--order:2}.felt-home .crew-toto{--order:3}
+.felt-home .crew-meme{--order:1}.felt-home .crew-lala{--order:2}.felt-home .crew-love{--order:3}
 .felt-home .crew-spark{animation:crew-spin 1.4s ease-in-out 2}
 .felt-home .crew-member[data-tapped] .crew-portrait{animation:felt-tap .52s cubic-bezier(.18,.7,.35,1.2) both}
 .felt-home .crew-stage[data-cheer] .crew-portrait{animation:crew-cheer .85s cubic-bezier(.2,.8,.2,1) both}
@@ -46,7 +46,7 @@
 .story-toy[data-story-art="0"]{opacity:1}
 .story-section[data-current="1"] .story-toy,.story-section[data-current="2"] .story-toy,.story-section[data-current="3"] .story-toy{opacity:0}
 .story-section .story-toy[data-active]{opacity:1;z-index:1}
-.story-toy .felt-sprite{filter:drop-shadow(12px 12px 16px #482b5644)}
+.story-toy .felt-sprite{background-size:contain;filter:drop-shadow(5px 9px 15px #482b5633)}
 .story-status{position:absolute;display:grid;bottom:13px;left:15px;right:15px;z-index:3}
 .story-status span{grid-area:1/1;display:none;justify-self:start;padding:7px 15px;background:#fffdf5;border:1px solid #603b9866;border-radius:999px;color:#352153;font-size:14px;font-weight:800}
 .story-status span:first-child,.story-status span[data-active]{display:block}
@@ -56,7 +56,7 @@
 .story-progress span{display:block;background:linear-gradient(90deg,#fe9b51,#9d5afe,#52bc98,#517eef);height:100%;width:100%;transform-origin:left;transform:scaleX(var(--story-p,.02))}
 .story-steps{display:grid;gap:15px}
 .story-card{min-height:193px;padding:clamp(18px,2.7vw,32px);background:#fffbeb;border:1px solid #d89d6e;border-radius:22px;color:#211a39}
-.story-card-koto{background:#e9d8ff;border-color:#b79bd7}.story-card-musu{background:#daf7e1;border-color:#8ed6b1}.story-card-toto{background:#daeaff;border-color:#a3b5e0}
+.story-card-meme{background:#e9d8ff;border-color:#b79bd7}.story-card-lala{background:#daf7e1;border-color:#8ed6b1}.story-card-love{background:#daeaff;border-color:#a3b5e0}
 .story-card-kicker{display:flex;align-items:center;justify-content:space-between;color:#523478;font-size:12px;letter-spacing:.08em;font-weight:850}
 .story-card h3{font-size:clamp(24px,3.05vw,41px);letter-spacing:-.067em;line-height:1.2;margin:10px 0}
 .story-card p{color:#463758;line-height:1.7;font-size:15px}
@@ -68,7 +68,7 @@
 @media(max-width:700px){
  .felt-home .ed-hero h1{font-size:clamp(35px,9.9vw,59px);line-height:1.11}
  .felt-home .crew-stage{border-radius:18px}
- .felt-home .crew-grid{padding-inline:5px;gap:1px}
+ .felt-home .crew-grid{padding-inline:5px;padding-top:9px;gap:1px}
  .felt-home .crew-tag{padding:4px 5px}
  .felt-home .crew-shadow{bottom:39px;height:6px;filter:blur(4px)}
  .crew-classification{font-size:10px}
@@ -85,12 +85,15 @@
  .story-section[data-motion] .story-card{min-height:clamp(200px,35vh,320px);display:flex;flex-direction:column;justify-content:center}
  .story-section[data-motion] .story-card[data-active]{box-shadow:0 5px 0 #73499b55}
 }
-.story-toy{width:min(65%,400px);left:50%;top:53px;translate:-50% 0}
+.story-toy{width:min(65%,400px);height:calc(100% - 97px);left:50%;top:51px;translate:-50% 0}
 .story-screen{max-height:59vh}
 @media(max-width:700px) and (prefers-reduced-motion:no-preference){
+ .felt-home .crew-stage:not([data-cheer]) .crew-member[data-tapped] .crew-portrait{animation-name:felt-tap-mobile}
+ .felt-home .crew-stage[data-cheer] .crew-portrait{animation-name:crew-cheer-mobile}
+ @keyframes crew-cheer-mobile{0%,100%{transform:translateY(0) rotate(var(--lean))}28%{transform:translateY(-11px) rotate(-9deg) scale(1.05)}62%{transform:translateY(-4px) rotate(7deg)}}
+ @keyframes felt-tap-mobile{0%,100%{transform:none}20%{transform:scale(1.06,.92)}51%{transform:translateY(-10px) scale(.97,1.04)}}
  .story-card.story-entered .story-mobile-toy{animation:felt-mobile-reveal .58s cubic-bezier(.2,.8,.2,1.2) backwards}
  @keyframes felt-mobile-reveal{from{transform:translateY(14px) rotate(-15deg) scale(.75)}to{transform:none}}
 }
-.felt-musu{clip-path:inset(0 4.5% 0 0)}
 @media(min-width:701px){.felt-home .ed-hero-grid{padding-top:clamp(28px,3.6vw,48px)}.felt-home .ed-hero h1{font-size:clamp(43px,6vw,87px);margin-block:10px 11px}.felt-home .crew-stage{margin-top:clamp(22px,3vw,40px)}}
 @media(max-width:700px){.felt-home .ed-hero h1{font-size:clamp(28px,8.7vw,59px)}}
