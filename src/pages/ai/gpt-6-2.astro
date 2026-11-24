@@ -3,9 +3,7 @@ import CorporateLayout from '../../layouts/CorporateLayout.astro';
 import { getAiRoomArticle } from '../../data/ai-room';
 const item = getAiRoomArticle('/ai/gpt-6-2/');
 const releaseNotes = 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes';
-const faq = 'https://help.openai.com/en/articles/12168547-voice-dictation-faq';
-const demo = 'https://x.com/ChatGPT/status/2123114715257946334';
-const demoStillSource = 'https://www.ithinkdiff.com/chatgpt-gpt-6-2-no-10-minute-limit/';
+const models = 'https://openai.com/index/introducing-gpt-6-2-astra-sol/';
 ---
 <CorporateLayout page="ai/gpt-6-2/" title={`${item.title}｜Spady`} description={item.description} socialImage={{path:item.image,alt:item.imageAlt,width:1440,height:810,mime:"image/webp"}} article={{ author: '井上 博史' }}>
   <main id="main">
@@ -87,7 +85,6 @@ const demoStillSource = 'https://www.ithinkdiff.com/chatgpt-gpt-6-2-no-10-minute
   .article-index a { text-underline-offset:4px; }
   .room-article li + li { margin-top:8px; }
   .room-article ol { padding-inline-start:1.6em; margin-block:12px 22px; }
-  .fine-print a { text-underline-offset:4px; }
 
   .room-article { --diagram-line:#e1d8ed; --diagram-purple:#563a86; }
   .room-article section + section { margin-top:42px; }
