@@ -12,10 +12,10 @@
 .felt-home .crew-portrait{max-width:245px;aspect-ratio:1.04}
 .felt-home .crew-shadow{bottom:53px;height:17px;filter:blur(9px)}
 .felt-sprite{display:block;width:100%;height:100%;background-position:center 80%;background-repeat:no-repeat;background-size:93% auto;pointer-events:none}
-.felt-ado{background-image:url('/home/crew/ado.webp')}
-.felt-meme{background-image:url('/home/crew/meme.webp')}
-.felt-lala{background-image:url('/home/crew/lala.webp')}
-.felt-love{background-image:url('/home/crew/love.webp')}
+.felt-ado{background-image:url('/home/crew-dots/ado.webp')}
+.felt-meme{background-image:url('/home/crew-dots/meme.webp')}
+.felt-lala{background-image:url('/home/crew-dots/lala.webp')}
+.felt-love{background-image:url('/home/crew-dots/love.webp')}
 .felt-home .crew-portrait .felt-sprite{filter:drop-shadow(0 6px 9px #38203a23)}
 .felt-home .crew-tag{padding:6px 12px}
 .felt-home .crew-info{margin-top:3px;background:#fffcfc}
@@ -97,3 +97,14 @@
 }
 @media(min-width:701px){.felt-home .ed-hero-grid{padding-top:clamp(28px,3.6vw,48px)}.felt-home .ed-hero h1{font-size:clamp(43px,6vw,87px);margin-block:10px 11px}.felt-home .crew-stage{margin-top:clamp(22px,3vw,40px)}}
 @media(max-width:700px){.felt-home .ed-hero h1{font-size:clamp(28px,8.7vw,59px)}}
+
+/* The tiny crew sways independently of the existing entrance and tap animation. */
+@media(prefers-reduced-motion:no-preference){
+ .felt-home .crew-portrait .felt-sprite{transform-origin:50% 93%;animation:spady-dot-idle var(--dot-time,4.5s) ease-in-out var(--dot-shift,-.3s) infinite}
+ .felt-home .crew-meme{--dot-time:4.8s;--dot-shift:-1.5s;--dot-tilt:-2deg}
+ .felt-home .crew-lala{--dot-time:4.1s;--dot-shift:-2.4s;--dot-tilt:2.1deg}
+ .felt-home .crew-love{--dot-time:5s;--dot-shift:-3.1s;--dot-tilt:-1.7deg}
+ .felt-home[data-crew-paused] .crew-portrait .felt-sprite,.felt-home .crew-stage:is([data-out-of-view],[data-page-hidden]) .crew-portrait .felt-sprite{animation-play-state:paused}
+ .felt-home .crew-member[data-tapped] .felt-sprite,.felt-home .crew-stage[data-cheer] .felt-sprite{animation-play-state:paused}
+ @keyframes spady-dot-idle{0%,100%{transform:none}48%{transform:translateY(-3px) rotate(var(--dot-tilt,1.7deg))}}
+}

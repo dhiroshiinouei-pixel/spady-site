@@ -4,14 +4,14 @@ interface Props { member: GuideMember | 'team'; compact?: boolean }
 const { member, compact = false } = Astro.props;
 const names = { ado:'アド', meme:'メメ', lala:'ララ', love:'ラヴ', team:'4人のチーム' };
 const roles = { ado:'広告', meme:'Meta', lala:'LINE', love:'AI' };
-const characterImage = (id: GuideMember) => '/home/crew/' + id + '.webp';
+const characterImage = (id: GuideMember) => '/home/crew-dots/' + id + '.webp';
 const team: GuideMember[] = ['ado', 'meme', 'lala', 'love'];
 ---
 <div class:list={['felt-guide', member, { compact }]} data-felt-guide={member}>
   <span class="felt-guide-star" aria-hidden="true">✦</span>
   {member === 'team'
-    ? <div class="felt-guide-team" aria-hidden="true">{team.map(id => <img class="felt-guide-toy" src={characterImage(id)} alt="" width="658" height="652" decoding="async" />)}</div>
-    : <img class="felt-guide-toy felt-guide-solo" src={characterImage(member)} alt="" width="658" height="652" decoding="async" />}
+    ? <div class="felt-guide-team" aria-hidden="true">{team.map(id => <img class="felt-guide-toy" src={characterImage(id)} alt="" width="672" height="672" decoding="async" />)}</div>
+    : <img class="felt-guide-toy felt-guide-solo" src={characterImage(member)} alt="" width="672" height="672" decoding="async" />}
   <span class="felt-guide-label"><small>SPADY CREW</small> {names[member]}{member !== 'team' && <small class="felt-guide-role">{roles[member]}</small>}</span>
 </div>
 <style>
