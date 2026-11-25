@@ -358,3 +358,19 @@ body{background:var(--paper)}
  .workflow-photo img{height:clamp(124px,38vw,210px)}
  .feature-demo.demo-survey{aspect-ratio:1.64}
 }
+
+/* The photo stays behind the pastel surface, never in front of the copy. */
+.industry-grid li{position:relative;isolation:isolate;overflow:hidden}
+.industry-grid .tone-0{--industry-image:url("./case-yakiniku.webp")}
+.industry-grid .tone-1{--industry-image:url("./case-glamping.webp")}
+.industry-grid .tone-2{--industry-image:url("./industry-classroom.webp")}
+.industry-grid .tone-3{--industry-image:url("./industry-gym.webp")}
+.industry-grid .tone-4{--industry-image:url("./industry-local.webp")}
+.industry-grid li::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(110deg,var(--tint) 3%,color-mix(in srgb,var(--tint) 93%,transparent) 32%,color-mix(in srgb,var(--tint) 79%,transparent) 61%,color-mix(in srgb,var(--tint) 72%,transparent) 100%),var(--industry-image);background-size:cover;background-position:center,center 48%}
+.industry-grid p{color:#423b59}
+@media(max-width:760px){
+ .industry-grid li::before{background-position:center,center 44%}
+ .industry-grid li:last-child::before{background-position:center,right 46%;background-size:cover,min(69%,260px) auto;background-repeat:no-repeat}
+}
+
+.industry-title-unit{white-space:nowrap}
