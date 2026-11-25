@@ -16,9 +16,13 @@
   const sticky = get('mobileCta');
   const allowedOrigin = 'https://meetings-na2.hubspot.com';
   const base = new URL('/kuchikomi365/metalinemeo', allowedOrigin);
-  const validPixel = /^\d{10,25}$/.test(CONFIG.metaPixelId);
   const consentKey = 'spady_k365_meta_consent';
   const utm = new URLSearchParams(location.search);
+  const refs = utm.getAll('ref');
+  const referralId = refs.length === 1 && /^sp_[A-Za-z0-9_-]{24}$/.test(refs[0]) ? refs[0] : '';
+  // Pixel can capture the page URL automatically. Do not load it on any ref URL.
+  const validPixel = refs.length === 0 && /^\d{10,25}$/.test(CONFIG.metaPixelId);
+  const previewOrigin = 'https://feat-kuchikomi365-referral-b.spady-site.pages.dev';
   const steps = { view: 'K365_ReservationSectionView', cta: 'K365_BookingCTAClick' };
   let metaEnabled = false;
   let consent = null;
@@ -172,6 +176,15 @@
     // Keep HubSpot's own confirmation/next actions in view; this is supplementary.
     safeMeta('track', 'Schedule', { content_name: '口コミ365 商談予約' });
     notify();
+    if (referralId && location.origin === previewOrigin) {
+      try {
+        fetch('/api/kuchikomi365/referral', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ref: referralId }), keepalive: true,
+          credentials: 'omit', referrerPolicy: 'no-referrer',
+        }).catch(() => {});
+      } catch (_) {}
+    }
   });
   frame.src = embedded.href;
 })();
