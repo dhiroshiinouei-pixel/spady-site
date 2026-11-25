@@ -343,6 +343,7 @@ body{background:var(--paper)}
 .demo-survey figcaption{position:absolute;right:8px;bottom:7px;padding:3px 7px;border-radius:5px;background:#fffffff0;color:#473761;font-size:11px;font-weight:750}
 .booking-controls{background:#fff}
 .booking-controls .booking-privacy{margin-top:0}
+.booking-controls .spady-policy{margin-top:8px}
 @media(max-width:760px){.feature-demo.demo-survey{aspect-ratio:1.64}.demo-survey figcaption{font-size:10px}}
 
 .case-visual img,.workflow-photo img{display:block;width:100%;object-fit:cover}
