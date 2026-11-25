@@ -515,3 +515,10 @@ body{background:var(--paper)}
 .search-actions li:nth-child(3){background:#ebf8f2;color:#23604f}
 .search-action-icon svg{display:block;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:760px){.case-results{padding:7px;gap:6px}.case-results .case-metric strong{font-size:31px}.case-results .case-period{padding-left:6px}}
+
+/* A short prompt pointing to the existing diagnostic CTA. */
+.hero-ai-question{position:relative;display:flex;align-items:center;gap:6px;width:fit-content;max-width:100%;margin:15px 0 0;padding:4px 11px;border:1px solid #d7c9f4;border-radius:12px;background:#f6f1ff;color:#45307b;font-size:clamp(12px,1.2vw,14px);font-weight:800;line-height:1.45}
+.hero-ai-question span{color:#7452b8}
+.hero-ai-question::after{content:"";position:absolute;top:100%;left:21px;width:7px;height:7px;background:inherit;border-right:1px solid #d7c9f4;border-bottom:1px solid #d7c9f4;transform:translateY(-4px) rotate(45deg)}
+.hero .hero-ai-question+#hero-cta{margin-top:8px}
+@media(max-width:760px){.hero-ai-question{margin:8px auto 0}.hero-ai-question::after{left:calc(50% - 4px)}}
