@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Spadyのご紹介による口コミ365の商談予約ページです。">
+  <title>口コミ365 商談予約｜Spady（井上博史）紹介</title>
+  <style>
+    :root { font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif; color:#172638; background:#f5f8fb; font-synthesis:none; }
+    *{box-sizing:border-box} body{margin:0;line-height:1.7} a{color:#1264af}
+    .top{background:#ffffff;border-bottom:1px solid #e4eaf1} .topInner{max-width:970px;margin:auto;padding:17px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+    .brand{font-weight:850;letter-spacing:.06em;font-size:18px;color:#153750}.subbrand{font-size:12px;color:#64748b}
+    main{max-width:970px;margin:28px auto 70px;padding:0 20px}.kicker{font-weight:750;color:#1b6a9e;font-size:12px;letter-spacing:.09em}
+    h1{font-size:clamp(24px,4vw,34px);line-height:1.45;letter-spacing:-.025em;margin:8px 0 10px}
+    .lead{color:#516276;font-size:14px;margin:0 0 20px}.referral{border:1.5px solid #91b8d1;background:#edf7fc;border-radius:14px;padding:17px 20px;display:flex;align-items:center;gap:15px}
+    .stamp{background:#0d699a;color:white;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;flex:none;font-weight:800}
+    .small{font-size:12px;color:#536c82}.refName{font-size:clamp(16px,3vw,21px);font-weight:800;line-height:1.4}
+    .fixed{font-size:11px;color:#277694;font-weight:650;margin-top:2px}.booking{background:white;border:1px solid #e1e8ef;border-radius:17px;box-shadow:0 14px 38px rgba(22,57,95,.06);padding:19px 13px 10px;margin-top:23px}
+    .bookingHead{padding:0 12px 14px}.bookingHead h2{font-size:18px;line-height:1.5;margin:0 0 4px}.bookingHead p{font-size:12px;color:#677789;margin:0}
+    .meetings-iframe-container{min-height:740px}.meetings-iframe-container iframe{width:100%!important;min-height:740px!important}
+    .fallback{padding:12px 14px 18px;text-align:center;font-size:12px;color:#607389}
+    .notice{margin-top:17px;color:#6b7b89;font-size:12px;line-height:1.8}.status{display:none;margin:20px 0 0;padding:15px;background:#eaf7ef;border:1px solid #93caa7;border-radius:12px;color:#166338;font-weight:700}
+    .consent{position:fixed;bottom:14px;left:14px;right:14px;max-width:600px;margin:auto;border:1px solid #d3dde8;border-radius:15px;background:white;box-shadow:0 10px 35px rgba(7,31,57,.16);padding:16px;z-index:9}
+    .consent[hidden]{display:none}.consent p{font-size:12px;margin:0 0 10px;color:#526477}.consentButtons{display:flex;gap:8px}.btn{border:1px solid #ced8e1;background:white;border-radius:9px;padding:9px 15px;font-size:13px;font-weight:700;cursor:pointer}.btn.primary{background:#14699c;color:white;border-color:#14699c}
+    .consentActions{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    footer{max-width:970px;margin:0 auto 30px;padding:0 20px;font-size:12px;color:#718193}
+    @media(max-width:600px){.topInner{padding:13px 18px} main{padding:0 12px;margin-top:23px}.referral{padding:15px}.booking{padding:16px 2px 8px}.bookingHead{padding:0 13px 10px}.meetings-iframe-container,.meetings-iframe-container iframe{min-height:850px!important}.consent{left:10px;right:10px;bottom:10px}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="topInner"><div class="brand">Spady</div><div class="subbrand">口コミ365 商談予約のご案内</div></div></header>
+  <main>
+    <div class="kicker">PARTNER REFERRAL</div>
+    <h1>口コミ365｜商談予約</h1>
+    <p class="lead">Spadyからご紹介する、口コミ365本部とのオンライン商談予約です。ご希望の日時を選択してください。</p>
+    <section class="referral" aria-label="紹介者">
+      <div class="stamp" aria-hidden="true">S</div>
+      <div><div class="small">紹介者</div><div class="refName">Spady（井上博史）</div><div class="fixed">このページ上の紹介者表示は変更できません</div></div>
+    </section>
+    <div id="bookingSuccess" role="status" class="status" aria-live="polite">予約完了を検知しました。ご予約ありがとうございます。</div>
+    <section class="booking" aria-label="口コミ365本部の予約フォーム">
+      <div class="bookingHead"><h2>ご都合のよい日時をお選びください</h2><p>以下は口コミ365本部が管理するHubSpot予約フォームです。</p></div>
+      <!-- HubSpot公式の会議埋め込みスクリプトを利用 -->
+      <div id="hubspotMeetings" class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?embed=true&amp;consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B"></div>
+      <div class="fallback">フォームが表示されない場合は、<a id="fallbackLink" rel="noopener" target="_blank" href="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B">予約ページを別タブで開く</a>こともできます。<br>※別タブからの予約はSpady側で自動検知できない可能性があります。</div>
+    </section>
+    <p class="notice">「ご相談内容」には紹介元情報を事前入力しますが、お客様が削除することもできます。このページの固定表示は、本部側の紹介報酬への登録を保証するものではありません。通知設定を済ませた場合、予約完了を検知するとSpadyへ予約発生の情報（お名前・メールアドレスは含みません）を送信します。ご入力の個人情報は口コミ365本部の予約システムで取り扱われます。</p>
+  </main>
+  <footer>紹介元：Spady ／ 実際の商談・サービス提供：口コミ365本部</footer>
+  <section class="consent" id="metaConsent" hidden aria-label="広告効果測定の設定">
+    <p><strong>広告効果測定について</strong><br>お客様の同意がある場合のみ、SpadyのMeta Pixelでページ表示と予約完了を計測します。予約は同意なしでも可能です。</p>
+    <div class="consentActions"><span style="font-size:11px;color:#667786">後から変更する場合はブラウザーの保存データを削除してください。</span><div class="consentButtons"><button type="button" class="btn" id="declineMeta">同意しない</button><button type="button" class="btn primary" id="acceptMeta">同意する</button></div></div>
+  </section>
+  <script>
+    // ============================= ここだけ設定 =============================
+    const CONFIG = {
+      metaPixelId: '',        // 例: '123456789012345'。未入力ならMeta Pixelを送信しない
+      appsScriptUrl: '',      // Google Apps Script のウェブアプリ URL（末尾 /exec）
+      referral: 'Spady（井上博史）紹介'
+    };
+    // ========================================================================
+
+    // 埋め込み内にも紹介元を事前入力。広告URLのUTMを引き継ぐ。
+    const baseUrl = 'https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo';
+    const meetingUrl = new URL(baseUrl);
+    meetingUrl.searchParams.set('embed', 'true');
+    meetingUrl.searchParams.set('consultation_details', CONFIG.referral);
+    const landingQuery = new URLSearchParams(location.search);
+    for (const k of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term']) {
+      if (landingQuery.has(k)) meetingUrl.searchParams.set(k, landingQuery.get(k));
+    }
+    document.getElementById('hubspotMeetings').setAttribute('data-src', meetingUrl.toString());
+    const directUrl = new URL(meetingUrl.toString());
+    directUrl.searchParams.delete('embed');
+    document.getElementById('fallbackLink').href = directUrl.toString();
+
+    // Meta Pixel（選択された場合のみ読み込む）
+    let metaEnabled = false;
+    function enableMeta() {
+      if (metaEnabled || !/^\d{10,25}$/.test(CONFIG.metaPixelId)) return;
+      metaEnabled = true;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+      t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+      (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init',CONFIG.metaPixelId);
+      fbq('track','PageView');
+    }
+    if (/^\d{10,25}$/.test(CONFIG.metaPixelId)) {
+      let consent = null;
+      try { consent = localStorage.getItem('spady_k365_meta_consent'); } catch (_) { /* Browser may block storage. */ }
+      if (consent === 'yes') enableMeta();
+      else if (consent !== 'no') document.getElementById('metaConsent').hidden = false;
+    }
+    document.getElementById('acceptMeta').addEventListener('click',()=>{
+      try { localStorage.setItem('spady_k365_meta_consent','yes'); } catch (_) {}
+      document.getElementById('metaConsent').hidden=true; enableMeta();
+    });
+    document.getElementById('declineMeta').addEventListener('click',()=>{
+      try { localStorage.setItem('spady_k365_meta_consent','no'); } catch (_) {}
+      document.getElementById('metaConsent').hidden=true;
+    });
+
+    // HubSpotの埋め込み予約完了イベントを受信。
+    // データの真偽・報酬計上まで証明するものではない。実予約で動作検証が必要。
+    let processed = false;
+    const sessionId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now())+'_'+Math.random().toString(36).slice(2);
+    window.addEventListener('message', (event)=>{
+      // HubSpotからのイベント以外は無視（https必須）
+      if (!/^https:\/\/([a-z0-9-]+\.)*hubspot\.com$/i.test(event.origin)) return;
+      if (!event.data || typeof event.data !== 'object' || event.data.meetingBookSucceeded !== true || processed) return;
+      // 予約フォーム内のiframeが発信元であることも確認。
+      const bookingFrame = document.querySelector('#hubspotMeetings iframe');
+      if (!bookingFrame || event.source !== bookingFrame.contentWindow) return;
+      processed=true;
+      document.getElementById('bookingSuccess').style.display='block';
+      document.getElementById('bookingSuccess').scrollIntoView({behavior:'smooth',block:'center'});
+      // 広告の最適化イベント（予約完了時に1度だけ、同意ありの場合）
+      if (metaEnabled && typeof window.fbq==='function') fbq('track','Schedule',{content_name:'口コミ365 商談予約'});
+      // 予約完了の事実のみ通知。iframe内の氏名やメールは取得できない。
+      if (CONFIG.appsScriptUrl && /^https:\/\/script\.google\.com\//.test(CONFIG.appsScriptUrl)) {
+        const payload = {
+          event:'hubspot.meeting_booked', referral:CONFIG.referral,
+          sessionId, detectedAt:new Date().toISOString(),
+          utm_source:landingQuery.get('utm_source') || '',
+          utm_campaign:landingQuery.get('utm_campaign') || '',
+          page:location.origin + location.pathname
+        };
+        const content = JSON.stringify(payload);
+        try {
+          // text/plainのBeaconで送る。Google側の受信結果はブラウザーから確認できない。
+          const ok = navigator.sendBeacon(CONFIG.appsScriptUrl, new Blob([content],{type:'text/plain;charset=UTF-8'}));
+          if (!ok) fetch(CONFIG.appsScriptUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:content,keepalive:true}).catch(()=>{});
+        } catch (_) {
+          fetch(CONFIG.appsScriptUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:content,keepalive:true}).catch(()=>{});
+        }
+      }
+    });
+  </script>
+  <script async src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+</body>
+</html>
