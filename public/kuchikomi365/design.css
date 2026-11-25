@@ -344,3 +344,17 @@ body{background:var(--paper)}
 .booking-controls{background:#fff}
 .booking-controls .booking-privacy{margin-top:0}
 @media(max-width:760px){.feature-demo.demo-survey{aspect-ratio:1.64}.demo-survey figcaption{font-size:10px}}
+
+.case-visual img,.workflow-photo img{display:block;width:100%;object-fit:cover}
+.case-visual img{height:clamp(130px,15vw,192px);object-position:50% 54%}
+.case-visual figcaption{padding:2px 6px;bottom:7px;right:7px}
+.workflow-photo{border-top:1px solid var(--edge);background:var(--tint);overflow:hidden}
+.workflow-photo img{height:clamp(130px,17vw,210px);object-position:50% 53%}
+.workflow-photo + .feature-demo{min-height:0;padding-block:10px}
+.feature-demo.demo-survey{aspect-ratio:2.35}
+@media(max-width:760px){
+ .case-visual img{position:absolute;inset:0;height:100%;min-height:0}
+ .case-visual figcaption{font-size:8px;right:4px;bottom:4px}
+ .workflow-photo img{height:clamp(124px,38vw,210px)}
+ .feature-demo.demo-survey{aspect-ratio:1.64}
+}
