@@ -62,7 +62,7 @@
     .fallback{text-align:center;padding:13px;font-size:11px;color:#668276}.fallback a{font-weight:800;text-decoration:underline}
     .notice{margin-top:20px;color:#718779;font-size:11px;line-height:2}.status{display:none;margin:14px 0;padding:18px;border:1px solid #a7cfb3;color:#286b48;background:#ebf8ee;border-radius:11px;font-size:13px;font-weight:800}
     footer{background:#10352f;color:#bfdbd0;padding:35px 0}.footer-in{display:flex;justify-content:space-between;gap:20px;align-items:end}.footer-in strong{display:block;color:#fff;font-size:19px}.footer-in p{font-size:11px;margin:6px 0 0}.footer-links{display:flex;gap:16px;flex-wrap:wrap;font-size:11px}.footer-links a{color:#c5e4d7}
-    .mobile-cta{display:none}
+    .mobile-cta{display:none}.mobile-cta.is-hidden{display:none!important}
     .consent{position:fixed;bottom:14px;left:14px;right:14px;max-width:600px;margin:auto;border:1px solid #d3dde8;border-radius:15px;background:white;box-shadow:0 10px 35px rgba(7,31,57,.16);padding:16px;z-index:90}
     .consent[hidden]{display:none}.consent p{font-size:12px;margin:0 0 10px;color:#526477}.consentButtons{display:flex;gap:8px}.btn{border:1px solid #ced8e1;background:white;border-radius:9px;padding:9px 15px;font-size:13px;font-weight:700;cursor:pointer}.btn.primary{background:#14699c;color:white;border-color:#14699c}.consentActions{display:flex;justify-content:space-between;align-items:center;gap:10px}
     @media(max-width:990px){.nav a[data-link]{display:none}.hero-grid{grid-template-columns:1fr 1fr;gap:24px}.visual{min-height:410px}.float-pill{display:none}.journey-grid{gap:27px}.reserve-layout{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:18px}}
@@ -222,7 +222,7 @@
       <div>
         <div id="bookingSuccess" role="status" class="status" aria-live="polite">予約完了イベントを検知しました。ご予約ありがとうございます。<br><span style="font-size:11px;font-weight:400">正式な予約情報は本部からの確認メールでご確認ください。</span></div>
         <div class="reserve-card" aria-label="口コミ365本部のオンライン商談予約フォーム">
-          <div class="reserve-head"><h3>ご都合のよい日時を選択</h3><p>所要時間や空き枠は、口コミ365本部の予約カレンダーに表示されます。</p></div>
+          <div class="reserve-head"><h3>ご都合のよい日時を選択</h3><p>所要時間や空き枠は、口コミ365本部の予約カレンダーに表示されます。<br>予約前に <a href="https://365kuchikomi.com/privacypolicy/" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">本部の個人情報の取り扱い</a>をご確認ください。</p></div>
           <!-- HubSpot公式の会議埋め込みスクリプトを利用 -->
           <div id="hubspotMeetings" class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?embed=true&amp;consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B"></div>
           <div class="fallback">カレンダーが表示されない場合は、<a id="fallbackLink" target="_blank" rel="noopener noreferrer" href="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B">予約ページを別タブで開く</a>こともできます。<br>※別タブ予約はSpady側で自動検知できない可能性があります。</div>
@@ -329,6 +329,19 @@
       }
     });
   </script>
-<script async src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+  <script>
+  // モバイルでフォーム入力中に固定CTAが項目を隠さないようにする。
+  (function(){
+    const cta=document.querySelector('.mobile-cta');
+    const booking=document.getElementById('reserve');
+    if (!cta || !booking) return;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries)=>{
+        cta.classList.toggle('is-hidden', entries[0].isIntersecting);
+      },{threshold:0}).observe(booking);
+    }
+  })();
+  </script>
+  <script async src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
 </body>
 </html>
