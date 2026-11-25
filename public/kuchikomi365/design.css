@@ -374,3 +374,27 @@ body{background:var(--paper)}
 }
 
 .industry-title-unit{white-space:nowrap}
+
+.challenge-grid article{position:relative;isolation:isolate;overflow:hidden}
+.challenge-photo{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.challenge-photo img{width:100%;height:100%;object-fit:cover;object-position:74% 52%}
+.challenge-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,#fff 13%,#fffc 61%,#fff9 100%)}
+.challenge-grid p{color:#393350}
+.search-example{display:block;margin-top:5px;padding:5px 6px;border-radius:6px;background:#fffc;color:#372b61;font-size:11px;font-weight:800;line-height:1.45;overflow-wrap:anywhere}
+.search-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:6px}
+.search-tags span{font-size:11px;font-weight:800;background:#fff;color:#255e58;border-radius:5px;padding:3px 6px}
+.step-preview{display:block;position:relative;overflow:hidden;margin-top:9px;border:1px solid var(--edge);border-radius:9px;background:#fff;color:var(--tone)}
+.step-preview small{font-size:11px;font-weight:800}
+.step-preview img{display:block;width:100%;height:clamp(77px,10vw,120px);object-fit:cover;object-position:center 55%}
+.step-preview.has-photo small{position:absolute;right:5px;bottom:5px;padding:2px 6px;border-radius:4px;background:#fffffff0}
+.survey-preview{display:grid;align-content:center;gap:4px;min-height:clamp(77px,10vw,120px);padding:8px 11px}
+.survey-preview b{color:#302b50;font-size:13px}
+.consult-support{min-width:0}
+.consult-visual{margin:0 0 11px;position:relative;border-radius:10px;overflow:hidden;border:1px solid #b49ae4}
+.consult-visual img{display:block;width:100%;height:clamp(87px,12vw,170px);object-fit:cover;object-position:center 57%}
+.consult-visual figcaption{position:absolute;right:6px;bottom:5px;padding:2px 7px;border-radius:4px;background:#281b4eea;font-size:10px;color:#fff}
+.referral-hint{display:flex;align-items:flex-start;gap:8px;background:#f4efff;border:1px solid #ddcef6;border-radius:8px;padding:8px 10px;margin-top:10px;color:#422885}
+.referral-hint svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
+.referral-hint strong{display:block;font-size:13px;font-weight:850;line-height:1.5}
+.booking-head .referral-hint p{color:#3e315b;font-size:12px;line-height:1.6}
+@media(max-width:760px){.challenge-photo::after{background:linear-gradient(105deg,#fff 20%,#fffffff0 58%,#fff9 100%)}.consult-visual img{height:108px}}
