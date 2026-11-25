@@ -477,3 +477,10 @@ body{background:var(--paper)}
 .recommend-person strong{display:block;margin-top:2px;font-size:clamp(16px,2vw,24px);overflow-wrap:anywhere}
 
 .booking-controls>p+p{margin-bottom:10px}
+
+@media (max-width:410px){
+ .hero .lead{width:calc(100% + 16px);max-width:none;margin-inline:-8px;font-size:clamp(12px,3.3vw,14px)}
+}
+@media (max-width:345px){
+ .hero .lead{letter-spacing:-.04em}
+}
