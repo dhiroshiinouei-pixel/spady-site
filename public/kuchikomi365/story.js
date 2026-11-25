@@ -1,4 +1,19 @@
 (() => {
+  const player = document.getElementById('videoScreen');
+  const play = document.getElementById('playVideo');
+  if (player && play) {
+    play.hidden = false;
+    play.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.title = '口コミ365公式チャンネルによる紹介動画';
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      frame.allowFullscreen = true;
+      frame.src = 'https://www.youtube-nocookie.com/embed/PYlKfw8bIQY?autoplay=1&rel=0';
+      player.replaceChildren(frame);
+      frame.focus();
+    }, { once: true });
+  }
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const count = document.getElementById('adoptionCount');
   const lines = [...document.querySelectorAll('[data-underline]')];

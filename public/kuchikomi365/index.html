@@ -195,7 +195,10 @@
     <div class="wrap">
       <p class="section-label">利用の流れ</p>
       <h2 id="usage-title">口コミのご案内は、3ステップ</h2>
-      <ol class="usage-grid"><li class="tone-0"><div class="step-top"><span class="step-token">01</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 9h8m-8 4h8m-8 4h5"/></svg></span></div><h3>聞きたいことを決める</h3><p>接客や設備など、事業に合わせてアンケートを用意します。</p><span class="step-preview survey-preview"><small>アンケート例</small><b>○ 接客　　○ 設備</b></span></li><li class="tone-2"><div class="step-top"><span class="step-token">02</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3zM18 18h3v3h-3z"/></svg></span></div><h3>QRやリンクを渡す</h3><p>受付や案内メッセージで共有。口コミを投稿するかはお客様ご自身が決めます。</p><span class="step-preview has-photo"><img src="./table-survey.webp" alt="" loading="lazy" decoding="async"><small>受付・テーブルにPOP</small></span></li><li class="tone-1"><div class="step-top"><span class="step-token">03</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v12H9l-6 4V5zm4 5h10m-10 4h7"/></svg></span></div><h3>声を読んで、返信する</h3><p>口コミを確認し、必要に応じてAIの文案をもとに返信します。</p><span class="step-preview has-photo"><img src="./workflow-reply.webp" alt="" loading="lazy" decoding="async"><small>口コミを見ながら返信</small></span></li></ol>
+      <ol class="usage-grid"><li class="tone-0"><div class="step-top"><span class="step-token">01</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 9h8m-8 4h8m-8 4h5"/></svg></span></div><h3>聞きたいことを決める</h3><p>接客や設備など、事業に合わせてアンケートを用意します。</p><span class="step-preview survey-preview">
+        <span class="survey-preview-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H9l-5 4V5Zm4 5h8m-8 3h5"/></svg></span>
+        <span><b>どんな点が印象に残りましたか？</b><span class="survey-topics"><span>接客</span><span>設備</span><span>雰囲気</span></span></span>
+      </span></li><li class="tone-2"><div class="step-top"><span class="step-token">02</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3zM18 18h3v3h-3z"/></svg></span></div><h3>QRやリンクを渡す</h3><p>受付や案内メッセージで共有。口コミを投稿するかはお客様ご自身が決めます。</p><span class="step-preview has-photo"><img src="./table-survey.webp" alt="" loading="lazy" decoding="async"><small>受付・テーブルにPOP</small></span></li><li class="tone-1"><div class="step-top"><span class="step-token">03</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v12H9l-6 4V5zm4 5h10m-10 4h7"/></svg></span></div><h3>声を読んで、返信する</h3><p>口コミを確認し、必要に応じてAIの文案をもとに返信します。</p><span class="step-preview has-photo"><img src="./workflow-reply.webp" alt="" loading="lazy" decoding="async"><small>口コミを見ながら返信</small></span></li></ol>
     </div>
   </section>
 
@@ -209,6 +212,27 @@
     </div>
   </section>
 
+  <section class="section video-section" id="video" aria-labelledby="video-title">
+    <div class="wrap video-grid">
+      <div class="video-copy">
+        <p class="section-label">口コミ365公式チャンネル</p>
+        <h2 id="video-title">動画で見る、口コミ365。</h2>
+        <p class="section-intro">まずはサービスの概要を動画で。自分の店舗・施設での使い方は、口コミ365本部にオンラインで相談できます。</p>
+        <a class="button" href="#reserve" data-cta="video">無料診断の相談日時を選ぶ <span class="arr" aria-hidden="true">↓</span></a>
+      </div>
+      <div class="video-pane">
+        <div class="video-screen" id="videoScreen">
+          <button id="playVideo" type="button" class="video-play" aria-describedby="videoNotice" hidden>
+            <span class="video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6v12l10-6Z"/></svg></span>
+            <strong>口コミ365の紹介動画を再生</strong>
+          </button>
+          <noscript><p>ページ内で動画を再生するにはJavaScriptを有効にしてください。</p></noscript>
+        </div>
+        <p class="video-notice" id="videoNotice">再生を押すとYouTubeのプレーヤーを読み込みます。</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section consult" id="diagnosis" aria-labelledby="consult-title">
     <div class="wrap consult-grid">
       <div>
@@ -218,7 +242,6 @@
         <a class="button" href="#reserve" data-cta="consult">無料診断の相談日時を選ぶ <span class="arr" aria-hidden="true">↓</span></a>
       </div>
       <div class="consult-support">
-        <figure class="consult-visual"><img src="./store-owner.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""><figcaption>店舗で掲載情報を確認するイメージ</figcaption></figure>
         <ol class="topics">
         <li><span aria-hidden="true">01</span><div><strong class="topic-value">無料診断で見られること</strong><small>Googleマップの掲載情報や口コミ対応など、確認できる範囲</small></div></li>
         <li><span aria-hidden="true">02</span><div><strong class="topic-value">自店なら何から始めるか</strong><small>店舗・施設の種類や数に合わせた使い方</small></div></li>

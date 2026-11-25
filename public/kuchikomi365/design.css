@@ -434,3 +434,35 @@ body{background:var(--paper)}
  .profile-card{grid-template-columns:72px minmax(0,1fr);align-items:start}
  .profile-portrait{margin-top:6px}
 }
+
+#adoptionCount{font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.065em;min-width:5.25ch;margin-inline:2px 3px}
+.hero-proof{padding-block:6px 7px}
+.survey-preview{display:grid;grid-template-columns:38px minmax(0,1fr);align-content:center;align-items:center;gap:10px;background:linear-gradient(130deg,#fff,#f4f8ff)}
+.survey-preview-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:9px;background:#e3eeff}
+.survey-preview-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.survey-preview b{display:block;font-size:12px;line-height:1.35}
+.survey-topics{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.survey-topics span{background:#edf4ff;border:1px solid #cee0fa;border-radius:10px;padding:1px 6px;font-size:10px;color:#29467b;font-weight:800}
+.video-section{background:linear-gradient(140deg,#eef2ff,#f6edff 83%)}
+.video-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.14fr);gap:26px;align-items:center}
+.video-copy .button{margin-top:15px}
+.video-pane{min-width:0}
+.video-screen{position:relative;aspect-ratio:16/9;min-height:200px;border-radius:15px;overflow:hidden;background:#211747;box-shadow:0 9px 26px #4c368836}
+.video-screen iframe,.video-play{display:block;width:100%;height:100%;border:0;position:absolute;inset:0}
+.video-play{display:grid;align-content:center;justify-items:center;gap:9px;background:radial-gradient(ellipse at 69% 12%,#6848b9,transparent 67%),linear-gradient(143deg,#211747,#382273);color:#fff;font:inherit;cursor:pointer;padding:13px;text-align:center}
+.video-play:hover{background:radial-gradient(ellipse at 69% 12%,#7051bf,transparent 67%),linear-gradient(143deg,#211747,#442d84)}
+.video-play:focus-visible{outline-offset:-5px;outline-color:#fff}
+.video-play-icon{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#fff;color:#432395}
+.video-play-icon svg{width:29px;height:29px;fill:currentColor}
+.video-play strong{font-size:clamp(13px,2vw,19px)}.video-notice{color:var(--muted);font-size:12px;margin-top:6px}
+.video-screen noscript p{color:#fff;padding:12px;font-size:13px}
+@media(max-width:760px){
+ #adoptionCount{font-size:clamp(31px,9.4vw,43px)}
+ .hero-proof{padding-block:4px}
+ .video-grid{grid-template-columns:minmax(0,1fr);gap:13px}
+ .video-copy .button{display:none}
+}
+
+.video-screen{width:100%}
+@media(max-width:760px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:345px){.hero-proof{gap:5px;padding-inline:6px}.hero-proof a{padding-left:5px}.proof-icon{width:24px;height:24px}}
