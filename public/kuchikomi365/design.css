@@ -317,3 +317,23 @@ body{background:var(--paper)}
 .retry-booking:hover{background:#efe5ff}
 
 .booking-head .booking-scope{margin:5px 0 8px;color:#3e3267;font-weight:750}
+
+.demo-guide{display:inline-flex;align-items:center;gap:6px;color:#4f3a83;background:#f0ebff;border:1px solid #e0d5fb;border-radius:6px;margin-top:12px;padding:4px 8px;font-size:12px;font-weight:750}
+.demo-cards{margin-top:16px}
+.demo-copy{padding:2px 24px 13px}
+.demo-copy h3{color:var(--ink);font-size:clamp(18px,2vw,25px);line-height:1.4;margin:4px 0 5px}
+.demo-copy p{line-height:1.6}
+.feature-demo{display:grid;align-items:center;position:relative;flex:1;min-height:169px;padding:14px 22px;background:linear-gradient(130deg,#ffffff60,var(--tint));border-top:1px solid var(--edge)}
+.demo-window,.demo-bubble{display:grid;gap:5px;background:#fff;border:1px solid var(--edge);border-radius:10px;padding:9px 11px;color:var(--tone);font-size:13px;line-height:1.35;min-width:0}
+.demo-survey{grid-template-columns:minmax(0,1fr) auto;gap:13px}
+.demo-pill{width:fit-content;font-size:10px;font-weight:850;background:var(--tint);border-radius:4px;padding:3px 5px}
+.demo-option,.demo-info,.insight-row{background:#f7f8ff;border-radius:5px;font-size:12px;padding:4px 7px;color:#3c3559}
+.demo-qr{width:58px;height:58px;padding:6px;border-radius:7px;background:#fff;border:1px solid var(--edge);color:var(--tone)}
+.demo-reply{align-content:center;gap:7px}
+.demo-bubble{width:min(96%,390px)}.demo-bubble+.demo-bubble{justify-self:end;background:#faf6ff}
+.demo-bubble span{color:#39334c;font-size:12px}
+.insight-row,.demo-info{display:flex;gap:7px}.insight-row span{color:var(--tone);font-weight:850}.demo-info{justify-content:space-between}
+.step-top{display:flex;justify-content:space-between;align-items:center}
+.step-pictogram{background:#fff}
+.topic-value{display:block;line-height:1.45}.topics small{display:block;color:#e8dffb;font-size:12px;font-weight:500;line-height:1.5;margin-top:2px}
+@media(max-width:760px){.demo-copy{padding:2px 13px 10px}.feature-demo{padding:10px 12px;min-height:145px}.demo-qr{width:46px;height:46px}.step-pictogram{width:34px;height:34px}.step-pictogram svg{width:21px;height:21px}}
