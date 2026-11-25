@@ -15,13 +15,13 @@
     }, { once: true });
   }
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const count = document.getElementById('adoptionCount');
+  const counts = [...document.querySelectorAll('[data-adoption-count]')];
   const lines = [...document.querySelectorAll('[data-underline]')];
   if (motion.matches || !('IntersectionObserver' in window)) {
-    if (count) count.dataset.state = 'done';
+    for (const count of counts) count.dataset.state = 'done';
     return;
   }
-  if (count) {
+  for (const count of counts) {
     const finalText = count.textContent.trim();
     const goal = Number(finalText.replaceAll(',', ''));
     const observer = new IntersectionObserver((entries) => {

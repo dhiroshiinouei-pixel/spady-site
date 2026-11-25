@@ -555,13 +555,12 @@ body{background:var(--paper)}
 .map-rating:nth-child(4){left:28%;bottom:13%;color:#215a92}
 .map-rating:nth-child(5){left:70%;bottom:10%}
 
-/* 国内外の導入実績。本部提供資料の表記に合わせ、国内は概数・海外は下限。 */
-.hero-proof{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:clamp(9px,2.6vw,18px)}
+/* Small screens keep both adoption numbers on a single baseline. */
+.hero-proof{display:flex;flex-wrap:nowrap;justify-content:space-between;gap:clamp(6px,2vw,14px);width:max-content;max-width:100%}
 .proof-market{min-width:0}
-.proof-overseas{border-inline-start:1px solid #d9cff7;padding-inline-start:clamp(9px,2.6vw,18px)}
-.proof-market small{margin-block-end:3px}
-.proof-market .proof-value{display:flex;gap:3px;align-items:baseline}
+.proof-overseas{border-inline-start:1px solid #d9cff7;padding-inline-start:clamp(6px,2vw,14px)}
+.proof-market .proof-value{display:flex;gap:3px;align-items:baseline;white-space:nowrap}
 .proof-market .proof-value b,.proof-qualifier{font-size:clamp(10px,2.7vw,12px)}
-.proof-overseas strong{font-size:clamp(24px,6.2vw,38px);line-height:1}
-.hero-proof #adoptionCount{margin-inline:0;min-width:5.25ch}
-@media(max-width:365px){.hero-proof{column-gap:7px}.proof-overseas{padding-inline-start:7px}.hero-proof .proof-value{gap:2px}}
+.hero-proof .proof-value strong[data-adoption-count]{font-size:clamp(28px,5vw,43px);line-height:1;letter-spacing:-.055em;margin:0;display:inline-block;min-width:2.85ch;text-align:end}
+.hero-proof .proof-value #adoptionCount{min-width:5.25ch}
+@media(max-width:380px){.hero-proof .proof-value strong[data-adoption-count]{font-size:clamp(22px,7vw,28px)}.proof-market .proof-value{gap:2px}}
