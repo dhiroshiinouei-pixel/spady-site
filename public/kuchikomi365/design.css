@@ -522,3 +522,7 @@ body{background:var(--paper)}
 .hero-ai-question::after{content:"";position:absolute;top:100%;left:21px;width:7px;height:7px;background:inherit;border-right:1px solid #d7c9f4;border-bottom:1px solid #d7c9f4;transform:translateY(-4px) rotate(45deg)}
 .hero .hero-ai-question+#hero-cta{margin-top:8px}
 @media(max-width:760px){.hero-ai-question{margin:8px auto 0}.hero-ai-question::after{left:calc(50% - 4px)}}
+
+@media(max-width:760px){
+ .mobile-cta .hero-ai-question{margin:0 auto 6px;padding-block:2px}
+}
