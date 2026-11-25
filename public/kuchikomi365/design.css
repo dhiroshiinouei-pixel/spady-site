@@ -468,3 +468,9 @@ body{background:var(--paper)}
 .video-play::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#1b103719,#170c332e 50%,#140d3980);pointer-events:none}
 .video-play strong{padding:3px 9px;border-radius:5px;background:#201647db;line-height:1.5}
 .video-play-icon{box-shadow:0 4px 15px #19113466}
+
+.recommend-person{display:grid;grid-template-columns:clamp(52px,5.8vw,70px) minmax(0,1fr);align-items:center;gap:10px;margin:4px 0}
+.recommend-portrait{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid #d7c6f2}
+.recommend-person div{min-width:0}
+.recommend-person span{display:block;color:#514178;font-size:12px;font-weight:800}
+.recommend-person strong{display:block;margin-top:2px;font-size:clamp(16px,2vw,24px);overflow-wrap:anywhere}
