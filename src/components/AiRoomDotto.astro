@@ -1,0 +1,236 @@
+---
+interface Props { page: string }
+const { page } = Astro.props;
+const links = [
+  { href: '/ai/', title: '記事一覧へ', description: '新機能と実践ガイドを探す' },
+  { href: '/ai/chat-work-codex/', title: 'Chat・Work・Codexの違い', description: 'やりたいことに合う使い方を選ぶ' },
+  { href: '/ai/live-dictation/', title: 'ChatGPTで声から始める', description: '話しながら入力する方法を試す' },
+  { href: '/ai-guides/first-workflow/', title: 'AIに任せる最初の仕事を選ぶ', description: 'お店や職場で使うなら、ここから' },
+].filter(link => link.href !== '/' + page).slice(0, 3);
+---
+<div class="room-dotto" data-ai-room-dotto>
+  <button class="room-dotto__trigger" type="button" aria-label="AI部屋のガイドを開く" popovertarget="ai-room-quick-guide">
+    <span class="room-dotto__shadow" aria-hidden="true"></span>
+    <span class="room-dotto__motion" aria-hidden="true">
+    <svg class="room-dotto__art" data-dotto-cloud-crown width="88" height="96" viewBox="68 10 104 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="room-dotto-coat" cx="0" cy="0" r="1" gradientTransform="translate(105 55) rotate(53) scale(79 71)" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#fff"/>
+          <stop offset=".44" stop-color="#f7f8ff"/>
+          <stop offset=".75" stop-color="#e7eaf7"/>
+          <stop offset=".92" stop-color="#d3d9ee"/>
+          <stop offset="1" stop-color="#b8c1db"/>
+        </radialGradient>
+        <linearGradient id="room-dotto-crown" x1="91" y1="30" x2="137" y2="29" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#739513"/>
+          <stop offset=".22" stop-color="#adca0d"/>
+          <stop offset=".44" stop-color="#e8ff44"/>
+          <stop offset=".59" stop-color="#86ae0d"/>
+          <stop offset=".83" stop-color="#aaca19"/>
+          <stop offset="1" stop-color="#698d0f"/>
+        </linearGradient>
+        <linearGradient id="room-dotto-rim" x1="112" y1="33" x2="112" y2="44" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#c4df22"/>
+          <stop offset="1" stop-color="#527707"/>
+        </linearGradient>
+        <radialGradient id="room-dotto-tip" cx=".4" cy=".28" r=".69">
+          <stop stop-color="#d9ed54"/>
+          <stop offset="1" stop-color="#779910"/>
+        </radialGradient>
+      </defs>
+      <g class="room-dotto__crown">
+        <path d="M95 45 91 27c9 8 15 3 22-10 7 11 11 17 22 9l-3 17c-12-5-25-5-37 2Z" fill="url(#room-dotto-crown)" stroke="#7e9e21" stroke-width=".7"/>
+        <path d="M94 39c10-5 26-6 39-2l-1 6c-13-3-27-2-37 2Z" fill="url(#room-dotto-rim)"/>
+        <path d="M108 35c2-4 3-10 4-14l2 1c1 5 2 9 4 13Z" fill="#eaff48" opacity=".72"/>
+        <circle cx="91" cy="26.5" r="2.7" fill="url(#room-dotto-tip)"/>
+        <circle cx="113" cy="17" r="3.1" fill="url(#room-dotto-tip)"/>
+        <circle cx="135" cy="25.8" r="2.8" fill="url(#room-dotto-tip)"/>
+      </g>
+      <path d="M89 55C94 44 101 39 112 39c8 0 12 3 18 2 16-1 28 7 28 25 0 5 1 6 3 9 9 9 7 25-2 31-4 3-8 3-12 5-3 9-8 15-17 17-8 2-15-2-22-8-4 0-8 2-13 1-11-1-17-10-17-21 0-4 1-8 3-10-9-6-12-13-10-21 2-8 10-12 18-14Z" fill="url(#room-dotto-coat)" stroke="#d5d9e9" stroke-width=".7"/>
+      <path d="M89 56c3-7 9-12 15-13-6 3-10 8-12 16-4 3-10 4-16 11 2-7 7-11 13-14Z" fill="#fff" opacity=".6"/>
+      <g class="room-dotto__eyes">
+        <ellipse cx="109.1" cy="72.6" rx="4.7" ry="7.1" fill="#191a1e"/>
+        <ellipse cx="128" cy="72.6" rx="4.8" ry="7.05" fill="#191a1e"/>
+        <ellipse cx="107.8" cy="69.8" rx="1.05" ry="1.65" fill="#51525a" opacity=".55"/>
+        <ellipse cx="126.6" cy="69.7" rx="1.06" ry="1.65" fill="#51525a" opacity=".55"/>
+      </g>
+    </svg>
+    </span>
+  </button>
+  <section class="room-dotto__guide" id="ai-room-quick-guide" popover="auto" aria-labelledby="ai-room-quick-guide-title">
+    <div class="room-dotto__guide-top">
+      <h2 id="ai-room-quick-guide-title">AI部屋のガイド</h2>
+      <button class="room-dotto__close" type="button" aria-label="ガイドを閉じる" popovertarget="ai-room-quick-guide" popovertargetaction="hide" autofocus>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <p>気になるテーマをひとつ選んで、実際に試してみましょう。</p>
+    <ul>
+      {links.map(link => <li><a href={link.href}><strong>{link.title}</strong><span>{link.description}</span></a></li>)}
+    </ul>
+  </section>
+</div>
+<style>
+  .room-dotto {
+    position: fixed;
+    z-index: 20;
+    inset-inline-end: max(clamp(8px, 2.2vw, 28px), env(safe-area-inset-right));
+    inset-block-end: var(--dotto-bottom);
+    inline-size: 88px;
+    --dotto-bottom: max(15px, calc(env(safe-area-inset-bottom) + 8px));
+    --dotto-hop: -15px;
+    --dotto-tilt: 9deg;
+    isolation: isolate;
+    pointer-events: none;
+    user-select: none;
+  }
+  .room-dotto__trigger {
+    position: relative;
+    display: block;
+    inline-size: 100%;
+    min-block-size: 44px;
+    border: 0;
+    border-radius: 40%;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .room-dotto__trigger:focus-visible, .room-dotto__guide :is(a, button):focus-visible {
+    outline: 3px solid #5e4d9a;
+    outline-offset: 3px;
+  }
+  .room-dotto__trigger > * { pointer-events: none; }
+  @supports not selector(:popover-open) {
+    .room-dotto { display: none; }
+  }
+  .room-dotto__guide:popover-open { display: block; }
+  .room-dotto__guide {
+    display: none;
+    position: fixed;
+    inset: auto max(12px, env(safe-area-inset-right)) max(124px, calc(env(safe-area-inset-bottom) + 113px)) auto;
+    margin: 0;
+    inline-size: min(330px, calc(100vw - 24px));
+    max-block-size: calc(100dvh - 142px);
+    box-sizing: border-box;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: 14px;
+    background: #fcfbff;
+    color: #252139;
+    border: 1px solid #dcd4ef;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px #2420392b;
+    pointer-events: auto;
+    user-select: text;
+  }
+  .room-dotto__guide-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .room-dotto__guide h2 { margin: 0; font-size: 1.1rem; line-height: 1.35; }
+  .room-dotto__guide p { margin: 0 0 12px; color: #4f4863; font-size: .875rem; line-height: 1.6; }
+  .room-dotto__close {
+    display: grid; place-items: center; flex: 0 0 44px; min-block-size: 44px;
+    padding: 0; color: #423b5e; background: transparent; border: 0; border-radius: 50%; cursor: pointer;
+  }
+  .room-dotto__close:hover { background: #ece7fa; }
+  .room-dotto__guide ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+  .room-dotto__guide a {
+    display: grid; gap: 2px; min-block-size: 44px; padding: 8px 10px; border-radius: 10px;
+    background: #f0ecfa; text-decoration: none; color: #302650; font-size: .9rem; line-height: 1.4;
+  }
+  .room-dotto__guide a:hover { background: #e9e2f8; }
+  .room-dotto__guide a span { color: #524969; font-size: .8rem; }
+  .room-dotto__motion {
+    display: grid;
+    justify-items: center;
+    animation: dotto-drift 8.6s ease-in-out infinite;
+    transform-origin: 52% 80%;
+  }
+  .room-dotto__art {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    transform-origin: 50% 92%;
+    animation: dotto-breathe 8.6s ease-in-out infinite;
+  }
+  .room-dotto__eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: dotto-blink 6.9s linear infinite;
+  }
+  .room-dotto__crown {
+    transform-box: fill-box;
+    transform-origin: 50% 95%;
+    animation: dotto-crown 8.6s ease-in-out infinite;
+  }
+  .room-dotto__shadow {
+    position: absolute;
+    z-index: -1;
+    inset: auto 17% -5px;
+    height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, #30384542, transparent 72%);
+    animation: dotto-shadow 8.6s ease-in-out infinite;
+  }
+  @keyframes dotto-drift {
+    0%, 100% { transform: translate3d(0, -3px, 0) rotate(-2deg); }
+    14% { transform: translate3d(3px, var(--dotto-hop), 0) rotate(4deg); }
+    29% { transform: translate3d(1px, -6px, 0) rotate(calc(-1 * var(--dotto-tilt))); }
+    40% { transform: translate3d(4px, -12px, 0) rotate(var(--dotto-tilt)); }
+    56% { transform: translate3d(1px, -2px, 0) rotate(0); }
+    70% { transform: translate3d(4px, var(--dotto-hop), 0) rotate(-5deg); }
+    84% { transform: translate3d(2px, -7px, 0) rotate(4deg); }
+    94% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+  }
+  @keyframes dotto-breathe {
+    0%, 29%, 84%, 100% { transform: scale(1); }
+    14%, 70% { transform: scale(.965, 1.05); }
+    40% { transform: scale(.99, 1.03); }
+    56%, 94% { transform: scale(1.025, .955); }
+  }
+  @keyframes dotto-blink {
+    0%, 20%, 24%, 63%, 67%, 70%, 74%, 100% { transform: scaleY(1); }
+    22%, 65%, 72% { transform: scaleY(.10); }
+  }
+  @keyframes dotto-crown {
+    0%, 56%, 94%, 100% { transform: rotate(0); }
+    14%, 40% { transform: rotate(-7deg) translateY(-1.5px); }
+    29%, 70% { transform: rotate(8deg) translateY(-1px); }
+    84% { transform: rotate(-5deg); }
+  }
+  @keyframes dotto-shadow {
+    0%, 56%, 94%, 100% { transform: scaleX(1); opacity: .9; }
+    14%, 40%, 70% { transform: scaleX(.77); opacity: .34; }
+  }
+  /* The mascot gets a margin of its own; full-bleed backgrounds still reach the edge. */
+  :global(.ai-room-with-dotto) { --dotto-gutter: 76px; }
+  :global(.ai-room-with-dotto #main),
+  :global(.ai-room-with-dotto .corp-footer) { padding-inline-end: var(--dotto-gutter); }
+  :global(.ai-room-with-dotto #main > header),
+  :global(.ai-room-with-dotto #main > .room-services) {
+    margin-inline-end: calc(-1 * var(--dotto-gutter));
+    padding-inline-end: var(--dotto-gutter);
+  }
+  @media (min-width: 1520px) {
+    :global(.ai-room-with-dotto) { --dotto-gutter: 0px; }
+  }
+  @media (max-width: 950px) {
+    .room-dotto { inline-size: 72px; }
+    :global(.ai-room-with-dotto) { --dotto-gutter: 62px; }
+  }
+  @media (max-width: 600px) {
+    .room-dotto__guide { inset-block-end: max(99px, calc(env(safe-area-inset-bottom) + 89px)); max-block-size: calc(100dvh - 116px); }
+    .room-dotto { inline-size: 52px; --dotto-hop: -12px; --dotto-tilt: 6deg; }
+    :global(.ai-room-with-dotto) { --dotto-gutter: 42px; }
+  }
+  /* Consent controls own the bottom of the screen until the banner is dismissed. */
+  :global(body.ai-room-with-dotto:has(#siteConsent:not([hidden]))) :is(.room-dotto, .room-dotto__guide) {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .room-dotto :is(.room-dotto__motion, .room-dotto__art, .room-dotto__eyes, .room-dotto__crown, .room-dotto__shadow) { animation: none; }
+  }
+  :global(html[data-motion="paused"]) .room-dotto :is(.room-dotto__motion, .room-dotto__art, .room-dotto__eyes, .room-dotto__crown, .room-dotto__shadow) { animation: none; }
+  @media print { .room-dotto { display: none; } }
+</style>
