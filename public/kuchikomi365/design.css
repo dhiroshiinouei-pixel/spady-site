@@ -303,11 +303,15 @@ body{background:var(--paper)}
 .case-body{display:flex;flex-direction:column}
 .case-body h3{overflow-wrap:anywhere}
 .case-results{margin-top:auto}
-.case-photo-link{display:flex;align-items:center;flex-wrap:wrap;column-gap:4px;color:var(--cink);min-height:44px;margin-top:5px;font-size:12px;font-weight:850;text-decoration-thickness:1px;text-underline-offset:3px}
-.case-photo-link small{color:var(--muted);font-size:10px;font-weight:600}
-@media(max-width:760px){.case-location{display:block;margin:3px 0 0}.case-photo-link{min-height:44px;margin-top:1px}}
+@media(max-width:760px){.case-location{display:block;margin:3px 0 0}}
 
 .hero .ai-eyebrow{gap:6px;padding:5px 12px 5px 9px;border-color:#c3b0ee;background:linear-gradient(100deg,#e8edff,#f5defd);color:#442785;font-size:13px}
 .hero .ai-eyebrow::before{display:none}
 .ai-eyebrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
 @media(max-width:760px){.hero .ai-eyebrow{padding:4px 9px;font-size:12px}.ai-eyebrow svg{width:15px;height:15px}}
+
+.booking-privacy{border:1px solid var(--line);border-radius:8px;background:#faf8ff;margin-top:9px;padding:0 10px}
+.booking-privacy summary{color:#402695;font-size:13px;font-weight:800;cursor:pointer;min-height:44px;padding:11px 0}
+.booking-privacy p{padding-bottom:9px}
+.retry-booking{font-size:13px;min-height:44px;padding:6px 12px;margin-top:5px;border:1px solid #cbb9ef;border-radius:6px;color:#402695;background:#f7f2ff;font-weight:800;cursor:pointer}
+.retry-booking:hover{background:#efe5ff}

@@ -37,19 +37,15 @@ const success = { meetingBookSucceeded:true, meetingsPayload:{ offline:false, bo
 }}}};
 const click = { defaultPrevented:false, button:0, preventDefault() {} };
 
-test('fixed referral both routes, one-decode, no arbitrary parameters; noindex', () => {
+test('fixed referral in embedded calendar, one-decode, no arbitrary parameters; noindex', () => {
   const page = make(null, false);
-  const embed = new URL(page.el('bookingFrame').src), fallback = new URL(page.el('fallbackLink').href);
-  for (const url of [embed, fallback]) {
-    assert.equal(url.origin, origin);
-    assert.deepEqual(url.searchParams.getAll('consultation_details'), ['Spady（井上博史）紹介']);
-    assert.equal(url.searchParams.get('utm_campaign'), 'test_campaign');
-    assert.equal(url.searchParams.has('utm_term'), false);
-  }
+  const embed = new URL(page.el('bookingFrame').src);
+  assert.equal(embed.origin, origin);
+  assert.deepEqual(embed.searchParams.getAll('consultation_details'), ['Spady（井上博史）紹介']);
+  assert.equal(embed.searchParams.get('utm_campaign'), 'test_campaign');
+  assert.equal(embed.searchParams.has('utm_term'), false);
   assert.equal(embed.searchParams.get('embed'), 'true');
-  assert.equal(fallback.searchParams.has('embed'), false);
   assert.match(html, /name="robots" content="noindex,nofollow"/);
-  assert.match(html, /id="fallbackLink"[^>]+href="https:\/\/meetings-na2\.hubspot\.com\//);
   assert.equal(page.tags.length, 0);
   assert.equal(page.el('metaConsent').hidden, true);
   page.message(success);
@@ -57,7 +53,7 @@ test('fixed referral both routes, one-decode, no arbitrary parameters; noindex',
   assert.equal(page.transmissions.length, 0);
 });
 
-test('CTA, section visibility and exit are not a booking, including after consent', () => {
+test('CTA, section visibility are not a booking, including after consent', () => {
   const page = make(null);
   page.links[1].handlers.click(click);
   assert.equal(page.el('reserve').scrolled, true);
@@ -69,8 +65,7 @@ test('CTA, section visibility and exit are not a booking, including after consen
   page.observe('reserve', true);
   page.observe('reserve', false);
   page.observe('reserve', true);
-  page.el('fallbackLink').handlers.click();
-  assert.deepEqual(page.queue.map(args => args[1]), ['1234567890123','PageView','K365_BookingCTAClick','K365_ReservationSectionView','K365_ExternalBookingClick']);
+  assert.deepEqual(page.queue.map(args => args[1]), ['1234567890123','PageView','K365_BookingCTAClick','K365_ReservationSectionView']);
   assert.equal(page.queue[2][2].placement, 'consult');
   assert.equal(page.el('bookingSuccess').hidden, true);
   assert.equal(page.transmissions.length, 0);
@@ -115,4 +110,16 @@ test('sticky is absent during booking and consent', () => {
   page.observe('reserve', false);
   page.observe('metaConsent', true);
   assert.equal(page.el('mobileCta').hidden, true);
+});
+
+test('case details and privacy remain on the LP, and calendar retry is internal', () => {
+  assert.doesNotMatch(html, /<a\b[^>]*(?:target=|href="https?:)/i);
+  assert.equal((html.match(/<figure class="case-visual"/g) || []).length, 3);
+  assert.match(html, /<details\b[^>]+id="booking-privacy"/);
+  const page = make(null, false);
+  const original = page.el('bookingFrame').src;
+  page.el('bookingFrame').src = 'about:blank';
+  page.el('retryBooking').handlers.click();
+  assert.equal(page.el('bookingFrame').src, original);
+  assert.equal(page.el('bookingSuccess').hidden, true);
 });

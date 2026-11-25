@@ -9,7 +9,7 @@
   const frame = get('bookingFrame');
   const reserve = get('reserve');
   const reserveTitle = get('reserve-title');
-  const fallback = get('fallbackLink');
+  const retry = get('retryBooking');
   const panel = get('metaConsent');
   const reset = get('resetMeta');
   const success = get('bookingSuccess');
@@ -19,20 +19,19 @@
   const validPixel = /^\d{10,25}$/.test(CONFIG.metaPixelId);
   const consentKey = 'spady_k365_meta_consent';
   const utm = new URLSearchParams(location.search);
-  const steps = { view: 'K365_ReservationSectionView', cta: 'K365_BookingCTAClick', exit: 'K365_ExternalBookingClick' };
+  const steps = { view: 'K365_ReservationSectionView', cta: 'K365_BookingCTAClick' };
   let metaEnabled = false;
   let consent = null;
   let processed = false;
   let seenReserve = false;
 
-  // Build both URLs from one fixed referral. Do not forward arbitrary landing
+  // Build the in-page URL from one fixed referral. Do not forward arbitrary landing
   // parameters or a second consultation_details value to the cross-origin frame.
   base.searchParams.set('consultation_details', CONFIG.referral);
   for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
     const value = utm.get(key);
     if (value && /^[a-zA-Z0-9_.+-]{1,100}$/.test(value)) base.searchParams.set(key, value);
   }
-  fallback.href = base.href;
   const embedded = new URL(base.href);
   embedded.searchParams.set('embed', 'true');
 
@@ -103,10 +102,12 @@
       reserveTitle.focus({ preventScroll: true });
     });
   });
-  fallback.addEventListener('click', () => trackStep('exit'));
-  fallback.addEventListener('auxclick', event => {
-    if (event.button === 1) trackStep('exit');
+  retry.hidden = false;
+  retry.addEventListener('click', () => {
+    frame.src = embedded.href;
+    frame.scrollIntoView({ block: 'start' });
   });
+  get('footerPrivacy').addEventListener('click', () => { get('booking-privacy').open = true; });
 
   if ('IntersectionObserver' in window) {
     let heroPassed = false;
