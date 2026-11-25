@@ -256,7 +256,7 @@ body{background:var(--paper)}
 .hero-proof small{display:block;color:#544978;font-size:10px;line-height:1.1;font-weight:750}
 .proof-value{font-size:12px;font-weight:850;line-height:1.25;white-space:nowrap;color:#392777}
 .proof-value strong{font-variant-numeric:tabular-nums;font-size:24px;letter-spacing:-.045em;vertical-align:baseline;margin-inline:2px}
-.hero-proof a{margin-left:auto;display:flex;align-items:center;gap:5px;border-left:1px solid #d9cff7;min-height:36px;padding-left:9px;color:#492c9a;font-size:12px;font-weight:850;text-underline-offset:3px;white-space:nowrap}
+
 .hero .button,.consult .button,.mobile-cta .button{position:relative;isolation:isolate;overflow:hidden}
 .hero .button::before,.consult .button::before,.mobile-cta .button::before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(111deg,transparent 30%,#fff0 40%,#ffffff47 49%,#fff0 57%,transparent 64%);transform:translateX(-110%);animation:booking-sheen 4s ease-in-out 2}
 @keyframes booking-sheen{0%,47%{transform:translateX(-110%)}73%,100%{transform:translateX(110%)}}
@@ -283,7 +283,7 @@ body{background:var(--paper)}
 @media(max-width:760px){
  .map-art{height:clamp(144px,46vw,220px)}
  .hero-proof{margin:9px auto 0;padding:4px 8px;gap:7px}
- .proof-value strong{font-size:20px}.hero-proof a{min-height:33px}
+ .proof-value strong{font-size:20px}
  .hero .button{margin-top:8px}
  .cases-section h2 br{display:initial}
  .cases-grid{grid-template-columns:1fr;gap:9px;margin-top:15px}
@@ -459,7 +459,7 @@ body{background:var(--paper)}
 
 .video-screen{width:100%}
 @media(max-width:760px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:345px){.hero-proof{gap:5px;padding-inline:6px}.hero-proof a{padding-left:5px}.proof-icon{width:24px;height:24px}}
+@media(max-width:345px){.hero-proof{gap:5px;padding-inline:6px}.proof-icon{width:24px;height:24px}}
 
 .video-play{isolation:isolate}
 .video-thumbnail{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
@@ -554,3 +554,14 @@ body{background:var(--paper)}
 .map-rating:nth-child(3){left:77%;top:11%;color:#215a92}
 .map-rating:nth-child(4){left:28%;bottom:13%;color:#215a92}
 .map-rating:nth-child(5){left:70%;bottom:10%}
+
+/* 国内外の導入実績。本部提供資料の表記に合わせ、国内は概数・海外は下限。 */
+.hero-proof{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:clamp(9px,2.6vw,18px)}
+.proof-market{min-width:0}
+.proof-overseas{border-inline-start:1px solid #d9cff7;padding-inline-start:clamp(9px,2.6vw,18px)}
+.proof-market small{margin-block-end:3px}
+.proof-market .proof-value{display:flex;gap:3px;align-items:baseline}
+.proof-market .proof-value b,.proof-qualifier{font-size:clamp(10px,2.7vw,12px)}
+.proof-overseas strong{font-size:clamp(24px,6.2vw,38px);line-height:1}
+.hero-proof #adoptionCount{margin-inline:0;min-width:5.25ch}
+@media(max-width:365px){.hero-proof{column-gap:7px}.proof-overseas{padding-inline-start:7px}.hero-proof .proof-value{gap:2px}}
