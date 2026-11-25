@@ -57,3 +57,7 @@
 - 本部側が設定できれば、埋め込み・別タブの両方を同じ受領元で扱える。一方、通知設定や閲覧権限を本部で用意できない場合には、まず明示的に承認された最小項目を本部から共有する運用に限る。親LPや公開Apps Script URL経由の個人情報収集は追加しない。現状は未接続。今回は実予約・送信なし。
 
 参考：[HubSpotの予約フォーム設定](https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages)・[HubSpotの予約通知](https://knowledge.hubspot.com/meetings-tool/share-scheduling-pages)・[ワークフロー通知](https://knowledge.hubspot.com/workflows/choose-your-workflow-actions)。
+
+### 「無料診断」を入口にしたプレビュー
+- [口コミ365の公式案内](https://365kuchikomi.com/lp/)ではGoogleマップの無料診断を確認できる。ただし、公式LPの無料診断ボタンとSpady用のHubSpot相談リンクは別の入口。現行HubSpot枠で診断そのものが実施されるか、対象業種・条件、結果の提供方法・日時は本部確認前。プレビューは「無料診断について本部に相談」の日時選択とし、所要時間やレポート納品は約束しない。
+- 予約先や紹介情報、予約完了イベントの定義、通知・計測設定はこの見た目の変更では変えていない。
