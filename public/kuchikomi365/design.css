@@ -316,7 +316,7 @@ body{background:var(--paper)}
 .retry-booking{font-size:13px;min-height:44px;padding:6px 12px;margin-top:5px;border:1px solid #cbb9ef;border-radius:6px;color:#402695;background:#f7f2ff;font-weight:800;cursor:pointer}
 .retry-booking:hover{background:#efe5ff}
 
-.booking-head .booking-scope{margin:5px 0 8px;color:#3e3267;font-weight:750}
+.booking-controls .booking-scope{margin:5px 0 8px;color:#3e3267;font-weight:750}
 
 .demo-guide{display:inline-flex;align-items:center;gap:6px;color:#4f3a83;background:#f0ebff;border:1px solid #e0d5fb;border-radius:6px;margin-top:12px;padding:4px 8px;font-size:12px;font-weight:750}
 .demo-cards{margin-top:16px}
@@ -474,3 +474,5 @@ body{background:var(--paper)}
 .recommend-person div{min-width:0}
 .recommend-person span{display:block;color:#514178;font-size:12px;font-weight:800}
 .recommend-person strong{display:block;margin-top:2px;font-size:clamp(16px,2vw,24px);overflow-wrap:anywhere}
+
+.booking-controls>p+p{margin-bottom:10px}
