@@ -4,55 +4,246 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="description" content="Spadyのご紹介による口コミ365の商談予約ページです。">
-  <title>口コミ365 商談予約｜Spady（井上博史）紹介</title>
+  <meta name="description" content="Googleマップの口コミ管理・AI返信・分析を、無理なく続けられる店舗運用へ。口コミ365の機能と料金を本部担当者にオンラインで相談。Spady（井上博史）紹介専用ページ。">
+  <meta name="theme-color" content="#123a36">
+  <meta property="og:title" content="口コミ365｜口コミ管理を、店舗の強みに。｜Spady紹介">
+  <meta property="og:description" content="口コミ管理・返信・分析をもっと効率的に。店舗オーナー向けオンライン相談予約。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spady.net/kuchikomi365/">
+  <title>口コミ365｜店舗の口コミ管理を、もっと効率的に。｜Spady紹介</title>
   <style>
-    :root { font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif; color:#172638; background:#f5f8fb; font-synthesis:none; }
-    *{box-sizing:border-box} body{margin:0;line-height:1.7} a{color:#1264af}
-    .top{background:#ffffff;border-bottom:1px solid #e4eaf1} .topInner{max-width:970px;margin:auto;padding:17px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px}
-    .brand{font-weight:850;letter-spacing:.06em;font-size:18px;color:#153750}.subbrand{font-size:12px;color:#64748b}
-    main{max-width:970px;margin:28px auto 70px;padding:0 20px}.kicker{font-weight:750;color:#1b6a9e;font-size:12px;letter-spacing:.09em}
-    h1{font-size:clamp(24px,4vw,34px);line-height:1.45;letter-spacing:-.025em;margin:8px 0 10px}
-    .lead{color:#516276;font-size:14px;margin:0 0 20px}.referral{border:1.5px solid #91b8d1;background:#edf7fc;border-radius:14px;padding:17px 20px;display:flex;align-items:center;gap:15px}
-    .stamp{background:#0d699a;color:white;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;flex:none;font-weight:800}
-    .small{font-size:12px;color:#536c82}.refName{font-size:clamp(16px,3vw,21px);font-weight:800;line-height:1.4}
-    .fixed{font-size:11px;color:#277694;font-weight:650;margin-top:2px}.booking{background:white;border:1px solid #e1e8ef;border-radius:17px;box-shadow:0 14px 38px rgba(22,57,95,.06);padding:19px 13px 10px;margin-top:23px}
-    .bookingHead{padding:0 12px 14px}.bookingHead h2{font-size:18px;line-height:1.5;margin:0 0 4px}.bookingHead p{font-size:12px;color:#677789;margin:0}
-    .meetings-iframe-container{min-height:740px}.meetings-iframe-container iframe{width:100%!important;min-height:740px!important}
-    .fallback{padding:12px 14px 18px;text-align:center;font-size:12px;color:#607389}
-    .notice{margin-top:17px;color:#6b7b89;font-size:12px;line-height:1.8}.status{display:none;margin:20px 0 0;padding:15px;background:#eaf7ef;border:1px solid #93caa7;border-radius:12px;color:#166338;font-weight:700}
-    .consent{position:fixed;bottom:14px;left:14px;right:14px;max-width:600px;margin:auto;border:1px solid #d3dde8;border-radius:15px;background:white;box-shadow:0 10px 35px rgba(7,31,57,.16);padding:16px;z-index:9}
-    .consent[hidden]{display:none}.consent p{font-size:12px;margin:0 0 10px;color:#526477}.consentButtons{display:flex;gap:8px}.btn{border:1px solid #ced8e1;background:white;border-radius:9px;padding:9px 15px;font-size:13px;font-weight:700;cursor:pointer}.btn.primary{background:#14699c;color:white;border-color:#14699c}
-    .consentActions{display:flex;justify-content:space-between;align-items:center;gap:10px}
-    footer{max-width:970px;margin:0 auto 30px;padding:0 20px;font-size:12px;color:#718193}
-    @media(max-width:600px){.topInner{padding:13px 18px} main{padding:0 12px;margin-top:23px}.referral{padding:15px}.booking{padding:16px 2px 8px}.bookingHead{padding:0 13px 10px}.meetings-iframe-container,.meetings-iframe-container iframe{min-height:850px!important}.consent{left:10px;right:10px;bottom:10px}}
+    :root{color-scheme:light;--ink:#183a36;--ink2:#294b46;--muted:#5e716d;--accent:#166d5c;--mint:#b6e8d5;--gold:#e2ae69;--paper:#faf9f5;--line:#e2e9e2;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;font-synthesis:none}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;background:var(--paper);color:var(--ink);line-height:1.8}a{color:inherit}button{font:inherit}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #fcad52;outline-offset:3px}
+    .container{width:min(1160px,calc(100% - 40px));margin-inline:auto}.sr{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+    .site-header{position:sticky;top:0;z-index:30;background:rgba(250,249,245,.97);border-bottom:1px solid #e5e9e2;backdrop-filter:blur(12px)}
+    .header-in{max-width:1160px;padding:15px 20px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}.logo-mark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--ink);color:#fff;font-weight:850;font-size:17px;box-shadow:4px 4px 0 #b5decf}
+    .logo-words{display:grid;gap:0;line-height:1.25}.logo-words strong{font-size:16px;letter-spacing:-.03em}.logo-words small{font-size:10px;letter-spacing:.08em;font-weight:700;color:var(--muted)}
+    .nav{display:flex;gap:26px;align-items:center;font-size:12px;font-weight:750}.nav a{text-decoration:none}.nav a:hover{color:var(--accent)}
+    .pill-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--ink);color:white!important;padding:12px 17px;border-radius:999px;white-space:nowrap;text-decoration:none;font-weight:800;font-size:13px;transition:transform .15s,background .15s}
+    .pill-cta:hover,.main-cta:hover{transform:translateY(-2px);background:#0f554a}.arrow{font-size:18px;line-height:1}
+    .hero{position:relative;background:#e8f1e9;overflow:hidden;padding:66px 0 74px;border-bottom:1px solid #dae5dc}.hero:before{content:"";position:absolute;right:-100px;top:-190px;width:650px;height:650px;border:1px solid rgba(45,103,80,.12);border-radius:50%;box-shadow:0 0 0 82px rgba(214,237,225,.55),0 0 0 166px rgba(255,255,255,.23)}
+    .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr);align-items:center;gap:44px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;letter-spacing:.06em;font-size:12px;font-weight:800;color:#226758}.eyebrow:before{content:"";width:8px;height:8px;background:#1f927b;border-radius:50%;box-shadow:0 0 0 5px #cbebd8}
+    .hero h1{font-weight:850;font-size:clamp(34px,4.6vw,61px);letter-spacing:-.06em;line-height:1.42;margin:21px 0 22px}.hero h1 em{font-style:normal;color:#0d7868;position:relative;white-space:nowrap}.hero h1 em:after{content:"";height:10px;background:rgba(226,174,105,.45);position:absolute;left:0;right:0;bottom:3px;z-index:-1;border-radius:6px}
+    .lead{font-size:15px;line-height:2.1;color:#3d5651;max-width:515px;margin:0 0 30px}.hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:29px}
+    .hero-badges span{background:#fff9;border:1px solid #bdd7c8;border-radius:999px;padding:5px 12px;font-size:11px;color:#366153;font-weight:800}
+    .main-cta{display:inline-flex;align-items:center;justify-content:center;gap:16px;text-align:center;background:var(--ink);color:#fff;text-decoration:none;border-radius:15px;padding:17px 25px;min-width:280px;box-shadow:0 10px 27px #174c3d2a;font-size:15px;font-weight:800;transition:transform .15s,background .15s}
+    .hero-note{font-size:11px;color:#6a8176;margin:10px 0 0}
+    .visual{min-height:480px;position:relative;display:grid;place-items:center;isolation:isolate}
+    .visual-glow{position:absolute;background:#bddfd0;width:93%;height:91%;border-radius:48% 52% 43% 57%;transform:rotate(-13deg);z-index:-2}
+    .panel{width:86%;max-width:470px;background:#fff;border-radius:24px;border:1px solid #d9e2d9;box-shadow:0 30px 90px #174e4130;overflow:hidden;transform:rotate(-2deg)}
+    .panel-top{padding:17px 20px;border-bottom:1px solid #e6ece5;display:flex;justify-content:space-between;align-items:center;background:#fdfefd}
+    .panel-top small{font-size:10px;letter-spacing:.16em;color:#82958c;font-weight:800}.dots{display:flex;gap:5px}.dots b{width:7px;height:7px;border-radius:50%;background:#d8e8de}.dots b:first-child{background:#efb2a1}
+    .panel-body{padding:24px}.panel-title{font-size:13px;font-weight:850;margin:0 0 16px}.flowcard{display:flex;gap:15px;align-items:center;padding:13px 15px;border-radius:13px;margin-bottom:11px;border:1px solid #dfece3;background:#fbfdfa}.flowcard .ic{flex:none;background:#e4f2ea;border-radius:11px;width:39px;height:39px;display:grid;place-items:center;font-size:19px}.flowcard strong{display:block;font-size:12px;line-height:1.6}.flowcard small{display:block;font-size:10px;color:#788982;line-height:1.6}.panel-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e7eee8;padding-top:16px;font-size:11px;font-weight:800;color:#537d6c}
+    .float-pill{position:absolute;background:#fff;border:1px solid #dce5dc;box-shadow:0 12px 28px #1d4b3926;border-radius:13px;padding:13px 17px;display:flex;align-items:center;gap:9px;color:#315e4f;font-size:11px;font-weight:800}
+    .float-one{top:29px;right:0;transform:rotate(6deg)}.float-two{bottom:26px;left:0;transform:rotate(-6deg)}.visual-caption{position:absolute;bottom:1px;right:8px;font-size:10px;color:#688578}
+    .fine-strip{background:#153c35;color:#d7eee1;padding:20px 0}.fine-inner{display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;font-size:12px;letter-spacing:.02em}.fine-inner strong{font-size:12px;color:white}.sep{width:1px;height:20px;background:#558173}
+    section.content{padding:92px 0}.section-kicker{font-size:11px;letter-spacing:.2em;font-weight:850;color:#18806b;margin:0 0 10px}.section-h2{font-size:clamp(28px,3.6vw,43px);line-height:1.55;letter-spacing:-.055em;margin:0 0 16px;font-weight:850}.section-lead{max-width:660px;font-size:14px;line-height:2.1;color:var(--muted);margin:0}.center{text-align:center}.center .section-lead{margin-inline:auto}
+    .concerns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:38px}.concern{padding:30px 25px;background:white;border:1px solid #e1e8df;border-radius:20px;min-height:228px}.concern .no{font-size:12px;letter-spacing:.1em;font-weight:800;color:#9aab9a}.concern strong{font-size:18px;display:block;line-height:1.55;margin:17px 0 13px}.concern p{font-size:12px;line-height:2;color:var(--muted);margin:0}
+    .journey{background:#fff;padding:77px 0;border-block:1px solid #eceee8}.journey-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.path{display:flex;gap:6px;align-items:center;margin-top:27px}.path .step{border:1px solid #dce8df;border-radius:14px;background:#f8faf7;flex:1;padding:18px 9px;text-align:center;font-size:13px;font-weight:800}.path .step strong{display:block;font-size:11px;color:#719084;margin-bottom:8px}.path .path-arrow{font-weight:800;font-size:18px;color:#b2c4b6}
+    .quote-box{background:#f0f8f2;border:1px solid #d7e9d9;padding:31px;border-radius:22px}.quote-box p{font-weight:750;font-size:17px;line-height:2;margin:0 0 13px}.quote-box small{font-size:11px;color:#74897c}
+    .feature-area{background:#f3f4ef}.features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:42px}
+    .feature{display:flex;gap:22px;padding:29px;background:#fff;border:1px solid #e2e8df;border-radius:21px;min-height:190px}.feature .figure{flex:0 0 61px;height:61px;background:#ecf6ef;border-radius:17px;display:grid;place-items:center;font-size:25px}.feature .label{font-size:10px;letter-spacing:.12em;color:#26836d;font-weight:850}.feature h3{font-size:18px;line-height:1.5;margin:5px 0 10px}.feature p{font-size:12px;line-height:2;color:var(--muted);margin:0}
+    .plan-note{font-size:11px;color:#72847b;margin-top:18px}.mid-cta{text-align:center;margin-top:32px}
+    .contrast{background:#173e37;color:#fff;padding:74px 0;position:relative;overflow:hidden}.contrast:after{content:"";position:absolute;right:-150px;top:0;border:1px solid #ffffff20;border-radius:50%;width:520px;height:520px;box-shadow:0 0 0 80px #ffffff08}
+    .contrast-in{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:30px}.contrast h2{font-size:clamp(24px,3.2vw,37px);line-height:1.6;letter-spacing:-.04em;margin:0}.contrast p{font-size:12px;color:#c5dfd6;line-height:2;margin:12px 0 0}
+    .contrast a{background:#f5f0db;color:#17483c;flex:none;border-radius:13px;padding:17px 20px;font-weight:850;text-decoration:none;font-size:14px}
+    .how{background:#fff}.flow-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:36px}.flowstep{border-top:2px solid #a9d7c0;padding:24px 12px 0}.flowstep .no{font-weight:850;font-size:13px;color:#248b74}.flowstep h3{font-size:18px;margin:12px 0 8px}.flowstep p{font-size:12px;line-height:2;color:var(--muted);margin:0}
+    .faq-grid{display:grid;grid-template-columns:minmax(200px,.7fr) minmax(0,1.3fr);gap:56px}.faq{background:#f4f6f0}.faq-stack{display:grid;gap:10px}
+    details{background:white;border:1px solid #e0e7df;border-radius:13px;padding:0 19px}details[open]{border-color:#a0cbb4}
+    summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;font-weight:800;font-size:14px}summary::-webkit-details-marker{display:none}
+    summary::after{content:"＋";font-size:22px;font-weight:400;color:#348a77}details[open] summary::after{content:"−"}details p{font-size:12px;color:var(--muted);line-height:2.1;margin:0 0 22px}
+    .reserve{background:#e8f1e9;padding:85px 0 96px}.reserve-layout{display:grid;grid-template-columns:minmax(0,.73fr) minmax(0,1.27fr);align-items:start;gap:34px}.reserve-side{position:sticky;top:115px}.reserve-side h2{font-size:clamp(27px,3vw,38px);line-height:1.55;letter-spacing:-.055em;margin:6px 0 16px}.reserve-side p{font-size:13px;line-height:2.1;color:#526e63;margin:0 0 25px}
+    .referral{border-radius:16px;background:#fff;border:1px solid #cbded0;padding:19px 21px}.referral small{font-size:11px;color:#6f887b;font-weight:800;display:block}.referral strong{display:block;font-size:19px;margin:6px 0 0;line-height:1.4}.referral .fixed{font-size:10px;color:#43836e;margin-top:7px}
+    .reserve-card{background:#fff;border-radius:22px;border:1px solid #d3e0d4;padding:24px 17px 15px;box-shadow:0 19px 44px #21463916}
+    .reserve-head{padding:0 12px 17px;border-bottom:1px solid #e7ece5}.reserve-head h3{margin:0 0 7px;font-size:19px}.reserve-head p{margin:0;font-size:11px;color:#75877c;line-height:1.7}
+    .meetings-iframe-container{min-height:790px}.meetings-iframe-container iframe{width:100%!important;min-height:790px!important}
+    .fallback{text-align:center;padding:13px;font-size:11px;color:#668276}.fallback a{font-weight:800;text-decoration:underline}
+    .notice{margin-top:20px;color:#718779;font-size:11px;line-height:2}.status{display:none;margin:14px 0;padding:18px;border:1px solid #a7cfb3;color:#286b48;background:#ebf8ee;border-radius:11px;font-size:13px;font-weight:800}
+    footer{background:#10352f;color:#bfdbd0;padding:35px 0}.footer-in{display:flex;justify-content:space-between;gap:20px;align-items:end}.footer-in strong{display:block;color:#fff;font-size:19px}.footer-in p{font-size:11px;margin:6px 0 0}.footer-links{display:flex;gap:16px;flex-wrap:wrap;font-size:11px}.footer-links a{color:#c5e4d7}
+    .mobile-cta{display:none}
+    .consent{position:fixed;bottom:14px;left:14px;right:14px;max-width:600px;margin:auto;border:1px solid #d3dde8;border-radius:15px;background:white;box-shadow:0 10px 35px rgba(7,31,57,.16);padding:16px;z-index:90}
+    .consent[hidden]{display:none}.consent p{font-size:12px;margin:0 0 10px;color:#526477}.consentButtons{display:flex;gap:8px}.btn{border:1px solid #ced8e1;background:white;border-radius:9px;padding:9px 15px;font-size:13px;font-weight:700;cursor:pointer}.btn.primary{background:#14699c;color:white;border-color:#14699c}.consentActions{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    @media(max-width:990px){.nav a[data-link]{display:none}.hero-grid{grid-template-columns:1fr 1fr;gap:24px}.visual{min-height:410px}.float-pill{display:none}.journey-grid{gap:27px}.reserve-layout{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:18px}}
+    @media(max-width:750px){html{scroll-padding-top:76px}.container{width:min(650px,calc(100% - 36px))}.header-in{padding:11px 18px}.logo-words strong{font-size:14px}.logo-words small{font-size:9px}.nav .pill-cta{padding:11px 14px;font-size:11px}
+      .hero{padding:47px 0 49px}.hero-grid,.journey-grid,.faq-grid,.reserve-layout{grid-template-columns:1fr}.hero h1{font-size:clamp(35px,8.2vw,48px)}.hero h1 em{white-space:normal}.lead{font-size:13px}.hero-badges{margin-bottom:23px}.visual{min-height:360px;margin-top:7px}.panel{max-width:430px}.visual-glow{width:80%;height:90%}
+      section.content{padding:62px 0}.section-h2{font-size:clamp(28px,7vw,37px)}.concerns,.features,.flow-steps{grid-template-columns:1fr}.concern{min-height:0;padding:24px}.concern strong{margin-top:9px}.feature{padding:23px;min-height:0}
+      .journey{padding:56px 0}.contrast{padding:54px 0}.contrast-in{align-items:stretch;flex-direction:column}.contrast a{text-align:center}.faq-grid{gap:20px}.reserve{padding:60px 0 86px}.reserve-side{position:static}.reserve-card{padding:16px 6px}.reserve-head{padding:0 10px 14px}.meetings-iframe-container,.meetings-iframe-container iframe{min-height:930px!important}.footer-in{display:block}.footer-links{margin-top:20px}.mobile-cta{display:block;position:fixed;z-index:25;bottom:0;left:0;right:0;background:linear-gradient(0deg,#f8faf3 65%,#f8faf300);padding:14px 16px 12px;box-shadow:0 -5px 24px #193d3420}.mobile-cta a{display:flex;justify-content:center;align-items:center;gap:13px;background:#154a3e;color:#fff;text-decoration:none;border-radius:12px;padding:13px 18px;font-weight:800;font-size:13px}body{padding-bottom:72px}.consent{bottom:78px}.consentActions{display:block}.consentButtons{margin-top:10px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.main-cta,.pill-cta{transition:none}}
   </style>
 </head>
 <body>
-  <header class="top"><div class="topInner"><div class="brand">Spady</div><div class="subbrand">口コミ365 商談予約のご案内</div></div></header>
-  <main>
-    <div class="kicker">PARTNER REFERRAL</div>
-    <h1>口コミ365｜商談予約</h1>
-    <p class="lead">Spadyからご紹介する、口コミ365本部とのオンライン商談予約です。ご希望の日時を選択してください。</p>
-    <section class="referral" aria-label="紹介者">
-      <div class="stamp" aria-hidden="true">S</div>
-      <div><div class="small">紹介者</div><div class="refName">Spady（井上博史）</div><div class="fixed">このページ上の紹介者表示は変更できません</div></div>
-    </section>
-    <div id="bookingSuccess" role="status" class="status" aria-live="polite">予約完了を検知しました。ご予約ありがとうございます。</div>
-    <section class="booking" aria-label="口コミ365本部の予約フォーム">
-      <div class="bookingHead"><h2>ご都合のよい日時をお選びください</h2><p>以下は口コミ365本部が管理するHubSpot予約フォームです。</p></div>
-      <!-- HubSpot公式の会議埋め込みスクリプトを利用 -->
-      <div id="hubspotMeetings" class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?embed=true&amp;consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B"></div>
-      <div class="fallback">フォームが表示されない場合は、<a id="fallbackLink" rel="noopener" target="_blank" href="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B">予約ページを別タブで開く</a>こともできます。<br>※別タブからの予約はSpady側で自動検知できない可能性があります。</div>
-    </section>
-    <p class="notice">「ご相談内容」には紹介元情報を事前入力しますが、お客様が削除することもできます。このページの固定表示は、本部側の紹介報酬への登録を保証するものではありません。通知設定を済ませた場合、予約完了を検知するとSpadyへ予約発生の情報（お名前・メールアドレスは含みません）を送信します。ご入力の個人情報は口コミ365本部の予約システムで取り扱われます。</p>
-  </main>
-  <footer>紹介元：Spady ／ 実際の商談・サービス提供：口コミ365本部</footer>
-  <section class="consent" id="metaConsent" hidden aria-label="広告効果測定の設定">
-    <p><strong>広告効果測定について</strong><br>お客様の同意がある場合のみ、SpadyのMeta Pixelでページ表示と予約完了を計測します。予約は同意なしでも可能です。</p>
-    <div class="consentActions"><span style="font-size:11px;color:#667786">後から変更する場合はブラウザーの保存データを削除してください。</span><div class="consentButtons"><button type="button" class="btn" id="declineMeta">同意しない</button><button type="button" class="btn primary" id="acceptMeta">同意する</button></div></div>
+<header class="site-header">
+  <div class="header-in">
+    <a class="logo" href="#top" aria-label="口コミ365 紹介LPの先頭へ">
+      <span class="logo-mark">365</span><span class="logo-words"><strong>口コミ365</strong><small>Spady INTRODUCTION</small></span>
+    </a>
+    <nav class="nav" aria-label="ページ内メニュー">
+      <a data-link href="#concerns">お悩み</a><a data-link href="#features">できること</a><a data-link href="#faq">よくある質問</a>
+      <a class="pill-cta" href="#reserve">オンライン相談を予約 <span class="arrow" aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">店舗オーナーのための口コミ・マップ集客支援</span>
+        <h1 id="hero-title">見つけてもらった、<br>その先で。<br><em>選ばれる店舗へ。</em></h1>
+        <p class="lead">お店を探す人が、口コミや店舗情報を見比べる時代。<br>「集める」「返信する」「改善する」を、無理なく続けられる仕組みに変えませんか。</p>
+        <div class="hero-badges" aria-label="サービスの対象">
+          <span>Googleマップ</span><span>口コミ管理</span><span>AI返信サポート</span><span>店舗分析</span>
+        </div>
+        <a class="main-cta" href="#reserve">オンライン相談を予約する <span class="arrow" aria-hidden="true">↗</span></a>
+        <p class="hero-note">相談予約に費用はかかりません。ご案内・商談は口コミ365本部が担当します。</p>
+      </div>
+      <div class="visual" aria-label="口コミ運用のイメージ図">
+        <div class="visual-glow" aria-hidden="true"></div>
+        <div class="panel">
+          <div class="panel-top"><small>STORE EXPERIENCE</small><span class="dots" aria-hidden="true"><b></b><b></b><b></b></span></div>
+          <div class="panel-body">
+            <p class="panel-title">お客様の声を、お店の強みに。</p>
+            <div class="flowcard"><span class="ic" aria-hidden="true">✦</span><div><strong>新着口コミに気づく</strong><small>口コミの確認・通知を効率的に</small></div></div>
+            <div class="flowcard"><span class="ic" aria-hidden="true">✎</span><div><strong>返信案をAIがサポート</strong><small>スタッフの対応負担を軽減</small></div></div>
+            <div class="flowcard"><span class="ic" aria-hidden="true">◉</span><div><strong>変化を見える化</strong><small>評価の傾向や改善点を把握</small></div></div>
+            <div class="panel-footer"><span>口コミ管理の新しい日常</span><span aria-hidden="true">● ● ●</span></div>
+          </div>
+        </div>
+        <span class="float-pill float-one" aria-hidden="true">✳ &nbsp; 毎日の業務をシンプルに</span>
+        <span class="float-pill float-two" aria-hidden="true">✓ &nbsp; お店らしさを伝える</span>
+        <span class="visual-caption">※説明用イメージ。実際の管理画面ではありません。</span>
+      </div>
+    </div>
   </section>
-  <script>
+
+  <div class="fine-strip">
+    <div class="container fine-inner"><strong>口コミ365がサポートすること</strong><span class="sep" aria-hidden="true"></span><span>口コミの収集・管理</span><span>AIによる返信支援</span><span>順位・傾向の確認</span></div>
+  </div>
+
+  <section class="content" id="concerns" aria-labelledby="concerns-title">
+    <div class="container">
+      <div class="center">
+        <p class="section-kicker">YOUR CHALLENGES</p>
+        <h2 class="section-h2" id="concerns-title">こんなこと、<br>後回しになっていませんか？</h2>
+        <p class="section-lead">忙しい店舗運営のなかで、口コミの管理やGoogleマップの情報更新まで手が回らない。そんなお悩みを整理するところから。</p>
+      </div>
+      <div class="concerns">
+        <article class="concern"><span class="no">PROBLEM 01</span><strong>口コミへの返信が<br>つい後回しになる</strong><p>新しい口コミは見ているのに、言葉を選んでいるうちに時間が過ぎてしまう。</p></article>
+        <article class="concern"><span class="no">PROBLEM 02</span><strong>近隣店舗と比べて<br>何を改善すべきか迷う</strong><p>口コミの内容も評価の傾向も、感覚では分かっていても整理できていない。</p></article>
+        <article class="concern"><span class="no">PROBLEM 03</span><strong>お店の魅力を<br>十分に伝えきれていない</strong><p>情報更新やお客様の声の活用まで、毎日継続するのが難しい。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey" aria-labelledby="journey-title">
+    <div class="container journey-grid">
+      <div>
+        <p class="section-kicker">WHY REVIEWS MATTER</p>
+        <h2 class="section-h2" id="journey-title">お客様が選ぶまでに、<br>大切な接点がある。</h2>
+        <p class="section-lead">店舗が検索で見つかったとしても、口コミや写真、営業時間などの情報を見て比較されることがあります。だからこそ、日々の情報管理が大切です。</p>
+        <div class="path" aria-label="店舗選びのイメージ">
+          <div class="step"><strong>01</strong>見つける</div><span class="path-arrow" aria-hidden="true">›</span>
+          <div class="step"><strong>02</strong>比べる</div><span class="path-arrow" aria-hidden="true">›</span>
+          <div class="step"><strong>03</strong>選ぶ</div>
+        </div>
+      </div>
+      <div class="quote-box">
+        <p>「良い口コミを増やすこと」だけをゴールにしない。<br>お客様の声を見つめ、返信し、店舗運営の改善につなげていく。</p>
+        <small>口コミ365を検討するときに大切にしたい視点</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="content feature-area" id="features" aria-labelledby="feature-title">
+    <div class="container">
+      <div class="center">
+        <p class="section-kicker">WHAT IT CAN DO</p>
+        <h2 class="section-h2" id="feature-title">口コミの運用を、<br>ひとつずつ整える。</h2>
+        <p class="section-lead">口コミ365は、Googleマップや口コミ管理を支援するサービスです。お店の状況に合わせて、必要な機能を相談できます。</p>
+      </div>
+      <div class="features">
+        <article class="feature"><div class="figure" aria-hidden="true">✉</div><div><span class="label">FEATURE 01</span><h3>口コミの確認・返信支援</h3><p>新しい口コミの確認や返信文の作成をサポート。店舗の声に向き合う時間をつくります。</p></div></article>
+        <article class="feature"><div class="figure" aria-hidden="true">✧</div><div><span class="label">FEATURE 02</span><h3>AIを活用した口コミ分析</h3><p>お客様の声から、評価されている点や改善のヒントを整理します。</p></div></article>
+        <article class="feature"><div class="figure" aria-hidden="true">▥</div><div><span class="label">FEATURE 03</span><h3>Googleマップの状況確認</h3><p>検索順位の推移や競合との比較など、日々の取り組みを見直すための情報を確認できます。</p></div></article>
+        <article class="feature"><div class="figure" aria-hidden="true">↗</div><div><span class="label">FEATURE 04</span><h3>情報更新・運用の効率化</h3><p>店舗情報や投稿管理など、継続的な運用を支える機能も用意されています。</p></div></article>
+      </div>
+      <p class="plan-note">※機能の提供範囲は契約プランや利用環境によって異なります。正確な対応内容と費用は本部の商談でご確認ください。順位・口コミ件数・来店数を保証するものではありません。</p>
+      <div class="mid-cta"><a class="main-cta" href="#reserve">うちのお店に合うか相談する <span class="arrow" aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <aside class="contrast" aria-label="オンライン相談のご案内">
+    <div class="container contrast-in">
+      <div><h2>まずは、お店の状況を<br>聞かせてください。</h2><p>無理にすべての機能を使う必要はありません。現在のお悩みや運用状況をもとに、サービスの適合性を確認しましょう。</p></div>
+      <a href="#reserve">本部とのオンライン相談を予約 <span aria-hidden="true">↗</span></a>
+    </div>
+  </aside>
+
+  <section class="content how" id="flow" aria-labelledby="flow-title">
+    <div class="container">
+      <p class="section-kicker">HOW IT WORKS</p>
+      <h2 class="section-h2" id="flow-title">相談までは、3ステップ。</h2>
+      <div class="flow-steps">
+        <div class="flowstep"><span class="no">STEP 01</span><h3>日時を選ぶ</h3><p>このページの予約カレンダーから、ご都合のよい時間を選択してください。</p></div>
+        <div class="flowstep"><span class="no">STEP 02</span><h3>店舗情報を入力</h3><p>会社名・連絡先・店舗数・ご相談内容を入力し、予約を確定します。</p></div>
+        <div class="flowstep"><span class="no">STEP 03</span><h3>本部担当者と相談</h3><p>口コミ365本部がオンラインでサービス内容・費用・運用方法をご案内します。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content faq" id="faq" aria-labelledby="faq-title">
+    <div class="container faq-grid">
+      <div><p class="section-kicker">FAQ</p><h2 class="section-h2" id="faq-title">よくあるご質問</h2><p class="section-lead">相談前に知っておきたいことをまとめました。</p></div>
+      <div class="faq-stack">
+        <details><summary>相談予約に料金はかかりますか？</summary><p>このページからのオンライン相談予約自体に費用はかかりません。サービスの導入・利用には別途料金が発生します。契約条件は本部担当者にご確認ください。</p></details>
+        <details><summary>小規模な店舗でも相談できますか？</summary><p>はい。飲食店・美容サロン・宿泊施設など、口コミやGoogleマップの運用に課題のある店舗様はご相談ください。サービスが合うかどうかも含めて本部にご確認いただけます。</p></details>
+        <details><summary>口コミが増えたり、検索順位が上がったりする保証はありますか？</summary><p>いいえ。口コミの投稿はお客様自身の判断によるもので、投稿数・評価・検索順位・売上の向上を保証するものではありません。適切な口コミ依頼と日々の店舗運用が大切です。</p></details>
+        <details><summary>口コミの投稿に特典を付けたり、良い口コミだけを集めたりできますか？</summary><p>Googleの口コミに対して特典を提供することや、肯定的な口コミだけを選んで投稿を依頼することはGoogleのポリシーで禁止されています。実際の口コミ運用は、各プラットフォームのポリシーに従って行う必要があります。</p></details>
+        <details><summary>申し込み後は誰が対応しますか？</summary><p>商談やサービスのご説明は口コミ365本部が担当します。このページはSpady（井上博史）からのご紹介専用ページです。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="reserve" id="reserve" aria-labelledby="reserve-title">
+    <div class="container reserve-layout">
+      <div class="reserve-side">
+        <p class="section-kicker">BOOK A CONSULTATION</p>
+        <h2 id="reserve-title">オンライン相談の<br>ご予約はこちら。</h2>
+        <p>日時選択から予約確定まで、このページで進められます。口コミ365本部の担当者がオンラインでご案内します。</p>
+        <div class="referral" aria-label="紹介者">
+          <small>紹介者（固定表示）</small>
+          <strong>Spady（井上博史）</strong>
+          <div class="fixed">このページ上の紹介者表示は変更できません</div>
+        </div>
+        <p class="notice">※HubSpot予約フォームの「ご相談内容」には「Spady（井上博史）紹介」を事前入力しますが、入力欄自体は編集可能です。予約の紹介元として本部に確実に記録されることを保証するものではありません。</p>
+      </div>
+      <div>
+        <div id="bookingSuccess" role="status" class="status" aria-live="polite">予約完了イベントを検知しました。ご予約ありがとうございます。<br><span style="font-size:11px;font-weight:400">正式な予約情報は本部からの確認メールでご確認ください。</span></div>
+        <div class="reserve-card" aria-label="口コミ365本部のオンライン商談予約フォーム">
+          <div class="reserve-head"><h3>ご都合のよい日時を選択</h3><p>所要時間や空き枠は、口コミ365本部の予約カレンダーに表示されます。</p></div>
+          <!-- HubSpot公式の会議埋め込みスクリプトを利用 -->
+          <div id="hubspotMeetings" class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?embed=true&amp;consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B"></div>
+          <div class="fallback">カレンダーが表示されない場合は、<a id="fallbackLink" target="_blank" rel="noopener noreferrer" href="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B">予約ページを別タブで開く</a>こともできます。<br>※別タブ予約はSpady側で自動検知できない可能性があります。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container footer-in">
+    <div><strong>Spady</strong><p>口コミ365の紹介ページ｜商談・サービス提供：口コミ365本部</p><p>※当ページはSpadyが制作した紹介用ページで、口コミ365の公式運営サイトではありません。</p></div>
+    <div class="footer-links"><a href="https://365kuchikomi.com/privacypolicy/" target="_blank" rel="noopener noreferrer">口コミ365 プライバシーポリシー</a><a href="https://spady.net/" target="_blank" rel="noopener noreferrer">Spadyについて</a></div>
+  </div>
+</footer>
+<div class="mobile-cta"><a href="#reserve">オンライン相談を予約する <span aria-hidden="true">↗</span></a></div>
+<section class="consent" id="metaConsent" hidden aria-label="広告効果測定の設定">
+  <p><strong>広告効果測定について</strong><br>お客様の同意がある場合のみ、SpadyのMeta Pixelでページ表示と予約完了を計測します。予約は同意なしでも可能です。</p>
+  <div class="consentActions"><span style="font-size:11px;color:#667786">後から変更する場合はブラウザーの保存データを削除してください。</span><div class="consentButtons"><button type="button" class="btn" id="declineMeta">同意しない</button><button type="button" class="btn primary" id="acceptMeta">同意する</button></div></div>
+</section>
+
+<script>
     // ============================= ここだけ設定 =============================
     const CONFIG = {
       metaPixelId: '',        // 例: '123456789012345'。未入力ならMeta Pixelを送信しない
@@ -138,6 +329,6 @@
       }
     });
   </script>
-  <script async src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+<script async src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
 </body>
 </html>
