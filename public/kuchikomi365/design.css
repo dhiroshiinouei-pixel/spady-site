@@ -526,3 +526,19 @@ body{background:var(--paper)}
 @media(max-width:760px){
  .mobile-cta .hero-ai-question{margin:0 auto 6px;padding-block:2px}
 }
+
+/* Fit the two fixed headline lines to their respective columns. */
+.hero-copy,.recommend-copy{container-type:inline-size}
+.hero #hero-title{font-size:clamp(21px,8.1cqi,59px)}
+.recommendation #recommendation-title{font-size:clamp(16px,6.7cqi,48px);text-wrap:wrap}
+@media(max-width:760px){
+ .hero #hero-title{font-size:clamp(21px,8.1cqi,45px)}
+ .recommendation #recommendation-title{font-size:clamp(16px,6.7cqi,39px)}
+}
+
+.phone-label{font-size:clamp(13px,1.65vw,19px)}
+@media(max-width:760px){
+ .hero .phone-frame{left:21%;width:59%}
+ .hero .map-art{height:clamp(149px,47vw,226px)}
+ .hero .phone-label{font-size:clamp(13px,3.8vw,17px)}
+}
