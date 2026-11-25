@@ -581,3 +581,7 @@ html[lang="en"] .phone-result small{line-height:1.18}
 html[lang="en"] .case-results dd{white-space:normal}
 .search-actions>ul+p{margin:6px 0 0}
 @media(max-width:420px){html[lang="en"] .hero-proof .proof-value strong[data-adoption-count]{font-size:clamp(20px,6.1vw,29px)}}
+
+.proof-en-plus{display:none}
+html[lang="en"] .proof-en-plus{display:inline}
+html[lang="en"] .proof-overseas strong[data-adoption-count]::after{content:"+"}
