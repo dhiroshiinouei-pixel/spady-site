@@ -1,11 +1,11 @@
 ---
-type GuideMember = 'ado' | 'meme' | 'lala' | 'love';
+type GuideMember = 'ado' | 'meme' | 'lala' | 'dotto';
 interface Props { member: GuideMember | 'team'; compact?: boolean }
 const { member, compact = false } = Astro.props;
-const names = { ado:'アド', meme:'メメ', lala:'ララ', love:'ラヴ', team:'4人のチーム' };
-const roles = { ado:'広告', meme:'Meta', lala:'LINE', love:'AI' };
-const characterImage = (id: GuideMember) => '/home/crew-dots/' + id + '.webp';
-const team: GuideMember[] = ['ado', 'meme', 'lala', 'love'];
+const names = { ado:'アド', meme:'メメ', lala:'ララ', dotto:'どっと', team:'4人のチーム' };
+const roles = { ado:'広告', meme:'Meta', lala:'LINE', dotto:'AI' };
+const characterImage = (id: GuideMember) => id === 'dotto' ? '/home/crew-dots/dotto.svg' : '/home/crew-dots/' + id + '.webp';
+const team: GuideMember[] = ['ado', 'meme', 'lala', 'dotto'];
 ---
 <div class:list={['felt-guide', member, { compact }]} data-felt-guide={member}>
   <span class="felt-guide-star" aria-hidden="true">✦</span>
@@ -18,7 +18,7 @@ const team: GuideMember[] = ['ado', 'meme', 'lala', 'love'];
   .felt-guide{--color:#ffcf85;--glow:#fff1ac;--ink:#603410;--edge:#ca8e56;position:relative;isolation:isolate;width:100%;max-width:440px;min-width:0;aspect-ratio:1.32;margin-inline:auto;display:grid;place-items:center;overflow:hidden;border:1px solid var(--edge);border-radius:25px;background:radial-gradient(ellipse at 33% 18%,var(--glow),transparent 74%),var(--color);box-shadow:0 9px 0 -5px var(--edge)}
   .meme{--color:#a9ceff;--glow:#e0f5ff;--ink:#233664;--edge:#7b9dd1}
   .lala{--color:#c5eb9b;--glow:#f4ffc1;--ink:#2a4929;--edge:#83a863}
-  .love{--color:#f8bfde;--glow:#fff1bd;--ink:#672b54;--edge:#bc7da8}
+  .dotto{--color:#d6d9fb;--glow:#f3ffc8;--ink:#342653;--edge:#9588c3}
   .felt-guide-toy{display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;filter:drop-shadow(0 5px 8px #36204432);transform-origin:50% 75%}
   .felt-guide-solo{width:69%;height:76%;margin-bottom:3%}
   .felt-guide-star{position:absolute;left:9%;top:9%;font-size:clamp(19px,4vw,38px);line-height:1;color:var(--ink);opacity:.68}

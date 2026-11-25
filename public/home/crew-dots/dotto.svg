@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="58 7 122 122" fill="none">
+      <defs>
+        <radialGradient id="room-dotto-coat" cx="0" cy="0" r="1" gradientTransform="translate(105 55) rotate(53) scale(79 71)" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#fff"/>
+          <stop offset=".44" stop-color="#f7f8ff"/>
+          <stop offset=".75" stop-color="#e7eaf7"/>
+          <stop offset=".92" stop-color="#d3d9ee"/>
+          <stop offset="1" stop-color="#b8c1db"/>
+        </radialGradient>
+        <linearGradient id="room-dotto-crown" x1="91" y1="30" x2="137" y2="29" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#739513"/>
+          <stop offset=".22" stop-color="#adca0d"/>
+          <stop offset=".44" stop-color="#e8ff44"/>
+          <stop offset=".59" stop-color="#86ae0d"/>
+          <stop offset=".83" stop-color="#aaca19"/>
+          <stop offset="1" stop-color="#698d0f"/>
+        </linearGradient>
+        <linearGradient id="room-dotto-rim" x1="112" y1="33" x2="112" y2="44" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#c4df22"/>
+          <stop offset="1" stop-color="#527707"/>
+        </linearGradient>
+        <radialGradient id="room-dotto-tip" cx=".4" cy=".28" r=".69">
+          <stop stop-color="#d9ed54"/>
+          <stop offset="1" stop-color="#779910"/>
+        </radialGradient>
+      </defs>
+      <g>
+        <path d="M95 45 91 27c9 8 15 3 22-10 7 11 11 17 22 9l-3 17c-12-5-25-5-37 2Z" fill="url(#room-dotto-crown)" stroke="#7e9e21" stroke-width=".7"/>
+        <path d="M94 39c10-5 26-6 39-2l-1 6c-13-3-27-2-37 2Z" fill="url(#room-dotto-rim)"/>
+        <path d="M108 35c2-4 3-10 4-14l2 1c1 5 2 9 4 13Z" fill="#eaff48" opacity=".72"/>
+        <circle cx="91" cy="26.5" r="2.7" fill="url(#room-dotto-tip)"/>
+        <circle cx="113" cy="17" r="3.1" fill="url(#room-dotto-tip)"/>
+        <circle cx="135" cy="25.8" r="2.8" fill="url(#room-dotto-tip)"/>
+      </g>
+      <path d="M89 55C94 44 101 39 112 39c8 0 12 3 18 2 16-1 28 7 28 25 0 5 1 6 3 9 9 9 7 25-2 31-4 3-8 3-12 5-3 9-8 15-17 17-8 2-15-2-22-8-4 0-8 2-13 1-11-1-17-10-17-21 0-4 1-8 3-10-9-6-12-13-10-21 2-8 10-12 18-14Z" fill="url(#room-dotto-coat)" stroke="#d5d9e9" stroke-width=".7"/>
+      <path d="M89 56c3-7 9-12 15-13-6 3-10 8-12 16-4 3-10 4-16 11 2-7 7-11 13-14Z" fill="#fff" opacity=".6"/>
+      <g>
+        <ellipse cx="109.1" cy="72.6" rx="4.7" ry="7.1" fill="#191a1e"/>
+        <ellipse cx="128" cy="72.6" rx="4.8" ry="7.05" fill="#191a1e"/>
+        <ellipse cx="107.8" cy="69.8" rx="1.05" ry="1.65" fill="#51525a" opacity=".55"/>
+        <ellipse cx="126.6" cy="69.7" rx="1.06" ry="1.65" fill="#51525a" opacity=".55"/>
+      </g>
+    </svg>

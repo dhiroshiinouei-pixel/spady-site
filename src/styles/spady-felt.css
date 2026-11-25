@@ -15,12 +15,12 @@
 .felt-ado{background-image:url('/home/crew-dots/ado.webp')}
 .felt-meme{background-image:url('/home/crew-dots/meme.webp')}
 .felt-lala{background-image:url('/home/crew-dots/lala.webp')}
-.felt-love{background-image:url('/home/crew-dots/love.webp')}
+.felt-dotto{background-image:url('/home/crew-dots/dotto.svg')}
 .felt-home .crew-portrait .felt-sprite{filter:drop-shadow(0 6px 9px #38203a23)}
 .felt-home .crew-tag{padding:6px 12px}
 .felt-home .crew-info{margin-top:3px;background:#fffcfc}
 .felt-home .crew-portrait{animation:felt-arrive .78s cubic-bezier(.17,.8,.25,1.25) both;animation-delay:calc(.11s * var(--order,0))}
-.felt-home .crew-meme{--order:1}.felt-home .crew-lala{--order:2}.felt-home .crew-love{--order:3}
+.felt-home .crew-meme{--order:1}.felt-home .crew-lala{--order:2}.felt-home .crew-dotto{--order:3}
 .felt-home .crew-spark{animation:crew-spin 1.4s ease-in-out 2}
 .felt-home .crew-member[data-tapped] .crew-portrait{animation:felt-tap .52s cubic-bezier(.18,.7,.35,1.2) both}
 .felt-home .crew-stage[data-cheer] .crew-portrait{animation:crew-cheer .85s cubic-bezier(.2,.8,.2,1) both}
@@ -56,7 +56,7 @@
 .story-progress span{display:block;background:linear-gradient(90deg,#fe9b51,#9d5afe,#52bc98,#517eef);height:100%;width:100%;transform-origin:left;transform:scaleX(var(--story-p,.02))}
 .story-steps{display:grid;gap:15px}
 .story-card{min-height:193px;padding:clamp(18px,2.7vw,32px);background:#fffbeb;border:1px solid #d89d6e;border-radius:22px;color:#211a39}
-.story-card-meme{background:#e9d8ff;border-color:#b79bd7}.story-card-lala{background:#daf7e1;border-color:#8ed6b1}.story-card-love{background:#daeaff;border-color:#a3b5e0}
+.story-card-meme{background:#e9d8ff;border-color:#b79bd7}.story-card-lala{background:#daf7e1;border-color:#8ed6b1}.story-card-dotto{background:#daeaff;border-color:#a3b5e0}
 .story-card-kicker{display:flex;align-items:center;justify-content:space-between;color:#523478;font-size:12px;letter-spacing:.08em;font-weight:850}
 .story-card h3{font-size:clamp(24px,3.05vw,41px);letter-spacing:-.067em;line-height:1.2;margin:10px 0}
 .story-card p{color:#463758;line-height:1.7;font-size:15px}
@@ -103,7 +103,7 @@
  .felt-home .crew-portrait .felt-sprite{transform-origin:50% 93%;animation:spady-dot-idle var(--dot-time,4.5s) ease-in-out var(--dot-shift,-.3s) infinite}
  .felt-home .crew-meme{--dot-time:4.8s;--dot-shift:-1.5s;--dot-tilt:-2deg}
  .felt-home .crew-lala{--dot-time:4.1s;--dot-shift:-2.4s;--dot-tilt:2.1deg}
- .felt-home .crew-love{--dot-time:5s;--dot-shift:-3.1s;--dot-tilt:-1.7deg}
+ .felt-home .crew-dotto{--dot-time:5s;--dot-shift:-3.1s;--dot-tilt:-1.7deg}
  .felt-home[data-crew-paused] .crew-portrait .felt-sprite,.felt-home .crew-stage:is([data-out-of-view],[data-page-hidden]) .crew-portrait .felt-sprite{animation-play-state:paused}
  .felt-home .crew-member[data-tapped] .felt-sprite,.felt-home .crew-stage[data-cheer] .felt-sprite{animation-play-state:paused}
  @keyframes spady-dot-idle{0%,100%{transform:none}48%{transform:translateY(-3px) rotate(var(--dot-tilt,1.7deg))}}
