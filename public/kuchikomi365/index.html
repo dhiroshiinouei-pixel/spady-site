@@ -131,14 +131,14 @@
       <p class="section-label">運用を支える機能</p>
       <h2 id="feature-title">口コミ365でできること</h2>
       <p class="section-intro">口コミをお願いする、返信する、件数を確認する、営業時間を更新する。4つの場面で使い方を紹介します。</p>
-      <p class="demo-guide"><span aria-hidden="true">✦</span> 図は使い方のイメージです。</p>
+      <p class="demo-guide"><span aria-hidden="true">✦</span> 図と卓上POPの写真は使い方のイメージです。</p>
       <div class="cards demo-cards">
         <article class="card">
           <div class="card-head"><span class="task">口コミのご案内</span><span class="card-number" aria-hidden="true">01</span></div>
           <div class="demo-copy"><h3>QRコードで口コミをお願いできる</h3><p>受付やお会計のあとに、QRコードやリンクでアンケートを案内できます。</p></div>
           <figure class="feature-demo demo-survey">
-            <div class="demo-window"><span class="demo-pill">アンケート例</span><strong>ご利用はいかがでしたか？</strong><div class="demo-option">○　接客・説明</div><div class="demo-option">○　設備・雰囲気</div></div>
-            <svg class="demo-qr" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 4h13v13H4zm23 0h13v13H27zM4 27h13v13H4z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M9 9h3v3H9zm23 0h3v3h-3zM9 32h3v3H9zm14-9h5v5h-5zm11 0h5v5h-5zm-11 11h5v5h-5zm11 0h5v5h-5z" fill="currentColor"/></svg>
+            <img src="./table-survey.webp" width="840" height="560" loading="eager" decoding="async" alt="木のテーブルの上に、ご利用アンケートのサンプルQRが載った案内POPが置かれている様子">
+            <figcaption>卓上POPの設置イメージ・サンプルQR</figcaption>
           </figure>
         </article>
         <article class="card">
@@ -225,16 +225,18 @@
           <div class="booking-head">
             <h3>ご都合のよい日時を選択</h3>
             <p class="booking-scope">予約はオンライン相談です。サービスの導入は任意で、ご希望の方には有料プランの内容と料金をご案内します。</p>
-            <p>予約情報は口コミ365本部（イエロ株式会社）が運営するHubSpotの予約フォームに入力します。送信前に、フォームに表示される案内・同意事項をご確認ください。</p>
+            <p>予約情報は口コミ365本部（イエロ株式会社）が運営する予約フォームに入力します。送信前に、フォームに表示される案内・同意事項をご確認ください。</p>
+          </div>
+          <div class="frame-slot" id="hubspotMeetings">
+            <iframe id="bookingFrame" title="口コミ365本部の相談予約カレンダー" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" data-src="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?embed=true&amp;consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B"></iframe>
+          </div>
+          <div class="booking-foot booking-controls">
             <details class="booking-privacy" id="booking-privacy">
               <summary>予約情報の取り扱い</summary>
               <p>入力した内容は、イエロ株式会社が相談対応やサービスの提供などに利用します。このLP（Spady）は予約フォームの入力内容を取得しません。広告計測への同意は予約とは別で、同意しなくても予約できます。</p>
               <p>イエロ株式会社の公表方針では、法令上の例外などを除き、本人の同意なしに個人情報を第三者に提供しません。この説明は要点で、予約フォーム側に表示される同意事項もご確認ください。</p>
             </details>
             <button class="retry-booking" id="retryBooking" type="button" hidden>カレンダーを再読み込み</button>
-          </div>
-          <div class="frame-slot" id="hubspotMeetings">
-            <iframe id="bookingFrame" title="口コミ365本部の相談予約カレンダー" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" data-src="https://meetings-na2.hubspot.com/kuchikomi365/metalinemeo?embed=true&amp;consultation_details=Spady%EF%BC%88%E4%BA%95%E4%B8%8A%E5%8D%9A%E5%8F%B2%EF%BC%89%E7%B4%B9%E4%BB%8B"></iframe>
           </div>
           <noscript><div class="booking-foot"><p>予約にはJavaScriptが必要です。有効にしてこのページを再読み込みしてください。</p><style>.frame-slot{display:none}</style></div></noscript>
         </div>
