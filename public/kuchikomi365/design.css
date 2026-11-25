@@ -500,3 +500,18 @@ body{background:var(--paper)}
 .channel-card h4{color:#30244f;font-size:16px;margin:4px 0 5px;line-height:1.5}
 .channel-card p{color:#514964;font-size:14px;margin:0;line-height:1.65}
 @media (max-width:600px){.channel-grid{grid-template-columns:1fr;gap:12px}}
+
+/* Give the measured change and the observation period a clear, consistent hierarchy. */
+.case-results{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;border-top:0;background:var(--cbg);border-radius:11px;padding:10px 11px}
+.case-results .case-metric dd{display:flex;gap:3px;align-items:baseline}
+.case-results .case-metric strong{font-variant-numeric:tabular-nums;letter-spacing:-.035em;font-size:clamp(31px,3.6vw,43px)}
+.case-results .case-period{border-left:1px solid var(--cedge);padding-left:8px}
+.case-results .case-period dd{margin-top:3px}
+.search-actions{margin-top:10px;padding-top:9px;border-top:1px solid #e3e1f2}
+.search-actions>p{margin:0 0 6px;padding:0;color:#473773;font-weight:800;font-size:12px}
+.search-actions ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;list-style:none;padding:0;margin:0}
+.search-actions li{display:grid;justify-items:center;align-content:start;gap:2px;padding:5px 2px 6px;border-radius:7px;background:#f6f2ff;color:#402d73;font-size:11px;line-height:1.35}
+.search-actions li:nth-child(2){background:#e9f3ff;color:#234782}
+.search-actions li:nth-child(3){background:#ebf8f2;color:#23604f}
+.search-action-icon svg{display:block;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){.case-results{padding:7px;gap:6px}.case-results .case-metric strong{font-size:31px}.case-results .case-period{padding-left:6px}}
