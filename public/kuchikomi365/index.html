@@ -13,6 +13,7 @@
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="./design.css">
   <script defer src="./booking.js"></script>
+  <script defer src="./story.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
@@ -44,11 +45,11 @@
       </figure>
       <div class="hero-copy">
         <p class="eyebrow ai-eyebrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3l2.5 5.5L21 11l-5.5 2.5L13 19l-2.5-5.5L5 11l5.5-2.5L13 3ZM5 16v6m-3-3h6"/></svg>AIにも選ばれるために。</p>
-        <h1 id="hero-title"><span>Googleマップ集客、</span><span class="key">まずは無料診断から。</span></h1>
-        <p class="lead">口コミ365は、Googleマップの口コミ・返信・店舗情報をまとめて管理するサービスです。</p>
+        <h1 id="hero-title"><span>地図とAIで見つかる、</span><span class="key">口コミで選ばれる。</span></h1>
+        <p class="lead">口コミ365は、Googleマップの集客を支えるサービスです。口コミと掲載情報を整え、電話や経路検索など、お客様の反応から改善できます。</p>
         <div class="hero-proof">
           <svg class="proof-icon" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3 17 6.5l4.6.8.8 4.6L26 15l-3.6 3-.8 4.4-4.6.9L14 27l-3-3.7-4.6-.9-.8-4.4L2 15l3.6-3.1.8-4.6 4.6-.8L14 3Z"/><path d="m10 14 2.5 2.5 5.5-5.5"/></svg>
-          <div><small>口コミ365本部の発表</small><div class="proof-value">導入 <strong>10,000</strong><b>店舗以上</b></div></div>
+          <div><small>口コミ365本部の発表</small><div class="proof-value">導入 <strong id="adoptionCount" aria-hidden="true">10,000</strong><span class="count-reader">10,000</span><b>店舗以上</b></div></div>
           <a id="hero-case-link" href="#cases">導入事例 <span aria-hidden="true">↓</span></a>
         </div>
         <a class="button" id="hero-cta" href="#reserve" data-cta="hero">無料診断の相談日時を選ぶ <span class="arr" aria-hidden="true">↓</span></a>
@@ -100,7 +101,7 @@
     </div>
   </section>
 
-  <nav class="journey-nav" aria-label="このページの内容"><div class="wrap"><a href="#cases">導入事例</a><a href="#challenges">よくある課題</a><a href="#search-visibility">マップと検索</a><a href="#features">主な機能</a><a href="#usage">使い方</a><a href="#diagnosis">無料診断</a></div></nav>
+  <nav class="journey-nav" aria-label="このページの内容"><div class="wrap"><a href="#cases">導入事例</a><a href="#challenges">よくある課題</a><a href="#search-visibility">マップと検索</a><a href="#outcomes">費用対効果</a><a href="#features">主な機能</a><a href="#usage">使い方</a><a href="#diagnosis">無料診断</a></div></nav>
 
   <section class="section challenge-section" id="challenges" aria-labelledby="challenge-title">
     <div class="wrap">
@@ -116,9 +117,9 @@
 
   <section class="section search-section" id="search-visibility" aria-labelledby="search-title">
     <div class="wrap search-grid">
-      <div><p class="section-label">地域検索とAI検索</p><h2 id="search-title">まずは、<br>正しい事業情報から。</h2><p class="section-intro">Googleマップで近くのお店や施設を探す人も、AIに候補を聞く人もいます。営業時間や所在地、サービス内容などを整えておくと、見つけた人が自分に合うか判断しやすくなります。</p></div>
+      <div><p class="section-label">地域検索とAI検索</p><h2 id="search-title">Googleマップ・検索・AI。<br><span class="draw-line" data-underline>見つけてもらう土台は、店舗情報。</span></h2><p class="section-intro">GoogleマップやGoogle検索で「近くのジム」と探す人もいれば、AIに「夜も通えるジムは？」と聞く人もいます。営業時間・所在地・サービス内容を分かりやすくしておくと、お客様が選ぶときの手がかりになります。</p></div>
       <div class="search-diagram">
-        <div class="search-branches"><div class="tone-0"><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4 0-7 3-7 7 0 5 7 11 7 11s7-6 7-11c0-4-3-7-7-7Zm0 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></span><b>Googleマップ</b><small>近くの候補を探す</small><span class="search-example">例：近くのジム</span></div><div class="tone-2"><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3l2.5 5.5L21 11l-5.5 2.5L13 19l-2.5-5.5L5 11l5.5-2.5L13 3ZM5 16v6m-3-3h6"/></svg></span><b>AI検索</b><small>条件を伝えて候補を聞く</small><span class="search-example">例：夜も通えるジムは？</span></div></div>
+        <div class="search-branches"><div class="tone-0"><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4 0-7 3-7 7 0 5 7 11 7 11s7-6 7-11c0-4-3-7-7-7Zm0 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></span><b>Googleマップ・検索</b><small>地名や業種で探す</small><span class="search-example">例：近くのジム</span></div><div class="tone-2"><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3l2.5 5.5L21 11l-5.5 2.5L13 19l-2.5-5.5L5 11l5.5-2.5L13 3ZM5 16v6m-3-3h6"/></svg></span><b>AI検索</b><small>条件を伝えて候補を聞く</small><span class="search-example">例：夜も通えるジムは？</span></div></div>
         <span class="search-arrow" aria-hidden="true">↓</span>
         <div class="search-found"><strong>どちらにも活かせる基本</strong><small>お客様の判断に役立つ掲載情報</small><div class="search-tags"><span>◷ 営業時間</span><span>⌖ 所在地</span><span>☷ サービス内容</span></div></div>
         <p>検索結果やAIでの紹介は、検索条件やサービスによって異なります。</p>
@@ -126,10 +127,24 @@
     </div>
   </section>
 
+  <section class="section outcomes" id="outcomes" aria-labelledby="outcomes-title">
+    <div class="wrap">
+      <p class="section-label">店舗集客と費用対効果</p>
+      <h2 id="outcomes-title">順位や口コミだけでなく、<br><span class="draw-line" data-underline>来店・予約につながったか。</span></h2>
+      <p class="section-intro">検索順位が上がっても、それだけでは売上が増えたとは言えません。何を整え、どんな反応があり、実際の予約や問い合わせにつながったかを順番に見ます。</p>
+      <div class="outcomes-grid">
+        <article class="outcome-card tone-0"><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 5 7 11 7 11s7-6 7-11a7 7 0 0 0-7-7Z M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></span><h3>見つけてもらう</h3><p>Googleマップ・Google検索・AI検索。まずは営業時間、場所、サービス内容を分かりやすく。</p><span class="outcome-tag">地図・検索・AI</span></article>
+        <article class="outcome-card tone-2"><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H9l-5 4V5Zm4 5h8m-8 3h6"/></svg></span><h3>比較して選んでもらう</h3><p>口コミやお店の返信は、お客様が「ここに行ってみよう」と考えるときの材料になります。</p><span class="outcome-tag">口コミ・返信</span></article>
+        <article class="outcome-card tone-1"><span class="feature-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v16h16M8 15l4-4 3 2 5-7"/></svg></span><h3>予約や売上を振り返る</h3><p>電話ボタンやルート検索は関心の目安。予約・問い合わせ・来店後の売上は、店舗側で別に確認します。</p><span class="outcome-tag">予約・問い合わせ・売上</span></article>
+      </div>
+      <div class="roi-check"><strong>費用対効果を見る目安</strong><div><span>月の運用費</span><b aria-hidden="true">÷</b><span>新規1件あたりの粗利</span><b aria-hidden="true">＝</b><span>費用を回収するのに必要な件数</span></div><p>これは概算です。来店や成約は予約台帳や会計記録で確認し、季節や他の広告の影響も考えて判断します。</p></div>
+    </div>
+  </section>
+
   <section class="section feature-section" id="features" aria-labelledby="feature-title">
     <div class="wrap">
       <p class="section-label">運用を支える機能</p>
-      <h2 id="feature-title">口コミ365でできること</h2>
+      <h2 id="feature-title"><span class="draw-line" data-underline>口コミ365でできること</span></h2>
       <p class="section-intro">口コミをお願いする、返信する、件数を確認する、営業時間を更新する。4つの場面で使い方を紹介します。</p>
       <p class="demo-guide"><span aria-hidden="true">✦</span> 写真と画面は使い方のイメージです。</p>
       <div class="cards demo-cards">
@@ -181,6 +196,16 @@
       <p class="section-label">利用の流れ</p>
       <h2 id="usage-title">口コミのご案内は、3ステップ</h2>
       <ol class="usage-grid"><li class="tone-0"><div class="step-top"><span class="step-token">01</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 9h8m-8 4h8m-8 4h5"/></svg></span></div><h3>聞きたいことを決める</h3><p>接客や設備など、事業に合わせてアンケートを用意します。</p><span class="step-preview survey-preview"><small>アンケート例</small><b>○ 接客　　○ 設備</b></span></li><li class="tone-2"><div class="step-top"><span class="step-token">02</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3zM18 18h3v3h-3z"/></svg></span></div><h3>QRやリンクを渡す</h3><p>受付や案内メッセージで共有。口コミを投稿するかはお客様ご自身が決めます。</p><span class="step-preview has-photo"><img src="./table-survey.webp" alt="" loading="lazy" decoding="async"><small>受付・テーブルにPOP</small></span></li><li class="tone-1"><div class="step-top"><span class="step-token">03</span><span class="feature-icon step-pictogram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v12H9l-6 4V5zm4 5h10m-10 4h7"/></svg></span></div><h3>声を読んで、返信する</h3><p>口コミを確認し、必要に応じてAIの文案をもとに返信します。</p><span class="step-preview has-photo"><img src="./workflow-reply.webp" alt="" loading="lazy" decoding="async"><small>口コミを見ながら返信</small></span></li></ol>
+    </div>
+  </section>
+
+  <section class="section recommendation" id="recommendation" aria-labelledby="recommendation-title">
+    <div class="wrap recommend-panel">
+      <div class="recommend-identity"><span class="recommend-kicker">このサービスを紹介する理由</span><strong>元 Meta Marketing Pro</strong><span>前職で国内の広告代理店 <b>80社以上</b> を支援</span></div>
+      <div><h2 id="recommendation-title">広告を出す前に、<br><span class="draw-line" data-underline>私ならGoogleマップを整えます。</span></h2>
+      <p>今は店舗や事業者のMeta広告とLINE公式アカウントの構築を支援しています。現場で実感するのは、広告で知ったお店でも、来店前には営業時間や口コミを地図で確認する人がいることです。地域の店舗なら、Googleビジネスプロフィールは集客費用を抑えながら見直せる、優先度の高い入口だと考えています。</p>
+      <p>最近は地図や検索に加え、AIに候補を聞いてお店を選ぶ人もいます。今から情報を整え、口コミに対応するなら、それを一つの場所で続けやすい口コミ365が候補になります。</p>
+      <p class="recommend-sign">Spady 代表　井上 博史</p></div>
     </div>
   </section>
 
@@ -251,6 +276,14 @@
           <noscript><div class="booking-foot"><p>予約にはJavaScriptが必要です。有効にしてこのページを再読み込みしてください。</p><style>.frame-slot{display:none}</style></div></noscript>
         </div>
       </div>
+    </div>
+  </section>
+  <section class="section profile" id="profile" aria-labelledby="spady-profile-title">
+    <div class="wrap profile-card">
+      <div class="profile-portrait"><img src="/profile.jpg" width="320" height="320" alt="Spady代表の井上博史" loading="lazy" decoding="async"></div>
+      <div><p class="section-label">このページの紹介者</p><h2 id="spady-profile-title">井上 博史</h2><p class="profile-role">Spady 代表 / 元 Meta Marketing Pro</p>
+      <ul class="profile-meta"><li>拠点：北海道・小樽</li><li>前職で国内の広告代理店80社以上を支援</li></ul>
+      <p>地域の店舗・小規模事業者に向けて、Meta広告やLINE公式アカウントの構築を支援しています。このページはSpadyの紹介ページで、ご相談とサービス提供は口コミ365本部（イエロ株式会社）が担当します。</p></div>
     </div>
   </section>
 </main>
